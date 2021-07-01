@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;400;700&display=swap");
+
+:root {
+  --primary-color: #202020;
+  --secondary-color: #ca8019;
+  --background: #ffffff;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--primary-color);
+  scroll-behavior: smooth;
+  background-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.drawerItem:hover {
+  background-color: #dbcbbd;
+  color: #290001;
+}
+
+.drawerItemIcon {
+  color: #290001;
+}
+
+.mcImages {
+  border-radius: 50%;
+}
+
+.mcImageBorder {
+  border-radius: 50%;
+  height: 185px;
+  width: 175px;
+  border: 3px solid var(--secondary-color);
+  padding: 4px;
+}
+
+/* Styles for the masonry layout */
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  width: auto;
+}
+
+.my-masonry-grid_column_testimonials {
+  padding-left: 30px; /* gutter size */
+  padding-right: 10px;
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column_gallery {
+  padding-left: 5px; /* gutter size */
+  padding-right: 5px;
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column_gallery > div {
+  margin-bottom: 10px;
+}
+
+.my-masonry-grid_column_testimonials > div {
+  margin-bottom: 30px;
+}
+
+/* Styled link */
+.styledLink {
+  position: relative;
+  color: inherit;
+}
+
+.styledLink:focus-within {
+  text-decoration: none;
+}
+
+.styledLink::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 250ms ease-in;
+}
+
+.styledLink:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.MuiFormControlLabel {
+  font-size: 0.5rem;
+}
+
+.styledHeading {
+  position: relative;
+  display: inline-block;
+}
+
+.styledHeading::before,
+.styledHeading::after {
+  content: "";
+  height: 100%;
+  display: block;
+  position: absolute;
+}
+
+.styledHeading::before {
+  background: #ffffff;
+  z-index: -1;
+  left: -30px;
+  right: -30px;
+  border-top-right-radius: 30%;
+  border-bottom-left-radius: 30%;
+}
+
+.styledHeading::after {
+  background-image: linear-gradient(
+    to right,
+    rgb(255, 255, 255),
+    rgba(244, 234, 178, 0.2),
+    rgba(233, 174, 26, 0.1),
+    rgb(255, 255, 255)
+  );
+  width: 80vw;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: -2;
+}
+
+.animateNavLogo {
+  animation-name: logo-animate;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes logo-animate {
+  0% {
+    transform: translateY(-20vw);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.timesButtonAnimation {
+  transition: transform 0.25s;
+}
+
+.timesButtonAnimation:hover {
+  transform: rotate(180deg);
+}
+
+.wavingHandAnimation {
+  animation-name: wave;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(20deg);
+  }
+
+  50% {
+    transform: rotate(-20deg);
+  }
+
+  100% {
+    transform: rotate(20deg);
+  }
+}
+
+.counter {
+  counter-reset: site-counter;
+}
+
+.counterSection {
+  position: relative;
+}
+
+.counterSection::before {
+  counter-increment: site-counter;
+  content: counter(site-counter) " ";
+  font-size: 0.8rem;
+  position: absolute;
+  left: -2rem;
+  top: 0.2em;
+  background-color: #ff5200;
+  color: #fff;
+  font-weight: 700;
+  height: 1.7em;
+  width: 1.7em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .my-masonry-grid_column_testimonials {
+    padding-left: 50px; /* gutter size */
+    padding-right: 0px;
+    background-clip: padding-box;
+  }
+
+  .styledHeading::after {
+    width: 100vw;
+  }
+}

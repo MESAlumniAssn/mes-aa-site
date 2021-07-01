@@ -1,0 +1,73 @@
+.cardOther {
+  width: 240px;
+}
+
+.cardPadma {
+  width: 275px;
+}
+
+.cardContentPadma {
+  height: 150px;
+  padding: 1.5rem;
+  border-radius: 5%;
+  box-shadow: 0 12px 25px rgba(252, 84, 4, 0.2);
+  border-bottom: 3.5px solid #ffd57e;
+  text-align: center;
+  background-image: linear-gradient(
+    50deg,
+    rgba(255, 248, 205, 0.25),
+    rgba(255, 213, 126, 0.5)
+  );
+  transform-style: preserve-3d;
+  position: relative;
+  transition: transform 3s;
+}
+
+.cardContentOther {
+  height: 150px;
+  box-shadow: 0 8px 17px rgba(134, 64, 0, 0.2);
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  transition: transform 3s;
+  background-image: url("/images/famous-alumni/card-bg.svg");
+  transform-style: preserve-3d;
+}
+
+.cardOther:hover .cardContentOther {
+  transform: rotateY(0.5turn);
+}
+
+.cardPadma:hover .cardContentPadma {
+  transform: rotateY(0.5turn);
+}
+
+.cardFront,
+.cardBack {
+  padding: 2rem 0.5rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  backface-visibility: hidden;
+}
+
+.cardFrontContent {
+  transform: translateZ(1rem);
+}
+
+.cardBack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(0.5turn);
+  background-image: linear-gradient(to right, #fff8cd, #fff9e0);
+}
+
+.cardFlipIcon {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding-top: 10px;
+}
