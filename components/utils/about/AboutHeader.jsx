@@ -1,113 +1,116 @@
-import React, { useState, Fragment } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useState, Fragment } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 // Material UI imports
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
-import { makeStyles } from "@material-ui/core/styles";
+import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import Modal from '@material-ui/core/Modal'
+import Backdrop from '@material-ui/core/Backdrop'
+import Fade from '@material-ui/core/Fade'
+import { makeStyles } from '@material-ui/core/styles'
 
 // Fontawesome imports
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 // Component imports
-import RegistrationCertificateModal from "./RegistrationCertificateModal";
+import RegistrationCertificateModal from './RegistrationCertificateModal'
 
 const useStyles = makeStyles((theme) => ({
   parentContainer: {
-    height: "100%",
+    height: '100%',
   },
   aboutHero: {
-    padding: "100px 0 50px 0",
-    textAlign: "center",
+    padding: '100px 0 50px 0',
+    textAlign: 'center',
   },
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    margin: "0 10",
+    margin: '10 10',
     boxShadow: theme.shadows[5],
     padding: 30,
-    paddingTop: "3rem",
-    position: "relative",
-    overflowY: "scroll",
-    height: 700,
-    width: 400,
-    [theme.breakpoints.up("sm")]: {
+    paddingTop: '3rem',
+    paddingBottom: '2rem',
+    position: 'relative',
+    overflowY: 'scroll',
+    height: 600,
+    width: 350,
+    [theme.breakpoints.up('sm')]: {
       width: 600,
     },
   },
-}));
+  almaMaterText: {
+    fontSize: '1.1rem',
+    fontWeight: 600,
+    borderLeft: 'solid 5px var(--secondary-color)',
+    borderRaius: 0,
+    padding: '5px 10px',
+    background: '#FFFFFF',
+    textTransform: 'uppercase',
+    cursor: 'pointer',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.3rem',
+    },
+  },
+}))
 
 const AboutHeader = () => {
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const [openRegistrationCert, setOpenRegistrationCert] = useState(false);
+  const classes = useStyles()
+  const [open, setOpen] = useState(false)
+  const [openRegistrationCert, setOpenRegistrationCert] = useState(false)
 
   const handleOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
   return (
     <Fragment>
       <div className={classes.parentContainer}>
         <div className={classes.aboutHero}>
           <Typography
             component="h1"
-            variant="h1"
             align="center"
             className="styledHeading"
             gutterBottom
           >
-            Get to know us better
+            <span className="mainHeading">Get to know us better</span>
           </Typography>
         </div>
 
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            paddingBottom: 50,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingBottom: 30,
           }}
         >
           <div
             style={{
-              boxShadow: "0 20px 35px rgba(0, 0, 0, 0.2)",
+              boxShadow: '0 20px 35px rgba(0, 0, 0, 0.2)',
             }}
           >
             <Image
-              src={"/images/about/college-old.png"}
-              alt={"MES College"}
+              src={'/images/about/college-old.png'}
+              alt={'MES College'}
               height={300}
-              width={450}
+              width={400}
             />
           </div>
-          <div style={{ paddingTop: "50px" }}>
+          <div style={{ paddingTop: '50px' }}>
             <p
-              style={{
-                fontSize: "1.3rem",
-                fontWeight: 600,
-                borderLeft: "solid 5px var(--secondary-color)",
-                borderRaius: 0,
-                padding: "5px 10px",
-                background: "#FFFFFF",
-                textTransform: "uppercase",
-                cursor: "pointer",
-              }}
-              className="styledLink"
+              className={`styledLink ${classes.almaMaterText}`}
               onClick={handleOpen}
             >
               A little about your alma mater
@@ -143,8 +146,8 @@ const AboutHeader = () => {
             gutterBottom
             style={{ paddingTop: 20 }}
           >
-            MES College (accredited{" "}
-            <span style={{ fontWeight: "bold" }}>A</span> by NAAC) has been an
+            MES College (accredited{' '}
+            <span style={{ fontWeight: 'bold' }}>A</span> by NAAC) has been an
             institute par excellence for over 65 years. It has a galaxy of
             distinguished alumni, who with their excellence in their chosen
             field have not only bought laurels to college and the country but
@@ -159,22 +162,22 @@ const AboutHeader = () => {
           >
             The Alumni Association has been functioning informally for many
             years. The process of formalising the Association began a few years
-            ago and it was finally{" "}
+            ago and it was finally{' '}
             <Link href="#">
               <a
                 style={{
-                  color: "var(--secondary-color)",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                  textDecoration: "none",
+                  color: 'var(--secondary-color)',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  textDecoration: 'none',
                 }}
                 className="styledLink"
                 onClick={() => setOpenRegistrationCert(true)}
               >
                 registered on 21
-                <span style={{ verticalAlign: "super", fontSize: "0.8rem" }}>
+                <span style={{ verticalAlign: 'super', fontSize: '0.8rem' }}>
                   st
-                </span>{" "}
+                </span>{' '}
                 June, 2021
               </a>
             </Link>
@@ -193,17 +196,17 @@ const AboutHeader = () => {
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              <div style={{ position: "absolute", right: 15, top: 10 }}>
+              <div style={{ position: 'absolute', right: 15, top: 10 }}>
                 <FontAwesomeIcon
                   icon={faTimes}
                   onClick={handleClose}
-                  style={{ fontSize: "1.2rem", cursor: "pointer" }}
+                  style={{ fontSize: '1.2rem', cursor: 'pointer' }}
                   className="timesButtonAnimation"
                 />
               </div>
-              <div style={{ position: "absolute", right: 8, top: 30 }}>ESC</div>
-              <Typography component="h2" variant="h2" align="center">
-                Your Alma Mater
+              <div style={{ position: 'absolute', right: 8, top: 30 }}>ESC</div>
+              <Typography component="h2" align="center">
+                <span className="secondaryHeading">Your Alma Mater</span>
               </Typography>
               <p>
                 MES College of Arts, Commerce and Science was started in the
@@ -235,11 +238,11 @@ const AboutHeader = () => {
               </p>
               <p>
                 The alumni of the college believe in the quote by Winston S
-                Churchill{" "}
+                Churchill{' '}
                 <em>
                   We make a living by what we get. We make a life by what we
                   give
-                </em>{" "}
+                </em>{' '}
                 and have contributed benevolently to the needs of the
                 economically weaker student-sections, conducted career
                 counselling sessions, participated in social-service activities
@@ -256,7 +259,7 @@ const AboutHeader = () => {
         />
       </div>
     </Fragment>
-  );
-};
+  )
+}
 
-export default AboutHeader;
+export default AboutHeader

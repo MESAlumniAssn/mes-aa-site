@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;400;700&display=swap');
 
 :root {
   --primary-color: #202020;
@@ -7,15 +7,17 @@
   --background: #ffffff;
   --main-heading-size: 3.5rem;
   --secondary-heading-size: 2.5rem;
+  --subtitle-size: 2rem;
   --main-heading-size-mobile: 1.75rem;
-  --secondary-heading-size-mobile: 1.7rem;
+  --secondary-heading-size-mobile: 1.5rem;
+  --subtitle-size-mobile: 1rem;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   color: var(--primary-color);
   scroll-behavior: smooth;
   background-color: transparent;
@@ -23,6 +25,20 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+.mainHeading {
+  font-size: var(--main-heading-size);
+  font-weight: bold;
+}
+
+.secondaryHeading {
+  font-size: var(--secondary-heading-size);
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: var(--subtitle-size);
 }
 
 .drawerItem:hover {
@@ -85,7 +101,7 @@ body {
 }
 
 .styledLink::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   left: 0;
@@ -113,7 +129,7 @@ body {
 
 .styledHeading::before,
 .styledHeading::after {
-  content: "";
+  content: '';
   height: 100%;
   display: block;
   position: absolute;
@@ -198,7 +214,7 @@ body {
 
 .counterSection::before {
   counter-increment: site-counter;
-  content: counter(site-counter) " ";
+  content: counter(site-counter) ' ';
   font-size: 0.8rem;
   position: absolute;
   left: -2rem;
@@ -214,7 +230,7 @@ body {
   align-items: center;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .my-masonry-grid_column_testimonials {
     padding-left: 20px; /* gutter size */
     padding-right: 20px;
@@ -223,5 +239,17 @@ body {
 
   .styledHeading::after {
     width: 100vw;
+  }
+
+  .mainHeading {
+    font-size: var(--main-heading-size-mobile);
+  }
+
+  .secondaryHeading {
+    font-size: var(--secondary-heading-size-mobile);
+  }
+
+  .subtitle {
+    font-size: var(--subtitle-size-mobile);
   }
 }

@@ -1,52 +1,38 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
 // Material UI imports
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles'
 
-// Fontawesome imports
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faTwitter,
-  faInstagram,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
-
-const theme = createMuiTheme();
+const theme = createMuiTheme()
 
 const useStyles = makeStyles({
   socialIconsContainer: {
-    width: "100%",
-    margin: "0 auto",
-    [theme.breakpoints.up("sm")]: {
-      width: "50%",
+    width: '100%',
+    margin: '0 auto',
+    [theme.breakpoints.up('sm')]: {
+      width: '50%',
     },
   },
-});
+})
 
 const Social = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
-    <div style={{ margin: "100px 0" }}>
+    <div style={{ margin: '50px 0' }}>
       <Typography
-        variant="h2"
         component="h2"
         align="center"
         gutterBottom
-        style={{ fontWeight: "bold" }}
+        style={{ fontWeight: 'bold' }}
       >
-        Feeling Social?
+        <span className="secondaryHeading">Feeling Social?</span>
       </Typography>
-      <Typography
-        align="center"
-        gutterBottom
-        style={{ fontWeight: "bold", fontSize: "1.2rem" }}
-      >
-        Connect with us
+      <Typography align="center" gutterBottom style={{ fontWeight: 'bold' }}>
+        <span className="subtitle">Connect with us</span>
       </Typography>
       <div className={classes.socialIconsContainer}>
         <Grid
@@ -60,10 +46,10 @@ const Social = () => {
             <Link href="https://facebook.com" passHref={true}>
               <a target="_blank">
                 <Image
-                  src={"/images/social/facebook.svg"}
+                  src={'/images/social/facebook.svg'}
                   alt="Facebook"
-                  height={60}
-                  width={60}
+                  height={50}
+                  width={50}
                 />
               </a>
             </Link>
@@ -73,10 +59,10 @@ const Social = () => {
             <Link href="https://twitter.com" passHref={true}>
               <a target="_blank">
                 <Image
-                  src={"/images/social/twitter.svg"}
+                  src={'/images/social/twitter.svg'}
                   alt="Twitter"
-                  height={60}
-                  width={60}
+                  height={50}
+                  width={50}
                 />
               </a>
             </Link>
@@ -85,10 +71,10 @@ const Social = () => {
             <Link href="https://instagram.com" passHref={true}>
               <a target="_blank">
                 <Image
-                  src={"/images/social/instagram.svg"}
+                  src={'/images/social/instagram.svg'}
                   alt="Instagram"
-                  height={60}
-                  width={60}
+                  height={50}
+                  width={50}
                 />
               </a>
             </Link>
@@ -97,10 +83,10 @@ const Social = () => {
             <Link href="https://youtube.com" passHref={true}>
               <a target="_blank">
                 <Image
-                  src={"/images/social/youtube.svg"}
+                  src={'/images/social/youtube.svg'}
                   alt="Youtube"
-                  height={60}
-                  width={60}
+                  height={50}
+                  width={50}
                 />
               </a>
             </Link>
@@ -108,7 +94,7 @@ const Social = () => {
         </Grid>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Social;
+export default Social

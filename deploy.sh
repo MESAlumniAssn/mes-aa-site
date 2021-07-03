@@ -11,4 +11,4 @@ else
   echo "Not deploying, since the branch isn't main."
 fi
 
-# ssh travis@143.244.132.151 'pm2 restart all' --update-env
+ssh travis@143.244.132.151 'pm2 restart all' --update-env

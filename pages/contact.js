@@ -1,44 +1,34 @@
-import React, { useEffect } from "react";
-import ContactDetails from "../components/utils/contact/ContactDetails";
+import React, { useEffect } from 'react'
+import ContactDetails from '../components/utils/contact/ContactDetails'
 
 // Material UI imports
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
 
 // Component imports
-import ContactHeadLayout from "../components/layout/head/ContactHeadLayout";
-import Footer from "../components/layout/Footer";
+import ContactHeadLayout from '../components/layout/head/ContactHeadLayout'
+import Footer from '../components/layout/Footer'
 
 const useStyles = makeStyles({
   contactHero: {
-    margin: "100px 0 50px 0",
-    textAlign: "center",
+    margin: '100px 0 50px 0',
+    textAlign: 'center',
   },
-});
+})
 
 const contact = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   useEffect(() => {
-    window.scroll({ top: 1, left: 1, behavior: "smooth" });
-  }, []);
+    window.scroll({ top: 1, left: 1, behavior: 'smooth' })
+  }, [])
 
   return (
     <ContactHeadLayout>
-      <div className={classes.contactHero}>
-        <Typography
-          component="h1"
-          variant="h1"
-          align="center"
-          className="styledHeading"
-        >
-          Get in touch
-        </Typography>
-      </div>
       <ContactDetails />
       <Footer />
     </ContactHeadLayout>
-  );
-};
+  )
+}
 
-export default contact;
+export default contact

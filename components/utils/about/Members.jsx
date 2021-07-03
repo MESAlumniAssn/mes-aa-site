@@ -1,17 +1,17 @@
-import React from "react";
-import Image from "next/image";
+import React from 'react'
+import Image from 'next/image'
 
 // Material UI imports
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 
 const Members = (props) => {
   return (
     <div>
-      <Grid container justify="center" alignItems="center" spacing={8}>
+      <Grid container justify="center" alignItems="center" spacing={6}>
         {props.committeeData
           .filter((role) => {
-            return role.role === props.filter;
+            return role.role === props.filter
           })
           .map((member, index) => {
             return (
@@ -43,31 +43,31 @@ const Members = (props) => {
                     align="center"
                     gutterBottom
                     style={{
-                      block: "true",
-                      width: "100%",
-                      fontWeight: "bold",
-                      padding: "10px 0",
+                      block: 'true',
+                      width: '100%',
+                      fontWeight: 'bold',
+                      padding: '10px 0',
                     }}
                   >
                     {member.name}
                   </Typography>
-                  {member.role === "ob" && (
+                  {member.role === 'ob' && (
                     <Typography
                       variant="subtitle"
                       component="subtitle"
                       align="center"
-                      style={{ width: "100%" }}
+                      style={{ width: '100%' }}
                     >
                       {member.designation}
                     </Typography>
                   )}
                 </div>
               </Grid>
-            );
+            )
           })}
       </Grid>
     </div>
-  );
-};
+  )
+}
 
-export default Members;
+export default Members
