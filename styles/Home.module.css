@@ -1,6 +1,6 @@
 .container {
   height: 100vh;
-  background-image: url("/images/home/home.jpg");
+  background-image: url('/images/home/home.jpg');
   background-size: cover;
   padding: 40px;
 }
@@ -30,7 +30,13 @@
 }
 
 .mainTitle {
-  font-size: 3.5rem;
+  font-size: var(--main-heading-size);
+  margin: 0;
+}
+
+.secondaryTitle {
+  text-align: center;
+  font-size: var(--secondary-heading-size);
   margin: 0;
 }
 
@@ -120,11 +126,6 @@
   line-height: 1.6;
 }
 
-.letter h2 {
-  text-align: center;
-  font-size: 2.5rem;
-}
-
 .letterQuote {
   font-size: 1.5rem;
 }
@@ -156,22 +157,26 @@
   background-color: #fffbf7;
 }
 
-.testimonials h2 {
-  text-align: center;
-  margin-top: 0;
-  padding-top: 50px;
-  font-size: 2.5rem;
+.testimonialContainer {
+  padding: 30px 0 20px 0;
 }
 
 .testimonialLink {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.2rem;
+  font-size: 1 rem;
   color: #c87941;
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.25px;
+}
+
+@media only screen and (max-width: 600px) {
+  .secondaryTitle {
+    font-size: 1.5rem;
+    margin: 0;
+  }
 }
 
 @media only screen and (max-width: 900px) {
@@ -180,7 +185,17 @@
   }
 
   .mainTitle {
-    font-size: 2.5rem;
+    font-size: var(--main-heading-size-mobile);
+  }
+
+  .secondaryTitle {
+    font-size: var(--secondary-heading-size-mobile);
+    margin: 0;
+  }
+
+  .heading {
+    display: flex;
+    padding: 5px;
   }
 
   .registeredIcon {

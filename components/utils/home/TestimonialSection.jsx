@@ -11,27 +11,26 @@ const TestimonialSection = ({ styles, testimonials }) => {
   const animation = useAnimation();
 
   useEffect(() => {
-    console.log(inView);
     if (inView) {
       animation.start({
         opacity: 1,
         scale: 1,
-        transition: { duration: 0.75 },
+        transition: { duration: 0.3 },
       });
     }
 
     if (!inView) {
       animation.start({
-        opacity: 0,
+        opacity: 1,
         scale: 0,
       });
     }
   }, [inView]);
 
   return (
-    <div ref={ref}>
-      <h2>Alumni Speak</h2>
-      <div style={{ marginBottom: 75 }}>
+    <div ref={ref} className={styles.testimonialContainer}>
+      <h2 className={styles.secondaryTitle}>Alumni Speak</h2>
+      <div style={{ marginTop: 20, marginBottom: 50 }}>
         <Link href="/testimonials">
           <a className={`${styles.testimonialLink} styledLink`}>
             Read all the messages

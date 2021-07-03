@@ -5,6 +5,10 @@
   --primary-color: #202020;
   --secondary-color: #ca8019;
   --background: #ffffff;
+  --main-heading-size: 3.5rem;
+  --secondary-heading-size: 2.5rem;
+  --main-heading-size-mobile: 1.75rem;
+  --secondary-heading-size-mobile: 1.7rem;
 }
 
 html,
@@ -212,8 +216,8 @@ body {
 
 @media only screen and (max-width: 600px) {
   .my-masonry-grid_column_testimonials {
-    padding-left: 50px; /* gutter size */
-    padding-right: 0px;
+    padding-left: 20px; /* gutter size */
+    padding-right: 20px;
     background-clip: padding-box;
   }
 

@@ -25,7 +25,7 @@ const Welcome = ({ styles }) => {
 
     if (!inView) {
       animation.start({
-        opacity: 0.1,
+        opacity: 0.6,
       });
     }
   }, [inView]);
@@ -33,7 +33,7 @@ const Welcome = ({ styles }) => {
   return (
     <div ref={ref} className={styles.letterContainer}>
       <motion.div animate={animation} className={styles.letter}>
-        <h2>From our President's desk</h2>
+        <h2 className={styles.secondaryTitle}>From our President's desk</h2>
         <p className={styles.letterQuote}>
           <em>The thought of my past, doth breed benediction unto me</em>
         </p>
