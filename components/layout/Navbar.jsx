@@ -2,7 +2,9 @@ import React, { Fragment, useState } from 'react'
 import clsx from 'clsx'
 import Link from 'next/link'
 import Image from 'next/image'
+import { facebookProfile } from '../../utils/associationDetails'
 
+// Material UI imports
 import { makeStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'
@@ -102,7 +104,7 @@ export default function Navbar(props) {
           paddingBottom: 10,
         }}
       >
-        <Link href="https://facebook.com" passHref={true}>
+        <Link href={facebookProfile} passHref={true}>
           <a style={{ marginRight: 25 }}>
             <Image
               src={'/images/social/facebook.svg'}

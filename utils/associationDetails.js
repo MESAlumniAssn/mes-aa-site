@@ -23,6 +23,9 @@ const collegeAddress1 =
 
 const collegeAddress2 = 'Malleshwaram, Bengaluru - 560003'
 
+const facebookProfile =
+  'https://www.facebook.com/MES-Alumni-Association-107734431555722/'
+
 export {
   associationName,
   collegeName,
@@ -30,4 +33,5 @@ export {
   collegeAddress2,
   officialEmail,
   officialPhone,
+  facebookProfile,
 }

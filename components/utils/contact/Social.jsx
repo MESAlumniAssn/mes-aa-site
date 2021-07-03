@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { facebookProfile } from '../../../utils/associationDetails'
 
 // Material UI imports
 import Typography from '@material-ui/core/Typography'
@@ -43,7 +44,7 @@ const Social = () => {
           style={{ paddingTop: 30 }}
         >
           <Grid item xs={3} align="center">
-            <Link href="https://facebook.com" passHref={true}>
+            <Link href={facebookProfile} passHref={true}>
               <a target="_blank">
                 <Image
                   src={'/images/social/facebook.svg'}

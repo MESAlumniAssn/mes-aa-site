@@ -1,54 +1,60 @@
-import React from "react";
-import Image from "next/image";
-import styles from "../../../styles/FamousAlumni.module.css";
+import React from 'react'
+import Image from 'next/image'
+import styles from '../../../styles/FamousAlumni.module.css'
 
 // Material UI imports
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import { makeStyles } from "@material-ui/core/styles";
+import Accordion from '@material-ui/core/Accordion'
+import AccordionSummary from '@material-ui/core/AccordionSummary'
+import AccordionDetails from '@material-ui/core/AccordionDetails'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
+import Container from '@material-ui/core/Container'
+import { makeStyles } from '@material-ui/core/styles'
 
 // Fontawesome imports
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar, faChevronCircleDown } from '@fortawesome/free-solid-svg-icons'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   MuiAccordionroot: {
-    "&.MuiAccordion-root:before": {
-      backgroundColor: "white",
+    '&.MuiAccordion-root:before': {
+      backgroundColor: 'white',
     },
   },
   starsList: {
-    margin: "75px 0 25px 0",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    margin: '75px 0 25px 0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-});
+  accordionHeading: {
+    fontSize: '1.5rem',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1.2rem',
+    },
+  },
+}))
 
 const variants = {
   animate: {
-    cursor: "default",
+    cursor: 'default',
     scale: 1.05,
-    transition: { duration: 0.5, ease: "easeInOut" },
+    transition: { duration: 0.5, ease: 'easeInOut' },
   },
-};
+}
 
 const FamousAlumniAccordion = (props) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   var groupedCategory = props.famousAlumni.reduce((acc, obj) => {
-    let categoryKey = obj["category"];
+    let categoryKey = obj['category']
 
-    (acc[categoryKey]
+    ;(acc[categoryKey]
       ? acc[categoryKey]
       : (acc[categoryKey] = null || [])
-    ).push(obj);
-    return acc;
-  }, {});
+    ).push(obj)
+    return acc
+  }, {})
 
   // Object.keys(groupedCategory).map((item, index) => {
   //   console.log(groupedCategory[item]);
@@ -78,10 +84,10 @@ const FamousAlumniAccordion = (props) => {
   // };
 
   return (
-    <div style={{ margin: "100px 0 25px 0" }}>
+    <div style={{ margin: '0 0 50px 0' }}>
       <div className={classes.starsList}>
-        <Typography component="h2" variant="h2" align="center">
-          Stars by Discipline
+        <Typography component="h2" align="center">
+          <span className="secondaryHeading">Stars by Discipline</span>
         </Typography>
       </div>
 
@@ -94,7 +100,7 @@ const FamousAlumniAccordion = (props) => {
                 root: classes.MuiAccordionroot,
               }}
               style={{
-                boxShadow: "0 20px 31px rgba(0, 0, 0, 0.1)",
+                boxShadow: '0 20px 31px rgba(0, 0, 0, 0.1)',
               }}
             >
               <AccordionSummary
@@ -102,17 +108,17 @@ const FamousAlumniAccordion = (props) => {
                   <FontAwesomeIcon
                     icon={faChevronCircleDown}
                     style={{
-                      color: "#343434",
+                      color: '#343434',
                     }}
                   />
                 }
               >
                 <Typography
                   style={{
-                    fontSize: "1.5rem",
-                    fontWeight: "bold",
+                    fontWeight: 'bold',
                     padding: 10,
                   }}
+                  className={classes.accordionHeading}
                 >
                   {item}
                 </Typography>
@@ -120,11 +126,12 @@ const FamousAlumniAccordion = (props) => {
               <AccordionDetails>
                 <Grid
                   container
-                  spacing={6}
+                  spacing={5}
                   style={{
-                    margin: "0 20px 20px 20px",
-                    backgroundColor: "rgba(253, 239, 220, 0.1)",
+                    backgroundColor: 'rgba(253, 239, 220, 0.1)',
+                    paddingBottom: 20,
                   }}
+                  align="center"
                 >
                   {groupedCategory[item].map((alumnus) => {
                     return (
@@ -136,8 +143,8 @@ const FamousAlumniAccordion = (props) => {
                                 <FontAwesomeIcon
                                   icon={faStar}
                                   style={{
-                                    fontSize: "1.5rem",
-                                    color: "#ffc996",
+                                    fontSize: '1.5rem',
+                                    color: '#ffc996',
                                     marginBottom: 10,
                                     marginTop: -5,
                                   }}
@@ -145,7 +152,7 @@ const FamousAlumniAccordion = (props) => {
                                 <Typography
                                   align="center"
                                   style={{
-                                    fontSize: "1.3rem",
+                                    fontSize: '1.3rem',
                                     fontWeight: 900,
                                   }}
                                 >
@@ -156,12 +163,12 @@ const FamousAlumniAccordion = (props) => {
                                   <Typography
                                     align="center"
                                     style={{
-                                      fontSize: "0.8rem",
+                                      fontSize: '0.8rem',
                                       fontWeight: 600,
                                     }}
                                   >
-                                    Batch of{" "}
-                                    <span style={{ fontWeight: "bold" }}>
+                                    Batch of{' '}
+                                    <span style={{ fontWeight: 'bold' }}>
                                       {alumnus.batch}
                                     </span>
                                   </Typography>
@@ -169,7 +176,7 @@ const FamousAlumniAccordion = (props) => {
                               </div>
                               <div className={styles.cardFlipIcon}>
                                 <Image
-                                  src={"/images/famous-alumni/360.svg"}
+                                  src={'/images/famous-alumni/360.svg'}
                                   alt="Flip card"
                                   height={25}
                                   width={25}
@@ -179,7 +186,7 @@ const FamousAlumniAccordion = (props) => {
 
                             <div className={styles.cardBack}>
                               <Typography
-                                style={{ fontSize: "1.1rem", fontWeight: 600 }}
+                                style={{ fontSize: '1.1rem', fontWeight: 600 }}
                                 gutterBottom
                               >
                                 {alumnus.description}
@@ -188,16 +195,16 @@ const FamousAlumniAccordion = (props) => {
                           </div>
                         </div>
                       </Grid>
-                    );
+                    )
                   })}
                 </Grid>
               </AccordionDetails>
             </Accordion>
-          );
+          )
         })}
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default FamousAlumniAccordion;
+export default FamousAlumniAccordion
