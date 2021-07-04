@@ -225,7 +225,7 @@ body {
   content: counter(site-counter) ' ';
   font-size: 0.8rem;
   position: absolute;
-  left: 0rem;
+  left: -2rem;
   top: 0.2em;
   background-color: #ff5200;
   color: #fff;
