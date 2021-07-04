@@ -34,9 +34,7 @@ const OfficeBearerContacts = () => {
         gutterBottom
         style={{ fontWeight: 'bold' }}
       >
-        <span className="secondaryHeading">
-          Contact the <span className="divStylingContact">MC</span> members
-        </span>
+        <span className="secondaryHeading">Contact the Committee Members</span>
       </Typography>
       <Grid
         container

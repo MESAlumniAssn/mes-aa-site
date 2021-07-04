@@ -59,6 +59,9 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '1.3rem',
     },
   },
+  headerImageContainer: {
+    boxShadow: '0 20px 35px rgba(0, 0, 0, 0.2)',
+  },
 }))
 
 const AboutHeader = () => {
@@ -96,16 +99,12 @@ const AboutHeader = () => {
             paddingBottom: 30,
           }}
         >
-          <div
-            style={{
-              boxShadow: '0 20px 35px rgba(0, 0, 0, 0.2)',
-            }}
-          >
+          <div className={classes.headerImageContainer}>
             <Image
               src={'/images/about/college-old.png'}
               alt={'MES College'}
-              height={300}
-              width={400}
+              height={400}
+              width={550}
             />
           </div>
           <div style={{ paddingTop: '50px' }}>

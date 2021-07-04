@@ -1,101 +1,95 @@
-import React, { useState, useEffect } from "react";
-import Masonry from "react-masonry-css";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useState, useEffect } from 'react'
+import Masonry from 'react-masonry-css'
+import Image from 'next/image'
+import Link from 'next/link'
 
 // Component imports
-import ImageCarousel from "./ImageCarousel";
+import ImageCarousel from './ImageCarousel'
 
 // Material UI imports
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
+import Typography from '@material-ui/core/Typography'
+import Container from '@material-ui/core/Container'
+import { makeStyles } from '@material-ui/core/styles'
+import Modal from '@material-ui/core/Modal'
+import Backdrop from '@material-ui/core/Backdrop'
+import Fade from '@material-ui/core/Fade'
 
 const useStyles = makeStyles((theme) => ({
   parentContainer: {
-    margin: "100px 0",
-    textAlign: "center",
+    margin: '100px 0 50px 0',
+    textAlign: 'center',
   },
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   container: {
     marginTop: 300,
     height: 900,
     width: 1040,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       marginTop: 75,
       height: 400,
       width: 550,
     },
   },
   backdrop: {
-    background: "#e1e5ea",
+    background: '#e1e5ea',
     opacity: 0.1,
   },
-}));
+}))
 
 const breakpoints = {
   default: 3,
   960: 2,
   600: 1,
-};
+}
 
 const Gallery = (props) => {
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const [showLoader, setShowLoader] = useState(true);
-  const [selectedImage, setSelectedImage] = useState(0);
+  const classes = useStyles()
+  const [open, setOpen] = useState(false)
+  const [showLoader, setShowLoader] = useState(true)
+  const [selectedImage, setSelectedImage] = useState(0)
 
   useEffect(() => {
-    setTimeout(() => setShowLoader(!showLoader), 3000);
-  }, []);
+    setTimeout(() => setShowLoader(!showLoader), 3000)
+  }, [])
 
   const handleOpen = (index) => {
-    setSelectedImage(index);
-    setOpen(true);
-  };
+    setSelectedImage(index)
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
-    <div>
-      <div className={classes.parentContainer}>
-        <Typography
-          component="h1"
-          variant="h1"
-          align="center"
-          className="styledHeading"
-          gutterBottom
-        >
-          Nostalgia
+    <div className={classes.parentContainer}>
+      <div style={{ paddingBottom: '30px' }}>
+        <Typography component="h1" align="center" className="styledHeading">
+          <span className="mainHeading">Nostalgia</span>
         </Typography>
       </div>
 
       {showLoader ? (
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
+            display: 'flex',
+            justifyContent: 'center',
             paddingBottom: 50,
           }}
         >
           <Image
-            src={"/loader.svg"}
+            src={'/loader.svg'}
             alt="Page loading"
             height={150}
             width={150}
           />
         </div>
       ) : (
-        <Container maxWidth="lg" style={{ overflow: "hidden" }}>
+        <Container maxWidth="lg" style={{ overflow: 'hidden' }}>
           <Masonry
             breakpointCols={breakpoints}
             className="my-masonry-grid"
@@ -106,7 +100,7 @@ const Gallery = (props) => {
                 <a
                   key={image.asset_id}
                   style={{
-                    overflow: "hidden",
+                    overflow: 'hidden',
                   }}
                   onClick={() => handleOpen(index)}
                 >
@@ -115,10 +109,10 @@ const Gallery = (props) => {
                     alt={
                       image.context
                         ? image.context.custom.caption
-                        : "gallery image"
+                        : 'gallery image'
                     }
-                    width={"100%"}
-                    style={{ borderRadius: "5%" }}
+                    width={'100%'}
+                    style={{ borderRadius: '5%' }}
                   />
                 </a>
               </Link>
@@ -150,7 +144,7 @@ const Gallery = (props) => {
         </Fade>
       </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default Gallery;
+export default Gallery

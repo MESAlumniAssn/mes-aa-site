@@ -19,8 +19,7 @@ const OfficeBearers = (props) => {
           style={{ fontWeight: 'bold' }}
         >
           <span className="secondaryHeading">
-            Say hello to the <span className="divStylingSecondary">M</span>
-            anagement <span className="divStylingSecondary">C</span>ommittee
+            Say hello to the Management Committee
           </span>{' '}
           {/* <img
             src="/images/about/wave.svg"

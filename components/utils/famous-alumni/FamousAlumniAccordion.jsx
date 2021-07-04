@@ -110,7 +110,7 @@ const FamousAlumniAccordion = (props) => {
                   <FontAwesomeIcon
                     icon={faChevronCircleDown}
                     style={{
-                      color: '#343434',
+                      color: 'var(--primary-color)',
                     }}
                   />
                 }

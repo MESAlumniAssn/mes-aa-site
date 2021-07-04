@@ -26,9 +26,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   aims: {
-    fontSize: '1rem',
+    fontSize: '1.1rem',
     [theme.breakpoints.down('sm')]: {
-      fontSize: '0.8rem',
+      fontSize: '0.9rem',
     },
   },
 }))
@@ -55,7 +55,7 @@ const AimsAndObjectives = () => {
             expandIcon={
               <FontAwesomeIcon
                 icon={faChevronCircleDown}
-                style={{ fontSize: '2rem', color: '#343434' }}
+                style={{ fontSize: '2rem', color: 'var(--primary-color)' }}
               />
             }
             aria-label="Expand to read the aims and objectives"
@@ -81,12 +81,16 @@ const AimsAndObjectives = () => {
                       paddingBottom: 15,
                     }}
                   >
-                    <FontAwesomeIcon
-                      icon={faGraduationCap}
-                      style={{ marginRight: 10, fontSize: '15px' }}
-                    />
                     <Typography component="body2" className={classes.aims}>
-                      {aim}
+                      <FontAwesomeIcon
+                        icon={faGraduationCap}
+                        style={{
+                          marginRight: 2,
+                          fontSize: '1rem',
+                          color: 'var(--secondary-color)',
+                        }}
+                      />
+                      &nbsp;{aim}
                     </Typography>
                   </div>
                 )

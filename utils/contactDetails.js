@@ -8,7 +8,7 @@ const contact = [
   },
   { designation: 'Treasurer', contact: 'treasurer@mesalumniassociation.com' },
   {
-    designation: 'Management Committee',
+    designation: 'MC Members',
     contact: 'mcmembers@mesalumniassociation.com',
   },
 ]

@@ -1,66 +1,67 @@
-import React, { useState, useEffect } from "react";
-import navLinks from "../../utils/navLinks";
-import PropTypes from "prop-types";
-import Image from "next/image";
+import React, { useState, useEffect } from 'react'
+import navLinks from '../../utils/navLinks'
+import PropTypes from 'prop-types'
+import Image from 'next/image'
 
 // Material UI imports
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles'
 
 // Component imports
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from './Header'
+import ScrollToTop from '../utils/generic/ScrollToTop'
 
-const drawerWidth = 200;
+const drawerWidth = 200
 
 const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
-    transition: theme.transitions.create("margin", {
+    transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
   },
   drawerHeader: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: "flex-end",
+    justifyContent: 'flex-end',
   },
   appBar: {
-    display: "hidden",
+    display: 'hidden',
   },
-}));
+}))
 
 const Layout = (props) => {
-  const [domLoaded, setDomLoaded] = useState(false);
-  const classes = useStyles();
+  const [domLoaded, setDomLoaded] = useState(false)
+  const classes = useStyles()
 
-  const links = navLinks[props.pathname] || null;
+  const links = navLinks[props.pathname] || null
 
   useEffect(() => {
-    if (props.children && typeof window !== "undefined") setDomLoaded(true);
-  }, []);
+    if (props.children && typeof window !== 'undefined') setDomLoaded(true)
+  }, [])
 
   return (
     <div>
       <Header links={links} pathname={props.pathname} />
+      <ScrollToTop />
       {domLoaded ? (
         <main>{props.children}</main>
       ) : (
         <div
           style={{
-            background: "none",
-            minHeight: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            background: 'none',
+            minHeight: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
           <Image
-            src={"/images/loaders/loader.svg"}
+            src={'/images/loaders/loader.svg'}
             alt="Loader"
             height={100}
             width={200}
@@ -68,11 +69,11 @@ const Layout = (props) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 Layout.propTypes = {
   pathname: PropTypes.string, // passed from _app.js
-};
+}
 
-export default Layout;
+export default Layout

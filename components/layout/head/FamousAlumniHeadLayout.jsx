@@ -1,6 +1,6 @@
-import Head from "next/head";
-import { Fragment } from "react";
-import CommonHeadLayout from "./CommonHeadLayout";
+import Head from 'next/head'
+import { Fragment } from 'react'
+import CommonHeadLayout from './CommonHeadLayout'
 
 const FamousAlumniHeadLayout = (props) => {
   return (
@@ -34,15 +34,15 @@ const FamousAlumniHeadLayout = (props) => {
           dangerouslySetInnerHTML={{
             __html: `[
                   {
-                       "@context": "https://schema.org",
+                    "@context": "https://schema.org",
                     "@type": "EducationalOrganization",
                     "name": "MES College of Arts, Commerce and Science",
                     "address": {
-                               "@type": "PostalAddress",
+                            "@type": "PostalAddress",
                             "streetAddress": "Vidyasagara Prof. M.P.L Sastry Road, 15th Cross, 10th Main, Malleshwaram",
                             "addressRegion": "Bengaluru, KA",
                             "postalCode": "560003",
-                                "addressCountry": "IN",
+                            "addressCountry": "IN",
                             "email": "mesalumniassn@gmail.com",
                             "telephone": "08023562536"
                     }
@@ -70,7 +70,7 @@ const FamousAlumniHeadLayout = (props) => {
       </Head>
       {props.children}
     </Fragment>
-  );
-};
+  )
+}
 
-export default FamousAlumniHeadLayout;
+export default FamousAlumniHeadLayout

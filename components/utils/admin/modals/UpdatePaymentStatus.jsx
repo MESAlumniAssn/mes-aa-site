@@ -1,62 +1,62 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Formik, Form } from "formik";
-import SiteContext from "../../../../context/siteContext";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import * as Yup from "yup";
+import React, { useContext, useState, useEffect } from 'react'
+import { Formik, Form } from 'formik'
+import SiteContext from '../../../../context/siteContext'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
+import * as Yup from 'yup'
 
 // Material UI imports
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import Modal from '@material-ui/core/Modal'
+import Backdrop from '@material-ui/core/Backdrop'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
 
 // Font awesome imports
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faSearch,
   faCheckCircle,
   faTimesCircle,
   faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons'
 
 // Component imports
-import Chips from "../../../utils/generic/Chips";
+import Chips from '../../../utils/generic/Chips'
 
 const useStyles = makeStyles((theme) => {
   return {
     modal: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     modalBackground: {
-      backgroundColor: "#FFF",
+      backgroundColor: '#FFF',
       padding: 30,
-      width: "600px",
-      position: "relative",
-      textAlign: "center",
-      [theme.breakpoints.down("sm")]: {
+      width: '600px',
+      position: 'relative',
+      textAlign: 'center',
+      [theme.breakpoints.down('sm')]: {
         padding: 20,
-        width: "400px",
+        width: '400px',
       },
     },
-  };
-});
+  }
+})
 
 const variants = {
-  tap: { y: "1px" },
-};
+  tap: { y: '1px' },
+}
 
 const validationSchema = Yup.object({
-  membershipId: Yup.string().required("Membership id is required"),
-});
+  membershipId: Yup.string().required('Membership id is required'),
+})
 
 const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
-  const siteContext = useContext(SiteContext);
-  const classes = useStyles();
+  const siteContext = useContext(SiteContext)
+  const classes = useStyles()
 
   const {
     loading,
@@ -65,12 +65,12 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
     updatePaymentStatus,
     paymentStatus,
     clearUserState,
-  } = siteContext;
+  } = siteContext
 
   const handleClose = () => {
-    setPaymentStatusOpen(false);
-    clearUserState();
-  };
+    setPaymentStatusOpen(false)
+    clearUserState()
+  }
 
   return (
     <div>
@@ -88,10 +88,10 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
           <FontAwesomeIcon
             icon={faTimes}
             style={{
-              position: "absolute",
+              position: 'absolute',
               top: 10,
               right: 10,
-              cursor: "pointer",
+              cursor: 'pointer',
             }}
             className="timesButtonAnimation"
             onClick={handleClose}
@@ -99,13 +99,13 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
           <div>
             <Formik
               initialValues={{
-                membershipId: "",
+                membershipId: '',
               }}
               validationSchema={validationSchema}
               onSubmit={(values, { setSubmitting }) => {
-                setSubmitting(true);
-                getMembershipDetails(values.membershipId);
-                setSubmitting(false);
+                setSubmitting(true)
+                getMembershipDetails(values.membershipId)
+                setSubmitting(false)
               }}
             >
               {(props) => (
@@ -118,7 +118,7 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                   >
                     Update Payment Status
                   </Typography>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
+                  <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <TextField
                       id="membershipId"
                       name="membershipId"
@@ -142,14 +142,14 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                       <Button
                         type="submit"
                         style={{
-                          backgroundColor: "#b9ac92",
+                          backgroundColor: '#b9ac92',
                           height: 59,
                           width: 60,
                         }}
                       >
                         <FontAwesomeIcon
                           icon={faSearch}
-                          style={{ fontSize: "1.3rem" }}
+                          style={{ fontSize: '1.3rem' }}
                         />
                       </Button>
                     </motion.div>
@@ -157,8 +157,8 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                   {props.touched.membershipId && props.errors.membershipId && (
                     <Typography
                       style={{
-                        textAlign: "left",
-                        fontSize: "0.8rem",
+                        textAlign: 'left',
+                        fontSize: '0.8rem',
                         paddingTop: 2,
                         paddingLeft: 2,
                       }}
@@ -175,8 +175,8 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
           {loading ? (
             <div
               style={{
-                display: "flex",
-                justifyContent: "center",
+                display: 'flex',
+                justifyContent: 'center',
                 paddingTop: 30,
               }}
             >
@@ -191,9 +191,9 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
             user &&
             user && (
               <div style={{ marginTop: 25 }}>
-                <Typography style={{ fontSize: "1.3rem" }}>
-                  Details for{" "}
-                  <span style={{ color: "#D49D42", fontWeight: "bold" }}>
+                <Typography style={{ fontSize: '1.3rem' }}>
+                  Details for{' '}
+                  <span style={{ color: '#D49D42', fontWeight: 'bold' }}>
                     {user.membership_id}
                   </span>
                   :
@@ -201,20 +201,20 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
 
                 <div
                   style={{
-                    margin: "20px 0",
-                    display: "flex",
-                    justifyContent: "space-evenly",
+                    margin: '20px 0',
+                    display: 'flex',
+                    justifyContent: 'space-evenly',
                   }}
                 >
                   <Typography style={{ fontWeight: 600 }}>
-                    Name:{" "}
-                    <span style={{ color: "#D49D42", fontWeight: 800 }}>
+                    Name:{' '}
+                    <span style={{ color: '#D49D42', fontWeight: 800 }}>
                       {user.name}
                     </span>
                   </Typography>
                   <Typography style={{ fontWeight: 600 }}>
-                    Email:{" "}
-                    <span style={{ color: "#D49D42", fontWeight: 800 }}>
+                    Email:{' '}
+                    <span style={{ color: '#D49D42', fontWeight: 800 }}>
                       {user.email}
                     </span>
                   </Typography>
@@ -224,11 +224,11 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
 
                 <Typography
                   style={{
-                    fontSize: "1.4rem",
+                    fontSize: '1.4rem',
                     fontWeight: 600,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     marginTop: 10,
                   }}
                 >
@@ -236,14 +236,14 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                   {user.payment_status ? (
                     <FontAwesomeIcon
                       icon={faCheckCircle}
-                      style={{ fontSize: "2rem", color: "#00917C" }}
+                      style={{ fontSize: '2rem', color: '#00917C' }}
                     />
                   ) : (
                     <FontAwesomeIcon
                       icon={faTimesCircle}
                       style={{
-                        fontSize: "2rem",
-                        color: "#F14668",
+                        fontSize: '2rem',
+                        color: '#F14668',
                       }}
                     />
                   )}
@@ -256,19 +256,19 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                       marginTop: 20,
                       height: 40,
                       width: 80,
-                      backgroundColor: "#343434",
-                      color: "#FFFFFF",
+                      backgroundColor: 'var(--primary-color)',
+                      color: '#FFFFFF',
                     }}
                     onClick={() => {
-                      updatePaymentStatus(user.user_id);
+                      updatePaymentStatus(user.user_id)
                       setTimeout(
                         () => getMembershipDetails(user.membership_id),
-                        3000
-                      );
+                        3000,
+                      )
                     }}
                   >
                     {!paymentStatus ? (
-                      "Update"
+                      'Update'
                     ) : (
                       <Image
                         src="/loader.svg"
@@ -285,7 +285,7 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
         </div>
       </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default UpdatePaymentStatus;
+export default UpdatePaymentStatus

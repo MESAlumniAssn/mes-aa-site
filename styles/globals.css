@@ -9,7 +9,7 @@
   --main-heading-size: 3.5rem;
   --secondary-heading-size: 2.5rem;
   --subtitle-size: 1.5rem;
-  --main-heading-size-mobile: 1.75rem;
+  --main-heading-size-mobile: 2rem;
   --secondary-heading-size-mobile: 1.5rem;
   --subtitle-size-mobile: 1rem;
 }
@@ -225,7 +225,7 @@ body {
   content: counter(site-counter) ' ';
   font-size: 0.8rem;
   position: absolute;
-  left: -2rem;
+  left: 0rem;
   top: 0.2em;
   background-color: #ff5200;
   color: #fff;
@@ -246,6 +246,28 @@ body {
 .divStylingContact {
   border-bottom: 5px solid var(--contact-color);
   padding-bottom: 1px;
+}
+
+/* Scroll to top */
+.scrollToTopContainer {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  background-color: var(--primary-color);
+  height: 50px;
+  width: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 17px 20px rgba(0, 0, 0, 0.4);
+}
+
+.scrollToTop {
+  color: #fff;
+  font-size: 1.5rem;
 }
 
 @media only screen and (max-width: 900px) {

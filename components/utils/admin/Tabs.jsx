@@ -1,31 +1,31 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 // Component Imports
-import AlumniStats from "./AlumniStats";
-import FundStats from "./FundStats";
-import AlumniSearch from "./AlumniSearch";
-import AdminPanel from "./AdminPanel";
+import AlumniStats from './AlumniStats'
+import FundStats from './FundStats'
+import AlumniSearch from './AlumniSearch'
+import AdminPanel from './AdminPanel'
 
 // Material UI imports
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+import { makeStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
 
 // Fontawesome Imports
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faUsers,
   faRupeeSign,
   faUserCog,
   faSearch,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons'
 
 const TabPanel = (props) => {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
   return (
     <div
@@ -41,48 +41,48 @@ const TabPanel = (props) => {
         </Box>
       )}
     </div>
-  );
-};
+  )
+}
 
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired,
-};
+}
 
 const a11yProps = (index) => {
   return {
     id: `scrollable-force-tab-${index}`,
-    "aria-controls": `scrollable-force-tabpanel-${index}`,
-  };
-};
+    'aria-controls': `scrollable-force-tabpanel-${index}`,
+  }
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    width: "100%",
-    padding: "0 100px",
-    [theme.breakpoints.down("sm")]: {
-      padding: "0 20px",
+    width: '100%',
+    padding: '0 100px',
+    [theme.breakpoints.down('sm')]: {
+      padding: '0 20px',
     },
   },
-  tabStyle: { fontWeight: "bold", letterSpacing: "1px", fontSize: "1rem" },
-}));
+  tabStyle: { fontWeight: 'bold', letterSpacing: '1px', fontSize: '1rem' },
+}))
 
 export default function ScrollableTabsButtonForce() {
-  const classes = useStyles();
-  const [value, setValue] = useState(0);
+  const classes = useStyles()
+  const [value, setValue] = useState(0)
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   return (
     <div className={classes.root}>
       <AppBar
         position="static"
         elevation={0}
-        style={{ backgroundColor: "#fafafa", padding: "10px 0 0 0" }}
+        style={{ backgroundColor: '#fafafa', padding: '10px 0 0 0' }}
       >
         <Tabs
           value={value}
@@ -90,12 +90,12 @@ export default function ScrollableTabsButtonForce() {
           indicatorColor="secondary"
           aria-label="tabs"
           centered
-          style={{ color: "#343434" }}
+          style={{ color: 'var(--primary-color)' }}
         >
           <Tab
             label="Alumni"
             icon={
-              <FontAwesomeIcon icon={faUsers} style={{ fontSize: "2rem" }} />
+              <FontAwesomeIcon icon={faUsers} style={{ fontSize: '2rem' }} />
             }
             className={classes.tabStyle}
             {...a11yProps(0)}
@@ -105,7 +105,7 @@ export default function ScrollableTabsButtonForce() {
             icon={
               <FontAwesomeIcon
                 icon={faRupeeSign}
-                style={{ fontSize: "2rem" }}
+                style={{ fontSize: '2rem' }}
               />
             }
             className={classes.tabStyle}
@@ -114,7 +114,7 @@ export default function ScrollableTabsButtonForce() {
           <Tab
             label="Alumni Search"
             icon={
-              <FontAwesomeIcon icon={faSearch} style={{ fontSize: "2rem" }} />
+              <FontAwesomeIcon icon={faSearch} style={{ fontSize: '2rem' }} />
             }
             className={classes.tabStyle}
             {...a11yProps(2)}
@@ -122,7 +122,7 @@ export default function ScrollableTabsButtonForce() {
           <Tab
             label="Admin Panel"
             icon={
-              <FontAwesomeIcon icon={faUserCog} style={{ fontSize: "2rem" }} />
+              <FontAwesomeIcon icon={faUserCog} style={{ fontSize: '2rem' }} />
             }
             className={classes.tabStyle}
             {...a11yProps(3)}
@@ -142,5 +142,5 @@ export default function ScrollableTabsButtonForce() {
         <AdminPanel />
       </TabPanel>
     </div>
-  );
+  )
 }

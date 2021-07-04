@@ -51,7 +51,7 @@ const AimsAndObjectives = () => {
             expandIcon={
               <FontAwesomeIcon
                 icon={faChevronCircleDown}
-                style={{ fontSize: '2rem', color: '#343434' }}
+                style={{ fontSize: '2rem', color: 'var(--primary-color)' }}
               />
             }
             aria-label="Expand to read about our logo"
@@ -64,7 +64,7 @@ const AimsAndObjectives = () => {
             >
               <span className="secondaryHeading">Our Logo</span>
             </Typography>
-            <Image src={'/logo.png'} alt={'Logo'} height={30} width={55} />
+            {/* <Image src={'/logo.png'} alt={'Logo'} height={10} width={50} /> */}
           </AccordionSummary>
           <AccordionDetails className={classes.hideBorder}>
             <div

@@ -19,7 +19,7 @@ let theme = createMuiTheme()
 
 const useStyles = makeStyles({
   cards: {
-    margin: '50px 0',
+    margin: '30px 0 50px 0',
     width: 'auto',
     marginLeft: theme.spacing(3),
     marginRight: theme.spacing(3),
@@ -52,12 +52,7 @@ const Pricing = () => {
   return (
     <div className={classes.pricingHero}>
       <div>
-        <Typography
-          variant="h1"
-          align="center"
-          className="styledHeading"
-          gutterBottom
-        >
+        <Typography component="h1" align="center" className="styledHeading">
           <span className="mainHeading">Membership plans</span>
         </Typography>
         {/* <Typography component="h3" variant="h3" align="center" gutterBottom>
@@ -70,7 +65,7 @@ const Pricing = () => {
             <Card
               className="pricingCard"
               style={{
-                color: '#343434',
+                color: 'var(--primary-color)',
                 minHeight: 575,
               }}
               raised
@@ -121,7 +116,7 @@ const Pricing = () => {
                     size="large"
                     color="primary"
                     style={{
-                      backgroundColor: '#343434',
+                      backgroundColor: 'var(--primary-color)',
                       color: '#FFFFFF',
                       fontWeight: 700,
                     }}
@@ -207,7 +202,7 @@ const Pricing = () => {
                     size="large"
                     color="primary"
                     style={{
-                      backgroundColor: '#343434',
+                      backgroundColor: 'var(--primary-color)',
                       color: '#FFFFFF',
                       fontWeight: 700,
                     }}
