@@ -16,14 +16,20 @@ const Members = (props) => {
           .map((member, index) => {
             return (
               <Grid item xs={12} sm={6} md={4} key={index} align="center">
-                <div style={{}}>
+                <div>
                   {member.image_url ? (
-                    <div className="mcImageBorder">
+                    <div
+                      className={`mcImageBorder ${
+                        member.role === 'ob'
+                          ? 'obImageBorderColor'
+                          : 'mcImageBorderColor'
+                      }`}
+                    >
                       <Image
                         src={member.image_url}
                         alt={member.name}
-                        height={185}
-                        width={175}
+                        height={255}
+                        width={245}
                         className="mcImages"
                       />
                     </div>
@@ -31,14 +37,13 @@ const Members = (props) => {
                     <Image
                       src={process.env.NEXT_PUBLIC_DEFAULT_IMAGE_URL}
                       alt={member.name}
-                      height={175}
-                      width={165}
+                      height={255}
+                      width={245}
                       className="mcImages"
                     />
                   )}
                   <Typography
                     display="block"
-                    variant="subtitle"
                     component="subtitle"
                     align="center"
                     gutterBottom
@@ -49,16 +54,15 @@ const Members = (props) => {
                       padding: '10px 0',
                     }}
                   >
-                    {member.name}
+                    <span className="subtitle">{member.name}</span>
                   </Typography>
                   {member.role === 'ob' && (
                     <Typography
-                      variant="subtitle"
                       component="subtitle"
                       align="center"
                       style={{ width: '100%' }}
                     >
-                      {member.designation}
+                      <span className="subtitle">{member.designation}</span>
                     </Typography>
                   )}
                 </div>

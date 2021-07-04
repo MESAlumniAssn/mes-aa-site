@@ -10,7 +10,7 @@ import { faHandPaper } from '@fortawesome/free-solid-svg-icons'
 
 const OfficeBearers = (props) => {
   return (
-    <div style={{ margin: '50px 0 50px 0' }}>
+    <div style={{ margin: '70px 0 50px 0' }}>
       <Container maxWidth="lg">
         <Typography
           component="h2"
@@ -19,7 +19,8 @@ const OfficeBearers = (props) => {
           style={{ fontWeight: 'bold' }}
         >
           <span className="secondaryHeading">
-            Say Hello to the Management Committee
+            Say hello to the <span className="divStylingSecondary">M</span>
+            anagement <span className="divStylingSecondary">C</span>ommittee
           </span>{' '}
           {/* <img
             src="/images/about/wave.svg"
@@ -33,12 +34,11 @@ const OfficeBearers = (props) => {
           align="center"
           gutterBottom
           style={{
-            fontSize: '1.3rem',
             fontWeight: 'bold',
             margin: '50px 0 50px 0',
           }}
         >
-          Office Bearers
+          <span className="secondaryHeading">Office Bearers</span>
         </Typography>
         <Members committeeData={props.committeeData} filter={'ob'} />
 
@@ -46,9 +46,9 @@ const OfficeBearers = (props) => {
           component="h3"
           align="center"
           gutterBottom
-          style={{ fontSize: '1.3rem', fontWeight: 'bold', margin: '50px 0' }}
+          style={{ fontWeight: 'bold', margin: '50px 0' }}
         >
-          Management Committee Members
+          <span className="secondaryHeading">Management Committee Members</span>
         </Typography>
         <Members committeeData={props.committeeData} filter={'mc'} />
       </Container>

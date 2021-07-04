@@ -56,10 +56,17 @@ body {
 
 .mcImageBorder {
   border-radius: 50%;
-  height: 185px;
-  width: 175px;
-  border: 3px solid var(--secondary-color);
+  height: 255px;
+  width: 245px;
   padding: 4px;
+}
+
+.obImageBorderColor {
+  border: 5px solid var(--secondary-color);
+}
+
+.mcImageBorderColor {
+  border: 5px solid #ecd662;
 }
 
 /* Styles for the masonry layout */
@@ -228,6 +235,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.divStylingSecondary {
+  border-bottom: 5px solid var(--secondary-color);
+  padding-bottom: 1px;
 }
 
 @media only screen and (max-width: 900px) {

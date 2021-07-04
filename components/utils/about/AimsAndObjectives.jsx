@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   aims: {
     fontSize: '1rem',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: '0.8rem',
     },
   },

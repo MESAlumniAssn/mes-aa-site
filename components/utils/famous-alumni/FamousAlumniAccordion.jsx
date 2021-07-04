@@ -87,7 +87,9 @@ const FamousAlumniAccordion = (props) => {
     <div style={{ margin: '0 0 50px 0' }}>
       <div className={classes.starsList}>
         <Typography component="h2" align="center">
-          <span className="secondaryHeading">Stars by Discipline</span>
+          <span className="secondaryHeading divStylingSecondary">
+            Stars by Discipline
+          </span>
         </Typography>
       </div>
 

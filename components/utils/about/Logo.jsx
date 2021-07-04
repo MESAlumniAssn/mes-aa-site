@@ -64,7 +64,7 @@ const AimsAndObjectives = () => {
             >
               <span className="secondaryHeading">Our Logo</span>
             </Typography>
-            <Image src={'/logo.png'} alt={'Logo'} height={30} width={40} />
+            <Image src={'/logo.png'} alt={'Logo'} height={30} width={55} />
           </AccordionSummary>
           <AccordionDetails className={classes.hideBorder}>
             <div

@@ -64,16 +64,15 @@ export default function Navbar(props) {
           justifyContent: 'center',
           alignItems: 'center',
           paddingTop: '20px',
-          overflow: 'scroll',
         }}
       >
         <Link href="/">
-          <a style={{ margin: '20px 0 10px 0' }} className="animateNavLogo">
+          <a className="animateNavLogo">
             <Image
               src={'/logo.png'}
               alt={'Brand icon'}
-              height={170}
-              width={190}
+              height={180}
+              width={200}
             />
           </a>
         </Link>

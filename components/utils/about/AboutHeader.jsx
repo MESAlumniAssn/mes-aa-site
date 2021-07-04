@@ -109,11 +109,8 @@ const AboutHeader = () => {
             />
           </div>
           <div style={{ paddingTop: '50px' }}>
-            <p
-              className={`styledLink ${classes.almaMaterText}`}
-              onClick={handleOpen}
-            >
-              A little about your alma mater
+            <p className={classes.almaMaterText} onClick={handleOpen}>
+              <span className="styledLink">A little about your alma mater</span>
             </p>
           </div>
         </div>

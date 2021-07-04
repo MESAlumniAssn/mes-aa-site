@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
   },
   padmaAwardeesHeader: {
-    margin: '50px 0 50px 0',
+    margin: '70px 0 70px 0',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -62,7 +62,7 @@ const FamousAlumni = (props) => {
           style={{ paddingLeft: 20, paddingRight: 20 }}
           className="styledHeading"
         >
-          <span className="mainHeading">The Stars of MES</span>
+          <span className="mainHeading">The Stars of MES College</span>
         </Typography>
       </div>
       <div>
@@ -77,7 +77,9 @@ const FamousAlumni = (props) => {
       <div id="padma-awardees" style={{ margin: 0 }}>
         <div className={classes.padmaAwardeesHeader}>
           <Typography component="h2">
-            <span className="secondaryHeading">Padma Awardees</span>
+            <span className="secondaryHeading divStylingSecondary">
+              Padma Awardees
+            </span>
           </Typography>
           {/* <Image
             src="/images/famous-alumni/padma-award.svg"
