@@ -99,8 +99,7 @@ const Footer = () => {
           align="center"
           gutterBottom
         >
-          <span>{collegeAddress1}</span>
-          <span>{collegeAddress2}</span>
+          <span>{collegeAddress1}</span> <span>{collegeAddress2}</span>
         </Typography>
       </Container>
 

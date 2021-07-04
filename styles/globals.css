@@ -4,6 +4,7 @@
 :root {
   --primary-color: #202020;
   --secondary-color: #ca8019;
+  --contact-color: #b9ac92;
   --background: #ffffff;
   --main-heading-size: 3.5rem;
   --secondary-heading-size: 2.5rem;
@@ -239,6 +240,11 @@ body {
 
 .divStylingSecondary {
   border-bottom: 5px solid var(--secondary-color);
+  padding-bottom: 1px;
+}
+
+.divStylingContact {
+  border-bottom: 5px solid var(--contact-color);
   padding-bottom: 1px;
 }
 

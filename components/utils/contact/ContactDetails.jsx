@@ -89,8 +89,7 @@ const ContactDetails = () => {
             </div>
             <div>
               <Typography component="body2" variant="body2">
-                <span>{collegeAddress1}</span>
-                <span>{collegeAddress2}</span>
+                <span>{collegeAddress1}</span> <span>{collegeAddress2}</span>
               </Typography>
             </div>
             <div

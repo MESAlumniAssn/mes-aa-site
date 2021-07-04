@@ -34,14 +34,16 @@ const OfficeBearerContacts = () => {
         gutterBottom
         style={{ fontWeight: 'bold' }}
       >
-        <span className="secondaryHeading">Contact the Committee Members</span>
+        <span className="secondaryHeading">
+          Contact the <span className="divStylingContact">MC</span> members
+        </span>
       </Typography>
       <Grid
         container
         justify="center"
         alignItems="center"
         spacing={6}
-        style={{ paddingTop: '20px' }}
+        style={{ paddingTop: '40px' }}
       >
         {contact.map((contact) => {
           return (
@@ -49,7 +51,7 @@ const OfficeBearerContacts = () => {
               <div
                 style={{
                   borderRadius: '5px',
-                  borderLeft: '5px solid #B9AC92',
+                  borderLeft: '5px solid var(--contact-color)',
                   padding: '15px 20px',
                   boxShadow: '0 15px 22px rgba(0, 0, 0, 0.2)',
                   cursor: 'pointer',
@@ -61,7 +63,7 @@ const OfficeBearerContacts = () => {
                 >
                   {contact.designation}
                 </Typography>
-                <Divider style={{ backgroundColor: '#B9AC92' }} />
+                <Divider style={{ backgroundColor: 'var(--contact-color)' }} />
                 <div
                   style={{
                     display: 'flex',
@@ -71,7 +73,7 @@ const OfficeBearerContacts = () => {
                 >
                   <FontAwesomeIcon
                     icon={faEnvelopeOpen}
-                    style={{ marginRight: 5, color: '#B9AC92' }}
+                    style={{ marginRight: 7, color: 'var(--contact-color)' }}
                   />
                   <Typography className={classes.memberEmail}>
                     {contact.contact}
