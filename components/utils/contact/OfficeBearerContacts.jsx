@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 const OfficeBearerContacts = () => {
   const classes = useStyles()
   return (
-    <div style={{ margin: '50px 0' }}>
+    <div style={{ margin: '70px 0' }}>
       <Typography
         component="h2"
         align="center"
@@ -45,7 +45,7 @@ const OfficeBearerContacts = () => {
       >
         {contact.map((contact) => {
           return (
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6}>
               <div
                 style={{
                   borderRadius: '5px',

@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 const Social = () => {
   const classes = useStyles()
   return (
-    <div style={{ margin: '50px 0' }}>
+    <div style={{ margin: '70px 0' }}>
       <Typography
         component="h2"
         align="center"

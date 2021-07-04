@@ -4,7 +4,7 @@ import { faRegistered } from '@fortawesome/free-regular-svg-icons'
 
 const associationName = (
   <span>
-    The MES College Alumni Association{' '}
+    The MES College Alumni Association
     <FontAwesomeIcon
       icon={faRegistered}
       style={{ verticalAlign: 'super', fontSize: '12px' }}

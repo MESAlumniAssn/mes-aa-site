@@ -66,7 +66,7 @@ const ContactDetails = () => {
           <span className="mainHeading">Get in touch</span>
         </Typography>
       </div>
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Grid container justify="center" alignItems="center" spacing={3}>
           <Grid item xs={12} md={6}>
             <div className={classes.heroImage}>
@@ -78,14 +78,7 @@ const ContactDetails = () => {
             </div>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'flex-start',
-                alignItems: 'center',
-              }}
-              className={classes.mainContactText}
-            >
+            <div className={classes.mainContactText}>
               <Typography style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
