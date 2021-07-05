@@ -1,7 +1,7 @@
-import React, { useReducer } from "react";
-import SiteContext from "./siteContext";
-import siteReducer from "./siteReducer";
-import axios from "axios";
+import React, { useReducer } from 'react'
+import SiteContext from './siteContext'
+import siteReducer from './siteReducer'
+import axios from 'axios'
 
 import {
   REGISTRATION_CREATE_SUCCESS,
@@ -26,7 +26,7 @@ import {
   MEMBERSHIP_DETAILS_FETCH_ERROR,
   PAYMENT_STATUS_UPDATE_SUCCESS,
   PAYMENT_STATUS_UPDATE_ERROR,
-} from "./Types";
+} from './Types'
 
 const SiteState = (props) => {
   const initialState = {
@@ -42,9 +42,9 @@ const SiteState = (props) => {
     pendingLifeMembers: null,
     pendingAnnualMembers: null,
     paymentStatus: false,
-  };
+  }
 
-  const [state, dispatch] = useReducer(siteReducer, initialState);
+  const [state, dispatch] = useReducer(siteReducer, initialState)
 
   // Register a user
   const registerUser = async (
@@ -71,36 +71,36 @@ const SiteState = (props) => {
     otherInterests,
     membership,
     paymentMode,
-    images
+    images,
   ) => {
-    const formData = new FormData();
+    const formData = new FormData()
 
-    formData.set("prefix", prefix);
-    formData.set("first_name", firstName);
-    formData.set("last_name", lastName);
-    formData.set("email", email);
-    formData.set("mobile", phone);
-    formData.set("birthday", birthday);
-    formData.set("address1", address1);
-    formData.set("address2", address2);
-    formData.set("city", city);
-    formData.set("state", state);
-    formData.set("pincode", pincode);
-    formData.set("country", country);
-    formData.set("duration_start", fromYear);
-    formData.set("duration_end", toYear);
-    formData.set("course_puc", streamPuc);
-    formData.set("course_degree", streamDegree);
-    formData.set("course_pg", streamPg);
-    formData.set("course_others", streamOthers);
-    formData.set("profession", profession);
-    formData.set("vision", vision);
-    formData.set("other_interests", otherInterests);
-    formData.set("membership_type", membership);
-    formData.set("payment_mode", paymentMode);
+    formData.set('prefix', prefix)
+    formData.set('first_name', firstName)
+    formData.set('last_name', lastName)
+    formData.set('email', email)
+    formData.set('mobile', phone)
+    formData.set('birthday', birthday)
+    formData.set('address1', address1)
+    formData.set('address2', address2)
+    formData.set('city', city)
+    formData.set('state', state)
+    formData.set('pincode', pincode)
+    formData.set('country', country)
+    formData.set('duration_start', fromYear)
+    formData.set('duration_end', toYear)
+    formData.set('course_puc', streamPuc)
+    formData.set('course_degree', streamDegree)
+    formData.set('course_pg', streamPg)
+    formData.set('course_others', streamOthers)
+    formData.set('profession', profession)
+    formData.set('vision', vision)
+    formData.set('other_interests', otherInterests)
+    formData.set('membership_type', membership)
+    formData.set('payment_mode', paymentMode)
     images !== []
-      ? images.forEach((file) => formData.append("images", file))
-      : formData.set("images", images);
+      ? images.forEach((file) => formData.append('images', file))
+      : formData.set('images', images)
 
     try {
       const res = await axios.post(
@@ -108,23 +108,24 @@ const SiteState = (props) => {
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
-        }
-      );
+        },
+      )
 
-      dispatch({ type: REGISTRATION_CREATE_SUCCESS, payload: res.data });
+      dispatch({ type: REGISTRATION_CREATE_SUCCESS, payload: res.data })
     } catch (err) {
-      dispatch({ type: AUTH_ERROR, payload: err.response.data.detail });
-      setTimeout(() => dispatch({ type: CLEAR_ERROR }), 5000);
+      console.log(err)
+      // dispatch({ type: AUTH_ERROR, payload: err.response.data.detail });
+      setTimeout(() => dispatch({ type: CLEAR_ERROR }), 5000)
     }
-  };
+  }
 
   const loginUser = async (email, password) => {
-    const formData = new FormData();
+    const formData = new FormData()
 
-    formData.set("username", email);
-    formData.set("password", password);
+    formData.set('username', email)
+    formData.set('password', password)
 
     try {
       const res = await axios.post(
@@ -132,130 +133,130 @@ const SiteState = (props) => {
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
-        }
-      );
-      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+        },
+      )
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data })
     } catch (err) {
-      dispatch({ type: LOGIN_ERROR, payload: err.response.data.detail });
-      setTimeout(() => dispatch({ type: CLEAR_ERROR }), 5000);
+      dispatch({ type: LOGIN_ERROR, payload: err.response.data.detail })
+      setTimeout(() => dispatch({ type: CLEAR_ERROR }), 5000)
     }
-  };
+  }
 
   const checkForExistingEmail = async (email) => {
     const res = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/user/${email}`
-    );
+      `${process.env.NEXT_PUBLIC_API_URL}/user/${email}`,
+    )
 
-    dispatch({ type: AUTH_ERROR, payload: res.data });
-    setTimeout(() => dispatch({ type: CLEAR_ERROR }), 5000);
-  };
+    dispatch({ type: AUTH_ERROR, payload: res.data })
+    setTimeout(() => dispatch({ type: CLEAR_ERROR }), 5000)
+  }
 
   // Metrics
   const generateMetricCounts = async () => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/totals`
-      );
+        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/totals`,
+      )
 
-      dispatch({ type: METRICS_SUCCESS, payload: res.data });
+      dispatch({ type: METRICS_SUCCESS, payload: res.data })
     } catch (err) {
-      dispatch({ type: METRICS_ERROR, payload: err.response.data.detail });
+      dispatch({ type: METRICS_ERROR, payload: err.response.data.detail })
     }
-  };
+  }
 
   // Get all active life members
   const getLifeMembers = async (memberType, paymentStatus) => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/${memberType}/${paymentStatus}`
-      );
+        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/${memberType}/${paymentStatus}`,
+      )
 
       if (paymentStatus === 1)
-        dispatch({ type: LM_FETCH_SUCCESS, payload: res.data });
+        dispatch({ type: LM_FETCH_SUCCESS, payload: res.data })
 
       if (paymentStatus === 0)
-        dispatch({ type: LM_PENDING_FETCH_SUCCESS, payload: res.data });
+        dispatch({ type: LM_PENDING_FETCH_SUCCESS, payload: res.data })
     } catch (err) {
       if (paymentStatus === 1)
-        dispatch({ type: LM_FETCH_ERROR, payload: err.response.data.detail });
+        dispatch({ type: LM_FETCH_ERROR, payload: err.response.data.detail })
 
       if (paymentStatus === 0)
         dispatch({
           type: LM_PENDING_FETCH_ERROR,
           payload: err.response.data.detail,
-        });
+        })
     }
-  };
+  }
 
   // Get all active annual members
   const getAnnualMembers = async (memberType, paymentStatus) => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/${memberType}/${paymentStatus}`
-      );
+        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/${memberType}/${paymentStatus}`,
+      )
 
       if (paymentStatus === 1)
-        dispatch({ type: AM_FETCH_SUCCESS, payload: res.data });
+        dispatch({ type: AM_FETCH_SUCCESS, payload: res.data })
 
       if (paymentStatus === 0)
-        dispatch({ type: AM_PENDING_FETCH_SUCCESS, payload: res.data });
+        dispatch({ type: AM_PENDING_FETCH_SUCCESS, payload: res.data })
     } catch (err) {
       if (paymentStatus === 1)
-        dispatch({ type: AM_FETCH_ERROR, payload: err.response.data.detail });
+        dispatch({ type: AM_FETCH_ERROR, payload: err.response.data.detail })
 
       if (paymentStatus === 0)
         dispatch({
           type: AM_PENDING_FETCH_ERROR,
           payload: err.response.data.detail,
-        });
+        })
     }
-  };
+  }
 
   // Get membership details to update the payment status
   const getMembershipDetails = async (membershipId) => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/membership/${membershipId}`
-      );
+        `${process.env.NEXT_PUBLIC_API_URL}/membership/${membershipId}`,
+      )
 
-      dispatch({ type: MEMBERSHIP_DETAILS_FETCH_SUCCESS, payload: res.data });
+      dispatch({ type: MEMBERSHIP_DETAILS_FETCH_SUCCESS, payload: res.data })
     } catch (err) {
       dispatch({
         type: MEMBERSHIP_DETAILS_FETCH_ERROR,
         payload: err.response.data.detail,
-      });
+      })
     }
-  };
+  }
 
   // Update user payment status
   const updatePaymentStatus = async (userId) => {
     try {
       await axios.put(
-        `${process.env.NEXT_PUBLIC_API_URL}/payment_status/${userId}`
-      );
+        `${process.env.NEXT_PUBLIC_API_URL}/payment_status/${userId}`,
+      )
 
-      dispatch({ type: PAYMENT_STATUS_UPDATE_SUCCESS });
+      dispatch({ type: PAYMENT_STATUS_UPDATE_SUCCESS })
     } catch (err) {
       dispatch({
         type: PAYMENT_STATUS_UPDATE_ERROR,
         payload: err.response.data.detail,
-      });
+      })
     }
-  };
+  }
 
   // Logout admin
   const adminLogout = () => {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("mesAAToken");
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('mesAAToken')
     }
-  };
+  }
 
   // Clear state
   const clearUserState = () => {
-    dispatch({ type: CLEAR_STATE });
-  };
+    dispatch({ type: CLEAR_STATE })
+  }
 
   return (
     <SiteContext.Provider
@@ -286,7 +287,7 @@ const SiteState = (props) => {
     >
       {props.children}
     </SiteContext.Provider>
-  );
-};
+  )
+}
 
-export default SiteState;
+export default SiteState

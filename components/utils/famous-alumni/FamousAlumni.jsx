@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
   },
   padmaAwardeesHeader: {
-    margin: '70px 0 70px 0',
+    margin: '70px 0 0 0',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
