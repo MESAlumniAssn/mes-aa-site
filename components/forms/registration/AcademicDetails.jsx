@@ -1,27 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react'
 
-import SelectField from "../FormFields/SelectField";
-import RadioGroupField from "../FormFields/RadioGroupField";
-import years from "../../../utils/years";
-import { puc, degree, pg, others } from "../../../utils/courseStreams";
+import SelectField from '../FormFields/SelectField'
+import RadioGroupField from '../FormFields/RadioGroupField'
+import years from '../../../utils/years'
+import { puc, degree, pg, others } from '../../../utils/courseStreams'
 
 // Material UI imports
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles'
+
+// Component imports
+import Chips from '../../utils/generic/Chips'
 
 // Fontawesome imports
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 
 const useStyles = makeStyles({
   radioTitle: {
-    fontWeight: "bold",
-    fontSize: "1.1rem",
-    color: "#c87941",
+    fontWeight: 'bold',
+    fontSize: '1.1rem',
+    color: '#c87941',
   },
-});
+})
 
 const AcademicDetails = (props) => {
   const {
@@ -33,31 +36,40 @@ const AcademicDetails = (props) => {
       streamPg,
       streamOthers,
     },
-  } = props;
+  } = props
 
-  const classes = useStyles();
+  const classes = useStyles()
 
   useEffect(() => {
-    window.scroll({ top: 1, left: 1, behavior: "smooth" });
-  }, []);
+    window.scroll({ top: 1, left: 1, behavior: 'smooth' })
+  }, [])
 
   return (
     <div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Chips
+          membershipType={
+            typeof window !== 'undefined' &&
+            localStorage.getItem('mesAAMembershiPlan')
+          }
+        />
+      </div>
+
       <Grid container justify="flex-start" alignItems="center" spacing={3}>
         <Grid item>
-          <Typography style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
-            How long did you study in{" "}
-            <span style={{ fontWeight: "bold" }}>MES College</span>,
-            Malleshwaram?
+          <Typography>
+            <span className="subtitle" style={{ fontWeight: 'bold' }}>
+              How long did you study in MES College, Malleshwaram?
+            </span>
           </Typography>
         </Grid>
       </Grid>
 
       <Grid
         container
-        justify="space-around"
+        justify="space-evenly"
         alignItems="center"
-        spacing={3}
+        spacing={4}
         style={{ marginBottom: 40 }}
       >
         <Grid item xs={6}>
@@ -74,11 +86,10 @@ const AcademicDetails = (props) => {
 
       <Grid container justify="center" alignItems="center" spacing={1}>
         <Grid item xs={12}>
-          <Typography
-            style={{ fontSize: "1.2rem", fontWeight: "bold" }}
-            gutterBottom
-          >
-            What course(s) did you study?
+          <Typography gutterBottom>
+            <span className="subtitle" style={{ fontWeight: 'bold' }}>
+              What course(s) did you study?
+            </span>
           </Typography>
           {/* <Typography variant="subtitle2" component="subtitle2" gutterBottom>
             Select{" "}
@@ -130,7 +141,7 @@ const AcademicDetails = (props) => {
             component="caption"
             variant="caption"
             align="center"
-            style={{ marginTop: -15, paddingBottom: 10, width: "100%" }}
+            style={{ marginTop: -15, paddingBottom: 10, width: '100%' }}
           >
             {props.formProps.errors.streamOthers}
           </Typography>
@@ -139,9 +150,9 @@ const AcademicDetails = (props) => {
         <Grid item xs={12}>
           <div
             style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
               marginBottom: 20,
             }}
           >
@@ -152,21 +163,21 @@ const AcademicDetails = (props) => {
                 <FontAwesomeIcon
                   icon={faTimes}
                   style={{
-                    color: "#87431d",
-                    fontSize: "1rem",
+                    color: '#87431d',
+                    fontSize: '1rem',
                   }}
                 />
               }
               style={{
-                color: "#290001",
+                color: '#290001',
                 fontWeight: 700,
-                backgroundColor: "#fbe6d4",
+                backgroundColor: '#fbe6d4',
               }}
               onClick={() => {
-                props.formProps.setFieldValue("streamPuc", "");
-                props.formProps.setFieldValue("streamDegree", "");
-                props.formProps.setFieldValue("streamPg", "");
-                props.formProps.setFieldValue("streamOthers", "");
+                props.formProps.setFieldValue('streamPuc', '')
+                props.formProps.setFieldValue('streamDegree', '')
+                props.formProps.setFieldValue('streamPg', '')
+                props.formProps.setFieldValue('streamOthers', '')
               }}
             >
               Clear Course Selection
@@ -175,7 +186,7 @@ const AcademicDetails = (props) => {
         </Grid>
       </Grid>
     </div>
-  );
-};
+  )
+}
 
-export default AcademicDetails;
+export default AcademicDetails

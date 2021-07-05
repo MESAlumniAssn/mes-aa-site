@@ -24,7 +24,7 @@ import Typography from '@material-ui/core/Typography'
 
 // Fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCamera, faTimes, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCamera, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const prefixes = [
   {
@@ -59,11 +59,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     margin: '0 10',
     boxShadow: theme.shadows[5],
-    padding: 30,
-    paddingTop: '3rem',
+    padding: 20,
+    paddingTop: '3.5rem',
     position: 'relative',
     height: 500,
-    width: 400,
+    width: 350,
     [theme.breakpoints.up('sm')]: {
       width: 600,
     },
@@ -122,12 +122,15 @@ const PersonalDetails = (props) => {
 
   return (
     <div>
-      <Chips
-        membershipType={
-          typeof window !== 'undefined' &&
-          localStorage.getItem('mesAAMembershiPlan')
-        }
-      />
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Chips
+          membershipType={
+            typeof window !== 'undefined' &&
+            localStorage.getItem('mesAAMembershiPlan')
+          }
+        />
+      </div>
+
       <Grid id="prefix" container justify="space-between" alignItems="center">
         <Grid item xs={6} style={{ marginBottom: 24 }}>
           <SelectField
@@ -248,8 +251,8 @@ const PersonalDetails = (props) => {
             </div>
 
             <div style={{ position: 'absolute', right: 13, top: 30 }}>ESC</div>
-            <Typography component="h3" variant="h3" align="center" gutterBottom>
-              Upload your recent photo
+            <Typography component="h3" align="center" gutterBottom>
+              <span className="secondaryHeading">Upload your recent photo</span>
             </Typography>
 
             <div style={{ width: '100%' }}>

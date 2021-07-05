@@ -78,6 +78,7 @@
 
 .chevronContainer {
   text-align: center;
+  margin-top: -40px;
 }
 
 .chevronIcon {
@@ -100,14 +101,14 @@
 
 @keyframes animate-icon {
   0% {
-    transform: translateY(-10px);
+    transform: translateY(-15px);
   }
   50% {
     transform: translateY(0);
   }
 
   100% {
-    transform: translateY(-10px);
+    transform: translateY(-15px);
   }
 }
 

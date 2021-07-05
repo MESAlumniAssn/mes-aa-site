@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import { motion, useAnimation } from "framer-motion";
+import React, { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
+import { motion, useAnimation } from 'framer-motion'
 
 // Fontawesome imports
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRegistered } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRegistered } from '@fortawesome/free-regular-svg-icons'
 
 const Welcome = ({ styles }) => {
   const { ref, inView } = useInView({
     threshold: 0.3,
-  });
+  })
 
-  const animation = useAnimation();
+  const animation = useAnimation()
 
   useEffect(() => {
     if (inView) {
@@ -20,15 +20,15 @@ const Welcome = ({ styles }) => {
         transition: {
           duration: 1.1,
         },
-      });
+      })
     }
 
     if (!inView) {
       animation.start({
-        opacity: 0.6,
-      });
+        opacity: 0.5,
+      })
     }
-  }, [inView]);
+  }, [inView])
 
   return (
     <div ref={ref} className={styles.letterContainer}>
@@ -46,14 +46,14 @@ const Welcome = ({ styles }) => {
           back the clock and to get back there once again.
         </p>
         <p>
-          It is our pleasure to launch our old students association -{" "}
+          It is our pleasure to launch our old students association -{' '}
           <span className={styles.associationName}>
             The MES College Alumni Association
             <FontAwesomeIcon
               icon={faRegistered}
               className={styles.registeredIconSmall}
             />
-          </span>{" "}
+          </span>{' '}
           and also it's website. This is to bring together all MES'ites from the
           days of inception in 1956 till today. Different age groups,
           generations, professions, businesses, vocations, within India, from
@@ -70,7 +70,7 @@ const Welcome = ({ styles }) => {
           from her own children. The children however, crave to give back
           something to their mother. Let us give back something to our mother.
           MES, though, the only thing she asks for is an eternal opportunity to
-          keep giving to her children.{" "}
+          keep giving to her children.{' '}
         </p>
         <p>
           Service to mankind knows no boundaries. All of us, even the most
@@ -85,7 +85,7 @@ const Welcome = ({ styles }) => {
         </p>
       </motion.div>
     </div>
-  );
-};
+  )
+}
 
-export default Welcome;
+export default Welcome

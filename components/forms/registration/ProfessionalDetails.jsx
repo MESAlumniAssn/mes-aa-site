@@ -1,30 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react'
 
-import InputField from "../FormFields/InputField";
-import SelectField from "../FormFields/SelectField";
-import industryList from "../../../utils/industries";
-import Chips from "../../utils/generic/Chips";
+import InputField from '../FormFields/InputField'
+import SelectField from '../FormFields/SelectField'
+import industryList from '../../../utils/industries'
+import Chips from '../../utils/generic/Chips'
 
 // Material UI imports
-import Grid from "@material-ui/core/Grid";
+import Grid from '@material-ui/core/Grid'
 
 const ProfessionalDetails = (props) => {
   const {
     formField: { profession, interest, vision },
-  } = props;
+  } = props
 
   useEffect(() => {
-    window.scroll({ top: 1, left: 1, behavior: "smooth" });
-  }, []);
+    window.scroll({ top: 1, left: 1, behavior: 'smooth' })
+  }, [])
 
   return (
     <div>
-      <Chips
-        membershipType={
-          typeof window !== "undefined" &&
-          localStorage.getItem("mesAAMembershiPlan")
-        }
-      />
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Chips
+          membershipType={
+            typeof window !== 'undefined' &&
+            localStorage.getItem('mesAAMembershiPlan')
+          }
+        />
+      </div>
       <Grid container justify="center" alignItems="center" spacing={3}>
         <Grid item xs={12}>
           <SelectField
@@ -56,13 +58,13 @@ const ProfessionalDetails = (props) => {
             multiline
             rows={4}
             helperText={
-              "This is your association. Tell us what you would like to get out of it."
+              'This is your association. Tell us what you would like to get out of it.'
             }
           />
         </Grid>
       </Grid>
     </div>
-  );
-};
+  )
+}
 
-export default ProfessionalDetails;
+export default ProfessionalDetails

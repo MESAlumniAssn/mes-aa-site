@@ -1,7 +1,11 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
 import SiteContext from '../../../context/siteContext'
 import Image from 'next/image'
+import {
+  collegeAddress1,
+  collegeAddress2,
+} from '../../../utils/associationDetails'
 
 // Material UI imports
 import Modal from '@material-ui/core/Modal'
@@ -63,18 +67,23 @@ const AltPaymentModal = ({
   const router = useRouter()
 
   const siteContext = useContext(SiteContext)
-  const { authError, registerUser } = siteContext
+  const { authError, registerUser, isRegistered } = siteContext
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (isRegistered)
+        router.push(
+          `/paymentinfo/${JSON.parse(localStorage.getItem('aaUser')).email}`,
+        )
+    }, 3000)
+  }, [isRegistered])
 
   const handleClose = () => {
     setOpen(false)
     setSubmissionError(false)
   }
 
-  const address = `The MES College Alumni Association
-  Vidyasagara Prof. M.P.L Sastry Road,
-  15th Cross, 10th Main, Malleshwaram,
-  Bengaluru - 560003
-  `
+  const address = collegeAddress1 + ' ' + collegeAddress2
 
   return (
     <div>
@@ -116,16 +125,17 @@ const AltPaymentModal = ({
           </Typography>
           <Typography
             style={{
-              fontSize: '1.1rem',
               fontWeight: 'bold',
               paddingTop: 10,
+              lineHeight: '2rem',
             }}
+            className="subtitle"
             gutterBottom
           >
             <span
               style={{
                 paddingBottom: 1,
-                borderBottom: '3px solid #ff5200',
+                borderBottom: '2px solid #ff5200',
               }}
             >
               Cheque
@@ -134,7 +144,7 @@ const AltPaymentModal = ({
             <span
               style={{
                 paddingBottom: 1,
-                borderBottom: '3px solid #ff5200',
+                borderBottom: '2px solid #ff5200',
               }}
             >
               Demand Draft
@@ -184,16 +194,17 @@ const AltPaymentModal = ({
 
           <Typography
             style={{
-              fontSize: '1.1rem',
               fontWeight: 'bold',
               paddingTop: 10,
+              lineHeight: '2rem',
             }}
+            className="subtitle"
             gutterBottom
           >
             <span
               style={{
                 paddingBottom: 1,
-                borderBottom: '3px solid #ff5200',
+                borderBottom: '2px solid #ff5200',
               }}
             >
               IMPS
@@ -202,7 +213,7 @@ const AltPaymentModal = ({
             <span
               style={{
                 paddingBottom: 1,
-                borderBottom: '3px solid #ff5200',
+                borderBottom: '2px solid #ff5200',
               }}
             >
               NEFT
@@ -211,7 +222,7 @@ const AltPaymentModal = ({
             <span
               style={{
                 paddingBottom: 1,
-                borderBottom: '3px solid #ff5200',
+                borderBottom: '2px solid #ff5200',
               }}
             >
               RTGS{' '}
@@ -290,15 +301,6 @@ const AltPaymentModal = ({
                 if (!authError && !submissionError) {
                   setShowLoader(true)
                 }
-
-                setTimeout(() => {
-                  if (!submissionError)
-                    router.push(
-                      `/paymentinfo/${
-                        JSON.parse(localStorage.getItem('aaUser')).email
-                      }`,
-                    )
-                }, 3000)
               }}
             >
               {showLoader ? (
