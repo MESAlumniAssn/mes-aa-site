@@ -1,103 +1,103 @@
-import 'date-fns'
-import React, { useState, useEffect } from 'react'
-import SiteContext from '../../../context/siteContext'
-import DateFnsUtils from '@date-io/date-fns'
-import InputField from '../FormFields/InputField'
-import SelectField from '../FormFields/SelectField'
-import countryList from '../../../utils/countries'
-import Chips from '../../utils/generic/Chips'
-import ProfileUploader from '../../utils/generic/ProfileUploader'
+import "date-fns";
+import React, { useState, useEffect } from "react";
+import SiteContext from "../../../context/siteContext";
+import DateFnsUtils from "@date-io/date-fns";
+import InputField from "../FormFields/InputField";
+import SelectField from "../FormFields/SelectField";
+import countryList from "../../../utils/countries";
+import Chips from "../../utils/generic/Chips";
+import ProfileUploader from "../../utils/generic/ProfileUploader";
 
 // Material UI imports
-import Grid from '@material-ui/core/Grid'
-import Tooltip from '@material-ui/core/Tooltip'
+import Grid from "@material-ui/core/Grid";
+import Tooltip from "@material-ui/core/Tooltip";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
-} from '@material-ui/pickers'
-import Button from '@material-ui/core/Button'
-import Modal from '@material-ui/core/Modal'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
-import Fade from '@material-ui/core/Fade'
-import Backdrop from '@material-ui/core/Backdrop'
-import Typography from '@material-ui/core/Typography'
+} from "@material-ui/pickers";
+import Button from "@material-ui/core/Button";
+import Modal from "@material-ui/core/Modal";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import Fade from "@material-ui/core/Fade";
+import Backdrop from "@material-ui/core/Backdrop";
+import Typography from "@material-ui/core/Typography";
 
 // Fontawesome imports
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCamera, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCamera, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const prefixes = [
   {
-    value: 'Mrs',
-    label: 'Mrs',
+    value: "Mrs",
+    label: "Mrs",
   },
   {
-    value: 'Ms',
-    label: 'Ms',
+    value: "Ms",
+    label: "Ms",
   },
   {
-    value: 'Mr',
-    label: 'Mr',
+    value: "Mr",
+    label: "Mr",
   },
   {
-    value: 'Mx',
-    label: 'Mx',
+    value: "Mx",
+    label: "Mx",
   },
   {
-    value: 'Dr',
-    label: 'Dr',
+    value: "Dr",
+    label: "Dr",
   },
-]
+];
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    margin: '0 10',
+    margin: "0 10",
     boxShadow: theme.shadows[5],
     padding: 20,
-    paddingTop: '3.5rem',
-    position: 'relative',
+    paddingTop: "3.5rem",
+    position: "relative",
     height: 500,
     width: 350,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       width: 600,
     },
   },
   profilePicValidationBorder: {
-    border: '3px solid #f21170',
+    border: "3px solid #f21170",
   },
   profilePicUploaded: {
-    color: '#689f38',
+    color: "#689f38",
   },
   profilePicNotUploaded: {
-    color: '#f21170',
+    color: "#f21170",
   },
   profilePicOnLoad: {
-    color: 'var(--primary-color)',
+    color: "var(--primary-color)",
   },
-}))
+}));
 
 const ProfilePicTooltip = withStyles({
-  tooltip: { fontSize: '0.8rem', backgroundColor: '#dbcbbd', color: '#290001' },
-})(Tooltip)
+  tooltip: { fontSize: "0.8rem", backgroundColor: "#dbcbbd", color: "#290001" },
+})(Tooltip);
 
 const PersonalDetails = (props) => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
-  const classes = useStyles()
+  const classes = useStyles();
 
   const handleOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   const {
     formField: {
@@ -114,19 +114,19 @@ const PersonalDetails = (props) => {
       mobile,
       birthday,
     },
-  } = props
+  } = props;
 
   useEffect(() => {
-    window.scroll({ top: 1, left: 1, behavior: 'smooth' })
-  }, [])
+    window.scroll({ top: 1, left: 1, behavior: "smooth" });
+  }, []);
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <Chips
           membershipType={
-            typeof window !== 'undefined' &&
-            localStorage.getItem('mesAAMembershiPlan')
+            typeof window !== "undefined" &&
+            localStorage.getItem("mesAAMembershiPlan")
           }
         />
       </div>
@@ -140,11 +140,11 @@ const PersonalDetails = (props) => {
             fullWidth
           />
         </Grid>
-        <Grid item xs={6} style={{ textAlign: 'right', marginBottom: 20 }}>
+        <Grid item xs={6} style={{ textAlign: "right", marginBottom: 20 }}>
           {!props.profilePicUploaded && (
             <Typography
               color="error"
-              style={{ fontSize: '0.8rem', paddingBottom: 5 }}
+              style={{ fontSize: "0.8rem", paddingBottom: 5 }}
             >
               Photo is required
             </Typography>
@@ -153,7 +153,7 @@ const PersonalDetails = (props) => {
             variant="contained"
             size="large"
             disableElevation
-            style={{ borderRadius: '50%', padding: 20, marginRight: 8 }}
+            style={{ borderRadius: "50%", padding: 20, marginRight: 8 }}
             className={
               !props.profilePicUploaded && classes.profilePicValidationBorder
             }
@@ -161,7 +161,7 @@ const PersonalDetails = (props) => {
           >
             <FontAwesomeIcon
               icon={faCamera}
-              style={{ fontSize: '1.75rem' }}
+              style={{ fontSize: "1.75rem" }}
               className={
                 props.files.length !== 0
                   ? classes.profilePicUploaded // icon - green
@@ -241,21 +241,21 @@ const PersonalDetails = (props) => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <div style={{ position: 'absolute', right: 20, top: 10 }}>
+            <div style={{ position: "absolute", right: 20, top: 10 }}>
               <FontAwesomeIcon
                 icon={faTimes}
                 onClick={handleClose}
-                style={{ fontSize: '1.2rem', cursor: 'pointer' }}
+                style={{ fontSize: "1.2rem", cursor: "pointer" }}
                 className="timesButtonAnimation"
               />
             </div>
 
-            <div style={{ position: 'absolute', right: 13, top: 30 }}>ESC</div>
+            <div style={{ position: "absolute", right: 13, top: 30 }}>ESC</div>
             <Typography component="h3" align="center" gutterBottom>
               <span className="secondaryHeading">Upload your recent photo</span>
             </Typography>
 
-            <div style={{ width: '100%' }}>
+            <div style={{ width: "100%" }}>
               <ProfilePicTooltip
                 title="This photo will be used while generating your membership identification card."
                 interactive
@@ -266,10 +266,10 @@ const PersonalDetails = (props) => {
                   variant="subtitle2"
                   align="center"
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    textDecoration: 'underline',
-                    cursor: 'pointer',
+                    display: "flex",
+                    justifyContent: "center",
+                    textDecoration: "underline",
+                    cursor: "pointer",
                   }}
                   gutterBottom
                 >
@@ -281,12 +281,13 @@ const PersonalDetails = (props) => {
               files={props.files}
               setFiles={props.setFiles}
               setProfilePicUploaded={props.setProfilePicUploaded}
+              setOpen={setOpen}
             />
           </div>
         </Fade>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default PersonalDetails
+export default PersonalDetails;

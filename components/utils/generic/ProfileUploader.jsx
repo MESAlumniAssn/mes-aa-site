@@ -1,37 +1,43 @@
-import React, { useState, useCallback, useEffect } from 'react'
-import Dropzone from 'react-dropzone'
+import React, { useState, useCallback, useEffect } from "react";
+import Dropzone from "react-dropzone";
 
 // Material UI imports
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 // Fontawesome imports
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTrash,
   faCamera,
   faCheck,
   faExclamationTriangle,
-} from '@fortawesome/free-solid-svg-icons'
-import { Typography } from '@material-ui/core'
+} from "@fortawesome/free-solid-svg-icons";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   dropzone: {
-    textAlign: 'center',
-    margin: '2rem 4rem 0 4rem',
-    padding: '40px',
-    borderRadius: '0.75rem',
-    cursor: 'pointer',
-    backgroundColor: '#e1e5ea',
-    [theme.breakpoints.down('sm')]: {
-      margin: '2rem 1rem 0 1rem',
+    textAlign: "center",
+    margin: "2rem 4rem 0 4rem",
+    padding: "40px",
+    borderRadius: "0.75rem",
+    cursor: "pointer",
+    backgroundColor: "#e1e5ea",
+    [theme.breakpoints.down("sm")]: {
+      margin: "2rem 1rem 0 1rem",
     },
   },
-}))
+}));
 
-const ProfileUploader = ({ files, setFiles, setProfilePicUploaded }) => {
-  var newFiles = [...files]
+const ProfileUploader = ({
+  files,
+  setFiles,
+  setProfilePicUploaded,
+  setOpen,
+}) => {
+  var newFiles = [...files];
 
-  const classes = useStyles()
+  const classes = useStyles();
 
   const onDrop = useCallback((acceptedFiles) => {
     setFiles((prev) => [
@@ -39,40 +45,56 @@ const ProfileUploader = ({ files, setFiles, setProfilePicUploaded }) => {
       ...acceptedFiles.map((file) =>
         Object.assign(file, {
           preview: URL.createObjectURL(file),
-        }),
+        })
       ),
-    ])
-    setProfilePicUploaded(true)
-  }, [])
+    ]);
+    setProfilePicUploaded(true);
+  }, []);
 
   const images = newFiles.map((file, index) => {
     return (
-      <div key={index} style={{ textAlign: 'center', paddingTop: 30 }}>
+      <div key={index} style={{ textAlign: "center", paddingTop: 15 }}>
         <div>
           <img
             src={file.preview}
-            height="150px"
+            height="120px"
             width="150px"
             alt="Uploaded profile photo"
           />
           <p
             onClick={() => {
-              newFiles.splice(newFiles.indexOf(file), 1)
-              setFiles(newFiles)
+              newFiles.splice(newFiles.indexOf(file), 1);
+              setFiles(newFiles);
             }}
             style={{
-              fontSize: '0.8rem',
-              textAlign: 'center',
-              cursor: 'pointer',
+              fontSize: "0.8rem",
+              textAlign: "center",
+              cursor: "pointer",
             }}
           >
-            <FontAwesomeIcon icon={faTrash} style={{ marginRight: '2px' }} />
+            <FontAwesomeIcon icon={faTrash} style={{ marginRight: "2px" }} />
             Remove
           </p>
+
+          <div style={{ margin: "20px 0" }}>
+            <Button
+              variant="contained"
+              size="small"
+              disableElevation
+              onClick={() => setOpen(false)}
+              style={{
+                backgroundColor: "#b9ac92",
+                color: "var(--primary-color)",
+                fontWeight: "bold",
+              }}
+            >
+              OK
+            </Button>
+          </div>
         </div>
       </div>
-    )
-  })
+    );
+  });
 
   return (
     <div>
@@ -90,20 +112,20 @@ const ProfileUploader = ({ files, setFiles, setProfilePicUploaded }) => {
                   variant="subtitle1"
                   component="subtitle1"
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignITems: 'center',
+                    display: "flex",
+                    justifyContent: "center",
+                    alignITems: "center",
                     paddingTop: 20,
                   }}
                 >
                   <div>
-                    Accepted image formats:{' '}
-                    <span style={{ color: '#c87941' }}>jpeg</span>,&nbsp;
-                    <span style={{ color: '#c87941' }}>bmp</span>,&nbsp;
-                    <span style={{ color: '#c87941' }}>tiff</span>,&nbsp;
-                    <span style={{ color: '#c87941' }}>webp</span>
+                    Accepted image formats:{" "}
+                    <span style={{ color: "#c87941" }}>jpeg</span>,&nbsp;
+                    <span style={{ color: "#c87941" }}>bmp</span>,&nbsp;
+                    <span style={{ color: "#c87941" }}>tiff</span>,&nbsp;
+                    <span style={{ color: "#c87941" }}>webp</span>
                     &nbsp;and&nbsp;
-                    <span style={{ color: '#c87941' }}>png</span>.
+                    <span style={{ color: "#c87941" }}>png</span>.
                   </div>
                 </Typography>
                 <div {...getRootProps()} className={classes.dropzone}>
@@ -113,7 +135,7 @@ const ProfileUploader = ({ files, setFiles, setProfilePicUploaded }) => {
                   />
                   <FontAwesomeIcon
                     icon={faCamera}
-                    style={{ fontSize: '2rem' }}
+                    style={{ fontSize: "2rem" }}
                   />
                 </div>
               </div>
@@ -122,19 +144,19 @@ const ProfileUploader = ({ files, setFiles, setProfilePicUploaded }) => {
             {newFiles.length === 1 && (
               <div
                 style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  margin: '3rem 4rem 0 4rem',
-                  borderRadius: '10%',
-                  cursor: 'not-allowed',
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  margin: "1rem 4rem 0 4rem",
+                  borderRadius: "10%",
+                  cursor: "not-allowed",
                 }}
               >
                 <FontAwesomeIcon
                   icon={faCheck}
-                  style={{ fontSize: '2rem', color: 'green' }}
+                  style={{ fontSize: "2rem", color: "green" }}
                 />
-                <p style={{ fontSize: '1rem', color: 'green', paddingTop: 1 }}>
+                <p style={{ fontSize: "1rem", color: "green", paddingTop: 1 }}>
                   Photo added.
                 </p>
               </div>
@@ -143,7 +165,7 @@ const ProfileUploader = ({ files, setFiles, setProfilePicUploaded }) => {
             <div>{images.slice(0, 1)}</div>
 
             {isDragReject && (
-              <div style={{ fontSize: '0.8rem', color: 'red' }}>
+              <div style={{ fontSize: "0.8rem", color: "red" }}>
                 <FontAwesomeIcon icon={faExclamationTriangle} /> Accepted image
                 formats - jpeg, bmp, tiff, png and gif
               </div>
@@ -152,7 +174,7 @@ const ProfileUploader = ({ files, setFiles, setProfilePicUploaded }) => {
         )}
       </Dropzone>
     </div>
-  )
-}
+  );
+};
 
-export default ProfileUploader
+export default ProfileUploader;
