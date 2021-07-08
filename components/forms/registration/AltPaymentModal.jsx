@@ -71,13 +71,19 @@ const AltPaymentModal = ({
 
   useEffect(() => {
     setTimeout(() => {
-      // Only redirect if registering from the modal
       if (isRegistered)
         router.push(
           `/paymentinfo/${JSON.parse(localStorage.getItem("aaUser")).email}`
         );
-    }, 3000);
+    }, 1000);
   }, [isRegistered]);
+
+  useEffect(() => {
+    if (authError) {
+      setShowLoader(false);
+      setSubmissionError(true);
+    }
+  }, [authError]);
 
   const handleClose = () => {
     setOpen(false);
@@ -104,12 +110,23 @@ const AltPaymentModal = ({
             style={{
               position: "absolute",
               top: 10,
-              right: 10,
+              right: 20,
               cursor: "pointer",
             }}
             className="timesButtonAnimation"
             onClick={handleClose}
           />
+          <div
+            style={{
+              position: "absolute",
+              right: 10,
+              top: 25,
+              color: "var(--primary-color)",
+            }}
+          >
+            ESC
+          </div>
+
           <Typography
             style={{ fontSize: "1.1rem", paddingBottom: 20 }}
             gutterBottom
@@ -262,7 +279,7 @@ const AltPaymentModal = ({
               style={{
                 backgroundColor: "#ff5200",
                 height: "3rem",
-                width: "9rem",
+                width: "12rem",
                 color: "#FFF",
                 fontWeight: "bold",
                 letterSpacing: "1px",
@@ -295,43 +312,48 @@ const AltPaymentModal = ({
                   files
                 );
 
-                if (authError) {
-                  setSubmissionError(true);
-                }
-
-                if (!authError && !submissionError) {
-                  setShowLoader(true);
-                }
+                setShowLoader(true);
               }}
             >
               {showLoader ? (
-                <Image
-                  src={"/loader.svg"}
-                  alt="Loading..."
-                  height={25}
-                  width={25}
-                />
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <span style={{ marginRight: 5 }}>Please wait</span>
+                  <Image
+                    src={"/loader.svg"}
+                    alt="Loading..."
+                    height={25}
+                    width={25}
+                  />
+                </div>
               ) : (
                 "Confirm"
               )}
             </Button>
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              paddingTop: 20,
-            }}
-          >
-            <span
-              style={{ cursor: "pointer" }}
-              className="styledLink"
-              onClick={handleClose}
+          {!showLoader && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                paddingTop: 20,
+              }}
             >
-              Take me back to online payment
-            </span>
-          </div>
+              <span
+                style={{ cursor: "pointer" }}
+                className="styledLink"
+                onClick={handleClose}
+              >
+                Take me back to online payment
+              </span>
+            </div>
+          )}
         </div>
       </Modal>
     </div>

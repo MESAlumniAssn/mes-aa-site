@@ -18,7 +18,7 @@ const AlertDialog = (props) => {
 
   return (
     <div className={classes.root}>
-      <Alert severity="warning">
+      <Alert severity="error">
         <span style={{ fontWeight: "bold" }}>{props.error}</span>
       </Alert>
     </div>

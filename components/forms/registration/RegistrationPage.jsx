@@ -114,6 +114,12 @@ const RegistrationPage = (props) => {
   //   }, 2000);
   // }, [isRegistered]);
 
+  useEffect(() => {
+    if (authError) {
+      window.scroll({ top: 1, left: 1, behavior: "smooth" });
+    }
+  }, [authError]);
+
   const renderStep = (step, props) => {
     switch (step) {
       case 0:
