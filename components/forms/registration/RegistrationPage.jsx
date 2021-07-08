@@ -102,17 +102,17 @@ const RegistrationPage = (props) => {
     setActiveStep(activeStep - 1);
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (isRegistered && isRegistered) {
-        if (localStorage.getItem("mesAAMembershiPlan") === "Lifetime") {
-          // window.location.href = `${process.env.NEXT_PUBLIC_PAYU_LIFETIME_PAYMENT}`;
-        } else {
-          // window.location.href = `${process.env.NEXT_PUBLIC_PAYU_ANNUAL_PAYMENT}`;
-        }
-      }
-    }, 2000);
-  }, [isRegistered]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (isRegistered && isRegistered) {
+  //       if (localStorage.getItem("mesAAMembershiPlan") === "Lifetime") {
+  //         // window.location.href = `${process.env.NEXT_PUBLIC_PAYU_LIFETIME_PAYMENT}`;
+  //       } else {
+  //         // window.location.href = `${process.env.NEXT_PUBLIC_PAYU_ANNUAL_PAYMENT}`;
+  //       }
+  //     }
+  //   }, 2000);
+  // }, [isRegistered]);
 
   const renderStep = (step, props) => {
     switch (step) {

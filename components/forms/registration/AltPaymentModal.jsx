@@ -72,7 +72,7 @@ const AltPaymentModal = ({
   useEffect(() => {
     setTimeout(() => {
       // Only redirect if registering from the modal
-      if (isRegistered && open)
+      if (isRegistered)
         router.push(
           `/paymentinfo/${JSON.parse(localStorage.getItem("aaUser")).email}`
         );
