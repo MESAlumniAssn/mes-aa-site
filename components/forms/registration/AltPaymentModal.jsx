@@ -60,8 +60,11 @@ const AltPaymentModal = ({
   submissionError,
   setSubmissionError,
   files,
+  paymentMode,
 }) => {
   const [showLoader, setShowLoader] = useState(false);
+  const [mode, setMode] = useState(paymentMode);
+
   const classes = useStyles();
 
   const router = useRouter();
@@ -71,7 +74,7 @@ const AltPaymentModal = ({
 
   useEffect(() => {
     setTimeout(() => {
-      if (isRegistered)
+      if (isRegistered && mode === "M")
         router.push(
           `/paymentinfo/${JSON.parse(localStorage.getItem("aaUser")).email}`
         );
@@ -285,6 +288,7 @@ const AltPaymentModal = ({
                 letterSpacing: "1px",
               }}
               onClick={() => {
+                setMode("M");
                 registerUser(
                   JSON.parse(localStorage.getItem("aaUser")).prefix,
                   JSON.parse(localStorage.getItem("aaUser")).firstName,

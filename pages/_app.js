@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "../styles/globals.css";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
@@ -123,6 +123,7 @@ theme.typography.h6 = {
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  const paymentMode = useRef("O");
 
   const pathname = router.pathname;
 
@@ -134,7 +135,7 @@ function MyApp({ Component, pageProps }) {
     <SiteState>
       <ThemeProvider theme={theme}>
         <Layout pathname={pathname}>
-          <Component {...pageProps} />
+          <Component {...pageProps} paymentMode={paymentMode} />
         </Layout>
       </ThemeProvider>
       <ToastContainer

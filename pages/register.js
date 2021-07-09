@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Register = () => {
+const Register = (props) => {
   const router = useRouter();
   const classes = useStyles();
 
@@ -37,7 +37,7 @@ const Register = () => {
   return (
     <RegisterHeadLayout>
       <div className={classes.root}>
-        <RegistrationPage />
+        <RegistrationPage paymentMode={props.paymentMode} />
       </div>
       <Footer />
     </RegisterHeadLayout>

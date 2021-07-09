@@ -115,7 +115,6 @@ const SiteState = (props) => {
 
       dispatch({ type: REGISTRATION_CREATE_SUCCESS, payload: res.data });
     } catch (err) {
-      console.log(err);
       dispatch({ type: AUTH_ERROR, payload: err.response.data.detail });
       setTimeout(() => dispatch({ type: CLEAR_ERROR }), 5000);
     }

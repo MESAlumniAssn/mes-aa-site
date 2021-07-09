@@ -82,6 +82,7 @@ const RegistrationPage = (props) => {
   const [activeStep, setActiveStep] = useState(0);
   const [open, setOpen] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
+  const paymentMode = props.paymentMode.current;
 
   const isLastStep = activeStep === steps.length - 1;
 
@@ -392,6 +393,7 @@ const RegistrationPage = (props) => {
                     submissionError={submissionError}
                     setSubmissionError={setSubmissionError}
                     files={files}
+                    paymentMode={paymentMode}
                   />
                 </Form>
               </div>
