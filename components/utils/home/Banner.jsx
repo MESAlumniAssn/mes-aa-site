@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: 0,
     left: 0,
-    padding: "25px 0",
+    padding: "25px 30px",
     zIndex: 20,
     boxShadow: "0 22px 37px rgba(0, 0, 0, 0.3)",
     opacity: 0.98,
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     position: "absolute",
     top: "35%",
-    right: 20,
+    right: 15,
     zIndex: 30,
     fontSize: "1.5rem",
     cursor: "pointer",
@@ -61,7 +61,7 @@ const Banner = () => {
     <Fragment>
       {showBanner && (
         <motion.div className={`animateNavLogoBanner ${classes.banner}`}>
-          <Typography component="p">
+          <Typography component="p" style={{ textAlign: "center" }}>
             <span className={`subtitle ${classes.bannerText}`}>
               <FontAwesomeIcon
                 icon={faBullhorn}
