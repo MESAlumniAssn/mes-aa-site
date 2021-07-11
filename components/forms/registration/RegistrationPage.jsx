@@ -234,7 +234,7 @@ const RegistrationPage = (props) => {
 
     if (isLastStep) {
       submitForm(values, actions);
-      createOrder(amount, "INR", "ABCD", {
+      createOrder(parseInt(amount), "INR", "ABCD", {
         membershipType: localStorage.getItem("mesAAMembershiPlan"),
       });
     } else {

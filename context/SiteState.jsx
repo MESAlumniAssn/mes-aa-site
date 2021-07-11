@@ -255,7 +255,7 @@ const SiteState = (props) => {
 
   const createOrder = async (amount, currency, receipt, notes) => {
     const orderPayload = {
-      amount: amount.toString(),
+      amount: amount,
       currency: currency,
       receipt: receipt,
       notes: notes,
