@@ -95,9 +95,9 @@ const FamousAlumni = (props) => {
               .filter((record) => {
                 return record.award && record.award.includes("Padma");
               })
-              .map((awardee) => {
+              .map((awardee, index) => {
                 return (
-                  <Grid item xs={12} sm={6} md={4}>
+                  <Grid item xs={12} sm={6} md={4} key={index}>
                     <div className={styles.cardPadma}>
                       <div className={styles.cardContentPadma}>
                         <div classname={styles.cardFront}>

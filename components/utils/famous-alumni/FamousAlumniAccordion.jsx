@@ -94,9 +94,10 @@ const FamousAlumniAccordion = (props) => {
       </div>
 
       <Container maxWidth="md">
-        {Object.keys(groupedCategory).map((item) => {
+        {Object.keys(groupedCategory).map((item, index) => {
           return (
             <Accordion
+              key={index}
               elevation={0}
               className={{
                 root: classes.MuiAccordionroot,
@@ -135,9 +136,9 @@ const FamousAlumniAccordion = (props) => {
                   }}
                   align="center"
                 >
-                  {groupedCategory[item].map((alumnus) => {
+                  {groupedCategory[item].map((alumnus, index) => {
                     return (
-                      <Grid item xs={12} sm={6} md={4}>
+                      <Grid item xs={12} sm={6} md={4} key={index}>
                         <div className={styles.cardOther}>
                           <div className={styles.cardContentOther}>
                             <div className={styles.cardFront}>

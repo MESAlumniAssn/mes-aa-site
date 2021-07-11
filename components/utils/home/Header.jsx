@@ -1,15 +1,18 @@
-import React, { Fragment, useEffect } from 'react'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
+import React, { Fragment, useEffect } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+// Component imports
+import Banner from "./Banner";
 
 // Fontawesome imports
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRegistered } from '@fortawesome/free-regular-svg-icons'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRegistered } from "@fortawesome/free-regular-svg-icons";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const variants = {
   initial: {
-    x: '-100vw',
+    x: "-100vw",
   },
   initialButton: {
     opacity: 0,
@@ -28,11 +31,12 @@ const variants = {
     scale: 1,
     transition: { delay: 1.25, duration: 0.5 },
   },
-}
+};
 
 const Header = ({ styles, router }) => {
   return (
     <Fragment>
+      <Banner />
       <div className={styles.headerContainer}>
         <motion.div
           variants={variants}
@@ -66,7 +70,7 @@ const Header = ({ styles, router }) => {
           animate="animateButton"
           type="button"
           className={styles.cta}
-          onClick={() => router.push('/pricing')}
+          onClick={() => router.push("/pricing")}
         >
           Register
         </motion.button>
@@ -82,7 +86,7 @@ const Header = ({ styles, router }) => {
         </Link>
       </div>
     </Fragment>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

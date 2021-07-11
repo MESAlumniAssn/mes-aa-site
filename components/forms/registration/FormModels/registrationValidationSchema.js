@@ -73,7 +73,7 @@ export default [
       .trim(),
     [pincode.name]: Yup.string()
       .required(`${pincode.requiredErrorMsg}`)
-      .min(4)
+      .min(4, `${pincode.invalidLengthMessage}`)
       .trim(),
     [mobile.name]: Yup.string()
       .required(`${mobile.requiredErrorMsg}`)

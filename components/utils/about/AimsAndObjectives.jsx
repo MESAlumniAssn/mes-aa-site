@@ -1,37 +1,37 @@
-import React from 'react'
-import aims from '../../../utils/aims'
+import React from "react";
+import aims from "../../../utils/aims";
 
 //Material UI imports
-import { makeStyles, withStyles } from '@material-ui/core/styles'
-import Accordion from '@material-ui/core/Accordion'
-import AccordionSummary from '@material-ui/core/AccordionSummary'
-import AccordionDetails from '@material-ui/core/AccordionDetails'
-import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 
 // Fontawesome imports
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGraduationCap,
   faChevronCircleDown,
-} from '@fortawesome/free-solid-svg-icons'
+} from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: '50px 0',
+    margin: "50px 0",
   },
   MuiAccordionroot: {
-    '&.MuiAccordion-root:before': {
-      backgroundColor: 'white',
+    "&.MuiAccordion-root:before": {
+      backgroundColor: "white",
     },
   },
   aims: {
-    fontSize: '1.1rem',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '0.9rem',
+    fontSize: "1.1rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.9rem",
     },
   },
-}))
+}));
 
 // const AccordionSummary = withStyles({
 //   content: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 // })(MuiAccordionSummary);
 
 const AimsAndObjectives = () => {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <div className={classes.root}>
       <Container maxWidth="md">
@@ -55,29 +55,30 @@ const AimsAndObjectives = () => {
             expandIcon={
               <FontAwesomeIcon
                 icon={faChevronCircleDown}
-                style={{ fontSize: '2rem', color: 'var(--primary-color)' }}
+                style={{ fontSize: "2rem", color: "var(--primary-color)" }}
               />
             }
             aria-label="Expand to read the aims and objectives"
-            style={{ borderLeft: 'solid 5px var(--secondary-color)' }}
+            style={{ borderLeft: "solid 5px var(--secondary-color)" }}
           >
-            <Typography align="center" style={{ fontWeight: 'bold' }}>
+            <Typography align="center" style={{ fontWeight: "bold" }}>
               <span className="secondaryHeading">Aims & Objectives</span>
             </Typography>
           </AccordionSummary>
           <AccordionDetails className={classes.hideBorder}>
             <div
               style={{
-                display: 'flex',
-                flexDirection: 'column',
+                display: "flex",
+                flexDirection: "column",
               }}
             >
-              {aims.map((aim) => {
+              {aims.map((aim, index) => {
                 return (
                   <div
+                    key={index}
                     style={{
-                      display: 'flex',
-                      alignItems: 'center',
+                      display: "flex",
+                      alignItems: "center",
                       paddingBottom: 15,
                     }}
                   >
@@ -86,21 +87,21 @@ const AimsAndObjectives = () => {
                         icon={faGraduationCap}
                         style={{
                           marginRight: 2,
-                          fontSize: '1rem',
-                          color: 'var(--secondary-color)',
+                          fontSize: "1rem",
+                          color: "var(--secondary-color)",
                         }}
                       />
                       &nbsp;{aim}
                     </Typography>
                   </div>
-                )
+                );
               })}
             </div>
           </AccordionDetails>
         </Accordion>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default AimsAndObjectives
+export default AimsAndObjectives;

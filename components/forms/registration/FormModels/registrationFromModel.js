@@ -52,6 +52,7 @@ export default {
       name: "pincode",
       label: "Pincode*",
       requiredErrorMsg: "Pincode is required",
+      invalidLengthMessage: "A pincode must be at least 4 digits ",
     },
     mobile: {
       name: "mobile",

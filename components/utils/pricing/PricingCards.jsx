@@ -1,53 +1,53 @@
-import React from 'react'
-import { useRouter } from 'next/router'
-import { planValues, lifetime, annual } from '../../../utils/pricingPlans'
+import React from "react";
+import { useRouter } from "next/router";
+import { planValues, lifetime, annual } from "../../../utils/pricingPlans";
 
 // Material UI imports
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import Card from '@material-ui/core/Card'
-import Button from '@material-ui/core/Button'
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
 
-import CardContent from '@material-ui/core/CardContent'
-import { makeStyles, createMuiTheme } from '@material-ui/core/styles'
+import CardContent from "@material-ui/core/CardContent";
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 
 // Font-awesome imports
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRupeeSign } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRupeeSign } from "@fortawesome/free-solid-svg-icons";
 
-let theme = createMuiTheme()
+let theme = createMuiTheme();
 
 const useStyles = makeStyles({
   cards: {
-    margin: '30px 0 50px 0',
-    width: 'auto',
+    margin: "50px 0 50px 0",
+    width: "auto",
     marginLeft: theme.spacing(3),
     marginRight: theme.spacing(3),
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up("md")]: {
       // Center the grid container
 
       width: 800,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      marginLeft: "auto",
+      marginRight: "auto",
     },
   },
   pricingHero: {
-    margin: '100px 0 50px 0',
-    textAlign: 'center',
+    margin: "100px 0 50px 0",
+    textAlign: "center",
   },
   card: {
     padding: 30,
   },
   cardHeader: {
     height: 100,
-    display: 'grid',
-    placeItems: 'center',
+    display: "grid",
+    placeItems: "center",
   },
-})
+});
 
 const Pricing = () => {
-  const classes = useStyles()
-  const router = useRouter()
+  const classes = useStyles();
+  const router = useRouter();
 
   return (
     <div className={classes.pricingHero}>
@@ -65,7 +65,7 @@ const Pricing = () => {
             <Card
               className="pricingCard"
               style={{
-                color: 'var(--primary-color)',
+                color: "var(--primary-color)",
                 minHeight: 575,
               }}
               raised
@@ -73,7 +73,7 @@ const Pricing = () => {
               <CardContent className="pricingCardActionArea">
                 <div
                   className={classes.cardHeader}
-                  style={{ backgroundColor: '#ffe05d' }}
+                  style={{ backgroundColor: "#ffe05d" }}
                 >
                   <Typography component="h2">
                     <span className="secondaryHeading">Lifetime</span>
@@ -82,23 +82,23 @@ const Pricing = () => {
 
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '20px 0 10px 0',
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "20px 0 10px 0",
                   }}
                 >
                   <FontAwesomeIcon
                     icon={faRupeeSign}
                     style={{
-                      fontSize: '1.5rem',
-                      marginRight: '5px',
+                      fontSize: "1.5rem",
+                      marginRight: "5px",
                     }}
                   />
                   <Typography
                     style={{
-                      fontSize: '2rem',
-                      fontWeight: 'bold',
+                      fontSize: "2rem",
+                      fontWeight: "bold",
                     }}
                   >
                     {planValues.lifetimeMembershipCost}
@@ -107,8 +107,8 @@ const Pricing = () => {
 
                 <div
                   style={{
-                    textAlign: 'center',
-                    margin: '10px 0 20px 0',
+                    textAlign: "center",
+                    margin: "10px 0 20px 0",
                   }}
                 >
                   <Button
@@ -116,13 +116,13 @@ const Pricing = () => {
                     size="large"
                     color="primary"
                     style={{
-                      backgroundColor: 'var(--primary-color)',
-                      color: '#FFFFFF',
+                      backgroundColor: "var(--primary-color)",
+                      color: "#FFFFFF",
                       fontWeight: 700,
                     }}
                     onClick={() => {
-                      localStorage.setItem('mesAAMembershiPlan', 'Lifetime')
-                      router.push('/register')
+                      localStorage.setItem("mesAAMembershiPlan", "Lifetime");
+                      router.push("/register");
                     }}
                   >
                     Choose this plan
@@ -133,20 +133,19 @@ const Pricing = () => {
                   <div
                     key={index}
                     style={{
-                      display: 'flex',
-                      justifyContent: 'flex-start',
-                      alignItems: 'center',
+                      display: "flex",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
                       paddingTop: 20,
                     }}
                   >
                     {item.icon}
                     <Typography
-                      component="body"
-                      variant="body"
+                      variant="body1"
                       style={{
-                        fontSize: '1rem',
-                        textAlign: 'left',
-                        backgroundColor: '#ffffff',
+                        fontSize: "1rem",
+                        textAlign: "left",
+                        backgroundColor: "#ffffff",
                       }}
                     >
                       {item.incentive}
@@ -161,7 +160,7 @@ const Pricing = () => {
               <CardContent>
                 <div
                   className={classes.cardHeader}
-                  style={{ backgroundColor: '#d8e3e7' }}
+                  style={{ backgroundColor: "#d8e3e7" }}
                 >
                   <Typography component="h2">
                     <span className="secondaryHeading">Annual</span>
@@ -169,23 +168,23 @@ const Pricing = () => {
                 </div>
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '20px 0 10px 0',
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "20px 0 10px 0",
                   }}
                 >
                   <FontAwesomeIcon
                     icon={faRupeeSign}
                     style={{
-                      fontSize: '1.5rem',
-                      marginRight: '5px',
+                      fontSize: "1.5rem",
+                      marginRight: "5px",
                     }}
                   />
                   <Typography
                     style={{
-                      fontSize: '2rem',
-                      fontWeight: 'bold',
+                      fontSize: "2rem",
+                      fontWeight: "bold",
                     }}
                   >
                     {planValues.annualMembershipCost}/yr
@@ -193,8 +192,8 @@ const Pricing = () => {
                 </div>
                 <div
                   style={{
-                    textAlign: 'center',
-                    margin: '10px 0 20px 0',
+                    textAlign: "center",
+                    margin: "10px 0 20px 0",
                   }}
                 >
                   <Button
@@ -202,13 +201,13 @@ const Pricing = () => {
                     size="large"
                     color="primary"
                     style={{
-                      backgroundColor: 'var(--primary-color)',
-                      color: '#FFFFFF',
+                      backgroundColor: "var(--primary-color)",
+                      color: "#FFFFFF",
                       fontWeight: 700,
                     }}
                     onClick={() => {
-                      localStorage.setItem('mesAAMembershiPlan', 'Annual')
-                      router.push('/register')
+                      localStorage.setItem("mesAAMembershiPlan", "Annual");
+                      router.push("/register");
                     }}
                   >
                     Choose this plan
@@ -218,20 +217,19 @@ const Pricing = () => {
                   <div
                     key={index}
                     style={{
-                      display: 'flex',
-                      justifyContent: 'flex-start',
-                      alignItems: 'center',
+                      display: "flex",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
                       paddingTop: 20,
                     }}
                   >
                     {item.icon}
                     <Typography
-                      component="body"
-                      variant="body"
+                      variant="body1"
                       style={{
-                        fontSize: '1rem',
-                        textAlign: 'left',
-                        backgroundColor: '#ffffff',
+                        fontSize: "1rem",
+                        textAlign: "left",
+                        backgroundColor: "#ffffff",
                       }}
                     >
                       {item.incentive}
@@ -244,7 +242,7 @@ const Pricing = () => {
         </Grid>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Pricing
+export default Pricing;

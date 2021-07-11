@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, Fragment } from "react";
 import { Formik, Form } from "formik";
 import SiteContext from "../../../context/siteContext";
-
+import { useRouter } from "next/router";
 import Image from "next/image";
 
 // Material UI Imports
@@ -83,13 +83,23 @@ const RegistrationPage = (props) => {
   const [open, setOpen] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
   const paymentMode = props.paymentMode.current;
+  const router = useRouter();
 
   const isLastStep = activeStep === steps.length - 1;
 
   const classes = useStyles();
 
   const siteContext = useContext(SiteContext);
-  const { authError, registerUser, isRegistered } = siteContext;
+  const {
+    authError,
+    registerUser,
+    createOrder,
+    paymentOrder,
+    paymentVerified,
+    isRegistered,
+    verifyPayment,
+    user,
+  } = siteContext;
 
   const currentValidationSchema = registrationValidationSchema[activeStep];
 
@@ -103,23 +113,27 @@ const RegistrationPage = (props) => {
     setActiveStep(activeStep - 1);
   };
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (isRegistered && isRegistered) {
-  //       if (localStorage.getItem("mesAAMembershiPlan") === "Lifetime") {
-  //         // window.location.href = `${process.env.NEXT_PUBLIC_PAYU_LIFETIME_PAYMENT}`;
-  //       } else {
-  //         // window.location.href = `${process.env.NEXT_PUBLIC_PAYU_ANNUAL_PAYMENT}`;
-  //       }
-  //     }
-  //   }, 2000);
-  // }, [isRegistered]);
-
   useEffect(() => {
     if (authError) {
       window.scroll({ top: 1, left: 1, behavior: "smooth" });
     }
   }, [authError]);
+
+  // Runs once the registration is complete and we are ready for payment
+  useEffect(() => {
+    if (paymentOrder && isRegistered) {
+      displayRazorPay();
+    }
+  }, [isRegistered, paymentOrder]);
+
+  // Redirect once payment verification is complete
+  useEffect(() => {
+    if (paymentVerified !== null) {
+      if (paymentVerified.status === null) {
+        router.push(`/paymentverified/${user && user.alt_user_id}`);
+      }
+    }
+  }, [paymentVerified]);
 
   const renderStep = (step, props) => {
     switch (step) {
@@ -183,7 +197,12 @@ const RegistrationPage = (props) => {
   };
 
   const handleSubmit = (values, actions) => {
-    // Store all the form data in loacl storage
+    var amount =
+      localStorage.getItem("mesAAMembershiPlan") === "Lifetime"
+        ? process.env.NEXT_PUBLIC_LIFE_MEMBERSHIP_AMOUNT * 100
+        : process.env.NEXT_PUBLIC_ANNUAL_MEMBERSHIP_AMOUNT * 100;
+
+    // Store all the form data in local storage
     const userDetailsInStorage = {
       prefix: values.prefix,
       firstName: values.firstName,
@@ -215,8 +234,11 @@ const RegistrationPage = (props) => {
 
     if (isLastStep) {
       submitForm(values, actions);
+      createOrder(amount, "INR", "ABCD", {
+        membershipType: localStorage.getItem("mesAAMembershiPlan"),
+      });
     } else {
-      // For the profile pic
+      // Validation for the profile pic
       if (activeStep === 0) {
         if (files.length === 0) {
           actions.setSubmitting(false);
@@ -225,7 +247,7 @@ const RegistrationPage = (props) => {
         }
       }
 
-      // For the courses
+      // Validation for the courses
       if (activeStep === 1) {
         if (
           values.streamPuc === "" &&
@@ -248,6 +270,82 @@ const RegistrationPage = (props) => {
     }
   };
 
+  const displayRazorPay = async () => {
+    const res = await loadRazorPay(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+
+    if (!res) return;
+
+    var options = {
+      key: process.env.RAZORPAY_KEY_ID,
+      amount:
+        localStorage.getItem("mesAAMembershiPlan") === "Lifetime"
+          ? process.env.NEXT_PUBLIC_LIFE_MEMBERSHIP_AMOUNT * 100
+          : process.env.NEXT_PUBLIC_ANNUAL_MEMBERSHIP_AMOUNT * 100,
+      currency: "INR",
+      name: "The MES College Alumni Association",
+      description: `Payment for ${localStorage.getItem(
+        "mesAAMembershiPlan"
+      )} membership`,
+      image: process.env.NEXT_PUBLIC_SITE_ICON,
+      order_id: paymentOrder.id,
+
+      handler: function (response) {
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature);
+        verifyPayment(
+          response.razorpay_order_id,
+          response.razorpay_payment_id,
+          response.razorpay_signature,
+          user && user.email
+        );
+        // router.push("/");
+      },
+      prefill: {
+        name:
+          JSON.parse(localStorage.getItem("aaUser")).firstName +
+          " " +
+          JSON.parse(localStorage.getItem("aaUser")).lastName,
+        email: JSON.parse(localStorage.getItem("aaUser")).email,
+        contact: JSON.parse(localStorage.getItem("aaUser")).mobile,
+      },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    const paymentObj = new window.Razorpay(options);
+    paymentObj.open();
+    // rzp1.on("payment.failed", function (response) {
+    //   alert(response.error.code);
+    //   alert(response.error.description);
+    //   alert(response.error.source);
+    //   alert(response.error.step);
+    //   alert(response.error.reason);
+    //   alert(response.error.metadata.order_id);
+    //   alert(response.error.metadata.payment_id);
+    // });
+  };
+
+  const loadRazorPay = (url) => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = url;
+      script.onload = () => {
+        resolve(true);
+      };
+
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
+
   return (
     <Fragment>
       <div className={classes.registrationHero}>
@@ -266,9 +364,9 @@ const RegistrationPage = (props) => {
 
       <div className={classes.root}>
         <Stepper activeStep={activeStep} alternativeLabel>
-          {steps.map((label) => {
+          {steps.map((label, index) => {
             return (
-              <Step>
+              <Step key={index}>
                 <StepLabel>{label}</StepLabel>
               </Step>
             );
@@ -330,35 +428,38 @@ const RegistrationPage = (props) => {
                       </Grid>
 
                       <Grid item>
-                        <Button
-                          type="submit"
-                          variant="contained"
-                          style={{
-                            width: isLastStep ? "12rem" : "9rem",
-                            padding: "10px",
-                            fontSize: "1rem",
-                            fontWeight: 900,
-                            backgroundColor: "#b9ac92",
-                            color: "var(--primary-color)",
-                            letterSpacing: "1px",
-                          }}
-                          endIcon={
-                            <NavigateNextIcon style={{ fontSize: "2rem" }} />
-                          }
-                        >
-                          {props.isSubmitting ? (
-                            <Image
-                              src={"/loader.svg"}
-                              alt="Loading..."
-                              height={25}
-                              width={25}
-                            />
-                          ) : isLastStep ? (
-                            "Pay Online"
-                          ) : (
-                            "Next"
-                          )}
-                        </Button>
+                        {
+                          <Button
+                            type="submit"
+                            variant="contained"
+                            disabled={props.isSubmitting}
+                            style={{
+                              width: isLastStep ? "12rem" : "9rem",
+                              padding: "10px",
+                              fontSize: "1rem",
+                              fontWeight: 900,
+                              backgroundColor: "#b9ac92",
+                              color: "var(--primary-color)",
+                              letterSpacing: "1px",
+                            }}
+                            endIcon={
+                              <NavigateNextIcon style={{ fontSize: "2rem" }} />
+                            }
+                          >
+                            {props.isSubmitting ? (
+                              <Image
+                                src={"/loader.svg"}
+                                alt="Loading..."
+                                height={25}
+                                width={25}
+                              />
+                            ) : isLastStep ? (
+                              "Pay Online"
+                            ) : (
+                              "Next"
+                            )}
+                          </Button>
+                        }
                       </Grid>
                     </Grid>
 

@@ -21,6 +21,9 @@ import {
   AUTH_ERROR,
   CLEAR_ERROR,
   CLEAR_STATE,
+  PAYMENT_ORDER,
+  PAYMENT_VERIFICATION,
+  PAYMENT_ERROR,
 } from "./Types";
 
 const siteReducer = (state, action) => {
@@ -102,6 +105,21 @@ const siteReducer = (state, action) => {
         ...state,
         loading: false,
         paymentStatus: false,
+      };
+    case PAYMENT_ORDER:
+      return {
+        ...state,
+        paymentOrder: action.payload,
+      };
+    case PAYMENT_VERIFICATION:
+      return {
+        ...state,
+        paymentVerified: action.payload,
+      };
+    case PAYMENT_ERROR:
+      return {
+        ...state,
+        paymentError: action.payload,
       };
     case CLEAR_STATE:
       return {

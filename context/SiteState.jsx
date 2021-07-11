@@ -26,6 +26,9 @@ import {
   MEMBERSHIP_DETAILS_FETCH_ERROR,
   PAYMENT_STATUS_UPDATE_SUCCESS,
   PAYMENT_STATUS_UPDATE_ERROR,
+  PAYMENT_ORDER,
+  PAYMENT_ERROR,
+  PAYMENT_VERIFICATION,
 } from "./Types";
 
 const SiteState = (props) => {
@@ -42,6 +45,9 @@ const SiteState = (props) => {
     pendingLifeMembers: null,
     pendingAnnualMembers: null,
     paymentStatus: false,
+    paymentOrder: null,
+    paymentError: null,
+    paymentVerified: null,
   };
 
   const [state, dispatch] = useReducer(siteReducer, initialState);
@@ -143,14 +149,14 @@ const SiteState = (props) => {
     }
   };
 
-  const checkForExistingEmail = async (email) => {
-    const res = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/user/${email}`
-    );
+  // const checkForExistingEmail = async (email) => {
+  //   const res = await axios.get(
+  //     `${process.env.NEXT_PUBLIC_API_URL}/user/${email}`
+  //   );
 
-    dispatch({ type: AUTH_ERROR, payload: res.data });
-    setTimeout(() => dispatch({ type: CLEAR_ERROR }), 5000);
-  };
+  //   dispatch({ type: AUTH_ERROR, payload: res.data });
+  //   setTimeout(() => dispatch({ type: CLEAR_ERROR }), 5000);
+  // };
 
   // Metrics
   const generateMetricCounts = async () => {
@@ -245,6 +251,50 @@ const SiteState = (props) => {
     }
   };
 
+  //--------------------Payments--------------------
+
+  const createOrder = async (amount, currency, receipt, notes) => {
+    const orderPayload = {
+      amount: amount.toString(),
+      currency: currency,
+      receipt: receipt,
+      notes: notes,
+    };
+
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/orders`,
+        orderPayload
+      );
+
+      dispatch({ type: PAYMENT_ORDER, payload: res.data });
+    } catch (err) {
+      // dispatch({ type: PAYMENT_ORDER, payload: res.data });
+    }
+  };
+
+  const verifyPayment = async (orderId, paymentId, signature, email) => {
+    const paymentVerificationPayload = {
+      order_id: orderId,
+      payment_id: paymentId,
+      signature: signature,
+      email: email,
+    };
+
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/verification`,
+        paymentVerificationPayload
+      );
+
+      dispatch({ type: PAYMENT_VERIFICATION, payload: res.data });
+    } catch (err) {
+      // dispatch({ type: PAYMENT_ORDER, payload: res.data });
+    }
+  };
+
+  //--------------------Payments End--------------------
+
   // Logout admin
   const adminLogout = () => {
     if (typeof window !== "undefined") {
@@ -272,14 +322,19 @@ const SiteState = (props) => {
         pendingLifeMembers: state.pendingLifeMembers,
         pendingAnnualMembers: state.pendingAnnualMembers,
         paymentStatus: state.paymentStatus,
+        paymentOrder: state.paymentOrder,
+        paymentStatus: state.paymentStatus,
+        paymentError: state.paymentError,
+        paymentVerified: state.paymentVerified,
         registerUser,
-        checkForExistingEmail,
         generateMetricCounts,
         getLifeMembers,
         getAnnualMembers,
         getMembershipDetails,
         updatePaymentStatus,
         clearUserState,
+        createOrder,
+        verifyPayment,
         loginUser,
         adminLogout,
       }}

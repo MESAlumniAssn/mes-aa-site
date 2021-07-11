@@ -1,38 +1,38 @@
-import React from 'react'
-import contact from '../../../utils/contactDetails'
+import React from "react";
+import contact from "../../../utils/contactDetails";
 
 // Material UI imports
-import Divider from '@material-ui/core/Divider'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
+import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 
 // Font awesome imports
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelopeOpen } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelopeOpen } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
   memberEmail: {
-    fontSize: '1.1rem',
-    fontWeight: 'bold',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '0.9rem',
+    fontSize: "1.1rem",
+    fontWeight: "bold",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.9rem",
     },
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '0.8rem',
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "0.8rem",
     },
   },
-}))
+}));
 
 const OfficeBearerContacts = () => {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
-    <div style={{ margin: '70px 0' }}>
+    <div style={{ margin: "70px 0" }}>
       <Typography
         component="h2"
         align="center"
         gutterBottom
-        style={{ fontWeight: 'bold' }}
+        style={{ fontWeight: "bold" }}
       >
         <span className="secondaryHeading">Contact the Committee Members</span>
       </Typography>
@@ -41,37 +41,37 @@ const OfficeBearerContacts = () => {
         justify="center"
         alignItems="center"
         spacing={6}
-        style={{ paddingTop: '40px' }}
+        style={{ paddingTop: "40px" }}
       >
-        {contact.map((contact) => {
+        {contact.map((contact, index) => {
           return (
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} key={index}>
               <div
                 style={{
-                  borderRadius: '5px',
-                  borderLeft: '5px solid var(--contact-color)',
-                  padding: '15px 20px',
-                  boxShadow: '0 15px 22px rgba(0, 0, 0, 0.2)',
-                  cursor: 'pointer',
+                  borderRadius: "5px",
+                  borderLeft: "5px solid var(--contact-color)",
+                  padding: "15px 20px",
+                  boxShadow: "0 15px 22px rgba(0, 0, 0, 0.2)",
+                  cursor: "pointer",
                 }}
               >
                 <Typography
-                  style={{ fontSize: '1.2rem', fontWeight: 'bold' }}
+                  style={{ fontSize: "1.2rem", fontWeight: "bold" }}
                   gutterBottom
                 >
                   {contact.designation}
                 </Typography>
-                <Divider style={{ backgroundColor: 'var(--contact-color)' }} />
+                <Divider style={{ backgroundColor: "var(--contact-color)" }} />
                 <div
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
+                    display: "flex",
+                    alignItems: "center",
                     paddingTop: 10,
                   }}
                 >
                   <FontAwesomeIcon
                     icon={faEnvelopeOpen}
-                    style={{ marginRight: 7, color: 'var(--contact-color)' }}
+                    style={{ marginRight: 7, color: "var(--contact-color)" }}
                   />
                   <Typography className={classes.memberEmail}>
                     {contact.contact}
@@ -79,11 +79,11 @@ const OfficeBearerContacts = () => {
                 </div>
               </div>
             </Grid>
-          )
+          );
         })}
       </Grid>
     </div>
-  )
-}
+  );
+};
 
-export default OfficeBearerContacts
+export default OfficeBearerContacts;

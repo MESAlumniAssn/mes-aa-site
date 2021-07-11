@@ -85,6 +85,15 @@ const navLinks = {
     about,
     contact,
   ],
+  "/paymentverified/[id]": [
+    welcome,
+    pricing,
+    alumniSpeak,
+    famousAlumni,
+    gallery,
+    about,
+    contact,
+  ],
   "/alumniassndashboard": [home, about, contact],
   "/dashboard/[admin]": [home, about, contact],
 };
