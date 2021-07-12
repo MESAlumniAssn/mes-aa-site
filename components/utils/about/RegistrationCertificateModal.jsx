@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { REGISTRATION_CERTIFICATE } from "../../../utils/images";
 
 // Material UI styles
 import Modal from "@material-ui/core/Modal";
@@ -62,7 +63,7 @@ const RegistrationCertificateModal = ({
             ESC
           </div>
           <Image
-            src="/images/about/registration.jpeg"
+            src={REGISTRATION_CERTIFICATE}
             alt="Registration certificate"
             height={600}
             width={400}

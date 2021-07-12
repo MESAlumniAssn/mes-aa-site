@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { LOGO } from "../../../utils/images";
 
 // Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
@@ -36,7 +37,7 @@ const Certificate = (props) => {
             justifyContent: "space-around",
           }}
         >
-          <Image src={"/logo.png"} alt="Logo" height={150} width={150} />
+          <Image src={LOGO} alt="Logo" height={150} width={150} />
           <div style={{ paddingLeft: 10 }}>
             <Typography
               style={{

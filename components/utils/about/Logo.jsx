@@ -1,33 +1,34 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
+import { LOGO } from "../../../utils/images";
 
 //Material UI imports
-import { makeStyles } from '@material-ui/core/styles'
-import Accordion from '@material-ui/core/Accordion'
-import AccordionSummary from '@material-ui/core/AccordionSummary'
-import AccordionDetails from '@material-ui/core/AccordionDetails'
-import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
+import { makeStyles } from "@material-ui/core/styles";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 
 // Fontawesome imports
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRegistered } from '@fortawesome/free-regular-svg-icons'
-import { faChevronCircleDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRegistered } from "@fortawesome/free-regular-svg-icons";
+import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: '50px 0 25px 0',
+    margin: "50px 0 25px 0",
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
   MuiAccordionroot: {
-    '&.MuiAccordion-root:before': {
-      backgroundColor: 'white',
+    "&.MuiAccordion-root:before": {
+      backgroundColor: "white",
     },
   },
-}))
+}));
 
 // const AccordionSummary = withStyles({
 //   content: {
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 // })(MuiAccordionSummary);
 
 const AimsAndObjectives = () => {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <div className={classes.root}>
       <Container maxWidth="md">
@@ -51,16 +52,16 @@ const AimsAndObjectives = () => {
             expandIcon={
               <FontAwesomeIcon
                 icon={faChevronCircleDown}
-                style={{ fontSize: '2rem', color: 'var(--primary-color)' }}
+                style={{ fontSize: "2rem", color: "var(--primary-color)" }}
               />
             }
             aria-label="Expand to read about our logo"
-            style={{ borderLeft: 'solid 5px var(--secondary-color)' }}
+            style={{ borderLeft: "solid 5px var(--secondary-color)" }}
           >
             <Typography
               component="h3"
               align="center"
-              style={{ fontWeight: 'bold', marginRight: 7 }}
+              style={{ fontWeight: "bold", marginRight: 7 }}
             >
               <span className="secondaryHeading">Our Logo</span>
             </Typography>
@@ -69,13 +70,18 @@ const AimsAndObjectives = () => {
           <AccordionDetails className={classes.hideBorder}>
             <div
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
                 paddingBottom: 10,
               }}
             >
-              <Image src={'/logo.png'} alt={'Logo'} width={350} height={350} />
+              <Image
+                src={LOGO + "?tr=w-350"}
+                alt="Logo"
+                width={350}
+                height={350}
+              />
               <Typography
                 variant="body1"
                 style={{ paddingTop: 10 }}
@@ -86,14 +92,14 @@ const AimsAndObjectives = () => {
                 Association
                 <FontAwesomeIcon
                   icon={faRegistered}
-                  style={{ verticalAlign: 'super', fontSize: '0.75rem' }}
+                  style={{ verticalAlign: "super", fontSize: "0.75rem" }}
                 />
-                {'  '}
+                {"  "}
                 was aesthetically designed to make the first impression in
-                coherence with the moto{' '}
-                <span style={{ fontWeight: 'bold' }}>
+                coherence with the moto{" "}
+                <span style={{ fontWeight: "bold" }}>
                   संघे शक्ति कलौ युगे
-                </span>{' '}
+                </span>{" "}
                 (sanghe shakti kaliyuge) which signifies that in the present day
                 (kali yuga), a group that has a clarity of purpose and a unified
                 vision possesses tremendous power.
@@ -116,7 +122,7 @@ const AimsAndObjectives = () => {
         </Accordion>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default AimsAndObjectives
+export default AimsAndObjectives;

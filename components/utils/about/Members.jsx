@@ -1,9 +1,10 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
+import { DEFAULT_MC } from "../../../utils/images";
 
 // Material UI imports
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 const Members = (props) => {
   return (
@@ -11,7 +12,7 @@ const Members = (props) => {
       <Grid container justify="center" alignItems="center" spacing={6}>
         {props.committeeData
           .filter((role) => {
-            return role.role === props.filter
+            return role.role === props.filter;
           })
           .map((member, index) => {
             return (
@@ -20,9 +21,9 @@ const Members = (props) => {
                   {member.image_url ? (
                     <div
                       className={`mcImageBorder ${
-                        member.role === 'ob'
-                          ? 'obImageBorderColor'
-                          : 'mcImageBorderColor'
+                        member.role === "ob"
+                          ? "obImageBorderColor"
+                          : "mcImageBorderColor"
                       }`}
                     >
                       <Image
@@ -35,8 +36,8 @@ const Members = (props) => {
                     </div>
                   ) : (
                     <Image
-                      src={process.env.NEXT_PUBLIC_DEFAULT_IMAGE_URL}
-                      alt={member.name}
+                      src={DEFAULT_MC}
+                      alt="Default image"
                       height={255}
                       width={245}
                       className="mcImages"
@@ -48,30 +49,30 @@ const Members = (props) => {
                     align="center"
                     gutterBottom
                     style={{
-                      block: 'true',
-                      width: '100%',
-                      fontWeight: 'bold',
-                      padding: '10px 0',
+                      block: "true",
+                      width: "100%",
+                      fontWeight: "bold",
+                      padding: "10px 0",
                     }}
                   >
                     <span className="subtitle">{member.name}</span>
                   </Typography>
-                  {member.role === 'ob' && (
+                  {member.role === "ob" && (
                     <Typography
                       component="subtitle"
                       align="center"
-                      style={{ width: '100%' }}
+                      style={{ width: "100%" }}
                     >
                       <span className="subtitle">{member.designation}</span>
                     </Typography>
                   )}
                 </div>
               </Grid>
-            )
+            );
           })}
       </Grid>
     </div>
-  )
-}
+  );
+};
 
-export default Members
+export default Members;

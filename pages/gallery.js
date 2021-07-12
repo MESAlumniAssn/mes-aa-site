@@ -13,8 +13,7 @@ const gallery = (props) => {
 
   return (
     <GalleryHeadLayout>
-      <Gallery galleryData={props.galleryData.resources} />
-
+      <Gallery galleryData={props.galleryData} />
       <div style={{ marginTop: 30 }}>
         <Footer />
       </div>

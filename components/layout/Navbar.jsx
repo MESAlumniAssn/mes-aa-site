@@ -3,6 +3,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
 import { facebookProfile } from "../../utils/associationDetails";
+import { LOGO } from "../../utils/images";
 
 // Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
@@ -69,8 +70,8 @@ export default function Navbar(props) {
         <Link href="/">
           <a className="animateNavLogoBanner">
             <Image
-              src={"/logo.png"}
-              alt={"Brand icon"}
+              src={LOGO + "?tr=w-200"}
+              alt="Brand icon"
               height={180}
               width={200}
             />

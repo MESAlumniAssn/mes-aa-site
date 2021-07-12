@@ -89,14 +89,14 @@ const Gallery = (props) => {
           />
         </div>
       ) : (
-        <Container maxWidth="lg" style={{ overflow: "hidden" }}>
+        <Container maxWidth="lg" style={{ overflow: "hidden", marginTop: 30 }}>
           <Masonry
             breakpointCols={breakpoints}
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column_gallery"
           >
             {props.galleryData.map((image, index) => (
-              <Link href="#" key={image.asset_id}>
+              <Link href="#" key={image.fileId}>
                 <a
                   style={{
                     overflow: "hidden",
@@ -104,12 +104,8 @@ const Gallery = (props) => {
                   onClick={() => handleOpen(index)}
                 >
                   <img
-                    src={image.secure_url}
-                    alt={
-                      image.context
-                        ? image.context.custom.caption
-                        : "gallery image"
-                    }
+                    src={image.url}
+                    alt={`gallery image-${image.fileId}`}
                     width={"100%"}
                     style={{ borderRadius: "5%" }}
                   />
