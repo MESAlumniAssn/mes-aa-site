@@ -106,7 +106,7 @@ const Gallery = (props) => {
                   <img
                     src={image.url + "?tr:w-401,q-80"}
                     alt={`gallery image-${image.fileId}`}
-                    width={"100%"}
+                    width="401px"
                     style={{ borderRadius: "5%" }}
                   />
                 </a>
