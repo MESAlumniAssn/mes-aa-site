@@ -60,7 +60,7 @@ const ImageCarousel = (props) => {
         {props.galleryData.map((image) => (
           <div key={image.fileId}>
             <img
-              src={image.url + "?tr:w-600"}
+              src={image.url + "?tr=w-600"}
               alt={`gallery image-${image.fileId}`}
               width="600px"
               className={classes.imgDimensions}

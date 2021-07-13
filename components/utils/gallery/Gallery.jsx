@@ -104,7 +104,7 @@ const Gallery = (props) => {
                   onClick={() => handleOpen(index)}
                 >
                   <img
-                    src={image.url + "?tr:w-401,q-80"}
+                    src={image.url + "?tr=w-401,q-80"}
                     alt={`gallery image-${image.fileId}`}
                     width="401px"
                     style={{ borderRadius: "5%" }}
