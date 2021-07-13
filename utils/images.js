@@ -1,5 +1,5 @@
 export const LOGO =
-  "https://ik.imagekit.io/pwxm960evbp/MES-AA/Site_Images/logo_-iztI7b1N.jpg";
+  "https://ik.imagekit.io/pwxm960evbp/MES-AA/Site_Images/logo_LdmkTP9ua.png";
 
 export const ABOUT_HEADER =
   "https://ik.imagekit.io/pwxm960evbp/tr:h-400,w-550/MES-AA/Site_Images/About/college-old_7uo2jBfRvW.png";

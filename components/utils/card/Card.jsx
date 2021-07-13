@@ -100,7 +100,7 @@ const Card = (props) => {
         </div>
         <div
           style={{
-            margin: "25px 0",
+            margin: "20px 0",
             width: "100%",
             display: "flex",
             justifyContent: "center",
@@ -130,7 +130,7 @@ const Card = (props) => {
         </div>
         <Typography
           style={{
-            fontSize: "1.75rem",
+            fontSize: "1.5rem",
             fontWeight: 900,
             textTransform: "uppercase",
           }}
