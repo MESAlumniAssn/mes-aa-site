@@ -120,7 +120,7 @@ const Card = (props) => {
             }
           >
             <Image
-              src={props.userData.profile_url}
+              src={props.userData.profile_url + "?tr:w-250"}
               alt="User profile picture"
               width={250}
               height={250}
