@@ -65,6 +65,7 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
     updatePaymentStatus,
     paymentStatus,
     clearUserState,
+    sendWelcomeEmail,
   } = siteContext;
 
   const handleClose = () => {
@@ -112,11 +113,10 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                 <Form autocomplete="off">
                   <Typography
                     component="h2"
-                    variant="h2"
                     align="center"
                     style={{ paddingBottom: 30 }}
                   >
-                    Update Payment Status
+                    <span className="mainHeading">Update Payment Status</span>
                   </Typography>
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <TextField
@@ -261,6 +261,7 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                     }}
                     onClick={() => {
                       updatePaymentStatus(user.user_id);
+                      sendWelcomeEmail(user.email, user.name);
                       setTimeout(
                         () => getMembershipDetails(user.membership_id),
                         3000

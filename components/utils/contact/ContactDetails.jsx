@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { CONTACT_HEADER } from "../../../utils/images";
 
@@ -19,7 +19,11 @@ import {
   createMuiTheme,
   responsiveFontSizes,
 } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Button from "@material-ui/core/Button";
+import Fade from "@material-ui/core/Fade";
 
 // Fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,6 +35,7 @@ import {
 
 // Component imports
 import OfficeBearerContacts from "./OfficeBearerContacts";
+import ContactForm from "../../forms/contact/ContactForm";
 import Social from "./Social";
 
 let theme = createMuiTheme();
@@ -48,9 +53,16 @@ const useStyles = makeStyles({
     width: 500,
     boxShadow: "0 12px 37px rgba(0,0,0,0.3)",
 
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       height: 200,
-      width: 300,
+      width: 350,
+      marginLeft: 20,
+    },
+  },
+  mainContactContainer: {
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+      paddingLeft: "10px",
     },
   },
   mainContactText: {
@@ -58,10 +70,48 @@ const useStyles = makeStyles({
       paddingTop: "40px",
     },
   },
+  mainContactEmailPhone: {
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    paddingTop: "20px",
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "center",
+    },
+  },
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "none",
+    zIndex: 99999,
+  },
+  modalBackground: {
+    backgroundColor: "#FFF",
+    padding: 30,
+    width: "600px",
+    position: "relative",
+    textAlign: "center",
+    border: "none",
+    "&.Mui-focused": {
+      border: "none",
+      outline: "none",
+      "& .MuiOutlinedInput-notchedOutline": {
+        border: "none",
+        outline: "none",
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: 20,
+      width: "400px",
+    },
+  },
 });
 
 const ContactDetails = () => {
+  const [openContactForm, setOpenContactForm] = useState(false);
   const classes = useStyles();
+
   return (
     <div style={{ padding: "0 5px" }}>
       <div className={classes.contactHero}>
@@ -80,7 +130,7 @@ const ContactDetails = () => {
               />
             </div>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} md={6} className={classes.mainContactContainer}>
             <div className={classes.mainContactText}>
               <Typography style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
                 <FontAwesomeIcon
@@ -95,29 +145,22 @@ const ContactDetails = () => {
                 <span>{collegeAddress1}</span> <span>{collegeAddress2}</span>
               </Typography>
             </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "center",
-                padding: "20px 0",
-              }}
-            >
+            <div className={classes.mainContactEmailPhone}>
               <FontAwesomeIcon
                 icon={faEnvelope}
                 style={{ fontSize: "1.2rem", marginRight: 7 }}
               />
-              <Typography style={{ fontSize: "1.1rem", fontWeight: "bold" }}>
+              {/* <Typography style={{ fontSize: "1.1rem", fontWeight: "bold" }}>
                 {officialEmail}
-              </Typography>
+              </Typography> */}
+              <Button
+                style={{ fontWeight: "bold" }}
+                onClick={() => setOpenContactForm(true)}
+              >
+                Email Us
+              </Button>
             </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "center",
-              }}
-            >
+            <div className={classes.mainContactEmailPhone}>
               <FontAwesomeIcon
                 icon={faPhoneAlt}
                 style={{ fontSize: "1.2rem", marginRight: 7 }}
@@ -128,6 +171,27 @@ const ContactDetails = () => {
             </div>
           </Grid>
         </Grid>
+        <div>
+          <Modal
+            className={classes.modal}
+            open={openContactForm}
+            onClose={() => setOpenContactForm(false)}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={openContactForm}>
+              <div className={classes.modalBackground}>
+                <ContactForm
+                  openContactForm={openContactForm}
+                  setOpenContactForm={setOpenContactForm}
+                />
+              </div>
+            </Fade>
+          </Modal>
+        </div>
         <OfficeBearerContacts />
         <Social />
       </Container>

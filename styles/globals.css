@@ -263,7 +263,7 @@ body {
   align-items: center;
   cursor: pointer;
   box-shadow: 0 17px 20px rgba(0, 0, 0, 0.4);
-  z-index: 9999;
+  z-index: 99;
 }
 
 .scrollToTop {

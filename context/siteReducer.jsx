@@ -24,6 +24,8 @@ import {
   PAYMENT_ORDER,
   PAYMENT_VERIFICATION,
   PAYMENT_ERROR,
+  EMAIL_SEND_SUCCESS,
+  EMAIL_SEND_FAILURE,
 } from "./Types";
 
 const siteReducer = (state, action) => {
@@ -120,6 +122,16 @@ const siteReducer = (state, action) => {
       return {
         ...state,
         paymentError: action.payload,
+      };
+    case EMAIL_SEND_SUCCESS:
+      return {
+        ...state,
+        emailSent: true,
+      };
+    case EMAIL_SEND_FAILURE:
+      return {
+        ...state,
+        emailSent: false,
       };
     case CLEAR_STATE:
       return {

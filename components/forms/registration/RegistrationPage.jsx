@@ -99,6 +99,7 @@ const RegistrationPage = (props) => {
     isRegistered,
     verifyPayment,
     user,
+    sendWelcomeEmail,
   } = siteContext;
 
   const currentValidationSchema = registrationValidationSchema[activeStep];
@@ -130,6 +131,7 @@ const RegistrationPage = (props) => {
   useEffect(() => {
     if (paymentVerified !== null) {
       if (paymentVerified.status === null) {
+        sendWelcomeEmail(user.email, user.first_name);
         router.push(`/paymentverified/${user && user.alt_user_id}`);
       }
     }

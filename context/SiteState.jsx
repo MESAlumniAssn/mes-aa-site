@@ -29,6 +29,8 @@ import {
   PAYMENT_ORDER,
   PAYMENT_ERROR,
   PAYMENT_VERIFICATION,
+  EMAIL_SEND_SUCCESS,
+  EMAIL_SEND_FAILURE,
 } from "./Types";
 
 const SiteState = (props) => {
@@ -48,6 +50,7 @@ const SiteState = (props) => {
     paymentOrder: null,
     paymentError: null,
     paymentVerified: null,
+    emailSent: false,
   };
 
   const [state, dispatch] = useReducer(siteReducer, initialState);
@@ -295,6 +298,47 @@ const SiteState = (props) => {
 
   //--------------------Payments End--------------------
 
+  //-----------------------Emails-----------------------
+
+  const sendWelcomeEmail = async (recipientEmail, recipientName) => {
+    const jsonPayload = {
+      to_email: recipientEmail,
+      alumnus_name: recipientName,
+    };
+
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/email/welcome`,
+        jsonPayload
+      );
+
+      dispatch({ type: EMAIL_SEND_SUCCESS });
+    } catch (err) {
+      dispatch({ type: EMAIL_SEND_FAILURE });
+    }
+  };
+
+  const sendContactEmail = async (senderEmail, senderName, message) => {
+    const jsonPayload = {
+      sender_email: senderEmail,
+      sender_name: senderName,
+      message: message,
+    };
+
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/email/contact`,
+        jsonPayload
+      );
+
+      dispatch({ type: EMAIL_SEND_SUCCESS });
+    } catch (err) {
+      dispatch({ type: EMAIL_SEND_FAILURE });
+    }
+  };
+
+  //---------------------Emails End---------------------
+
   // Logout admin
   const adminLogout = () => {
     if (typeof window !== "undefined") {
@@ -326,6 +370,7 @@ const SiteState = (props) => {
         paymentStatus: state.paymentStatus,
         paymentError: state.paymentError,
         paymentVerified: state.paymentVerified,
+        emailSent: state.emailSent,
         registerUser,
         generateMetricCounts,
         getLifeMembers,
@@ -335,6 +380,8 @@ const SiteState = (props) => {
         clearUserState,
         createOrder,
         verifyPayment,
+        sendWelcomeEmail,
+        sendContactEmail,
         loginUser,
         adminLogout,
       }}

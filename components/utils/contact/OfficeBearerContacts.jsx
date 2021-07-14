@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import contact from "../../../utils/contactDetails";
 
 // Material UI imports
@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-// Font awesome imports
+// Fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelopeOpen } from "@fortawesome/free-solid-svg-icons";
 
@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const OfficeBearerContacts = () => {
   const classes = useStyles();
+
   return (
     <div style={{ margin: "70px 0" }}>
       <Typography
@@ -36,6 +37,7 @@ const OfficeBearerContacts = () => {
       >
         <span className="secondaryHeading">Contact the Committee Members</span>
       </Typography>
+
       <Grid
         container
         justify="center"
@@ -45,14 +47,16 @@ const OfficeBearerContacts = () => {
       >
         {contact.map((contact, index) => {
           return (
-            <Grid item xs={12} sm={6} key={index}>
+            <Grid item xs={12} md={6} key={index}>
               <div
                 style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flexWrap: "wrap",
                   borderRadius: "5px",
                   borderLeft: "5px solid var(--contact-color)",
                   padding: "15px 20px",
                   boxShadow: "0 15px 22px rgba(0, 0, 0, 0.2)",
-                  cursor: "pointer",
                 }}
               >
                 <Typography
