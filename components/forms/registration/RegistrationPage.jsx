@@ -28,6 +28,10 @@ import PaymentDetails from "./PaymentDetails";
 import AlertDialog from "../../utils/generic/AlertDialog";
 import Terms from "../../../components/utils/generic/Terms";
 
+// Fontawesome icon
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDotCircle } from "@fortawesome/free-solid-svg-icons";
+
 // Helpers
 import registrationFormModel from "./FormModels/registrationFromModel";
 import registrationInitialValues from "./FormModels/registrationInitialValues";
@@ -76,11 +80,11 @@ const useStyles = makeStyles({
 });
 
 const RegistrationPage = (props) => {
-  // Related to the profile pic upload
   const [files, setFiles] = useState([]);
   const [profilePicUploaded, setProfilePicUploaded] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
   const [open, setOpen] = useState(false);
+  const [paymentMessage, showPaymentMessage] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
   const paymentMode = props.paymentMode.current;
   const router = useRouter();
@@ -122,10 +126,10 @@ const RegistrationPage = (props) => {
 
   // Runs once the registration is complete and we are ready for payment
   useEffect(() => {
-    if (paymentOrder && isRegistered) {
+    if (!authError && paymentOrder && isRegistered) {
       displayRazorPay();
     }
-  }, [isRegistered, paymentOrder]);
+  }, [isRegistered, paymentOrder, authError]);
 
   // Redirect once payment verification is complete
   useEffect(() => {
@@ -195,7 +199,7 @@ const RegistrationPage = (props) => {
       "O",
       files
     );
-    setTimeout(() => actions.setSubmitting(false), 3000);
+    setTimeout(() => actions.setSubmitting(false), 7000);
   };
 
   const handleSubmit = (values, actions) => {
@@ -273,6 +277,7 @@ const RegistrationPage = (props) => {
   };
 
   const displayRazorPay = async () => {
+    showPaymentMessage(false);
     const res = await loadRazorPay(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
@@ -392,11 +397,9 @@ const RegistrationPage = (props) => {
                       </div>
                     )}
                     {renderStep(activeStep, props)}
-
                     <div style={{ paddingTop: 20 }}>
                       <Terms />
                     </div>
-
                     <Grid
                       container
                       justify="center"
@@ -414,10 +417,11 @@ const RegistrationPage = (props) => {
                               fontSize: "1rem",
                               fontWeight: 900,
                               backgroundColor: "#fecb89",
-                              color: "#290001",
+                              color: "var(--primary-color)",
                               letterSpacing: "1px",
                             }}
                             onClick={handleBack}
+                            disabled={props.isSubmitting}
                             startIcon={
                               <NavigateBeforeIcon
                                 style={{ fontSize: "2rem" }}
@@ -447,8 +451,11 @@ const RegistrationPage = (props) => {
                             endIcon={
                               <NavigateNextIcon style={{ fontSize: "2rem" }} />
                             }
+                            onClick={() => {
+                              isLastStep && showPaymentMessage(true);
+                            }}
                           >
-                            {props.isSubmitting ? (
+                            {props.isSubmitting && !authError ? (
                               <Image
                                 src={"/loader.svg"}
                                 alt="Loading..."
@@ -464,6 +471,27 @@ const RegistrationPage = (props) => {
                         }
                       </Grid>
                     </Grid>
+
+                    {paymentMessage && (
+                      <span
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          margin: "30px 30px 0 30px",
+                          padding: 5,
+                          fontSize: "0.9rem",
+                          textAlign: "center",
+                          color: "#87431d",
+                        }}
+                      >
+                        <p style={{ margin: 0 }}>
+                          Redirecting you to payment. Please do not refresh the
+                          page
+                          <span className="blinkingDotAnimation">. . .</span>
+                        </p>
+                      </span>
+                    )}
 
                     {isLastStep && (
                       <div
@@ -481,6 +509,7 @@ const RegistrationPage = (props) => {
                             letterSpacing: "1px",
                           }}
                           className="styledLink"
+                          disabled={props.isSubmitting}
                           onClick={handleOpen}
                         >
                           See alternate payment option
