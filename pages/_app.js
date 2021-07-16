@@ -6,6 +6,7 @@ import SiteState from "../context/SiteState";
 import smoothscroll from "smoothscroll-polyfill";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, Zoom } from "react-toastify";
+import { motion } from "framer-motion";
 
 // Component imports
 const Layout = dynamic(() => import("../components/layout/Layout"), {
@@ -121,6 +122,15 @@ theme.typography.h6 = {
   },
 };
 
+const pageVariants = {
+  pageInitial: {
+    opacity: 0,
+  },
+  pageAnimate: {
+    opacity: 1,
+  },
+};
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const paymentMode = useRef("O");
@@ -132,23 +142,30 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <SiteState>
-      <ThemeProvider theme={theme}>
-        <Layout pathname={pathname}>
-          <Component {...pageProps} paymentMode={paymentMode} />
-        </Layout>
-      </ThemeProvider>
-      <ToastContainer
-        autoClose={3000}
-        hideProgressBar={true}
-        newestOnTop
-        closeOnClick
-        closeButton={false}
-        rtl={false}
-        pauseOnHover
-        transition={Zoom}
-      />
-    </SiteState>
+    <motion.div
+      key={router.route}
+      variants={pageVariants}
+      initial="pageInitial"
+      animate="pageAnimate"
+    >
+      <SiteState>
+        <ThemeProvider theme={theme}>
+          <Layout pathname={pathname}>
+            <Component {...pageProps} paymentMode={paymentMode} />
+          </Layout>
+        </ThemeProvider>
+        <ToastContainer
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop
+          closeOnClick
+          closeButton={false}
+          rtl={false}
+          pauseOnHover
+          transition={Zoom}
+        />
+      </SiteState>
+    </motion.div>
   );
 }
 

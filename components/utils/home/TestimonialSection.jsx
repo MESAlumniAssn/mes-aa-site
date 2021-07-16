@@ -13,16 +13,14 @@ const TestimonialSection = ({ styles, testimonials }) => {
   useEffect(() => {
     if (inView) {
       animation.start({
-        opacity: 1,
-        scale: 1,
-        transition: { duration: 0.3 },
+        y: 0,
+        transition: { duration: 0.5 },
       });
     }
 
     if (!inView) {
       animation.start({
-        opacity: 1,
-        scale: 0,
+        y: 100,
       });
     }
   }, [inView]);
@@ -38,9 +36,9 @@ const TestimonialSection = ({ styles, testimonials }) => {
         </Link>
       </div>
 
-      <motion.div animate={animation} style={{ padding: "20px 0" }}>
+      <div animate={animation} style={{ padding: "20px 0" }}>
         <Testimonials testimonials={testimonials.slice(0, 6)} />
-      </motion.div>
+      </div>
     </div>
   );
 };
