@@ -254,6 +254,18 @@ const SiteState = (props) => {
     }
   };
 
+  // Manual payment notification email flag
+  const updateManualPaymentNotificationStatus = async (altUserId) => {
+    try {
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/manual_payment/notification/${altUserId}`
+      );
+      dispatch({ type: EMAIL_SEND_SUCCESS });
+    } catch (err) {
+      dispatch({ type: EMAIL_SEND_FAILURE });
+    }
+  };
+
   //--------------------Payments--------------------
 
   const createOrder = async (amount, currency, receipt, notes) => {
@@ -337,6 +349,30 @@ const SiteState = (props) => {
     }
   };
 
+  const sendManualPaymentEmail = async (
+    alumniName,
+    alumniEmail,
+    membershipId,
+    membershipType
+  ) => {
+    const jsonPayload = {
+      to_email: alumniEmail,
+      alumni_name: alumniName,
+      membership_id: membershipId,
+      membership_type: membershipType,
+    };
+
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/email/payment/manual`,
+        jsonPayload
+      );
+      dispatch({ type: EMAIL_SEND_SUCCESS });
+    } catch (err) {
+      dispatch({ type: EMAIL_SEND_FAILURE });
+    }
+  };
+
   //---------------------Emails End---------------------
 
   // Logout admin
@@ -378,10 +414,12 @@ const SiteState = (props) => {
         getMembershipDetails,
         updatePaymentStatus,
         clearUserState,
+        updateManualPaymentNotificationStatus,
         createOrder,
         verifyPayment,
         sendWelcomeEmail,
         sendContactEmail,
+        sendManualPaymentEmail,
         loginUser,
         adminLogout,
       }}

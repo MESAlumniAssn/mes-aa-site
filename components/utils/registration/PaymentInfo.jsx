@@ -10,7 +10,14 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   paymentInfoContainer: {
-    margin: "100px 0 50px 0",
+    margin: "100px 100px 50px 100px",
+    padding: "30px 15px",
+    textAlign: "center",
+    borderRadius: "1rem",
+    boxShadow: "0 23px 47px rgba(0, 0, 0, 0.3)",
+    [theme.breakpoints.down("md")]: {
+      margin: "100px 20px 50px 20px",
+    },
   },
 }));
 
@@ -27,7 +34,7 @@ const PaymentInfo = (props) => {
         <Typography component="h1">
           <span className="mainHeading">
             Thank you for registering,{" "}
-            <span style={{ color: "#ff5200" }}>{props.userData.name}</span>!
+            <span style={{ color: "#ff5200" }}>{props.userData.name}!</span>
           </span>
         </Typography>
 
