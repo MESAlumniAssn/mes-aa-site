@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import {
   associationName,
   collegeName,
@@ -30,12 +31,21 @@ import {
   faBookOpen,
   faCircle,
   faSitemap,
+  faPencilAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Component imports
 import ContactForm from "../forms/contact/ContactForm";
 
 let theme = createMuiTheme();
+
+const variants = {
+  hover: {
+    backgroundColor: "#DCCCC0",
+    transition: { ease: "easeOut", duration: "1s" },
+  },
+  tap: { y: "1px" },
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -145,12 +155,25 @@ const Footer = () => {
                 icon={faEnvelope}
                 style={{ marginRight: "5px" }}
               />{" "}
-              <Button
-                style={{ fontWeight: "bold" }}
+              {officialEmail}{" "}
+              <motion.button
+                variants={variants}
+                whileHover="hover"
+                whileTap="tap"
+                style={{
+                  fontWeight: "bold",
+                  width: 20,
+                  height: 20,
+                  backgroundColor: "inherit",
+                  border: "none",
+                  boxShadow: "none",
+                  cursor: "pointer",
+                  borderRadius: "5px",
+                }}
                 onClick={() => setOpenContactForm(true)}
               >
-                Email Us
-              </Button>
+                <FontAwesomeIcon icon={faPencilAlt} />
+              </motion.button>
             </Typography>
           </Grid>
           <Grid item xs={12} align="center">
