@@ -31,6 +31,8 @@ import {
   PAYMENT_VERIFICATION,
   EMAIL_SEND_SUCCESS,
   EMAIL_SEND_FAILURE,
+  TESTIMONIAL_CREATION_SUCCESS,
+  TESTIMONIAL_CREATION_ERROR,
 } from "./Types";
 
 const SiteState = (props) => {
@@ -51,6 +53,7 @@ const SiteState = (props) => {
     paymentError: null,
     paymentVerified: null,
     emailSent: false,
+    testimonial: null,
   };
 
   const [state, dispatch] = useReducer(siteReducer, initialState);
@@ -266,6 +269,32 @@ const SiteState = (props) => {
     }
   };
 
+  //--------------------Testimonials--------------------
+
+  const createTestimonial = async (name, batch, message) => {
+    const jsonPayload = {
+      name: name,
+      batch: batch,
+      message: message,
+    };
+
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/testimonials/create`,
+        jsonPayload
+      );
+
+      dispatch({ type: TESTIMONIAL_CREATION_SUCCESS, payload: res.data });
+    } catch (err) {
+      dispatch({
+        type: TESTIMONIAL_CREATION_ERROR,
+        payload: err.response.data.detail,
+      });
+    }
+  };
+
+  //--------------------Testimonials End--------------------
+
   //--------------------Payments--------------------
 
   const createOrder = async (amount, currency, receipt, notes) => {
@@ -373,6 +402,30 @@ const SiteState = (props) => {
     }
   };
 
+  const sendTestimonialApprovalEmail = async (
+    alumniName,
+    alumniBatch,
+    testimonial,
+    url
+  ) => {
+    const jsonPayload = {
+      name: alumniName,
+      batch: alumniBatch,
+      message: testimonial,
+      approve_url: url,
+    };
+
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/email/testimonial`,
+        jsonPayload
+      );
+      dispatch({ type: EMAIL_SEND_SUCCESS });
+    } catch (err) {
+      dispatch({ type: EMAIL_SEND_FAILURE });
+    }
+  };
+
   //---------------------Emails End---------------------
 
   // Logout admin
@@ -406,6 +459,7 @@ const SiteState = (props) => {
         paymentStatus: state.paymentStatus,
         paymentError: state.paymentError,
         paymentVerified: state.paymentVerified,
+        testimonial: state.testimonial,
         emailSent: state.emailSent,
         registerUser,
         generateMetricCounts,
@@ -417,9 +471,11 @@ const SiteState = (props) => {
         updateManualPaymentNotificationStatus,
         createOrder,
         verifyPayment,
+        createTestimonial,
         sendWelcomeEmail,
         sendContactEmail,
         sendManualPaymentEmail,
+        sendTestimonialApprovalEmail,
         loginUser,
         adminLogout,
       }}

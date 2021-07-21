@@ -96,6 +96,7 @@ const navLinks = {
   ],
   "/alumniassndashboard": [home, about, contact],
   "/dashboard/[admin]": [home, about, contact],
+  "/testimonialverification/[verificationhash]": [home, about, contact],
 };
 
 export default navLinks;

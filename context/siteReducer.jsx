@@ -26,6 +26,8 @@ import {
   PAYMENT_ERROR,
   EMAIL_SEND_SUCCESS,
   EMAIL_SEND_FAILURE,
+  TESTIMONIAL_CREATION_SUCCESS,
+  TESTIMONIAL_CREATION_ERROR,
 } from "./Types";
 
 const siteReducer = (state, action) => {
@@ -122,6 +124,12 @@ const siteReducer = (state, action) => {
       return {
         ...state,
         paymentError: action.payload,
+      };
+    case TESTIMONIAL_CREATION_SUCCESS:
+    case TESTIMONIAL_CREATION_ERROR:
+      return {
+        ...state,
+        testimonial: action.payload,
       };
     case EMAIL_SEND_SUCCESS:
       return {

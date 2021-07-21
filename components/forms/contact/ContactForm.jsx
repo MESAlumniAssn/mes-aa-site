@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => {
       letterSpacing: "1px",
       boxShadow: "0 13px 27px rgba(0, 0, 0, 0.3)",
       cursor: "pointer",
+      textTransform: "uppercase",
     },
   };
 });
@@ -232,7 +233,7 @@ const ContactForm = ({ openContactForm, setOpenContactForm }) => {
                   type="submit"
                   className={classes.buttonStyle}
                 >
-                  SEND
+                  Send
                 </motion.button>
               </div>
             </Form>

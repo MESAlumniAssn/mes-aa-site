@@ -6,6 +6,7 @@ import { motion, useAnimation } from "framer-motion";
 // Component imports
 import TestimonialCard from "./TestimonialCard";
 import Container from "@material-ui/core/Container";
+import TestimonialButton from "./TestimonialButton";
 
 const breakpoints = {
   default: 3,
@@ -36,6 +37,10 @@ const Testimonials = (props) => {
 
   return (
     <Container maxWidth="lg" ref={ref}>
+      <div style={{ marginBottom: 50, textAlign: "center" }}>
+        <TestimonialButton />
+      </div>
+
       <Masonry
         breakpointCols={breakpoints}
         className="my-masonry-grid"
