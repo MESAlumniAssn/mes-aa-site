@@ -14,6 +14,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
+// Component imports
+import recaptcha from "../../../utils/recaptcha";
+
 const currentYear = new Date().getFullYear();
 
 const validationSchema = Yup.object({
@@ -252,6 +255,8 @@ const CreateTestmonialForm = ({
                 {props.errors.message}
               </Typography>
             )}
+
+            {recaptcha}
 
             <div style={{ marginTop: 40 }}>
               <motion.button

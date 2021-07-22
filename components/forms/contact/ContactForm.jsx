@@ -13,6 +13,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
+// Component imports
+import recaptcha from "../../../utils/recaptcha";
+
 const useStyles = makeStyles((theme) => {
   return {
     modalBackground: {
@@ -225,6 +228,8 @@ const ContactForm = ({ openContactForm, setOpenContactForm }) => {
                   {props.errors.message}
                 </Typography>
               )}
+
+              {recaptcha}
 
               <div style={{ marginTop: 40 }}>
                 <motion.button
