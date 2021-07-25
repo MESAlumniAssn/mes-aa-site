@@ -8,7 +8,7 @@ const Terms = () => {
   return (
     <div>
       <Typography style={{ fontSize: "0.8rem", lineHeight: "1.3rem" }}>
-        By registering, you acknowledge that you have read and understood our{" "}
+        By registering, I acknowledge that I have read and understood the{" "}
         <Link href="/terms">
           <a
             style={{ color: "#87431d", textDecoration: "none" }}
@@ -26,7 +26,7 @@ const Terms = () => {
             Privacy Policy
           </a>
         </Link>
-        . You are also confirming that you are an alumnus of the{" "}
+        . I am also confirming that I am an alumnus of the{" "}
         <span style={{ fontWeight: 700 }}>
           MES College of Arts, Commerce and Science
         </span>
