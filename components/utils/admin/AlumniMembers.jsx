@@ -197,6 +197,18 @@ const AlumniMembers = (props) => {
       width: 500,
       headerClassName: headerStyle,
     },
+    {
+      field: "id_card_url",
+      headerName: "ID Card",
+      width: 500,
+      headerClassName: headerStyle,
+    },
+    {
+      field: "membership_certificate_url",
+      headerName: "Membership Certificate",
+      width: 500,
+      headerClassName: headerStyle,
+    },
   ];
 
   useEffect(() => {
@@ -242,13 +254,13 @@ const AlumniMembers = (props) => {
   return (
     <div>
       <div style={{ margin: "75px 0 25px 0" }}>
-        <Typography component="h2" variant="h2">
+        <Typography component="h2">
           {props.paymentStatus === "active" ? (
             <span
               className={
                 props.memberType === "Lifetime"
-                  ? classes.registeredLifeBorderStyle
-                  : classes.registeredAnnualBorderStyle
+                  ? "secondaryHeading " + classes.registeredLifeBorderStyle
+                  : "secondaryHeading " + classes.registeredAnnualBorderStyle
               }
             >
               Registered
@@ -257,15 +269,17 @@ const AlumniMembers = (props) => {
             <span
               className={
                 props.memberType === "Lifetime"
-                  ? classes.pendingLifeBorderStyle
-                  : classes.pendingAnnualBorderStyle
+                  ? "secondaryHeading " + classes.pendingLifeBorderStyle
+                  : "secondaryHeading " + classes.pendingAnnualBorderStyle
               }
             >
               Pending
             </span>
           )}
-          {props.memberType === "Lifetime" ? " Life " : " Annual "}
-          Members
+          <span className="secondaryHeading">
+            {props.memberType === "Lifetime" ? " Life " : " Annual "}
+            Members
+          </span>
         </Typography>
       </div>
       <div

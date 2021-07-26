@@ -43,8 +43,8 @@ const AdminHeader = () => {
           "Logout"
         )}
       </Button>
-      <Typography component="h1" variant="h1" align="center">
-        Admin Dashboard
+      <Typography component="h1" align="center">
+        <span className="mainHeading">Admin Dashboard</span>
       </Typography>
     </div>
   );

@@ -18,7 +18,7 @@ import AlertDialog from "../generic/AlertDialog";
 const useStyles = makeStyles((theme) => {
   return {
     containerHeading: {
-      margin: "100px 0 25px 0",
+      margin: "100px 25px 25px 25px",
       display: "flex",
       justifyContent: "center",
     },
@@ -46,10 +46,11 @@ const useStyles = makeStyles((theme) => {
       width: "500px",
       marginTop: 75,
       borderRadius: 20,
-      padding: "30px 20px",
-      boxShadow: "2px 27px 46px rgba(0, 0, 0, 0.15)",
+      padding: "30px 30px",
+      boxShadow: "2px 27px 46px rgba(0, 0, 0, 0.2)",
       [theme.breakpoints.down("sm")]: {
-        width: "400px",
+        margin: "25px 20px 0 20px",
+        width: "375px",
       },
     },
   };
@@ -89,13 +90,8 @@ const AdminLogin = () => {
   return (
     <Fragment>
       <div className={classes.containerHeading}>
-        <Typography
-          component="h1"
-          variant="h1"
-          align="center"
-          className="styledHeading"
-        >
-          The Admin Dashboard
+        <Typography component="h1" align="center" className="styledHeading">
+          <span className="mainHeading">The Admin Dashboard</span>
         </Typography>
       </div>
       <div className={classes.logincontainer}>
@@ -134,7 +130,6 @@ const AdminLogin = () => {
                 <div>
                   <Typography
                     component="h2"
-                    variant="h2"
                     align="center"
                     style={{ paddingBottom: 20 }}
                   >
@@ -143,10 +138,11 @@ const AdminLogin = () => {
                         borderBottom: "5px solid #7952B3",
                         paddingBottom: 3,
                       }}
+                      className="secondaryHeading"
                     >
                       Dashboard
                     </span>{" "}
-                    Login
+                    <span className="secondaryHeading">Login</span>
                   </Typography>
                   {authError && authError && <AlertDialog error={authError} />}
 
