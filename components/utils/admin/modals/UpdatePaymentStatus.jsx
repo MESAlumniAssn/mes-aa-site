@@ -51,7 +51,9 @@ const variants = {
 };
 
 const validationSchema = Yup.object({
-  membershipId: Yup.string().required("Membership id is required"),
+  membershipId: Yup.string()
+    .required("Membership id is required")
+    .matches(/^MESAA-(LM|AM)-\d+-\d+$/, "Invalid Membership Id format"),
 });
 
 const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
@@ -187,100 +189,110 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                 width={200}
               />
             </div>
-          ) : (
-            user &&
-            user && (
-              <div style={{ marginTop: 25 }}>
-                <Typography style={{ fontSize: "1.3rem" }}>
-                  Details for{" "}
-                  <span style={{ color: "#D49D42", fontWeight: "bold" }}>
-                    {user.membership_id}
+          ) : user && user !== "That id does not exist" ? (
+            <div style={{ marginTop: 25 }}>
+              <Typography style={{ fontSize: "1.3rem" }}>
+                Details for{" "}
+                <span style={{ color: "#D49D42", fontWeight: "bold" }}>
+                  {user.membership_id}
+                </span>
+                :
+              </Typography>
+
+              <div
+                style={{
+                  margin: "20px 0",
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                }}
+              >
+                <Typography style={{ fontWeight: 600 }}>
+                  Name:{" "}
+                  <span style={{ color: "#D49D42", fontWeight: 800 }}>
+                    {user.name}
                   </span>
-                  :
                 </Typography>
+                <Typography style={{ fontWeight: 600 }}>
+                  Email:{" "}
+                  <span style={{ color: "#D49D42", fontWeight: 800 }}>
+                    {user.email}
+                  </span>
+                </Typography>
+              </div>
 
-                <div
+              <Chips membershipType={user.membership_type} />
+
+              <Typography
+                style={{
+                  fontSize: "1.4rem",
+                  fontWeight: 600,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginTop: 10,
+                }}
+              >
+                Fee Paid:&nbsp;
+                {user.payment_status ? (
+                  <FontAwesomeIcon
+                    icon={faCheckCircle}
+                    style={{ fontSize: "2rem", color: "#00917C" }}
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    icon={faTimesCircle}
+                    style={{
+                      fontSize: "2rem",
+                      color: "#F14668",
+                    }}
+                  />
+                )}
+              </Typography>
+
+              {!user.payment_status && (
+                <Button
+                  variant="outlined"
                   style={{
-                    margin: "20px 0",
-                    display: "flex",
-                    justifyContent: "space-evenly",
+                    marginTop: 20,
+                    height: 40,
+                    width: 80,
+                    backgroundColor: "var(--primary-color)",
+                    color: "#FFFFFF",
+                  }}
+                  onClick={() => {
+                    updatePaymentStatus(user.user_id);
+                    sendWelcomeEmail(user.email, user.name);
+                    setTimeout(
+                      () => getMembershipDetails(user.membership_id),
+                      3000
+                    );
                   }}
                 >
-                  <Typography style={{ fontWeight: 600 }}>
-                    Name:{" "}
-                    <span style={{ color: "#D49D42", fontWeight: 800 }}>
-                      {user.name}
-                    </span>
-                  </Typography>
-                  <Typography style={{ fontWeight: 600 }}>
-                    Email:{" "}
-                    <span style={{ color: "#D49D42", fontWeight: 800 }}>
-                      {user.email}
-                    </span>
-                  </Typography>
-                </div>
-
-                <Chips membershipType={user.membership_type} />
-
-                <Typography
-                  style={{
-                    fontSize: "1.4rem",
-                    fontWeight: 600,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginTop: 10,
-                  }}
-                >
-                  Fee Paid:&nbsp;
-                  {user.payment_status ? (
-                    <FontAwesomeIcon
-                      icon={faCheckCircle}
-                      style={{ fontSize: "2rem", color: "#00917C" }}
-                    />
+                  {!paymentStatus ? (
+                    "Update"
                   ) : (
-                    <FontAwesomeIcon
-                      icon={faTimesCircle}
-                      style={{
-                        fontSize: "2rem",
-                        color: "#F14668",
-                      }}
+                    <Image
+                      src="/loader.svg"
+                      alt="Loading..."
+                      height={20}
+                      width={20}
                     />
                   )}
-                </Typography>
-
-                {!user.payment_status && (
-                  <Button
-                    variant="outlined"
-                    style={{
-                      marginTop: 20,
-                      height: 40,
-                      width: 80,
-                      backgroundColor: "var(--primary-color)",
-                      color: "#FFFFFF",
-                    }}
-                    onClick={() => {
-                      updatePaymentStatus(user.user_id);
-                      sendWelcomeEmail(user.email, user.name);
-                      setTimeout(
-                        () => getMembershipDetails(user.membership_id),
-                        3000
-                      );
-                    }}
-                  >
-                    {!paymentStatus ? (
-                      "Update"
-                    ) : (
-                      <Image
-                        src="/loader.svg"
-                        alt="Loading..."
-                        height={20}
-                        width={20}
-                      />
-                    )}
-                  </Button>
-                )}
-              </div>
+                </Button>
+              )}
+            </div>
+          ) : (
+            user && (
+              <Typography
+                color="primary"
+                style={{
+                  paddingTop: 20,
+                  fontWeight: "bold",
+                  fontSize: "1.25rem",
+                }}
+              >
+                {user}
+              </Typography>
             )
           )}
         </div>

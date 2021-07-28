@@ -33,6 +33,10 @@ import {
   EMAIL_SEND_FAILURE,
   TESTIMONIAL_CREATION_SUCCESS,
   TESTIMONIAL_CREATION_ERROR,
+  EXPIRED_MEMBERSHIP_FETCHED_SUCCESS,
+  EXPIRED_MEMBERSHIP_FETCHED_ERROR,
+  RENEWED_MEMBERSHIP_FETCHED_SUCCESS,
+  RENEWED_MEMBERSHIP_FETCHED_ERROR,
 } from "./Types";
 
 const SiteState = (props) => {
@@ -46,6 +50,8 @@ const SiteState = (props) => {
     metrics: null,
     lifeMembers: null,
     annualMembers: null,
+    expiredMemberships: null,
+    renewedMemberships: null,
     pendingLifeMembers: null,
     pendingAnnualMembers: null,
     paymentStatus: false,
@@ -222,6 +228,36 @@ const SiteState = (props) => {
           type: AM_PENDING_FETCH_ERROR,
           payload: err.response.data.detail,
         });
+    }
+  };
+
+  // Get list of expired memberships
+  const getExpiredMembershipDetails = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/expired_members`
+      );
+      dispatch({ type: EXPIRED_MEMBERSHIP_FETCHED_SUCCESS, payload: res.data });
+    } catch (err) {
+      dispatch({
+        type: EXPIRED_MEMBERSHIP_FETCHED_ERROR,
+        payload: err.response.data.detail,
+      });
+    }
+  };
+
+  // Get list of renewed memberships
+  const getRenewedMembershipDetails = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/recently_renewed`
+      );
+      dispatch({ type: RENEWED_MEMBERSHIP_FETCHED_SUCCESS, payload: res.data });
+    } catch (err) {
+      dispatch({
+        type: RENEWED_MEMBERSHIP_FETCHED_ERROR,
+        payload: err.response.data.detail,
+      });
     }
   };
 
@@ -461,11 +497,15 @@ const SiteState = (props) => {
         paymentVerified: state.paymentVerified,
         testimonial: state.testimonial,
         emailSent: state.emailSent,
+        expiredMemberships: state.expiredMemberships,
+        renewedMemberships: state.renewedMemberships,
         registerUser,
         generateMetricCounts,
         getLifeMembers,
         getAnnualMembers,
         getMembershipDetails,
+        getExpiredMembershipDetails,
+        getRenewedMembershipDetails,
         updatePaymentStatus,
         clearUserState,
         updateManualPaymentNotificationStatus,

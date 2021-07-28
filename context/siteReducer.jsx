@@ -28,6 +28,10 @@ import {
   EMAIL_SEND_FAILURE,
   TESTIMONIAL_CREATION_SUCCESS,
   TESTIMONIAL_CREATION_ERROR,
+  EXPIRED_MEMBERSHIP_FETCHED_SUCCESS,
+  EXPIRED_MEMBERSHIP_FETCHED_ERROR,
+  RENEWED_MEMBERSHIP_FETCHED_SUCCESS,
+  RENEWED_MEMBERSHIP_FETCHED_ERROR,
 } from "./Types";
 
 const siteReducer = (state, action) => {
@@ -85,6 +89,20 @@ const siteReducer = (state, action) => {
         ...state,
         loading: false,
         pendingAnnualMembers: action.payload,
+      };
+    case EXPIRED_MEMBERSHIP_FETCHED_SUCCESS:
+    case EXPIRED_MEMBERSHIP_FETCHED_ERROR:
+      return {
+        ...state,
+        loading: false,
+        expiredMemberships: action.payload,
+      };
+    case RENEWED_MEMBERSHIP_FETCHED_SUCCESS:
+    case RENEWED_MEMBERSHIP_FETCHED_ERROR:
+      return {
+        ...state,
+        loading: false,
+        renewedMemberships: action.payload,
       };
     case MEMBERSHIP_DETAILS_FETCH_SUCCESS:
       return {

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { Fragment, useEffect, useContext } from "react";
 import Image from "next/image";
 import SiteContext from "../../../context/siteContext";
 
@@ -6,55 +6,90 @@ import SiteContext from "../../../context/siteContext";
 import {
   DataGrid,
   GridToolbarContainer,
+  GridToolbarColumnsButton,
+  GridToolbarFilterButton,
   GridToolbarExport,
 } from "@material-ui/data-grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+// Component imports
+import CustomPagination from "./CustomPagination";
+
+const useStyles = makeStyles((theme) => ({
   root: {
     "& .dg-header-lm": {
       backgroundColor: "#fff5b7",
       color: "#000",
       fontSize: "1.2rem",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "1rem",
+      },
     },
     "& .dg-header-am": {
       backgroundColor: "#d5dbb3",
       color: "#000",
       fontSize: "1.2rem",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "1rem",
+      },
     },
     "& .dg-pending-header-lm": {
       backgroundColor: "#ffcb91",
       color: "#000",
       fontSize: "1.2rem",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "1rem",
+      },
     },
     "& .dg-pending-header-am": {
       backgroundColor: "#f6dfeb",
       color: "#000",
       fontSize: "1.2rem",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "1rem",
+      },
     },
   },
   registeredLifeBorderStyle: {
     borderBottom: "5px solid #fa9905",
     paddingBottom: 3,
+    [theme.breakpoints.down("sm")]: {
+      borderBottomWidth: "4px",
+      paddingBottom: 0.1,
+    },
   },
   registeredAnnualBorderStyle: {
     borderBottom: "5px solid #295939",
     paddingBottom: 3,
+    [theme.breakpoints.down("sm")]: {
+      borderBottomWidth: "4px",
+      paddingBottom: 0.1,
+    },
   },
   pendingLifeBorderStyle: {
     borderBottom: "5px solid #f98404",
     paddingBottom: 3,
+    [theme.breakpoints.down("sm")]: {
+      borderBottomWidth: "4px",
+      paddingBottom: 0.1,
+    },
   },
   pendingAnnualBorderStyle: {
     borderBottom: "5px solid #72147e",
     paddingBottom: 3,
+    [theme.breakpoints.down("sm")]: {
+      borderBottomWidth: "4px",
+      paddingBottom: 0.1,
+    },
   },
-});
+}));
 
 const exportToolbar = () => {
   return (
     <GridToolbarContainer>
+      <GridToolbarColumnsButton />
+      <GridToolbarFilterButton />
       <GridToolbarExport />
     </GridToolbarContainer>
   );
@@ -82,7 +117,7 @@ const AlumniMembers = (props) => {
       ? "dg-pending-header-am"
       : "dg-header-am";
 
-  const columns = [
+  const allMemberFields = [
     {
       field: "membership_id",
       headerName: "Membership ID",
@@ -200,13 +235,13 @@ const AlumniMembers = (props) => {
     {
       field: "id_card_url",
       headerName: "ID Card",
-      width: 500,
+      width: 400,
       headerClassName: headerStyle,
     },
     {
       field: "membership_certificate_url",
       headerName: "Membership Certificate",
-      width: 500,
+      width: 400,
       headerClassName: headerStyle,
     },
   ];
@@ -241,12 +276,7 @@ const AlumniMembers = (props) => {
           margin: "100px 0",
         }}
       >
-        <Image
-          src={"/loader.svg"}
-          alt={"Loading..."}
-          height={100}
-          width={100}
-        />
+        <Image src="/loader.svg" alt="Loading..." height={100} width={100} />
       </div>
     );
   }
@@ -294,10 +324,12 @@ const AlumniMembers = (props) => {
           lifeMembers && (
             <DataGrid
               rows={lifeMembers && lifeMembers}
-              columns={columns}
+              columns={allMemberFields}
+              pagination
               pageSize={5}
               components={{
                 Toolbar: exportToolbar,
+                Pagination: CustomPagination,
               }}
             />
           )}
@@ -307,10 +339,12 @@ const AlumniMembers = (props) => {
           annualMembers && (
             <DataGrid
               rows={annualMembers && annualMembers}
-              columns={columns}
+              columns={allMemberFields}
+              pagination
               pageSize={5}
               components={{
                 Toolbar: exportToolbar,
+                Pagination: CustomPagination,
               }}
             />
           )}
@@ -320,10 +354,12 @@ const AlumniMembers = (props) => {
           pendingLifeMembers && (
             <DataGrid
               rows={pendingLifeMembers && pendingLifeMembers}
-              columns={columns}
+              columns={allMemberFields}
+              pagination
               pageSize={5}
               components={{
                 Toolbar: exportToolbar,
+                Pagination: CustomPagination,
               }}
             />
           )}
@@ -333,10 +369,12 @@ const AlumniMembers = (props) => {
           pendingAnnualMembers && (
             <DataGrid
               rows={pendingAnnualMembers && pendingAnnualMembers}
-              columns={columns}
+              columns={allMemberFields}
+              pagination
               pageSize={5}
               components={{
                 Toolbar: exportToolbar,
+                Pagination: CustomPagination,
               }}
             />
           )}
