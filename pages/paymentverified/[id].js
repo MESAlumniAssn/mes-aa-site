@@ -6,7 +6,16 @@ import PaymentInfoHeadLayout from "../../components/layout/head/PaymentInfoHeadL
 import PaymentInfo from "../../components/utils/registration/PaymentInfo";
 import Footer from "../../components/layout/Footer";
 
-const PaymenVerified = (props) => {
+const PaymentVerified = (props) => {
+  useEffect(() => {
+    window.scroll({ top: 1, left: 1, behavior: "smooth" });
+  }, []);
+
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("mesAAMembershiPlan");
+    localStorage.removeItem("testimonialSubmission");
+  }
+
   return (
     <PaymentInfoHeadLayout alumniInformation={props.userData}>
       <PaymentInfo userData={props.userData} />
@@ -40,4 +49,4 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-export default PaymenVerified;
+export default PaymentVerified;

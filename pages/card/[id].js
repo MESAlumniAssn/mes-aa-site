@@ -6,6 +6,12 @@ import CardHeadLayout from "../../components/layout/head/CardHeadLayout";
 import Card from "../../components/utils/card/Card";
 
 const IDCard = (props) => {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("mesAAMembershiPlan");
+    localStorage.removeItem("aaUser");
+    localStorage.removeItem("testimonialSubmission");
+  }
+
   return (
     <CardHeadLayout membershipId={props.userData.membership_id}>
       <Card userData={props.userData} />

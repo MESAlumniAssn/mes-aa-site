@@ -3,6 +3,9 @@ import { Formik, Form } from "formik";
 import SiteContext from "../../../context/siteContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { LOGO } from "../../../utils/images";
+import shortId from "../../../utils/generateShortId";
+import generateInvoiceNumber from "../../../utils/generateInvoiceNumber";
 
 // Material UI Imports
 import Stepper from "@material-ui/core/Stepper";
@@ -104,6 +107,7 @@ const RegistrationPage = (props) => {
     verifyPayment,
     user,
     sendWelcomeEmail,
+    sendPaymentReceiptEmail,
   } = siteContext;
 
   const currentValidationSchema = registrationValidationSchema[activeStep];
@@ -135,7 +139,23 @@ const RegistrationPage = (props) => {
   useEffect(() => {
     if (paymentVerified !== null) {
       if (paymentVerified.status === null) {
+        let invoiceNumber = generateInvoiceNumber(user.id);
+        let fullName =
+          user.prefix + ". " + user.first_name + " " + user.last_name;
+
         sendWelcomeEmail(user.email, user.first_name);
+        sendPaymentReceiptEmail(
+          fullName,
+          user.address1,
+          user.address2,
+          user.city,
+          user.state,
+          user.pincode,
+          user.country,
+          user.email,
+          invoiceNumber,
+          user.membership_type
+        );
         router.push(`/paymentverified/${user && user.alt_user_id}`);
       }
     }
@@ -240,7 +260,7 @@ const RegistrationPage = (props) => {
 
     if (isLastStep) {
       submitForm(values, actions);
-      createOrder(parseInt(amount), "INR", "ABCD", {
+      createOrder(parseInt(amount), "INR", shortId(), {
         membershipType: localStorage.getItem("mesAAMembershiPlan"),
       });
     } else {
@@ -279,13 +299,13 @@ const RegistrationPage = (props) => {
   const displayRazorPay = async () => {
     showPaymentMessage(false);
     const res = await loadRazorPay(
-      "https://checkout.razorpay.com/v1/checkout.js"
+      process.env.NEXT_PUBLIC_RAZORPAY_CHECKOUT_URL
     );
 
     if (!res) return;
 
     var options = {
-      key: process.env.RAZORPAY_KEY_ID,
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
       amount:
         localStorage.getItem("mesAAMembershiPlan") === "Lifetime"
           ? process.env.NEXT_PUBLIC_LIFE_MEMBERSHIP_AMOUNT * 100
@@ -295,20 +315,16 @@ const RegistrationPage = (props) => {
       description: `Payment for ${localStorage.getItem(
         "mesAAMembershiPlan"
       )} membership`,
-      image: process.env.NEXT_PUBLIC_SITE_ICON,
+      image: LOGO,
       order_id: paymentOrder.id,
 
       handler: function (response) {
-        // alert(response.razorpay_payment_id);
-        // alert(response.razorpay_order_id);
-        // alert(response.razorpay_signature);
         verifyPayment(
           response.razorpay_order_id,
           response.razorpay_payment_id,
           response.razorpay_signature,
           user && user.email
         );
-        // router.push("/");
       },
       prefill: {
         name:
@@ -319,7 +335,7 @@ const RegistrationPage = (props) => {
         contact: JSON.parse(localStorage.getItem("aaUser")).mobile,
       },
       notes: {
-        address: "Razorpay Corporate Office",
+        address: "The MES College Alumni Association",
       },
       theme: {
         color: "#3399cc",
@@ -327,15 +343,6 @@ const RegistrationPage = (props) => {
     };
     const paymentObj = new window.Razorpay(options);
     paymentObj.open();
-    // rzp1.on("payment.failed", function (response) {
-    //   alert(response.error.code);
-    //   alert(response.error.description);
-    //   alert(response.error.source);
-    //   alert(response.error.step);
-    //   alert(response.error.reason);
-    //   alert(response.error.metadata.order_id);
-    //   alert(response.error.metadata.payment_id);
-    // });
   };
 
   const loadRazorPay = (url) => {

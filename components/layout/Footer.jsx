@@ -223,7 +223,7 @@ const Footer = () => {
             style={{ fontSize: 6, margin: "0 10px" }}
           />
           <FontAwesomeIcon icon={faBookOpen} style={{ marginRight: 5 }} />
-          <Link href="/privacy">
+          <Link href="/terms">
             <a
               style={{ fontSize: "1rem", textDecoration: "none" }}
               className="styledLink"

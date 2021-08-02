@@ -146,18 +146,18 @@ const Certificate = (props) => {
             marginTop: 10,
           }}
         >
-          <div id="signature1">
+          <div id="signature1" style={{ marginTop: 5 }}>
             <Image
-              src={"/images/certificate/signature1.svg"}
+              src={"/images/certificate/signature1.png"}
               alt="Signature of the President"
               width={300}
-              height={75}
+              height={100}
             />
             <Typography
               style={{
                 fontSize: "1.25rem",
                 fontFamily: "'Averia Serif Libre', cursive",
-                paddingTop: 10,
+                marginTop: -10,
                 textTransform: "uppercase",
                 fontWeight: 700,
               }}
@@ -182,18 +182,18 @@ const Certificate = (props) => {
             <br /> {props.userData.membership_start_date}
           </Typography>
 
-          <div id="signature2">
+          <div id="signature2" style={{ marginTop: 5 }}>
             <Image
               src={"/images/certificate/signature2.svg"}
               alt="Signature of the Secretary"
               width={300}
-              height={75}
+              height={100}
             />
             <Typography
               style={{
                 fontSize: "1.25rem",
                 fontFamily: "'Averia Serif Libre', cursive",
-                paddingTop: 10,
+                marginTop: -10,
                 textTransform: "uppercase",
                 fontWeight: 700,
               }}

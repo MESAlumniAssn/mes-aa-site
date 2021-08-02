@@ -74,7 +74,7 @@ const PaymentDetails = () => {
                     <FontAwesomeIcon icon={faRupeeSign} /> {row.amount}
                   </TableCell>
                 </TableRow>
-                <TableRow key={index + 1}>
+                {/* <TableRow key={index + 1}>
                   <TableCell component="th" scope="row">
                     CGST @ 9%
                   </TableCell>
@@ -89,8 +89,8 @@ const PaymentDetails = () => {
                   <TableCell align="right" style={{ fontWeight: "bold" }}>
                     <FontAwesomeIcon icon={faRupeeSign} /> {row.amount * 0.09}
                   </TableCell>
-                </TableRow>
-                <TableRow key={index + 3}>
+                </TableRow> */}
+                <TableRow key={index + 1}>
                   <TableCell
                     component="th"
                     scope="row"
@@ -102,8 +102,7 @@ const PaymentDetails = () => {
                     align="right"
                     style={{ fontWeight: "bold", fontSize: "1.2rem" }}
                   >
-                    <FontAwesomeIcon icon={faRupeeSign} />{" "}
-                    {row.amount + 2 * row.amount * 0.09}
+                    <FontAwesomeIcon icon={faRupeeSign} /> {row.amount}
                   </TableCell>
                 </TableRow>
               </Fragment>

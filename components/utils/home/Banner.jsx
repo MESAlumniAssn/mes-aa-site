@@ -62,7 +62,7 @@ const Banner = () => {
       {showBanner && (
         <motion.div className={`animateNavLogoBanner ${classes.banner}`}>
           <Typography component="p" style={{ textAlign: "center" }}>
-            <span className={`subtitle ${classes.bannerText}`}>
+            <div className={`subtitle ${classes.bannerText}`}>
               <FontAwesomeIcon
                 icon={faBullhorn}
                 style={{
@@ -71,17 +71,23 @@ const Banner = () => {
                   fontSize: "1.8rem",
                 }}
               />
-              Dear Alumnus, registrations will be open in{" "}
-              <CountUp
-                end={daysToRegistration}
-                duration={10}
-                style={{
-                  borderBottom: "5px var(--secondary-color) solid",
-                  paddingBottom: "2px",
-                }}
-              />{" "}
-              days.
-            </span>
+              {daysToRegistration > 0 ? (
+                <span>
+                  Dear Alumnus, registrations will be open in{" "}
+                  <CountUp
+                    end={daysToRegistration}
+                    duration={10}
+                    style={{
+                      borderBottom: "5px var(--secondary-color) solid",
+                      paddingBottom: "2px",
+                    }}
+                  />{" "}
+                  {daysToRegistration === 1 ? "day" : "days"}.
+                </span>
+              ) : (
+                "Registrations are now open"
+              )}
+            </div>
           </Typography>
           <FontAwesomeIcon
             icon={faTimes}

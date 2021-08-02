@@ -11,6 +11,12 @@ const gallery = (props) => {
     window.scroll({ top: 1, left: 1, behavior: "smooth" });
   }, []);
 
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("mesAAMembershiPlan");
+    localStorage.removeItem("aaUser");
+    localStorage.removeItem("testimonialSubmission");
+  }
+
   return (
     <GalleryHeadLayout>
       <Gallery galleryData={props.galleryData} />

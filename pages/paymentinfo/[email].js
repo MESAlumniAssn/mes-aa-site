@@ -7,6 +7,15 @@ import AltPaymentInfo from "../../components/utils/registration/AltPaymentInfo";
 import Footer from "../../components/layout/Footer";
 
 const paymentinfo = (props) => {
+  useEffect(() => {
+    window.scroll({ top: 1, left: 1, behavior: "smooth" });
+  }, []);
+
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("mesAAMembershiPlan");
+    localStorage.removeItem("testimonialSubmission");
+  }
+
   return (
     <AltPaymentInfoHeadLayout alumniInformation={props.alumniInformation}>
       <AltPaymentInfo alumniInformation={props.alumniInformation} />

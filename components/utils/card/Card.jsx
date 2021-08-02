@@ -88,10 +88,11 @@ const Card = (props) => {
 
           <Typography
             style={{
-              fontSize: "1.25rem",
+              fontSize: "1.2rem",
               fontWeight: 700,
               color: "#000",
               padding: 0,
+              marginTop: 10,
             }}
           >
             The MES College Alumni Association{" "}
@@ -108,8 +109,8 @@ const Card = (props) => {
         >
           <div
             style={{
-              height: 250,
-              width: 250,
+              height: 200,
+              width: 200,
               borderRadius: "10px",
               padding: 3,
             }}
@@ -122,8 +123,8 @@ const Card = (props) => {
             <Image
               src={props.userData.profile_url + "?tr:w-250"}
               alt="User profile picture"
-              width={250}
-              height={250}
+              width={200}
+              height={200}
               className={classes.profileImage}
             />
           </div>
@@ -142,6 +143,7 @@ const Card = (props) => {
           style={{
             fontSize: "1.25rem",
             fontWeight: "bold",
+            marginTop: 20,
           }}
           gutterBottom
         >

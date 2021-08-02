@@ -14,6 +14,7 @@ import {
   AUTH_ERROR,
   CLEAR_ERROR,
   CLEAR_STATE,
+  CLEAR_MESSAGE,
   LM_FETCH_SUCCESS,
   LM_PENDING_FETCH_SUCCESS,
   LM_FETCH_ERROR,
@@ -37,6 +38,8 @@ import {
   EXPIRED_MEMBERSHIP_FETCHED_ERROR,
   RENEWED_MEMBERSHIP_FETCHED_SUCCESS,
   RENEWED_MEMBERSHIP_FETCHED_ERROR,
+  EMAIL_UNSUBSCRIBED_SUCCESS,
+  EMAIL_UNSUBSCRIBED_ERROR,
 } from "./Types";
 
 const SiteState = (props) => {
@@ -60,6 +63,7 @@ const SiteState = (props) => {
     paymentVerified: null,
     emailSent: false,
     testimonial: null,
+    emailSubscriptionStatus: null,
   };
 
   const [state, dispatch] = useReducer(siteReducer, initialState);
@@ -174,7 +178,13 @@ const SiteState = (props) => {
   const generateMetricCounts = async () => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/totals`
+        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/totals`,
+        {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("mesAAToken"))
+              .access_token,
+          },
+        }
       );
 
       dispatch({ type: METRICS_SUCCESS, payload: res.data });
@@ -187,7 +197,13 @@ const SiteState = (props) => {
   const getLifeMembers = async (memberType, paymentStatus) => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/${memberType}/${paymentStatus}`
+        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/${memberType}/${paymentStatus}`,
+        {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("mesAAToken"))
+              .access_token,
+          },
+        }
       );
 
       if (paymentStatus === 1)
@@ -211,7 +227,13 @@ const SiteState = (props) => {
   const getAnnualMembers = async (memberType, paymentStatus) => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/${memberType}/${paymentStatus}`
+        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/${memberType}/${paymentStatus}`,
+        {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("mesAAToken"))
+              .access_token,
+          },
+        }
       );
 
       if (paymentStatus === 1)
@@ -235,7 +257,13 @@ const SiteState = (props) => {
   const getExpiredMembershipDetails = async () => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/expired_members`
+        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/expired_members`,
+        {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("mesAAToken"))
+              .access_token,
+          },
+        }
       );
       dispatch({ type: EXPIRED_MEMBERSHIP_FETCHED_SUCCESS, payload: res.data });
     } catch (err) {
@@ -250,7 +278,13 @@ const SiteState = (props) => {
   const getRenewedMembershipDetails = async () => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/recently_renewed`
+        `${process.env.NEXT_PUBLIC_API_URL}/alumniassn/dashboard/recently_renewed`,
+        {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("mesAAToken"))
+              .access_token,
+          },
+        }
       );
       dispatch({ type: RENEWED_MEMBERSHIP_FETCHED_SUCCESS, payload: res.data });
     } catch (err) {
@@ -462,7 +496,64 @@ const SiteState = (props) => {
     }
   };
 
+  const sendPaymentReceiptEmail = async (
+    alumniName,
+    address1,
+    address2,
+    city,
+    state,
+    pincode,
+    country,
+    recipientEmail,
+    invoiceNumber,
+    membership
+  ) => {
+    const jsonPayload = {
+      alumni_name: alumniName,
+      alumni_address1: address1,
+      alumni_address2: address2,
+      city: city,
+      state: state,
+      pincode: pincode,
+      country: country,
+      to_email: recipientEmail,
+      invoice_number: invoiceNumber,
+      membership_type: membership,
+    };
+
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/email/receipt`,
+        jsonPayload
+      );
+      dispatch({ type: EMAIL_SEND_SUCCESS });
+    } catch (err) {
+      dispatch({ type: EMAIL_SEND_FAILURE });
+    }
+  };
+
   //---------------------Emails End---------------------
+
+  // Mail list unsubscription
+  const unsubscribeFromMailingList = async (subscriberEmail) => {
+    const jsonPayload = { email: subscriberEmail };
+
+    try {
+      const res = await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/email_subscription`,
+        jsonPayload
+      );
+
+      dispatch({ type: EMAIL_UNSUBSCRIBED_SUCCESS, payload: res.data });
+
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
+    } catch (err) {
+      dispatch({
+        type: EMAIL_UNSUBSCRIBED_ERROR,
+        payload: err.response.data.detail,
+      });
+    }
+  };
 
   // Logout admin
   const adminLogout = () => {
@@ -499,6 +590,7 @@ const SiteState = (props) => {
         emailSent: state.emailSent,
         expiredMemberships: state.expiredMemberships,
         renewedMemberships: state.renewedMemberships,
+        emailSubscriptionStatus: state.emailSubscriptionStatus,
         registerUser,
         generateMetricCounts,
         getLifeMembers,
@@ -516,6 +608,8 @@ const SiteState = (props) => {
         sendContactEmail,
         sendManualPaymentEmail,
         sendTestimonialApprovalEmail,
+        sendPaymentReceiptEmail,
+        unsubscribeFromMailingList,
         loginUser,
         adminLogout,
       }}

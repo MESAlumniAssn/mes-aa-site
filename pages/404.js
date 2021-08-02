@@ -7,12 +7,18 @@ import PageNotFoundHeadLayout from "../components/layout/head/PageNotFoundHeadLa
 const PageNotFound = () => {
   return (
     <PageNotFoundHeadLayout>
-      <div style={{ height: "100%" }}>
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          margin: "0 10px",
+        }}
+      >
         <div
           style={{
             display: "grid",
             placeItems: "center",
-            padding: "50px 10px 20px 10px",
           }}
         >
           <Image

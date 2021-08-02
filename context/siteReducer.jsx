@@ -20,6 +20,7 @@ import {
   PAYMENT_STATUS_UPDATE_ERROR,
   AUTH_ERROR,
   CLEAR_ERROR,
+  CLEAR_MESSAGE,
   CLEAR_STATE,
   PAYMENT_ORDER,
   PAYMENT_VERIFICATION,
@@ -32,6 +33,8 @@ import {
   EXPIRED_MEMBERSHIP_FETCHED_ERROR,
   RENEWED_MEMBERSHIP_FETCHED_SUCCESS,
   RENEWED_MEMBERSHIP_FETCHED_ERROR,
+  EMAIL_UNSUBSCRIBED_SUCCESS,
+  EMAIL_UNSUBSCRIBED_ERROR,
 } from "./Types";
 
 const siteReducer = (state, action) => {
@@ -148,6 +151,19 @@ const siteReducer = (state, action) => {
       return {
         ...state,
         testimonial: action.payload,
+      };
+    case EMAIL_UNSUBSCRIBED_SUCCESS:
+    case EMAIL_UNSUBSCRIBED_ERROR:
+      return {
+        ...state,
+        loading: false,
+        emailSubscriptionStatus: action.payload,
+      };
+    case CLEAR_MESSAGE:
+      return {
+        ...state,
+        loading: false,
+        emailSubscriptionStatus: null,
       };
     case EMAIL_SEND_SUCCESS:
       return {

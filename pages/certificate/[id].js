@@ -6,6 +6,12 @@ import CertificateHeadLayout from "../../components/layout/head/CertificateHeadL
 import Certificate from "../../components/utils/certificate/Certificate";
 
 const LMCertificate = (props) => {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("mesAAMembershiPlan");
+    localStorage.removeItem("aaUser");
+    localStorage.removeItem("testimonialSubmission");
+  }
+
   return (
     <CertificateHeadLayout membershipId={props.userData.membership_id}>
       <Certificate userData={props.userData} />
