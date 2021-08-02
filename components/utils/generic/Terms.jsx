@@ -18,7 +18,7 @@ const Terms = () => {
           </a>
         </Link>{" "}
         and{" "}
-        <Link href="/terms">
+        <Link href="/privacy">
           <a
             style={{ color: "#87431d", textDecoration: "none" }}
             className="styledLink"
