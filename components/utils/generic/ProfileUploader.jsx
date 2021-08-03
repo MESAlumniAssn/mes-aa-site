@@ -104,7 +104,7 @@ const ProfileUploader = ({
         maxFiles={1}
         aria-label="Dropzone for images"
       >
-        {({ getRootProps, getInputProps, isDragReject }) => (
+        {({ getRootProps, getInputProps, isDragReject, fileRejections }) => (
           <section>
             {newFiles.length === 0 && (
               <div>
@@ -120,6 +120,7 @@ const ProfileUploader = ({
                 >
                   <div>
                     Accepted image formats:{" "}
+                    <span style={{ color: "#c87941" }}>jpg</span>,&nbsp;
                     <span style={{ color: "#c87941" }}>jpeg</span>,&nbsp;
                     <span style={{ color: "#c87941" }}>bmp</span>,&nbsp;
                     <span style={{ color: "#c87941" }}>tiff</span>,&nbsp;
@@ -165,11 +166,39 @@ const ProfileUploader = ({
             <div>{images.slice(0, 1)}</div>
 
             {isDragReject && (
-              <div style={{ fontSize: "0.8rem", color: "red" }}>
+              <div
+                style={{
+                  fontSize: "0.8rem",
+                  color: "red",
+                  marginTop: 10,
+                  textAlign: "center",
+                }}
+              >
                 <FontAwesomeIcon icon={faExclamationTriangle} /> Accepted image
-                formats - jpeg, bmp, tiff, png and gif
+                formats - jpg, jpeg, bmp, tiff, png and gif
               </div>
             )}
+
+            {fileRejections &&
+              fileRejections.map(({ file, errors }) => (
+                <div>
+                  {errors.map((e) => (
+                    <p
+                      key={e.code}
+                      style={{
+                        fontSize: "0.8rem",
+                        color: "red",
+                        marginTop: 10,
+                        textAlign: "center",
+                        textDecoration: "none",
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faExclamationTriangle} /> Accepted
+                      image formats - jpg, jpeg, bmp, tiff, png and gif
+                    </p>
+                  ))}
+                </div>
+              ))}
           </section>
         )}
       </Dropzone>

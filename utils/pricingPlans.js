@@ -6,8 +6,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const planValues = {
-  annualMembershipCost: 250,
-  lifetimeMembershipCost: 1000,
+  annualMembershipCost: process.env.NEXT_PUBLIC_ANNUAL_MEMBERSHIP_AMOUNT,
+  lifetimeMembershipCost: process.env.NEXT_PUBLIC_LIFE_MEMBERSHIP_AMOUNT,
 };
 
 const lifetime = [
