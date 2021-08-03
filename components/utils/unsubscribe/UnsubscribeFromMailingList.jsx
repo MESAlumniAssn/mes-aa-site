@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0 13px 27px rgba(0, 0, 0, 0.2)",
     width: 600,
     [theme.breakpoints.down("sm")]: {
-      width: 500,
+      width: 375,
     },
   },
   buttonStyle: {
@@ -59,8 +59,7 @@ const variants = {
 const UnsubscribeFromMailingList = () => {
   const siteContext = useContext(SiteContext);
 
-  const { emailSubscriptionStatus, unsubscribeFromMailingList, loading } =
-    siteContext;
+  const { emailSubscriptionStatus, unsubscribeFromMailingList } = siteContext;
 
   const classes = useStyles();
 
@@ -94,12 +93,13 @@ const UnsubscribeFromMailingList = () => {
                 >
                   <p
                     style={{
-                      width: "400px",
+                      width: "270px",
                       background: "#b9ac92",
-                      padding: "10px 20px",
+                      padding: "10px",
                       borderRadius: "5px",
                       fontWeight: "bold",
                       letterSpacing: "0.2px",
+                      textAlign: "center",
                       margin: 0,
                     }}
                   >
@@ -108,7 +108,7 @@ const UnsubscribeFromMailingList = () => {
                 </div>
               )}
 
-              <div style={{ marginTop: 25 }}>
+              <div style={{ marginTop: 20 }}>
                 <TextField
                   id="email"
                   name="email"

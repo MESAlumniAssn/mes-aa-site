@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 
 // Material UI imports
@@ -23,10 +23,6 @@ const useStyles = makeStyles((theme) => ({
 
 const PaymentInfo = (props) => {
   const classes = useStyles();
-
-  useEffect(() => {
-    window.scroll({ top: 1, left: 1, behavior: "smooth" });
-  }, []);
 
   return (
     <div className={classes.parentContainer}>
