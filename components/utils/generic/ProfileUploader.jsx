@@ -27,6 +27,12 @@ const useStyles = makeStyles((theme) => ({
       margin: "2rem 1rem 0 1rem",
     },
   },
+  fileUploadError: {
+    fontSize: "0.8rem",
+    color: "#f21170",
+    marginTop: 10,
+    textAlign: "center",
+  },
 }));
 
 const ProfileUploader = ({
@@ -52,13 +58,14 @@ const ProfileUploader = ({
   }, []);
 
   const images = newFiles.map((file, index) => {
+    console.log(file);
     return (
       <div key={index} style={{ textAlign: "center", paddingTop: 15 }}>
         <div>
           <img
             src={file.preview}
             height="120px"
-            width="150px"
+            width="120px"
             alt="Uploaded profile photo"
           />
           <p
@@ -99,7 +106,7 @@ const ProfileUploader = ({
   return (
     <div>
       <Dropzone
-        accept="image/jpg, image/jpeg, image/bmp, image/tiff, image/png, image/webp"
+        accept="image/jpg, image/jpeg, image/bmp, image/tiff, image/png, image/webp, 	image/heic"
         onDrop={onDrop}
         maxFiles={1}
         aria-label="Dropzone for images"
@@ -166,14 +173,7 @@ const ProfileUploader = ({
             <div>{images.slice(0, 1)}</div>
 
             {isDragReject && (
-              <div
-                style={{
-                  fontSize: "0.8rem",
-                  color: "red",
-                  marginTop: 10,
-                  textAlign: "center",
-                }}
-              >
+              <div className={classes.fileUploadError}>
                 <FontAwesomeIcon icon={faExclamationTriangle} /> Accepted image
                 formats - jpg, jpeg, bmp, tiff, png and gif
               </div>
@@ -183,16 +183,7 @@ const ProfileUploader = ({
               fileRejections.map(({ file, errors }) => (
                 <div>
                   {errors.map((e) => (
-                    <p
-                      key={e.code}
-                      style={{
-                        fontSize: "0.8rem",
-                        color: "red",
-                        marginTop: 10,
-                        textAlign: "center",
-                        textDecoration: "none",
-                      }}
-                    >
+                    <p key={e.code} className={classes.fileUploadError}>
                       <FontAwesomeIcon icon={faExclamationTriangle} /> Accepted
                       image formats - jpg, jpeg, bmp, tiff, png and gif
                     </p>

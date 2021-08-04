@@ -105,7 +105,7 @@ const AdminLogin = () => {
             }}
           >
             <Image
-              src="/images/about/college-old.png"
+              src="https://ik.imagekit.io/pwxm960evbp/tr:h-400,w-650/MES-AA/Site_Images/About/college-old_7uo2jBfRvW.png?updatedAt=1626152060014"
               alt="MES college"
               height={400}
               width={650}
@@ -126,7 +126,7 @@ const AdminLogin = () => {
             }}
           >
             {(props) => (
-              <Form autocomplete="off">
+              <Form autoComplete="off">
                 <div>
                   <Typography
                     component="h2"

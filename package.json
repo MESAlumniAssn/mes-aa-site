@@ -19,6 +19,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "*",
     "@material-ui/pickers": "^3.3.10",
+    "@sentry/nextjs": "^6.10.0",
     "axios": "^0.21.1",
     "date-fns": "^2.21.1",
     "formik": "^2.2.6",
