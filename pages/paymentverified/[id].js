@@ -14,6 +14,7 @@ const PaymentVerified = (props) => {
   if (typeof window !== "undefined") {
     localStorage.removeItem("mesAAMembershiPlan");
     localStorage.removeItem("testimonialSubmission");
+    localStorage.removeItem("mesAATempUserToken");
   }
 
   return (

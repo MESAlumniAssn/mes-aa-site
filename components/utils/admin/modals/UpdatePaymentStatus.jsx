@@ -1,9 +1,10 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Formik, Form } from "formik";
 import SiteContext from "../../../../context/siteContext";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import * as Yup from "yup";
+import generateInvoiceNumber from "../../../../utils/generateInvoiceNumber";
 
 // Material UI imports
 import Modal from "@material-ui/core/Modal";
@@ -62,12 +63,14 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
 
   const {
     loading,
+    setLoading,
     user,
     getMembershipDetails,
     updatePaymentStatus,
     paymentStatus,
     clearUserState,
     sendWelcomeEmail,
+    sendPaymentReceiptEmail,
   } = siteContext;
 
   const handleClose = () => {
@@ -107,8 +110,11 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
               validationSchema={validationSchema}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
-                getMembershipDetails(values.membershipId);
-                setSubmitting(false);
+                setLoading();
+                setTimeout(() => {
+                  getMembershipDetails(values.membershipId);
+                  setSubmitting(false);
+                }, 1000);
               }}
             >
               {(props) => (
@@ -185,8 +191,8 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
               <Image
                 src="/loader.svg"
                 alt="Loading..."
-                height={200}
-                width={200}
+                height={30}
+                width={30}
               />
             </div>
           ) : user && user !== "That id does not exist" ? (
@@ -260,12 +266,27 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                     color: "#FFFFFF",
                   }}
                   onClick={() => {
+                    let invoiceNumber = generateInvoiceNumber(user.user_id);
+
                     updatePaymentStatus(user.user_id);
                     sendWelcomeEmail(user.email, user.name);
-                    setTimeout(
-                      () => getMembershipDetails(user.membership_id),
-                      3000
+                    sendPaymentReceiptEmail(
+                      user.name,
+                      user.address1,
+                      user.address2,
+                      user.city,
+                      user.state,
+                      user.pincode,
+                      user.country,
+                      user.email,
+                      invoiceNumber,
+                      user.membership_type
                     );
+
+                    setTimeout(() => {
+                      getMembershipDetails(user.membership_id);
+                      clearUserState();
+                    }, 3000);
                   }}
                 >
                   {!paymentStatus ? (
@@ -283,6 +304,7 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
             </div>
           ) : (
             user && (
+              // Display the id does not exist message
               <Typography
                 color="primary"
                 style={{

@@ -4,6 +4,7 @@ import siteReducer from "./siteReducer";
 import axios from "axios";
 
 import {
+  LOADING,
   REGISTRATION_CREATE_SUCCESS,
   REGISTRATION_UPDATE_SUCCESS,
   REGISTRATION_ERROR,
@@ -40,6 +41,9 @@ import {
   RENEWED_MEMBERSHIP_FETCHED_ERROR,
   EMAIL_UNSUBSCRIBED_SUCCESS,
   EMAIL_UNSUBSCRIBED_ERROR,
+  JOBS_FETCHED_SUCCESS,
+  JOBS_FETCHED_ERROR,
+  CLEAR_JOB_STATUS,
 } from "./Types";
 
 const SiteState = (props) => {
@@ -49,7 +53,7 @@ const SiteState = (props) => {
     isAuthenticated: false,
     authError: null,
     isRegistered: false,
-    loading: true,
+    loading: false,
     metrics: null,
     lifeMembers: null,
     annualMembers: null,
@@ -64,6 +68,7 @@ const SiteState = (props) => {
     emailSent: false,
     testimonial: null,
     emailSubscriptionStatus: null,
+    jobs: null,
   };
 
   const [state, dispatch] = useReducer(siteReducer, initialState);
@@ -173,6 +178,17 @@ const SiteState = (props) => {
   //   dispatch({ type: AUTH_ERROR, payload: res.data });
   //   setTimeout(() => dispatch({ type: CLEAR_ERROR }), 5000);
   // };
+
+  // Delete temporary user - this is run if the user closes the payment modal
+  const deleteTempUser = async (altUserId) => {
+    try {
+      await axios.delete(
+        `${process.env.NEXT_PUBLIC_API_URL}/user/delete/${altUserId}`
+      );
+    } catch (err) {
+      console.error(err.response.data.detail);
+    }
+  };
 
   // Metrics
   const generateMetricCounts = async () => {
@@ -299,7 +315,13 @@ const SiteState = (props) => {
   const getMembershipDetails = async (membershipId) => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/membership/${membershipId}`
+        `${process.env.NEXT_PUBLIC_API_URL}/membership/${membershipId}`,
+        {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("mesAAToken"))
+              .access_token,
+          },
+        }
       );
 
       dispatch({ type: MEMBERSHIP_DETAILS_FETCH_SUCCESS, payload: res.data });
@@ -313,9 +335,16 @@ const SiteState = (props) => {
 
   // Update user payment status
   const updatePaymentStatus = async (userId) => {
+    const jsonPayload = {
+      authorization_token: JSON.parse(localStorage.getItem("mesAAToken"))
+        .access_token,
+      user_id: parseInt(userId),
+    };
+
     try {
       await axios.put(
-        `${process.env.NEXT_PUBLIC_API_URL}/payment_status/${userId}`
+        `${process.env.NEXT_PUBLIC_API_URL}/payment_status`,
+        jsonPayload
       );
 
       dispatch({ type: PAYMENT_STATUS_UPDATE_SUCCESS });
@@ -325,6 +354,22 @@ const SiteState = (props) => {
         payload: err.response.data.detail,
       });
     }
+  };
+
+  // Fetch status of all server jobs
+  const fetchJobStatus = async () => {
+    try {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/jobs`);
+
+      dispatch({ type: JOBS_FETCHED_SUCCESS, payload: res.data });
+    } catch (err) {
+      dispatch({ type: JOBS_FETCHED_ERROR, payload: err.response.data.detail });
+    }
+  };
+
+  // Clears the status when modal is closed
+  const clearJobStatus = () => {
+    dispatch({ type: CLEAR_JOB_STATUS });
   };
 
   // Manual payment notification email flag
@@ -555,6 +600,11 @@ const SiteState = (props) => {
     }
   };
 
+  // Set loading
+  const setLoading = () => {
+    dispatch({ type: LOADING });
+  };
+
   // Logout admin
   const adminLogout = () => {
     if (typeof window !== "undefined") {
@@ -591,7 +641,10 @@ const SiteState = (props) => {
         expiredMemberships: state.expiredMemberships,
         renewedMemberships: state.renewedMemberships,
         emailSubscriptionStatus: state.emailSubscriptionStatus,
+        jobs: state.jobs,
+        setLoading,
         registerUser,
+        deleteTempUser,
         generateMetricCounts,
         getLifeMembers,
         getAnnualMembers,
@@ -612,6 +665,8 @@ const SiteState = (props) => {
         unsubscribeFromMailingList,
         loginUser,
         adminLogout,
+        fetchJobStatus,
+        clearJobStatus,
       }}
     >
       {props.children}

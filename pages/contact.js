@@ -25,7 +25,7 @@ const contact = () => {
 
   if (typeof window !== "undefined") {
     localStorage.removeItem("mesAAMembershiPlan");
-    localStorage.removeItem("aaUser");
+    localStorage.removeItem("mesAAUser");
     localStorage.removeItem("testimonialSubmission");
   }
 

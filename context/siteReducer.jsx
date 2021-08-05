@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  LOADING,
   REGISTRATION_CREATE_SUCCESS,
   REGISTRATION_UPDATE_FAILURE,
   LOGIN_SUCCESS,
@@ -35,6 +36,9 @@ import {
   RENEWED_MEMBERSHIP_FETCHED_ERROR,
   EMAIL_UNSUBSCRIBED_SUCCESS,
   EMAIL_UNSUBSCRIBED_ERROR,
+  JOBS_FETCHED_SUCCESS,
+  JOBS_FETCHED_ERROR,
+  CLEAR_JOB_STATUS,
 } from "./Types";
 
 const siteReducer = (state, action) => {
@@ -175,6 +179,18 @@ const siteReducer = (state, action) => {
         ...state,
         emailSent: false,
       };
+    case JOBS_FETCHED_SUCCESS:
+    case JOBS_FETCHED_ERROR:
+      return {
+        ...state,
+        jobs: action.payload,
+        loading: false,
+      };
+    case CLEAR_JOB_STATUS:
+      return {
+        ...state,
+        jobs: null,
+      };
     case CLEAR_STATE:
       return {
         ...state,
@@ -189,6 +205,11 @@ const siteReducer = (state, action) => {
         authError: action.payload,
         user: null,
         isRegistered: false,
+      };
+    case LOADING:
+      return {
+        ...state,
+        loading: true,
       };
     case CLEAR_ERROR:
       return { ...state, loading: false, authError: null };

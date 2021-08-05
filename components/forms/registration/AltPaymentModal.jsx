@@ -76,7 +76,7 @@ const AltPaymentModal = ({
     setTimeout(() => {
       if (isRegistered && mode === "M")
         router.push(
-          `/paymentinfo/${JSON.parse(localStorage.getItem("aaUser")).email}`
+          `/paymentinfo/${JSON.parse(localStorage.getItem("mesAAUser")).email}`
         );
     }, 1000);
   }, [isRegistered]);
@@ -136,8 +136,8 @@ const AltPaymentModal = ({
           >
             Hey,{" "}
             <span style={{ color: "#ff5200", fontWeight: "bold" }}>
-              {localStorage.getItem("aaUser")
-                ? JSON.parse(localStorage.getItem("aaUser")).firstName
+              {localStorage.getItem("mesAAUser")
+                ? JSON.parse(localStorage.getItem("mesAAUser")).firstName
                 : "there"}
             </span>
             ! You can also pay your membership fee by{" "}
@@ -259,8 +259,8 @@ const AltPaymentModal = ({
             <p className="counterSection">
               All the details to perform the fund transfer will be sent to{" "}
               <span style={{ color: "#ff5200", fontWeight: 700 }}>
-                {localStorage.getItem("aaUser")
-                  ? JSON.parse(localStorage.getItem("aaUser")).email
+                {localStorage.getItem("mesAAUser")
+                  ? JSON.parse(localStorage.getItem("mesAAUser")).email
                   : "your registered email"}
               </span>
             </p>
@@ -290,28 +290,28 @@ const AltPaymentModal = ({
               onClick={() => {
                 setMode("M");
                 registerUser(
-                  JSON.parse(localStorage.getItem("aaUser")).prefix,
-                  JSON.parse(localStorage.getItem("aaUser")).firstName,
-                  JSON.parse(localStorage.getItem("aaUser")).lastName,
-                  JSON.parse(localStorage.getItem("aaUser")).email,
-                  JSON.parse(localStorage.getItem("aaUser")).mobile,
-                  JSON.parse(localStorage.getItem("aaUser")).birthday,
-                  JSON.parse(localStorage.getItem("aaUser")).address1,
-                  JSON.parse(localStorage.getItem("aaUser")).address2,
-                  JSON.parse(localStorage.getItem("aaUser")).city,
-                  JSON.parse(localStorage.getItem("aaUser")).state,
-                  JSON.parse(localStorage.getItem("aaUser")).pincode,
-                  JSON.parse(localStorage.getItem("aaUser")).country,
-                  JSON.parse(localStorage.getItem("aaUser")).fromYear,
-                  JSON.parse(localStorage.getItem("aaUser")).toYear,
-                  JSON.parse(localStorage.getItem("aaUser")).streamPuc,
-                  JSON.parse(localStorage.getItem("aaUser")).streamDegree,
-                  JSON.parse(localStorage.getItem("aaUser")).streamPg,
-                  JSON.parse(localStorage.getItem("aaUser")).streamOthers,
-                  JSON.parse(localStorage.getItem("aaUser")).vision,
-                  JSON.parse(localStorage.getItem("aaUser")).profession,
-                  JSON.parse(localStorage.getItem("aaUser")).interest,
-                  JSON.parse(localStorage.getItem("aaUser")).membership,
+                  JSON.parse(localStorage.getItem("mesAAUser")).prefix,
+                  JSON.parse(localStorage.getItem("mesAAUser")).firstName,
+                  JSON.parse(localStorage.getItem("mesAAUser")).lastName,
+                  JSON.parse(localStorage.getItem("mesAAUser")).email,
+                  JSON.parse(localStorage.getItem("mesAAUser")).mobile,
+                  JSON.parse(localStorage.getItem("mesAAUser")).birthday,
+                  JSON.parse(localStorage.getItem("mesAAUser")).address1,
+                  JSON.parse(localStorage.getItem("mesAAUser")).address2,
+                  JSON.parse(localStorage.getItem("mesAAUser")).city,
+                  JSON.parse(localStorage.getItem("mesAAUser")).state,
+                  JSON.parse(localStorage.getItem("mesAAUser")).pincode,
+                  JSON.parse(localStorage.getItem("mesAAUser")).country,
+                  JSON.parse(localStorage.getItem("mesAAUser")).fromYear,
+                  JSON.parse(localStorage.getItem("mesAAUser")).toYear,
+                  JSON.parse(localStorage.getItem("mesAAUser")).streamPuc,
+                  JSON.parse(localStorage.getItem("mesAAUser")).streamDegree,
+                  JSON.parse(localStorage.getItem("mesAAUser")).streamPg,
+                  JSON.parse(localStorage.getItem("mesAAUser")).streamOthers,
+                  JSON.parse(localStorage.getItem("mesAAUser")).vision,
+                  JSON.parse(localStorage.getItem("mesAAUser")).profession,
+                  JSON.parse(localStorage.getItem("mesAAUser")).interest,
+                  JSON.parse(localStorage.getItem("mesAAUser")).membership,
                   "M",
                   files
                 );

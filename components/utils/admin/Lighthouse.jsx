@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import Image from "next/image";
 import SiteContext from "../../../context/siteContext";
 import { motion } from "framer-motion";
+import CountUp from "react-countup";
 
 // Material UI imports
 import Grid from "@material-ui/core/Grid";
@@ -115,7 +116,10 @@ const Lighthouse = () => {
               Total Attempted Registrations:
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
-              {metrics && metrics.total_registrations}
+              <CountUp
+                end={metrics && metrics.total_registrations}
+                duration={3}
+              />
             </Typography>
           </motion.div>
         </Grid>
@@ -135,7 +139,10 @@ const Lighthouse = () => {
               Successful Registrations:
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
-              {metrics && metrics.successful_registrations}
+              <CountUp
+                end={metrics && metrics.successful_registrations}
+                duration={3}
+              />
             </Typography>
           </motion.div>
         </Grid>
@@ -156,7 +163,10 @@ const Lighthouse = () => {
               Pending Registrations:
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
-              {metrics && metrics.pending_registrations}
+              <CountUp
+                end={metrics && metrics.pending_registrations}
+                duration={3}
+              />
             </Typography>
 
             <div style={{ width: "100%" }}>
@@ -197,7 +207,7 @@ const Lighthouse = () => {
               Successful LM Registrations:
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
-              {metrics && metrics.life_members}
+              <CountUp end={metrics && metrics.life_members} duration={3} />
             </Typography>
           </motion.div>
         </Grid>
@@ -217,7 +227,10 @@ const Lighthouse = () => {
               Pending LM Registrations:
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
-              {metrics && metrics.pending_life_members}
+              <CountUp
+                end={metrics && metrics.pending_life_members}
+                duration={3}
+              />
             </Typography>
           </motion.div>
         </Grid>
@@ -237,7 +250,7 @@ const Lighthouse = () => {
               Successful AM Registrations:
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
-              {metrics && metrics.annual_members}
+              <CountUp end={metrics && metrics.annual_members} duration={3} />
             </Typography>
           </motion.div>
         </Grid>
@@ -257,7 +270,10 @@ const Lighthouse = () => {
               Pending AM Registrations:
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
-              {metrics && metrics.pending_annual_members}
+              <CountUp
+                end={metrics && metrics.pending_annual_members}
+                duration={3}
+              />
             </Typography>
           </motion.div>
         </Grid>

@@ -29,7 +29,7 @@ const testimonials = (props) => {
 
   if (typeof window !== "undefined") {
     localStorage.removeItem("mesAAMembershiPlan");
-    localStorage.removeItem("aaUser");
+    localStorage.removeItem("mesAAUser");
   }
 
   return (

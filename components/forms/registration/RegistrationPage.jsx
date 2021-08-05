@@ -106,6 +106,7 @@ const RegistrationPage = (props) => {
     isRegistered,
     verifyPayment,
     user,
+    deleteTempUser,
     sendWelcomeEmail,
     sendPaymentReceiptEmail,
   } = siteContext;
@@ -117,6 +118,10 @@ const RegistrationPage = (props) => {
     setOpen(true);
   };
 
+  useEffect(() => {
+    user && localStorage.setItem("mesAATempUserToken", user.alt_user_id);
+  }, [user]);
+
   // Navigate to the previous form
   const handleBack = () => {
     setActiveStep(activeStep - 1);
@@ -124,6 +129,7 @@ const RegistrationPage = (props) => {
 
   useEffect(() => {
     if (authError) {
+      showPaymentMessage(false);
       window.scroll({ top: 1, left: 1, behavior: "smooth" });
     }
   }, [authError]);
@@ -219,7 +225,7 @@ const RegistrationPage = (props) => {
       "O",
       files
     );
-    setTimeout(() => actions.setSubmitting(false), 7000);
+    setTimeout(() => actions.setSubmitting(false), 3000);
   };
 
   const handleSubmit = (values, actions) => {
@@ -255,7 +261,7 @@ const RegistrationPage = (props) => {
     };
 
     if (typeof window !== "undefined") {
-      localStorage.setItem("aaUser", JSON.stringify(userDetailsInStorage));
+      localStorage.setItem("mesAAUser", JSON.stringify(userDetailsInStorage));
     }
 
     if (isLastStep) {
@@ -326,13 +332,18 @@ const RegistrationPage = (props) => {
           user && user.email
         );
       },
+      modal: {
+        ondismiss: function () {
+          deleteTempUser(localStorage.getItem("mesAATempUserToken"));
+        },
+      },
       prefill: {
         name:
-          JSON.parse(localStorage.getItem("aaUser")).firstName +
+          JSON.parse(localStorage.getItem("mesAAUser")).firstName +
           " " +
-          JSON.parse(localStorage.getItem("aaUser")).lastName,
-        email: JSON.parse(localStorage.getItem("aaUser")).email,
-        contact: JSON.parse(localStorage.getItem("aaUser")).mobile,
+          JSON.parse(localStorage.getItem("mesAAUser")).lastName,
+        email: JSON.parse(localStorage.getItem("mesAAUser")).email,
+        contact: JSON.parse(localStorage.getItem("mesAAUser")).mobile,
       },
       notes: {
         address: "The MES College Alumni Association",
@@ -479,7 +490,7 @@ const RegistrationPage = (props) => {
                       </Grid>
                     </Grid>
 
-                    {paymentMessage && (
+                    {isLastStep && paymentMessage && (
                       <span
                         style={{
                           display: "flex",
