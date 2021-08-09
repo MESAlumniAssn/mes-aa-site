@@ -50,7 +50,7 @@ const AcademicDetails = (props) => {
         <Chips
           membershipType={
             typeof window !== "undefined" &&
-            localStorage.getItem("mesAAMembershiPlan")
+            localStorage.getItem("mesAAMembershipPlan")
           }
         />
       </div>

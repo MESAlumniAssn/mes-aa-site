@@ -121,7 +121,7 @@ const Pricing = () => {
                       fontWeight: 700,
                     }}
                     onClick={() => {
-                      localStorage.setItem("mesAAMembershiPlan", "Lifetime");
+                      localStorage.setItem("mesAAMembershipPlan", "Lifetime");
                       router.push("/register");
                     }}
                   >
@@ -206,7 +206,7 @@ const Pricing = () => {
                       fontWeight: 700,
                     }}
                     onClick={() => {
-                      localStorage.setItem("mesAAMembershiPlan", "Annual");
+                      localStorage.setItem("mesAAMembershipPlan", "Annual");
                       router.push("/register");
                     }}
                   >

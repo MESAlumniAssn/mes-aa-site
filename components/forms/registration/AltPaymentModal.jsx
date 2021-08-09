@@ -60,10 +60,10 @@ const AltPaymentModal = ({
   submissionError,
   setSubmissionError,
   files,
-  paymentMode,
+  mode,
+  setMode,
 }) => {
   const [showLoader, setShowLoader] = useState(false);
-  const [mode, setMode] = useState(paymentMode);
 
   const classes = useStyles();
 
@@ -181,7 +181,7 @@ const AltPaymentModal = ({
                 style={{ fontSize: "0.8rem" }}
               />{" "}
               <span style={{ fontWeight: "bold" }}>
-                {localStorage.getItem("mesAAMembershiPlan") === "Lifetime"
+                {localStorage.getItem("mesAAMembershipPlan") === "Lifetime"
                   ? 1000
                   : 250}
               </span>{" "}
@@ -313,6 +313,7 @@ const AltPaymentModal = ({
                   JSON.parse(localStorage.getItem("mesAAUser")).interest,
                   JSON.parse(localStorage.getItem("mesAAUser")).membership,
                   "M",
+                  false,
                   files
                 );
 

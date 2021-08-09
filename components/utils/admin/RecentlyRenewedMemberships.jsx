@@ -77,13 +77,13 @@ const AlumniMembers = (props) => {
     {
       field: "id_card_url",
       headerName: "ID Card",
-      width: 400,
+      width: 500,
       headerClassName: headerStyle,
     },
     {
       field: "membership_certificate_url",
       headerName: "Membership Certificate",
-      width: 400,
+      width: 500,
       headerClassName: headerStyle,
     },
   ];

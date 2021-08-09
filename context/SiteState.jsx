@@ -44,6 +44,8 @@ import {
   JOBS_FETCHED_SUCCESS,
   JOBS_FETCHED_ERROR,
   CLEAR_JOB_STATUS,
+  RENEWAL_PROCESSED_SUCCESS,
+  RENEWAL_PROCESSED_ERROR,
 } from "./Types";
 
 const SiteState = (props) => {
@@ -69,6 +71,7 @@ const SiteState = (props) => {
     testimonial: null,
     emailSubscriptionStatus: null,
     jobs: null,
+    renewalProcessed: false,
   };
 
   const [state, dispatch] = useReducer(siteReducer, initialState);
@@ -98,6 +101,7 @@ const SiteState = (props) => {
     otherInterests,
     membership,
     paymentMode,
+    paymentStatus,
     images
   ) => {
     const formData = new FormData();
@@ -125,6 +129,7 @@ const SiteState = (props) => {
     formData.set("other_interests", otherInterests);
     formData.set("membership_type", membership);
     formData.set("payment_mode", paymentMode);
+    formData.set("payment_status", paymentStatus);
     images !== []
       ? images.forEach((file) => formData.append("images", file))
       : formData.set("images", images);
@@ -311,6 +316,37 @@ const SiteState = (props) => {
     }
   };
 
+  // Update renewal details
+  const updateRenewal = async (
+    email,
+    membershipType,
+    amount,
+    membershipValidity,
+    certificateUrl
+  ) => {
+    const jsonPayload = {
+      email: email,
+      membership_type: membershipType,
+      payment_amount: amount,
+      membership_valid_upto: membershipValidity,
+      certificate_url: certificateUrl,
+    };
+
+    try {
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/membership_renewal`,
+        jsonPayload
+      );
+
+      dispatch({ type: RENEWAL_PROCESSED_SUCCESS });
+    } catch (err) {
+      dispatch({
+        type: RENEWAL_PROCESSED_ERROR,
+        payload: err.response.data.detail,
+      });
+    }
+  };
+
   // Get membership details to update the payment status
   const getMembershipDetails = async (membershipId) => {
     try {
@@ -428,7 +464,7 @@ const SiteState = (props) => {
 
       dispatch({ type: PAYMENT_ORDER, payload: res.data });
     } catch (err) {
-      // dispatch({ type: PAYMENT_ORDER, payload: res.data });
+      dispatch({ type: PAYMENT_ERROR, payload: err.response.data.detail });
     }
   };
 
@@ -551,7 +587,8 @@ const SiteState = (props) => {
     country,
     recipientEmail,
     invoiceNumber,
-    membership
+    membership,
+    renewalDate
   ) => {
     const jsonPayload = {
       alumni_name: alumniName,
@@ -564,11 +601,34 @@ const SiteState = (props) => {
       to_email: recipientEmail,
       invoice_number: invoiceNumber,
       membership_type: membership,
+      renewal_date: renewalDate,
     };
 
     try {
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/email/receipt`,
+        jsonPayload
+      );
+      dispatch({ type: EMAIL_SEND_SUCCESS });
+    } catch (err) {
+      dispatch({ type: EMAIL_SEND_FAILURE });
+    }
+  };
+
+  const sendRenewalNotificationEmail = async (
+    alumniName,
+    alumniEmail,
+    renewalUrl
+  ) => {
+    const jsonPayload = {
+      to_email: alumniEmail,
+      name: alumniName,
+      renewal_url: renewalUrl,
+    };
+
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/email/expired_membership`,
         jsonPayload
       );
       dispatch({ type: EMAIL_SEND_SUCCESS });
@@ -642,6 +702,7 @@ const SiteState = (props) => {
         renewedMemberships: state.renewedMemberships,
         emailSubscriptionStatus: state.emailSubscriptionStatus,
         jobs: state.jobs,
+        renewalProcessed: state.renewalProcessed,
         setLoading,
         registerUser,
         deleteTempUser,
@@ -651,6 +712,7 @@ const SiteState = (props) => {
         getMembershipDetails,
         getExpiredMembershipDetails,
         getRenewedMembershipDetails,
+        updateRenewal,
         updatePaymentStatus,
         clearUserState,
         updateManualPaymentNotificationStatus,
@@ -662,6 +724,7 @@ const SiteState = (props) => {
         sendManualPaymentEmail,
         sendTestimonialApprovalEmail,
         sendPaymentReceiptEmail,
+        sendRenewalNotificationEmail,
         unsubscribeFromMailingList,
         loginUser,
         adminLogout,

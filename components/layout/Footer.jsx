@@ -9,6 +9,9 @@ import {
   collegeAddress2,
   officialEmail,
   officialPhone,
+  facebookProfile,
+  twitterProfile,
+  instagramProfile,
 } from "../../utils/associationDetails";
 
 // Material UI imports
@@ -18,7 +21,6 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
-import Button from "@material-ui/core/Button";
 import Fade from "@material-ui/core/Fade";
 
 // Fontawesome imports
@@ -36,8 +38,6 @@ import {
 
 // Component imports
 import ContactForm from "../forms/contact/ContactForm";
-
-let theme = createMuiTheme();
 
 const variants = {
   hover: {
@@ -236,7 +236,7 @@ const Footer = () => {
             style={{ fontSize: 6, margin: "0 10px" }}
           />
           <FontAwesomeIcon icon={faSitemap} style={{ marginRight: 5 }} />
-          <Link href="/privacy">
+          <Link href="/sitemap.xml">
             <a
               style={{ fontSize: "1rem", textDecoration: "none" }}
               className="styledLink"
@@ -267,7 +267,7 @@ const Footer = () => {
           Connect with us
         </Typography>
         <div style={{ paddingTop: 10, paddingBottom: 40 }}>
-          <Link href="https://facebook.com" passHref={true}>
+          <Link href={facebookProfile} passHref={true}>
             <a style={{ marginRight: 15 }}>
               <Image
                 src={"/images/social/facebook.svg"}
@@ -278,7 +278,7 @@ const Footer = () => {
             </a>
           </Link>
 
-          <Link href="https://twitter.com" passHref={true}>
+          <Link href={twitterProfile} passHref={true}>
             <a style={{ marginRight: 15 }}>
               <Image
                 src={"/images/social/twitter.svg"}
@@ -289,7 +289,7 @@ const Footer = () => {
             </a>
           </Link>
 
-          <Link href="https://instagram.com" passHref={true}>
+          <Link href={instagramProfile} passHref={true}>
             <a style={{ marginRight: 15 }}>
               <Image
                 src={"/images/social/instagram.svg"}

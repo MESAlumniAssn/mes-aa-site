@@ -39,6 +39,8 @@ import {
   JOBS_FETCHED_SUCCESS,
   JOBS_FETCHED_ERROR,
   CLEAR_JOB_STATUS,
+  RENEWAL_PROCESSED_SUCCESS,
+  RENEWAL_PROCESSED_ERROR,
 } from "./Types";
 
 const siteReducer = (state, action) => {
@@ -185,6 +187,16 @@ const siteReducer = (state, action) => {
         ...state,
         jobs: action.payload,
         loading: false,
+      };
+    case RENEWAL_PROCESSED_SUCCESS:
+      return {
+        ...state,
+        renewalProcessed: true,
+      };
+    case RENEWAL_PROCESSED_ERROR:
+      return {
+        ...state,
+        renewalProcessed: action.payload,
       };
     case CLEAR_JOB_STATUS:
       return {

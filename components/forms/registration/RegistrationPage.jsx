@@ -89,7 +89,7 @@ const RegistrationPage = (props) => {
   const [open, setOpen] = useState(false);
   const [paymentMessage, showPaymentMessage] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
-  const paymentMode = props.paymentMode.current;
+  const [mode, setMode] = useState("O");
   const router = useRouter();
 
   const isLastStep = activeStep === steps.length - 1;
@@ -136,36 +136,70 @@ const RegistrationPage = (props) => {
 
   // Runs once the registration is complete and we are ready for payment
   useEffect(() => {
-    if (!authError && paymentOrder && isRegistered) {
+    if (!authError && paymentOrder) {
       displayRazorPay();
     }
-  }, [isRegistered, paymentOrder, authError]);
+  }, [paymentOrder, authError]);
 
   // Redirect once payment verification is complete
   useEffect(() => {
     if (paymentVerified !== null) {
+      // Razorpay passes a null status for verified/successful payments
       if (paymentVerified.status === null) {
-        let invoiceNumber = generateInvoiceNumber(user.id);
-        let fullName =
-          user.prefix + ". " + user.first_name + " " + user.last_name;
-
-        sendWelcomeEmail(user.email, user.first_name);
-        sendPaymentReceiptEmail(
-          fullName,
-          user.address1,
-          user.address2,
-          user.city,
-          user.state,
-          user.pincode,
-          user.country,
-          user.email,
-          invoiceNumber,
-          user.membership_type
+        registerUser(
+          JSON.parse(localStorage.getItem("mesAAUser")).prefix,
+          JSON.parse(localStorage.getItem("mesAAUser")).firstName,
+          JSON.parse(localStorage.getItem("mesAAUser")).lastName,
+          JSON.parse(localStorage.getItem("mesAAUser")).email,
+          JSON.parse(localStorage.getItem("mesAAUser")).mobile,
+          JSON.parse(localStorage.getItem("mesAAUser")).birthday,
+          JSON.parse(localStorage.getItem("mesAAUser")).address1,
+          JSON.parse(localStorage.getItem("mesAAUser")).address2,
+          JSON.parse(localStorage.getItem("mesAAUser")).city,
+          JSON.parse(localStorage.getItem("mesAAUser")).state,
+          JSON.parse(localStorage.getItem("mesAAUser")).pincode,
+          JSON.parse(localStorage.getItem("mesAAUser")).country,
+          JSON.parse(localStorage.getItem("mesAAUser")).fromYear,
+          JSON.parse(localStorage.getItem("mesAAUser")).toYear,
+          JSON.parse(localStorage.getItem("mesAAUser")).streamPuc,
+          JSON.parse(localStorage.getItem("mesAAUser")).streamDegree,
+          JSON.parse(localStorage.getItem("mesAAUser")).streamPg,
+          JSON.parse(localStorage.getItem("mesAAUser")).streamOthers,
+          JSON.parse(localStorage.getItem("mesAAUser")).vision,
+          JSON.parse(localStorage.getItem("mesAAUser")).profession,
+          JSON.parse(localStorage.getItem("mesAAUser")).interest,
+          JSON.parse(localStorage.getItem("mesAAUser")).membership,
+          "O",
+          true,
+          files
         );
-        router.push(`/paymentverified/${user && user.alt_user_id}`);
       }
     }
   }, [paymentVerified]);
+
+  useEffect(() => {
+    if (user && mode === "O") {
+      let invoiceNumber = generateInvoiceNumber(user.id);
+      let fullName =
+        user.prefix + ". " + user.first_name + " " + user.last_name;
+
+      sendWelcomeEmail(user.email, user.first_name);
+      sendPaymentReceiptEmail(
+        fullName,
+        user.address1,
+        user.address2,
+        user.city,
+        user.state,
+        user.pincode,
+        user.country,
+        user.email,
+        invoiceNumber,
+        user.membership_type,
+        null
+      );
+      router.push(`/paymentverified/${user && user.alt_user_id}`);
+    }
+  }, [isRegistered]);
 
   const renderStep = (step, props) => {
     switch (step) {
@@ -191,46 +225,48 @@ const RegistrationPage = (props) => {
     }
   };
 
-  const submitForm = (values, actions) => {
-    actions.setSubmitting(true);
-    var membership = "";
+  // const submitForm = (values, actions) => {
+  //   actions.setSubmitting(true);
+  //   var membership = "";
 
-    if (typeof window !== "undefined") {
-      membership = localStorage.getItem("mesAAMembershiPlan");
-    }
+  //   if (typeof window !== "undefined") {
+  //     membership = localStorage.getItem("mesAAMembershipPlan");
+  //   }
 
-    registerUser(
-      values.prefix,
-      values.firstName,
-      values.lastName,
-      values.email,
-      values.mobile,
-      values.birthday,
-      values.address1,
-      values.address2,
-      values.city,
-      values.state,
-      values.pincode,
-      values.country,
-      values.fromYear,
-      values.toYear,
-      values.streamPuc,
-      values.streamDegree,
-      values.streamPg,
-      values.streamOthers,
-      values.vision,
-      values.profession,
-      values.interest,
-      membership,
-      "O",
-      files
-    );
-    setTimeout(() => actions.setSubmitting(false), 3000);
-  };
+  //   registerUser(
+  //     values.prefix,
+  //     values.firstName,
+  //     values.lastName,
+  //     values.email,
+  //     values.mobile,
+  //     values.birthday,
+  //     values.address1,
+  //     values.address2,
+  //     values.city,
+  //     values.state,
+  //     values.pincode,
+  //     values.country,
+  //     values.fromYear,
+  //     values.toYear,
+  //     values.streamPuc,
+  //     values.streamDegree,
+  //     values.streamPg,
+  //     values.streamOthers,
+  //     values.vision,
+  //     values.profession,
+  //     values.interest,
+  //     membership,
+  //     "O",
+  //     true,
+  //     files
+  //   );
+  //   setTimeout(() => actions.setSubmitting(false), 3000);
+  // };
 
   const handleSubmit = (values, actions) => {
+    actions.setSubmitting(true);
     var amount =
-      localStorage.getItem("mesAAMembershiPlan") === "Lifetime"
+      localStorage.getItem("mesAAMembershipPlan") === "Lifetime"
         ? process.env.NEXT_PUBLIC_LIFE_MEMBERSHIP_AMOUNT * 100
         : process.env.NEXT_PUBLIC_ANNUAL_MEMBERSHIP_AMOUNT * 100;
 
@@ -257,7 +293,7 @@ const RegistrationPage = (props) => {
       vision: values.vision,
       profession: values.profession,
       interest: values.interest,
-      membership: localStorage.getItem("mesAAMembershiPlan"),
+      membership: localStorage.getItem("mesAAMembershipPlan"),
     };
 
     if (typeof window !== "undefined") {
@@ -265,9 +301,10 @@ const RegistrationPage = (props) => {
     }
 
     if (isLastStep) {
-      submitForm(values, actions);
+      // submitForm(values, actions);
+      actions.setSubmitting(false);
       createOrder(parseInt(amount), "INR", shortId(), {
-        membershipType: localStorage.getItem("mesAAMembershiPlan"),
+        membershipType: localStorage.getItem("mesAAMembershipPlan"),
       });
     } else {
       // Validation for the profile pic
@@ -313,13 +350,13 @@ const RegistrationPage = (props) => {
     var options = {
       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
       amount:
-        localStorage.getItem("mesAAMembershiPlan") === "Lifetime"
+        localStorage.getItem("mesAAMembershipPlan") === "Lifetime"
           ? process.env.NEXT_PUBLIC_LIFE_MEMBERSHIP_AMOUNT * 100
           : process.env.NEXT_PUBLIC_ANNUAL_MEMBERSHIP_AMOUNT * 100,
       currency: "INR",
       name: "The MES College Alumni Association",
       description: `Payment for ${localStorage.getItem(
-        "mesAAMembershiPlan"
+        "mesAAMembershipPlan"
       )} membership`,
       image: LOGO,
       order_id: paymentOrder.id,
@@ -329,7 +366,7 @@ const RegistrationPage = (props) => {
           response.razorpay_order_id,
           response.razorpay_payment_id,
           response.razorpay_signature,
-          user && user.email
+          JSON.parse(localStorage.getItem("mesAAUser")).email
         );
       },
       modal: {
@@ -543,7 +580,8 @@ const RegistrationPage = (props) => {
                     submissionError={submissionError}
                     setSubmissionError={setSubmissionError}
                     files={files}
-                    paymentMode={paymentMode}
+                    mode={mode}
+                    setMode={setMode}
                   />
                 </Form>
               </div>

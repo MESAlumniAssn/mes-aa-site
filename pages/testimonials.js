@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
   parentContainer: {
     height: "100%",
+    marginBottom: 50,
   },
   testimonialsHero: {
     padding: "100px 0 50px 0",
@@ -28,7 +29,7 @@ const testimonials = (props) => {
   }, []);
 
   if (typeof window !== "undefined") {
-    localStorage.removeItem("mesAAMembershiPlan");
+    localStorage.removeItem("mesAAMembershipPlan");
     localStorage.removeItem("mesAAUser");
   }
 

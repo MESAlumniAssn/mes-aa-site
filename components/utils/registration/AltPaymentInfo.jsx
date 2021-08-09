@@ -30,7 +30,7 @@ const emailSentToast = () =>
   toast.dark("Email has been sent again", {
     position: "top-center",
     autoClose: 3000,
-    hideProgressBar: false,
+    hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,

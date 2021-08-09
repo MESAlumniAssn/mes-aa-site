@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import Image from "next/image";
 import SiteContext from "../../../context/siteContext";
+import { toast } from "react-toastify";
 
 // Material UI imports
 import {
@@ -12,6 +13,7 @@ import {
 } from "@material-ui/data-grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 // Component imports
 import CustomPagination from "./CustomPagination";
@@ -37,6 +39,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const emailToast = (name) =>
+  toast.dark(`Renewal link sent to ${name}`, {
+    position: "top-center",
+    autoClose: 4000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
+
 const exportToolbar = () => {
   return (
     <GridToolbarContainer>
@@ -47,15 +59,45 @@ const exportToolbar = () => {
   );
 };
 
-const ExpiredMemberhips = (props) => {
+const ExpiredMemberships = (props) => {
   const siteContext = useContext(SiteContext);
-  const { loading, expiredMemberships, getExpiredMembershipDetails } =
-    siteContext;
+  const {
+    loading,
+    expiredMemberships,
+    getExpiredMembershipDetails,
+    sendRenewalNotificationEmail,
+  } = siteContext;
   const classes = useStyles();
 
   const headerStyle = "dg-expired";
 
   const expiredTableFields = [
+    {
+      field: "renewal_link",
+      headerName: "Resend Email",
+      width: 200,
+      headerClassName: headerStyle,
+      renderCell: (params) => (
+        <strong>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            style={{ fontWeight: "bold", padding: 5 }}
+            onClick={() => {
+              sendRenewalNotificationEmail(
+                params.row.full_name,
+                params.row.email,
+                params.value
+              );
+              emailToast(params.row.full_name);
+            }}
+          >
+            Resend Renewal Link
+          </Button>
+        </strong>
+      ),
+    },
     {
       field: "membership_id",
       headerName: "Membership ID",
@@ -78,13 +120,7 @@ const ExpiredMemberhips = (props) => {
     {
       field: "id_card_url",
       headerName: "ID Card",
-      width: 400,
-      headerClassName: headerStyle,
-    },
-    {
-      field: "membership_certificate_url",
-      headerName: "Membership Certificate",
-      width: 400,
+      width: 500,
       headerClassName: headerStyle,
     },
   ];
@@ -145,4 +181,4 @@ const ExpiredMemberhips = (props) => {
   );
 };
 
-export default ExpiredMemberhips;
+export default ExpiredMemberships;

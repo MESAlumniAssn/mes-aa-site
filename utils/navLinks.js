@@ -100,6 +100,7 @@ const navLinks = {
   "/testimonialverification/[verificationhash]": [home, about, contact],
   "/terms": [home, pricing, famousAlumni, alumniSpeak, about, contact],
   "/privacy": [home, pricing, famousAlumni, alumniSpeak, about, contact],
+  "/renewal/[hash]": [home, pricing, famousAlumni, alumniSpeak, about, contact],
 };
 
 export default navLinks;

@@ -7,7 +7,7 @@ import Card from "../../components/utils/card/Card";
 
 const IDCard = (props) => {
   if (typeof window !== "undefined") {
-    localStorage.removeItem("mesAAMembershiPlan");
+    localStorage.removeItem("mesAAMembershipPlan");
     localStorage.removeItem("mesAAUser");
     localStorage.removeItem("testimonialSubmission");
   }

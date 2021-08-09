@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
+import { ADMIN_LOGIN } from "../../../utils/images";
 
 // Material UI imports
 import TextField from "@material-ui/core/TextField";
@@ -105,7 +106,7 @@ const AdminLogin = () => {
             }}
           >
             <Image
-              src="https://ik.imagekit.io/pwxm960evbp/tr:h-400,w-650/MES-AA/Site_Images/About/college-old_7uo2jBfRvW.png?updatedAt=1626152060014"
+              src={ADMIN_LOGIN}
               alt="MES college"
               height={400}
               width={650}

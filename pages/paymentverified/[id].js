@@ -12,7 +12,7 @@ const PaymentVerified = (props) => {
   }, []);
 
   if (typeof window !== "undefined") {
-    localStorage.removeItem("mesAAMembershiPlan");
+    localStorage.removeItem("mesAAMembershipPlan");
     localStorage.removeItem("testimonialSubmission");
     localStorage.removeItem("mesAATempUserToken");
   }

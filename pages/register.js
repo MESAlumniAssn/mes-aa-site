@@ -25,7 +25,7 @@ const Register = (props) => {
   const classes = useStyles();
 
   if (typeof window !== "undefined") {
-    if (!localStorage.getItem("mesAAMembershiPlan")) {
+    if (!localStorage.getItem("mesAAMembershipPlan")) {
       if (process.browser) {
         router.push("/pricing");
       }

@@ -146,7 +146,7 @@ const Certificate = (props) => {
             marginTop: 10,
           }}
         >
-          <div id="signature1" style={{ marginTop: 5 }}>
+          <div id="signature1">
             <Image
               src={"/images/certificate/signature1.png"}
               alt="Signature of the President"
@@ -182,9 +182,9 @@ const Certificate = (props) => {
             <br /> {props.userData.membership_start_date}
           </Typography>
 
-          <div id="signature2" style={{ marginTop: 5 }}>
+          <div id="signature2">
             <Image
-              src={"/images/certificate/signature2.svg"}
+              src={"/images/certificate/signature2.png"}
               alt="Signature of the Secretary"
               width={300}
               height={100}

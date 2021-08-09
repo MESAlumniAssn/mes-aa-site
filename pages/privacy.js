@@ -11,7 +11,7 @@ const privacy = () => {
   }, []);
 
   if (typeof window !== "undefined") {
-    localStorage.removeItem("mesAAMembershiPlan");
+    localStorage.removeItem("mesAAMembershipPlan");
     localStorage.removeItem("mesAAUser");
     localStorage.removeItem("testimonialSubmission");
   }

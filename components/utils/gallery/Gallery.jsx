@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Masonry from "react-masonry-css";
+// import Masonry from "react-masonry-css";
 import Image from "next/image";
 import Link from "next/link";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 // Component imports
 import ImageCarousel from "./ImageCarousel";
@@ -42,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 const breakpoints = {
   default: 3,
-  960: 2,
+  960: 1,
   600: 1,
 };
 
@@ -53,7 +54,7 @@ const Gallery = (props) => {
   const [selectedImage, setSelectedImage] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => setShowLoader(!showLoader), 3000);
+    setTimeout(() => setShowLoader(false), 3000);
   }, []);
 
   const handleOpen = (index) => {
@@ -89,30 +90,30 @@ const Gallery = (props) => {
           />
         </div>
       ) : (
-        <Container maxWidth="lg" style={{ overflow: "hidden", marginTop: 30 }}>
-          <Masonry
-            breakpointCols={breakpoints}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column_gallery"
+        <Container maxWidth="xl" style={{ overflow: "hidden" }}>
+          <ResponsiveMasonry
+            columnsCountBreakPoints={{ 300: 1, 600: 2, 960: 3 }}
           >
-            {props.galleryData.map((image, index) => (
-              <Link href="#" key={image.fileId}>
-                <a
-                  style={{
-                    overflow: "hidden",
-                  }}
-                  onClick={() => handleOpen(index)}
-                >
-                  <img
-                    src={image.url + "?tr=w-401,q-80"}
-                    alt={`gallery image-${image.fileId}`}
-                    width="401px"
-                    style={{ borderRadius: "5%" }}
-                  />
-                </a>
-              </Link>
-            ))}
-          </Masonry>
+            <Masonry gutter="1">
+              {props.galleryData.map((image, index) => (
+                <Link href="#" key={image.fileId}>
+                  <a
+                    style={{
+                      overflow: "hidden",
+                    }}
+                    onClick={() => handleOpen(index)}
+                  >
+                    <img
+                      src={image.url + "?tr=w-401,q-80"}
+                      alt={`gallery image-${image.fileId}`}
+                      width="98%"
+                      style={{ borderRadius: "5%", margin: 1 }}
+                    />
+                  </a>
+                </Link>
+              ))}
+            </Masonry>
+          </ResponsiveMasonry>
         </Container>
       )}
 

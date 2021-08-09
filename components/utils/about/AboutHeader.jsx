@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.1rem",
     fontWeight: 600,
     borderLeft: "solid 5px var(--secondary-color)",
-    borderRaius: 0,
+    borderRadius: 0,
     padding: "5px 10px",
     background: "#FFFFFF",
     textTransform: "uppercase",
@@ -59,9 +59,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       fontSize: "1.3rem",
     },
-  },
-  headerImageContainer: {
-    boxShadow: "0 20px 35px rgba(0, 0, 0, 0.2)",
   },
 }));
 
@@ -100,11 +97,11 @@ const AboutHeader = () => {
             paddingBottom: 30,
           }}
         >
-          <div className={classes.headerImageContainer}>
+          <div>
             <Image
               src={ABOUT_HEADER}
               alt={"MES College"}
-              height={400}
+              height={350}
               width={550}
             />
           </div>

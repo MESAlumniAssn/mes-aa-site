@@ -194,7 +194,7 @@ const JobStatus = ({ jobStatusOpen, setJobStatusOpen }) => {
                     marginRight: 5,
                   }}
                 />
-                All jobs are functional
+                All jobs are running as expected!
               </span>
             ) : (
               <span>

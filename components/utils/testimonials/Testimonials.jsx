@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Masonry from "react-masonry-css";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { useInView } from "react-intersection-observer";
 import { motion, useAnimation } from "framer-motion";
 
@@ -7,12 +7,6 @@ import { motion, useAnimation } from "framer-motion";
 import TestimonialCard from "./TestimonialCard";
 import Container from "@material-ui/core/Container";
 import TestimonialButton from "./TestimonialButton";
-
-const breakpoints = {
-  default: 3,
-  960: 2,
-  600: 1,
-};
 
 const Testimonials = (props) => {
   const { inView, ref } = useInView({ threshold: 0.2 });
@@ -40,18 +34,20 @@ const Testimonials = (props) => {
       <div style={{ marginBottom: 50, textAlign: "center" }}>
         <TestimonialButton />
       </div>
-
-      <Masonry
-        breakpointCols={breakpoints}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column_testimonials"
-      >
-        {props.testimonials.map((testimonial, i) => (
-          <motion.div custom={i} animate={animation} key={testimonial.id}>
-            <TestimonialCard testimonial={testimonial} />
-          </motion.div>
-        ))}
-      </Masonry>
+      <ResponsiveMasonry columnsCountBreakPoints={{ 300: 1, 600: 2, 960: 3 }}>
+        <Masonry>
+          {props.testimonials.map((testimonial, i) => (
+            <motion.div
+              custom={i}
+              animate={animation}
+              key={testimonial.id}
+              style={{ margin: "20px 0 20px 30px" }}
+            >
+              <TestimonialCard testimonial={testimonial} />
+            </motion.div>
+          ))}
+        </Masonry>
+      </ResponsiveMasonry>
     </Container>
   );
 };

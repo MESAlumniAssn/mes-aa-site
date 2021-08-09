@@ -1,38 +1,42 @@
-import React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { facebookProfile } from '../../../utils/associationDetails'
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import {
+  facebookProfile,
+  twitterProfile,
+  instagramProfile,
+} from "../../../utils/associationDetails";
 
 // Material UI imports
-import Typography from '@material-ui/core/Typography'
-import Grid from '@material-ui/core/Grid'
-import { makeStyles, createMuiTheme } from '@material-ui/core/styles'
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 
-const theme = createMuiTheme()
+const theme = createMuiTheme();
 
 const useStyles = makeStyles({
   socialIconsContainer: {
-    width: '100%',
-    margin: '0 auto',
-    [theme.breakpoints.up('sm')]: {
-      width: '50%',
+    width: "100%",
+    margin: "0 auto",
+    [theme.breakpoints.up("sm")]: {
+      width: "50%",
     },
   },
-})
+});
 
 const Social = () => {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
-    <div style={{ margin: '70px 0' }}>
+    <div style={{ margin: "70px 0" }}>
       <Typography
         component="h2"
         align="center"
         gutterBottom
-        style={{ fontWeight: 'bold' }}
+        style={{ fontWeight: "bold" }}
       >
         <span className="secondaryHeading">Feeling Social?</span>
       </Typography>
-      <Typography align="center" gutterBottom style={{ fontWeight: 'bold' }}>
+      <Typography align="center" gutterBottom style={{ fontWeight: "bold" }}>
         <span className="subtitle">Connect with us</span>
       </Typography>
       <div className={classes.socialIconsContainer}>
@@ -47,7 +51,7 @@ const Social = () => {
             <Link href={facebookProfile} passHref={true}>
               <a target="_blank">
                 <Image
-                  src={'/images/social/facebook.svg'}
+                  src={"/images/social/facebook.svg"}
                   alt="Facebook"
                   height={50}
                   width={50}
@@ -57,10 +61,10 @@ const Social = () => {
           </Grid>
 
           <Grid item xs={3} align="center">
-            <Link href="https://twitter.com" passHref={true}>
+            <Link href={twitterProfile} passHref={true}>
               <a target="_blank">
                 <Image
-                  src={'/images/social/twitter.svg'}
+                  src={"/images/social/twitter.svg"}
                   alt="Twitter"
                   height={50}
                   width={50}
@@ -69,10 +73,10 @@ const Social = () => {
             </Link>
           </Grid>
           <Grid item xs={3} align="center">
-            <Link href="https://instagram.com" passHref={true}>
+            <Link href={instagramProfile} passHref={true}>
               <a target="_blank">
                 <Image
-                  src={'/images/social/instagram.svg'}
+                  src={"/images/social/instagram.svg"}
                   alt="Instagram"
                   height={50}
                   width={50}
@@ -84,7 +88,7 @@ const Social = () => {
             <Link href="https://youtube.com" passHref={true}>
               <a target="_blank">
                 <Image
-                  src={'/images/social/youtube.svg'}
+                  src={"/images/social/youtube.svg"}
                   alt="Youtube"
                   height={50}
                   width={50}
@@ -95,7 +99,7 @@ const Social = () => {
         </Grid>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Social
+export default Social;

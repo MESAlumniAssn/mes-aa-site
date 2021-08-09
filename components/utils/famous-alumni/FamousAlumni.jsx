@@ -89,8 +89,13 @@ const FamousAlumni = (props) => {
           /> */}
         </div>
 
-        <Container maxWidth="md">
-          <Grid container spacing={5}>
+        <Container>
+          <Grid
+            container
+            spacing={5}
+            justifyContent="center"
+            alignItems="center"
+          >
             {props.famousAlumni
               .filter((record) => {
                 return record.award && record.award.includes("Padma");
@@ -98,66 +103,68 @@ const FamousAlumni = (props) => {
               .map((awardee, index) => {
                 return (
                   <Grid item xs={12} sm={6} md={4} key={index}>
-                    <div className={styles.cardPadma}>
-                      <div className={styles.cardContentPadma}>
-                        <div classname={styles.cardFront}>
-                          <div className={styles.cardFrontContent}>
-                            <Image
-                              src="/images/famous-alumni/padma-award2.svg"
-                              alt="Award photo"
-                              height={25}
-                              width={25}
-                            />
+                    <div className={styles.cardPadmaContainer}>
+                      <div className={styles.cardPadma}>
+                        <div className={styles.cardContentPadma}>
+                          <div classname={styles.cardFront}>
+                            <div className={styles.cardFrontContent}>
+                              <Image
+                                src={awardee.image}
+                                alt="Award photo"
+                                height={200}
+                                width={180}
+                              />
 
+                              <Typography
+                                style={{
+                                  fontSize: "1.2rem",
+                                  fontWeight: 800,
+                                  marginTop: 10,
+                                }}
+                                align="center"
+                                gutterBottom
+                              >
+                                {awardee.name}
+                              </Typography>
+                            </div>
+                            <div className={styles.cardFlipIcon}>
+                              <Image
+                                src={"/images/famous-alumni/360.svg"}
+                                alt="Flip card"
+                                height={25}
+                                width={25}
+                              />
+                            </div>
+                          </div>
+
+                          <div className={styles.cardBack}>
                             <Typography
-                              style={{
-                                fontSize: "1.3rem",
-                                fontWeight: 800,
-                                marginTop: 10,
-                              }}
+                              style={{ fontSize: "1.1rem", fontWeight: 600 }}
                               align="center"
                               gutterBottom
                             >
-                              {awardee.name}
+                              Awarded{" "}
+                              <span style={{ fontWeight: 900 }}>
+                                {awardee.award}
+                              </span>{" "}
+                              in {awardee.year} for {awardee.category}
                             </Typography>
-                          </div>
-                          <div className={styles.cardFlipIcon}>
-                            <Image
-                              src={"/images/famous-alumni/360.svg"}
-                              alt="Flip card"
-                              height={25}
-                              width={25}
-                            />
-                          </div>
-                        </div>
 
-                        <div className={styles.cardBack}>
-                          <Typography
-                            style={{ fontSize: "1.1rem", fontWeight: 600 }}
-                            align="center"
-                            gutterBottom
-                          >
-                            Awarded{" "}
-                            <span style={{ fontWeight: 900 }}>
-                              {awardee.award}
-                            </span>{" "}
-                            in {awardee.year} for {awardee.category}
-                          </Typography>
-
-                          {awardee.batch && (
-                            <Typography
-                              style={{
-                                fontSize: "0.9rem",
-                              }}
-                              align="center"
-                              gutterBottom
-                            >
-                              Batch of{" "}
-                              <span style={{ fontWeight: "bold" }}>
-                                {awardee.batch}
-                              </span>
-                            </Typography>
-                          )}
+                            {awardee.batch && (
+                              <Typography
+                                style={{
+                                  fontSize: "0.9rem",
+                                }}
+                                align="center"
+                                gutterBottom
+                              >
+                                Batch of{" "}
+                                <span style={{ fontWeight: "bold" }}>
+                                  {awardee.batch}
+                                </span>
+                              </Typography>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -12,7 +12,7 @@ const loginToast = () =>
   toast.dark("Log in to access the dashboard", {
     position: "top-center",
     autoClose: 3000,
-    hideProgressBar: false,
+    hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,

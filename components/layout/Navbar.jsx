@@ -2,7 +2,11 @@ import React, { Fragment, useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
-import { facebookProfile } from "../../utils/associationDetails";
+import {
+  facebookProfile,
+  twitterProfile,
+  instagramProfile,
+} from "../../utils/associationDetails";
 import { LOGO } from "../../utils/images";
 
 // Material UI imports
@@ -114,7 +118,7 @@ export default function Navbar(props) {
             />
           </a>
         </Link>
-        <Link href="https://twitter.com" passHref={true}>
+        <Link href={twitterProfile} passHref={true}>
           <a style={{ marginRight: 25 }}>
             <Image
               src={"/images/social/twitter.svg"}
@@ -124,7 +128,7 @@ export default function Navbar(props) {
             />
           </a>
         </Link>{" "}
-        <Link href="https://instagram.com" passHref={true}>
+        <Link href={instagramProfile} passHref={true}>
           <a style={{ marginRight: 25 }}>
             <Image
               src={"/images/social/instagram.svg"}

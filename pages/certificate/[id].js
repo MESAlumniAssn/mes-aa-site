@@ -7,7 +7,7 @@ import Certificate from "../../components/utils/certificate/Certificate";
 
 const LMCertificate = (props) => {
   if (typeof window !== "undefined") {
-    localStorage.removeItem("mesAAMembershiPlan");
+    localStorage.removeItem("mesAAMembershipPlan");
     localStorage.removeItem("mesAAUser");
     localStorage.removeItem("testimonialSubmission");
   }

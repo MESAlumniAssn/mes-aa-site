@@ -33,13 +33,13 @@ const PaymentDetails = () => {
   const classes = useStyles();
 
   if (typeof window !== "undefined") {
-    membership = localStorage.getItem("mesAAMembershiPlan");
+    membership = localStorage.getItem("mesAAMembershipPlan");
     amount =
       membership === "Lifetime"
         ? planValues.lifetimeMembershipCost
         : planValues.annualMembershipCost;
 
-    rows = [createData(localStorage.getItem("mesAAMembershiPlan"), amount)];
+    rows = [createData(localStorage.getItem("mesAAMembershipPlan"), amount)];
   }
 
   return (

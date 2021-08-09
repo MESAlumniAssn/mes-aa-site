@@ -12,7 +12,7 @@ const paymentinfo = (props) => {
   }, []);
 
   if (typeof window !== "undefined") {
-    localStorage.removeItem("mesAAMembershiPlan");
+    localStorage.removeItem("mesAAMembershipPlan");
     localStorage.removeItem("testimonialSubmission");
   }
 
