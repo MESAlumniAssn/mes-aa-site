@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { planValues } from "../../../utils/pricingPlans";
 
 // Material UI imports
@@ -65,8 +65,8 @@ const PaymentDetails = () => {
           </TableHead>
           <TableBody>
             {rows.map((row, index) => (
-              <Fragment>
-                <TableRow key={index}>
+              <div key={index}>
+                <TableRow>
                   <TableCell component="th" scope="row">
                     {row.membership}
                   </TableCell>
@@ -105,7 +105,7 @@ const PaymentDetails = () => {
                     <FontAwesomeIcon icon={faRupeeSign} /> {row.amount}
                   </TableCell>
                 </TableRow>
-              </Fragment>
+              </div>
             ))}
           </TableBody>
         </Table>

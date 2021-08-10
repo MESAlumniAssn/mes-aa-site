@@ -106,7 +106,7 @@ const RegistrationPage = (props) => {
     isRegistered,
     verifyPayment,
     user,
-    deleteTempUser,
+    // deleteTempUser,
     sendWelcomeEmail,
     sendPaymentReceiptEmail,
   } = siteContext;
@@ -170,7 +170,8 @@ const RegistrationPage = (props) => {
           JSON.parse(localStorage.getItem("mesAAUser")).interest,
           JSON.parse(localStorage.getItem("mesAAUser")).membership,
           "O",
-          true,
+          true, // payment status
+          paymentOrder.id,
           files
         );
       }
@@ -369,11 +370,11 @@ const RegistrationPage = (props) => {
           JSON.parse(localStorage.getItem("mesAAUser")).email
         );
       },
-      modal: {
-        ondismiss: function () {
-          deleteTempUser(localStorage.getItem("mesAATempUserToken"));
-        },
-      },
+      // modal: {
+      //   ondismiss: function () {
+      //     deleteTempUser(localStorage.getItem("mesAATempUserToken"));
+      //   },
+      // },
       prefill: {
         name:
           JSON.parse(localStorage.getItem("mesAAUser")).firstName +

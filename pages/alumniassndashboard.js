@@ -22,6 +22,10 @@ const alumniassndashboard = () => {
   const router = useRouter();
 
   if (typeof window !== "undefined") {
+    localStorage.removeItem("mesAAMembershipPlan");
+    localStorage.removeItem("mesAAUser");
+    localStorage.removeItem("testimonialSubmission");
+
     if (!localStorage.getItem("mesAAToken")) {
       if (process.browser) loginToast();
       router.push(`/dashboard/${process.env.NEXT_PUBLIC_ADMIN_ID}`);

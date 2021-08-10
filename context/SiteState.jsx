@@ -6,8 +6,6 @@ import axios from "axios";
 import {
   LOADING,
   REGISTRATION_CREATE_SUCCESS,
-  REGISTRATION_UPDATE_SUCCESS,
-  REGISTRATION_ERROR,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   METRICS_SUCCESS,
@@ -102,6 +100,7 @@ const SiteState = (props) => {
     membership,
     paymentMode,
     paymentStatus,
+    orderId,
     images
   ) => {
     const formData = new FormData();
@@ -130,6 +129,7 @@ const SiteState = (props) => {
     formData.set("membership_type", membership);
     formData.set("payment_mode", paymentMode);
     formData.set("payment_status", paymentStatus);
+    formData.set("razorpay_order_id", orderId);
     images !== []
       ? images.forEach((file) => formData.append("images", file))
       : formData.set("images", images);
@@ -185,15 +185,15 @@ const SiteState = (props) => {
   // };
 
   // Delete temporary user - this is run if the user closes the payment modal
-  const deleteTempUser = async (altUserId) => {
-    try {
-      await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_URL}/user/delete/${altUserId}`
-      );
-    } catch (err) {
-      console.error(err.response.data.detail);
-    }
-  };
+  // const deleteTempUser = async (altUserId) => {
+  //   try {
+  //     await axios.delete(
+  //       `${process.env.NEXT_PUBLIC_API_URL}/user/delete/${altUserId}`
+  //     );
+  //   } catch (err) {
+  //     console.error(err.response.data.detail);
+  //   }
+  // };
 
   // Metrics
   const generateMetricCounts = async () => {
@@ -705,7 +705,7 @@ const SiteState = (props) => {
         renewalProcessed: state.renewalProcessed,
         setLoading,
         registerUser,
-        deleteTempUser,
+        // deleteTempUser,
         generateMetricCounts,
         getLifeMembers,
         getAnnualMembers,

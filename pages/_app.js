@@ -133,7 +133,6 @@ const pageVariants = {
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const paymentMode = useRef("O");
 
   const pathname = router.pathname;
 
@@ -151,7 +150,7 @@ function MyApp({ Component, pageProps }) {
       <SiteState>
         <ThemeProvider theme={theme}>
           <Layout pathname={pathname}>
-            <Component {...pageProps} paymentMode={paymentMode} />
+            <Component {...pageProps} />
           </Layout>
         </ThemeProvider>
         <ToastContainer

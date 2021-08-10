@@ -313,7 +313,8 @@ const AltPaymentModal = ({
                   JSON.parse(localStorage.getItem("mesAAUser")).interest,
                   JSON.parse(localStorage.getItem("mesAAUser")).membership,
                   "M",
-                  false,
+                  false, // payment status
+                  null, // razorpay order id
                   files
                 );
 

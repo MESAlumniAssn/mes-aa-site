@@ -41,7 +41,11 @@ const Testimonials = (props) => {
               custom={i}
               animate={animation}
               key={testimonial.id}
-              style={{ margin: "20px 0 20px 30px" }}
+              style={{
+                margin: "20px 0 20px 0",
+                display: "flex",
+                justifyContent: "center",
+              }}
             >
               <TestimonialCard testimonial={testimonial} />
             </motion.div>

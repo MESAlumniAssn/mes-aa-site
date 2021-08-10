@@ -7,12 +7,8 @@ import CountUp from "react-countup";
 // Material UI imports
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Tooltip from "@material-ui/core/Tooltip";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-
-// Fontawesome imports
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+// import Tooltip from "@material-ui/core/Tooltip";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   countGridItemCount: {
@@ -46,14 +42,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PendingCountTooltip = withStyles({
-  tooltip: {
-    fontSize: "0.9rem",
-    padding: 10,
-    backgroundColor: "#f6d6ad",
-    color: "#290001",
-  },
-})(Tooltip);
+// const PendingCountTooltip = withStyles({
+//   tooltip: {
+//     fontSize: "0.9rem",
+//     padding: 10,
+//     backgroundColor: "#f6d6ad",
+//     color: "#290001",
+//   },
+// })(Tooltip);
 
 const variants = {
   initial: {
@@ -117,7 +113,7 @@ const Lighthouse = () => {
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
               <CountUp
-                end={metrics && metrics.total_registrations}
+                end={(metrics && metrics.total_registrations) || 0}
                 duration={3}
               />
             </Typography>
@@ -140,7 +136,7 @@ const Lighthouse = () => {
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
               <CountUp
-                end={metrics && metrics.successful_registrations}
+                end={(metrics && metrics.successful_registrations) || 0}
                 duration={3}
               />
             </Typography>
@@ -164,12 +160,12 @@ const Lighthouse = () => {
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
               <CountUp
-                end={metrics && metrics.pending_registrations}
+                end={(metrics && metrics.pending_registrations) || 0}
                 duration={3}
               />
             </Typography>
 
-            <div style={{ width: "100%" }}>
+            {/* <div style={{ width: "100%" }}>
               <PendingCountTooltip
                 title="Registration was aborted at the payment step either due to a technical issue or alumnus voluntarily did not proceed with payment"
                 interactive
@@ -188,7 +184,7 @@ const Lighthouse = () => {
                   />
                 </div>
               </PendingCountTooltip>
-            </div>
+            </div> */}
           </motion.div>
         </Grid>
 
@@ -207,7 +203,10 @@ const Lighthouse = () => {
               Successful LM Registrations:
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
-              <CountUp end={metrics && metrics.life_members} duration={3} />
+              <CountUp
+                end={(metrics && metrics.life_members) || 0}
+                duration={3}
+              />
             </Typography>
           </motion.div>
         </Grid>
@@ -228,7 +227,7 @@ const Lighthouse = () => {
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
               <CountUp
-                end={metrics && metrics.pending_life_members}
+                end={(metrics && metrics.pending_life_members) || 0}
                 duration={3}
               />
             </Typography>
@@ -250,7 +249,10 @@ const Lighthouse = () => {
               Successful AM Registrations:
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
-              <CountUp end={metrics && metrics.annual_members} duration={3} />
+              <CountUp
+                end={(metrics && metrics.annual_members) || 0}
+                duration={3}
+              />
             </Typography>
           </motion.div>
         </Grid>
@@ -271,7 +273,7 @@ const Lighthouse = () => {
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
               <CountUp
-                end={metrics && metrics.pending_annual_members}
+                end={(metrics && metrics.pending_annual_members) || 0}
                 duration={3}
               />
             </Typography>

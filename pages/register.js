@@ -37,7 +37,7 @@ const Register = (props) => {
   return (
     <RegisterHeadLayout>
       <div className={classes.root}>
-        <RegistrationPage paymentMode={props.paymentMode} />
+        <RegistrationPage />
       </div>
       <Footer />
     </RegisterHeadLayout>

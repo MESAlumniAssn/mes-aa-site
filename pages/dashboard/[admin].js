@@ -10,6 +10,10 @@ const admin = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      localStorage.removeItem("mesAAMembershipPlan");
+      localStorage.removeItem("mesAAUser");
+      localStorage.removeItem("testimonialSubmission");
+
       if (localStorage.getItem("mesAAToken")) {
         router.push("/alumniassndashboard");
       }
