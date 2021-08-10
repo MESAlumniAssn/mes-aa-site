@@ -12,6 +12,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelopeOpen } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
+  emailContainer: {
+    marginTop: 70,
+    padding: "50px 70px",
+    backgroundColor: "rgba(228, 211, 207, 0.1)",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 50,
+      padding: "50px 30px",
+    },
+  },
   memberEmail: {
     fontSize: "1.1rem",
     fontWeight: "bold",
@@ -19,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "0.9rem",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "0.8rem",
+      fontSize: "0.85rem",
     },
   },
 }));
@@ -28,7 +37,7 @@ const OfficeBearerContacts = () => {
   const classes = useStyles();
 
   return (
-    <div style={{ margin: "70px 0" }}>
+    <div className={classes.emailContainer}>
       <Typography
         component="h2"
         align="center"
@@ -57,6 +66,7 @@ const OfficeBearerContacts = () => {
                   borderLeft: "5px solid var(--contact-color)",
                   padding: "15px 20px",
                   boxShadow: "0 15px 22px rgba(0, 0, 0, 0.2)",
+                  backgroundColor: "#FFFFFF",
                 }}
               >
                 <Typography

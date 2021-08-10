@@ -118,7 +118,7 @@ const ContactDetails = () => {
           <span className="mainHeading">Get in touch</span>
         </Typography>
       </div>
-      <Container maxWidth="lg">
+      <Container>
         <Grid container justify="center" alignItems="center" spacing={3}>
           <Grid item xs={12} md={6}>
             <div className={classes.heroImage}>
@@ -191,9 +191,9 @@ const ContactDetails = () => {
             </Fade>
           </Modal>
         </div>
-        <OfficeBearerContacts />
-        <Social />
       </Container>
+      <OfficeBearerContacts />
+      <Social />
     </div>
   );
 };

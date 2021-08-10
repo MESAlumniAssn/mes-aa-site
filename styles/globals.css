@@ -63,39 +63,11 @@ body {
 }
 
 .obImageBorderColor {
-  border: 5px solid var(--secondary-color);
+  border: 5px solid #a7d0cd;
 }
 
 .mcImageBorderColor {
   border: 5px solid #ecd662;
-}
-
-/* Styles for the masonry layout */
-.my-masonry-grid {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: 10px; /* gutter size offset */
-}
-
-.my-masonry-grid_column_testimonials {
-  padding-left: 10px; /* gutter size */
-  padding-right: 10px;
-  background-clip: padding-box;
-}
-
-.my-masonry-grid_column_gallery {
-  padding: 10px;
-  background-clip: padding-box;
-}
-
-.my-masonry-grid_column_gallery > div {
-  padding: 20px;
-  margin-bottom: 30px;
-}
-
-.my-masonry-grid_column_testimonials > div {
-  margin-bottom: 30px;
 }
 
 /* Styled link */
