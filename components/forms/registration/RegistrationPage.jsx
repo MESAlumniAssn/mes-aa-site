@@ -348,6 +348,8 @@ const RegistrationPage = (props) => {
 
     if (!res) return;
 
+    const payee = `The MES College Alumni Association ${(<span>&#174;</span>)}`;
+
     var options = {
       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
       amount:
@@ -355,13 +357,12 @@ const RegistrationPage = (props) => {
           ? process.env.NEXT_PUBLIC_LIFE_MEMBERSHIP_AMOUNT * 100
           : process.env.NEXT_PUBLIC_ANNUAL_MEMBERSHIP_AMOUNT * 100,
       currency: "INR",
-      name: "The MES College Alumni Association",
+      name: payee,
       description: `Payment for ${localStorage.getItem(
         "mesAAMembershipPlan"
       )} membership`,
       image: LOGO,
       order_id: paymentOrder.id,
-
       handler: function (response) {
         verifyPayment(
           response.razorpay_order_id,

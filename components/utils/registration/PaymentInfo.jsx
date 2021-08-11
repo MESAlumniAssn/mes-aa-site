@@ -7,17 +7,20 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   parentContainer: {
-    textAlign: "center",
+    margin: "100px 0 50px 0",
   },
   paymentInfoContainer: {
-    margin: "100px 100px 50px 100px",
-    padding: "30px 15px",
-    textAlign: "center",
-    borderRadius: "1rem",
-    boxShadow: "0 23px 47px rgba(0, 0, 0, 0.3)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     [theme.breakpoints.down("md")]: {
       margin: "100px 20px 50px 20px",
     },
+  },
+  textStyles: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 
@@ -27,41 +30,48 @@ const PaymentInfo = (props) => {
   return (
     <div className={classes.parentContainer}>
       <div className={classes.paymentInfoContainer}>
-        <Typography component="h1">
-          <span className="mainHeading">
-            Thank you for registering,{" "}
-            <span style={{ color: "#ff5200" }}>{props.userData.name}!</span>
-          </span>
-        </Typography>
-
-        <div style={{ margin: "20px 0" }}>
-          <Image
-            src="/images/registration/check.gif"
-            alt="Registration successful"
-            height={175}
-            width={175}
-          />
-        </div>
-
-        <Typography component="h2">
-          <span className="secondaryHeading">
-            Your membership id is{" "}
-            <span style={{ color: "#ff5200" }}>
-              {props.userData.membership_id}
+        <div>
+          <Typography
+            component="h1"
+            gutterBottom
+            className={classes.textStyles}
+          >
+            <span className="secondaryHeading">
+              Thank you for registering, {props.userData.name}!
             </span>
-          </span>
-        </Typography>
+          </Typography>
 
-        <Typography
-          component="p"
-          style={{
-            fontSize: "1.1rem",
-            padding: "20px 0",
-          }}
-        >
-          Your payment receipt and membership details will be emailed to{" "}
-          <span style={{ color: "#ff5200" }}>{props.userData.email}</span>
-        </Typography>
+          <div style={{ margin: "20px 0" }} className={classes.textStyles}>
+            <Image
+              src="/images/registration/check.gif"
+              alt="Registration successful"
+              height={150}
+              width={150}
+            />
+          </div>
+
+          <Typography component="h2" className={classes.textStyles}>
+            <span className="tertiaryHeading">
+              Your membership id is{" "}
+              <span style={{ color: "#ff5200" }}>
+                {props.userData.membership_id}
+              </span>
+            </span>
+          </Typography>
+
+          <Typography
+            component="p"
+            style={{
+              padding: "20px 0",
+              textAlign: "center",
+            }}
+          >
+            Your payment receipt and membership details will be emailed to&nbsp;
+            <span style={{ color: "#ff5200", fontWeight: 700 }}>
+              {props.userData.email}
+            </span>
+          </Typography>
+        </div>
       </div>
     </div>
   );

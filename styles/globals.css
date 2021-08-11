@@ -8,9 +8,11 @@
   --background: #ffffff;
   --main-heading-size: 3rem;
   --secondary-heading-size: 2.5rem;
+  --tertiary-heading-size: 1.5rem;
   --subtitle-size: 1.5rem;
   --main-heading-size-mobile: 2rem;
   --secondary-heading-size-mobile: 1.5rem;
+  --tertiary-heading-size-mobile: 1.25rem;
   --subtitle-size-mobile: 1rem;
 }
 
@@ -35,6 +37,11 @@ body {
 
 .secondaryHeading {
   font-size: var(--secondary-heading-size);
+  font-weight: bold;
+}
+
+.tertiaryHeading {
+  font-size: var(--tertiary-heading-size);
   font-weight: bold;
 }
 
@@ -63,7 +70,7 @@ body {
 }
 
 .obImageBorderColor {
-  border: 5px solid #a7d0cd;
+  border: 5px solid #fbc6a4;
 }
 
 .mcImageBorderColor {
@@ -284,6 +291,10 @@ body {
 
   .secondaryHeading {
     font-size: var(--secondary-heading-size-mobile);
+  }
+
+  .tertiaryHeading {
+    font-size: var(--tertiary-heading-size-mobile);
   }
 
   .subtitle {

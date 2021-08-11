@@ -4,25 +4,32 @@ import Members from "./Members";
 // Material UI imports
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    margin: "50px 0 0 0",
+    backgroundImage: "url(/images/about/pattern1.svg)",
+  },
+  mcHeadingStyle: {
+    borderBottom: "5px solid var(--secondary-color)",
+    paddingBottom: 1,
+    [theme.breakpoints.down("sm")]: {
+      borderBottom: "none",
+    },
+  },
+}));
 
 const OfficeBearers = (props) => {
+  const classes = useStyles();
+
   return (
-    <div
-      style={{
-        margin: "50px 0 0 0",
-        backgroundColor: "rgba(255, 245, 218, 0.2)",
-      }}
-    >
+    <div className={classes.container}>
       <Container maxWidth="lg" style={{ padding: "50px 0" }}>
-        <Typography
-          component="h2"
-          align="center"
-          gutterBottom
-          style={{ fontWeight: "bold" }}
-        >
+        <Typography component="h2" align="center" gutterBottom>
           <span className="secondaryHeading">
-            Say hello to the <span className="divStylingSecondary">M</span>
-            anagement <span className="divStylingSecondary">C</span>
+            Say hello to the <span className={classes.mcHeadingStyle}>M</span>
+            anagement <span className={classes.mcHeadingStyle}>C</span>
             ommittee
           </span>{" "}
           {/* <img

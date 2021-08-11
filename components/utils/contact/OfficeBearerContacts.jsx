@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   emailContainer: {
     marginTop: 70,
     padding: "50px 70px",
-    backgroundColor: "rgba(228, 211, 207, 0.1)",
+    backgroundColor: "rgba(200, 198, 167, 0.15)",
     [theme.breakpoints.down("sm")]: {
       marginTop: 50,
       padding: "50px 30px",

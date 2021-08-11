@@ -11,18 +11,22 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   parentContainer: {
-    height: "100%",
+    margin: "100px 0 50px 0",
   },
   altPaymentHero: {
-    margin: "100px 100px 50px 100px",
-    padding: "30px 15px",
-    textAlign: "center",
-    borderRadius: "1rem",
-    boxShadow: "0 23px 47px rgba(0, 0, 0, 0.3)",
-    backgroundColor: "#FDF6F0",
+    // margin: "100px 100px 50px 100px",
+    // padding: "30px 15px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     [theme.breakpoints.down("md")]: {
       margin: "100px 20px 50px 20px",
     },
+  },
+  textStyles: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 
@@ -62,16 +66,17 @@ const AltPaymentInfo = (props) => {
   return (
     <div className={classes.parentContainer}>
       <div className={classes.altPaymentHero}>
-        <Typography component="h1" gutterBottom>
-          <span className="mainHeading">
-            Hi,{" "}
-            <span style={{ color: "#ff5200" }}>
-              {props.alumniInformation.first_name}!
-            </span>{" "}
-            You're almost there...
-          </span>
-        </Typography>
-        {/* <div style={{ padding: "25px 0" }}>
+        <div>
+          <Typography
+            component="h2"
+            gutterBottom
+            className={classes.textStyles}
+          >
+            <span className="secondaryHeading">
+              {props.alumniInformation.first_name}, You're almost there...
+            </span>
+          </Typography>
+          {/* <div style={{ padding: "25px 0" }}>
           <Image
             src={"/images/registration/flag.png"}
             alt="Checkered flag"
@@ -80,85 +85,96 @@ const AltPaymentInfo = (props) => {
           />
         </div> */}
 
-        <Typography
-          style={{
-            fontWeight: 600,
-            paddingTop: 20,
-          }}
-        >
-          <span className="secondaryHeading">
-            Your membership id is
-            <br />
-            <span style={{ color: "#ff5200", fontWeight: 700 }}>
-              {props.alumniInformation.membership_id}
+          <Typography
+            component="h2"
+            style={{
+              fontWeight: 600,
+              paddingTop: 20,
+            }}
+            className={classes.textStyles}
+          >
+            <span className="tertiaryHeading">
+              Your membership id is&nbsp;
+              <span style={{ color: "#ff5200" }}>
+                {props.alumniInformation.membership_id}
+              </span>
             </span>
-          </span>
-        </Typography>
-        <Typography
-          style={{
-            fontSize: "1.1rem",
-            padding: "20px 0",
-          }}
-        >
-          Please write down the membership id on the back of the cheque/DD or
-          mention it if paying via NEFT, IMPS or RTGS.
-        </Typography>
-        <Typography
-          style={{
-            fontSize: "1.1rem",
-          }}
-        >
-          We have emailed our bank details to{" "}
-          <span style={{ color: "#ff5200", fontWeight: 700 }}>
-            {props.alumniInformation.email}
-          </span>{" "}
-          .Once the payment is processed, you will receive the invoice via
-          email.
-        </Typography>
+          </Typography>
+          <Typography
+            style={{
+              fontSize: "1.1rem",
+              padding: "20px 0",
+            }}
+          >
+            Please write down the membership id on the back of the cheque/DD or
+            mention it (as a comment) if paying via NEFT, IMPS or RTGS.
+          </Typography>
+          <Typography
+            style={{
+              fontSize: "1.1rem",
+            }}
+          >
+            We have emailed our bank details to{" "}
+            <span style={{ color: "#ff5200", fontWeight: 700 }}>
+              {props.alumniInformation.email}
+            </span>{" "}
+            .Once the payment is processed, you will receive the invoice via
+            email.
+          </Typography>
 
-        <Typography
-          style={{
-            fontSize: "1.1rem",
-            paddingTop: 20,
-          }}
-        >
-          Please <span style={{ fontWeight: "bold" }}>do not</span> hesitate to{" "}
-          <Link href="/contact">
-            <a
-              style={{ color: "#ff5200", textDecoration: "none" }}
-              className="styledLink"
+          <Typography
+            style={{
+              fontSize: "1.1rem",
+              paddingTop: 20,
+            }}
+          >
+            Please <span style={{ fontWeight: "bold" }}>do not</span> hesitate
+            to{" "}
+            <Link href="/contact">
+              <a
+                style={{ color: "#ff5200", textDecoration: "none" }}
+                className="styledLink"
+              >
+                contact us
+              </a>
+            </Link>{" "}
+            if you have any questions.
+          </Typography>
+
+          <div style={{ marginTop: 20 }} className={classes.textStyles}>
+            <Typography
+              style={{
+                fontSize: "0.9rem",
+                marginRight: 5,
+              }}
             >
-              contact us
-            </a>
-          </Link>{" "}
-          if you have any questions.
-        </Typography>
-
-        <Typography
-          style={{
-            fontSize: "0.9rem",
-            paddingTop: 30,
-          }}
-        >
-          Did not receive the email?{" "}
-        </Typography>
-        <Button
-          style={{ fontSize: "0.8rem", fontWeight: "bold", marginTop: 10 }}
-          onClick={() => {
-            sendManualPaymentEmail(
-              props.alumniInformation.first_name,
-              props.alumniInformation.email,
-              props.alumniInformation.membership_id,
-              props.alumniInformation.membership_type
-            );
-            updateManualPaymentNotificationStatus(
-              props.alumniInformation.email
-            );
-            emailSentToast();
-          }}
-        >
-          Resend
-        </Button>
+              Did not receive the email?{" "}
+            </Typography>
+            <Button
+              variant="outlined"
+              style={{
+                fontSize: "0.8rem",
+                fontWeight: "bold",
+                color: "#ff5200",
+                borderColor: "#ff5200",
+              }}
+              onClick={() => {
+                sendManualPaymentEmail(
+                  props.alumniInformation.first_name,
+                  props.alumniInformation.email,
+                  props.alumniInformation.membership_id,
+                  props.alumniInformation.membership_type
+                );
+                updateManualPaymentNotificationStatus(
+                  props.alumniInformation.email
+                );
+                emailSentToast();
+              }}
+            >
+              Resend
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );

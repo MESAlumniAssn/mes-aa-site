@@ -11,7 +11,6 @@ const useStyles = makeStyles({
     fontSize: "0.9rem",
     letterSpacing: "0.5px",
     color: "#FFFFFF",
-    marginBottom: "1.5rem",
   },
   lifetimeChip: {
     backgroundColor: "#689f38",
@@ -25,7 +24,7 @@ const Chips = (props) => {
   const classes = useStyles();
   return (
     <Chip
-      label={`${props.membershipType} membership selected`}
+      label={`${props.membershipType} Membership`}
       className={`${classes.chip} ${
         props.membershipType === "Lifetime"
           ? classes.lifetimeChip

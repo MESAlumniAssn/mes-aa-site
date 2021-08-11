@@ -122,7 +122,13 @@ const PersonalDetails = (props) => {
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "1.5rem",
+        }}
+      >
         <Chips
           membershipType={
             typeof window !== "undefined" &&

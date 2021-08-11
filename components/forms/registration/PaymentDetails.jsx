@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { planValues } from "../../../utils/pricingPlans";
 
 // Material UI imports
@@ -15,12 +15,41 @@ import TableRow from "@material-ui/core/TableRow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRupeeSign } from "@fortawesome/free-solid-svg-icons";
 
-const useStyles = makeStyles({
+// Component imports
+import Chips from "../../utils/generic/Chips";
+
+const useStyles = makeStyles((theme) => ({
   table: {
-    minWidth: 75,
+    minWidth: 450,
     marginTop: 30,
+    [theme.breakpoints.down("sm")]: {
+      minWidth: 200,
+    },
   },
-});
+  headerTextStyle: {
+    fontWeight: "bold",
+    fontSize: "1.1rem",
+    textTransform: "uppercase",
+    letterSpacing: "0.8px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.9rem",
+    },
+  },
+  totalsRowText: {
+    fontWeight: "bold",
+    fontSize: "1.2rem",
+    [theme.breakpoints.down("sm")]: { fontSize: "1.1rem" },
+  },
+  totalsRowRupeeIcon: {
+    fontWeight: "bold",
+    fontSize: "1.1rem",
+    [theme.breakpoints.down("sm")]: { fontSize: "1rem" },
+  },
+  totalsRowAmount: {
+    fontSize: "1.3rem",
+    [theme.breakpoints.down("sm")]: { fontSize: "1.2rem" },
+  },
+}));
 
 const createData = (membership, amount) => {
   return { membership, amount };
@@ -49,63 +78,49 @@ const PaymentDetails = () => {
       </Typography>
 
       <TableContainer>
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead>
+        <Table className={classes.table} aria-label="payment details">
+          <TableHead style={{ backgroundColor: "#F8F5F1" }}>
             <TableRow>
-              <TableCell style={{ fontWeight: "bold", fontSize: "1rem" }}>
+              <TableCell className={classes.headerTextStyle}>
                 Membership Type
               </TableCell>
-              <TableCell
-                style={{ fontWeight: "bold", fontSize: "1rem" }}
-                align="right"
-              >
+              <TableCell className={classes.headerTextStyle} align="right">
                 Amount Payable
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row, index) => (
-              <div key={index}>
+              <Fragment>
                 <TableRow>
-                  <TableCell component="th" scope="row">
-                    {row.membership}
-                  </TableCell>
-                  <TableCell align="right" style={{ fontWeight: "bold" }}>
-                    <FontAwesomeIcon icon={faRupeeSign} /> {row.amount}
-                  </TableCell>
-                </TableRow>
-                {/* <TableRow key={index + 1}>
-                  <TableCell component="th" scope="row">
-                    CGST @ 9%
-                  </TableCell>
-                  <TableCell align="right" style={{ fontWeight: "bold" }}>
-                    <FontAwesomeIcon icon={faRupeeSign} /> {row.amount * 0.09}
-                  </TableCell>
-                </TableRow>
-                <TableRow key={index + 2}>
-                  <TableCell component="th" scope="row">
-                    SGST @ 9%
-                  </TableCell>
-                  <TableCell align="right" style={{ fontWeight: "bold" }}>
-                    <FontAwesomeIcon icon={faRupeeSign} /> {row.amount * 0.09}
-                  </TableCell>
-                </TableRow> */}
-                <TableRow key={index + 1}>
                   <TableCell
                     component="th"
                     scope="row"
-                    style={{ fontWeight: "bold", fontSize: "1.2rem" }}
+                    align="left"
+                    style={{ padding: "35px 0" }}
                   >
-                    Total
+                    <Chips membershipType={row.membership} />
+                  </TableCell>
+                  <TableCell align="right" style={{ fontWeight: "bold" }}>
+                    <FontAwesomeIcon icon={faRupeeSign} />{" "}
+                    <span style={{ fontSize: "1rem" }}>{row.amount}</span>
+                  </TableCell>
+                </TableRow>
+                <TableRow style={{ backgroundColor: "#F8F5F1" }}>
+                  <TableCell className={classes.totalsRowText}>
+                    Total Amount Payable
                   </TableCell>
                   <TableCell
                     align="right"
-                    style={{ fontWeight: "bold", fontSize: "1.2rem" }}
+                    className={classes.totalsRowRupeeIcon}
                   >
-                    <FontAwesomeIcon icon={faRupeeSign} /> {row.amount}
+                    <FontAwesomeIcon icon={faRupeeSign} />{" "}
+                    <span className={classes.totalsRowAmount}>
+                      {row.amount}
+                    </span>
                   </TableCell>
                 </TableRow>
-              </div>
+              </Fragment>
             ))}
           </TableBody>
         </Table>
