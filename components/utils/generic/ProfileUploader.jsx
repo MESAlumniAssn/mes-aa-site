@@ -58,7 +58,6 @@ const ProfileUploader = ({
   }, []);
 
   const images = newFiles.map((file, index) => {
-    console.log(file);
     return (
       <div key={index} style={{ textAlign: "center", paddingTop: 15 }}>
         <div>

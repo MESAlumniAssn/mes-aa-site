@@ -90,7 +90,7 @@ const Gallery = (props) => {
           />
         </div>
       ) : (
-        <Container maxWidth="xl" style={{ overflow: "hidden" }}>
+        <Container maxWidth="xl" style={{ overflow: "hidden", marginTop: 50 }}>
           <ResponsiveMasonry
             columnsCountBreakPoints={{ 300: 1, 600: 2, 960: 3 }}
           >
