@@ -6,6 +6,7 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 // Component imports
 import ImageCarousel from "./ImageCarousel";
+import LoadPhotosButton from "./LoadPhotosButton";
 
 // Material UI imports
 import Typography from "@material-ui/core/Typography";
@@ -52,6 +53,7 @@ const Gallery = (props) => {
   const [open, setOpen] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [photoLimit, setPhotoLimit] = useState(20);
 
   useEffect(() => {
     setTimeout(() => setShowLoader(false), 3000);
@@ -85,8 +87,8 @@ const Gallery = (props) => {
           <Image
             src={"/loader.svg"}
             alt="Page loading"
-            height={150}
-            width={150}
+            height={50}
+            width={50}
           />
         </div>
       ) : (
@@ -95,7 +97,7 @@ const Gallery = (props) => {
             columnsCountBreakPoints={{ 300: 1, 600: 2, 960: 3 }}
           >
             <Masonry gutter="1">
-              {props.galleryData.map((image, index) => (
+              {props.galleryData.slice(0, photoLimit).map((image, index) => (
                 <Link href="#" key={image.fileId}>
                   <a
                     style={{
@@ -114,6 +116,13 @@ const Gallery = (props) => {
               ))}
             </Masonry>
           </ResponsiveMasonry>
+
+          {photoLimit < 30 && (
+            <LoadPhotosButton
+              photoLimit={photoLimit}
+              setPhotoLimit={setPhotoLimit}
+            />
+          )}
         </Container>
       )}
 
