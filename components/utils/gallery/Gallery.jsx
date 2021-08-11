@@ -117,7 +117,7 @@ const Gallery = (props) => {
             </Masonry>
           </ResponsiveMasonry>
 
-          {photoLimit < 30 && (
+          {photoLimit < props.galleryData.length && (
             <LoadPhotosButton
               photoLimit={photoLimit}
               setPhotoLimit={setPhotoLimit}
