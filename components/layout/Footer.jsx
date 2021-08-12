@@ -107,6 +107,10 @@ const Footer = () => {
           padding: "50px 0",
         }}
       >
+        {" "}
+        <div style={{ marginBottom: 20 }}>
+          <Image src="/logo.png" alt="Logo" height={150} width={150} />
+        </div>
         <Typography
           style={{ fontSize: "1.3rem", fontWeight: 700 }}
           align="center"

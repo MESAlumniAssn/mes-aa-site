@@ -105,7 +105,7 @@ const ProfileUploader = ({
   return (
     <div>
       <Dropzone
-        accept="image/jpg, image/jpeg, image/bmp, image/tiff, image/png, image/webp, 	image/heic"
+        accept="image/jpg, image/jpeg, image/bmp, image/tiff, image/png, image/webp"
         onDrop={onDrop}
         maxFiles={1}
         aria-label="Dropzone for images"
