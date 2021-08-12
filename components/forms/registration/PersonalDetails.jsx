@@ -1,5 +1,5 @@
 import "date-fns";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SiteContext from "../../../context/siteContext";
 import DateFnsUtils from "@date-io/date-fns";
 import InputField from "../FormFields/InputField";
@@ -88,8 +88,11 @@ const ProfilePicTooltip = withStyles({
 
 const PersonalDetails = (props) => {
   const [open, setOpen] = useState(false);
+  const siteContext = useContext(SiteContext);
 
   const classes = useStyles();
+
+  const { checkForExistingEmail } = siteContext;
 
   const handleOpen = () => {
     setOpen(true);
@@ -188,7 +191,12 @@ const PersonalDetails = (props) => {
         </Grid>
 
         <Grid item xs={12}>
-          <InputField name={email.name} label={email.label} fullWidth />
+          <InputField
+            name={email.name}
+            label={email.label}
+            fullWidth
+            onKeyDown={(e) => checkForExistingEmail(e.target.value)}
+          />
         </Grid>
 
         <Grid item xs={12} md={6}>

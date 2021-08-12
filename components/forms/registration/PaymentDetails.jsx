@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { planValues } from "../../../utils/pricingPlans";
 
 // Material UI imports
@@ -70,6 +70,10 @@ const PaymentDetails = () => {
 
     rows = [createData(localStorage.getItem("mesAAMembershipPlan"), amount)];
   }
+
+  useEffect(() => {
+    window.scroll({ top: 1, left: 1, behavior: "smooth" });
+  }, []);
 
   return (
     <div>

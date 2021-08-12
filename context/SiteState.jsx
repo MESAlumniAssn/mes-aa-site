@@ -175,14 +175,14 @@ const SiteState = (props) => {
     }
   };
 
-  // const checkForExistingEmail = async (email) => {
-  //   const res = await axios.get(
-  //     `${process.env.NEXT_PUBLIC_API_URL}/user/${email}`
-  //   );
+  const checkForExistingEmail = async (email) => {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/user/get/${email}`
+    );
 
-  //   dispatch({ type: AUTH_ERROR, payload: res.data });
-  //   setTimeout(() => dispatch({ type: CLEAR_ERROR }), 5000);
-  // };
+    dispatch({ type: AUTH_ERROR, payload: res.data });
+    // setTimeout(() => dispatch({ type: CLEAR_ERROR }), 5000);
+  };
 
   // Delete temporary user - this is run if the user closes the payment modal
   // const deleteTempUser = async (altUserId) => {
@@ -705,6 +705,7 @@ const SiteState = (props) => {
         renewalProcessed: state.renewalProcessed,
         setLoading,
         registerUser,
+        checkForExistingEmail,
         // deleteTempUser,
         generateMetricCounts,
         getLifeMembers,

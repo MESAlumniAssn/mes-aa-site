@@ -334,7 +334,9 @@ const RegistrationPage = (props) => {
         }
       }
 
-      setActiveStep(activeStep + 1);
+      if (!authError) {
+        setActiveStep(activeStep + 1);
+      }
       actions.setTouched({});
       actions.setSubmitting(false);
     }
