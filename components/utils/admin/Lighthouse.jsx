@@ -132,7 +132,7 @@ const Lighthouse = () => {
             }}
           >
             <Typography className={classes.countGridItemHeading}>
-              Successful Registrations:
+              Completed Registrations:
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
               <CountUp
@@ -200,7 +200,7 @@ const Lighthouse = () => {
             }}
           >
             <Typography className={classes.countGridItemHeading}>
-              Successful LM Registrations:
+              Completed LM Registrations:
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
               <CountUp
@@ -246,7 +246,7 @@ const Lighthouse = () => {
             }}
           >
             <Typography className={classes.countGridItemHeading}>
-              Successful AM Registrations:
+              Completed AM Registrations:
             </Typography>
             <Typography align="center" className={classes.gridItemCountValue}>
               <CountUp
@@ -274,6 +274,29 @@ const Lighthouse = () => {
             <Typography align="center" className={classes.gridItemCountValue}>
               <CountUp
                 end={(metrics && metrics.pending_annual_members) || 0}
+                duration={3}
+              />
+            </Typography>
+          </motion.div>
+        </Grid>
+
+        <Grid item xs={6} sm={4} md={3} lg={2}>
+          <motion.div
+            variants={variants}
+            whileHover="hover"
+            className={classes.countGridItemCount}
+            style={{
+              border: "3px solid #FF3D68",
+              color: "#FF3D68",
+              backgroundColor: "#FFBCBC",
+            }}
+          >
+            <Typography className={classes.countGridItemHeading}>
+              Expired Memberships:
+            </Typography>
+            <Typography align="center" className={classes.gridItemCountValue}>
+              <CountUp
+                end={(metrics && metrics.expired_memberships) || 0}
                 duration={3}
               />
             </Typography>
