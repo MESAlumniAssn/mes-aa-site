@@ -44,6 +44,10 @@ import {
   CLEAR_JOB_STATUS,
   RENEWAL_PROCESSED_SUCCESS,
   RENEWAL_PROCESSED_ERROR,
+  EVENTS_SUCCESS,
+  EVENTS_FAILURE,
+  UPCOMING_EVENTS,
+  COMPLETED_EVENTS,
 } from "./Types";
 
 const SiteState = (props) => {
@@ -70,6 +74,10 @@ const SiteState = (props) => {
     emailSubscriptionStatus: null,
     jobs: null,
     renewalProcessed: false,
+    eventCreated: false,
+    events: null,
+    completedEvents: null,
+    upcomingEvents: null,
   };
 
   const [state, dispatch] = useReducer(siteReducer, initialState);
@@ -322,16 +330,17 @@ const SiteState = (props) => {
     membershipType,
     amount,
     membershipValidity,
-    certificateUrl
+    certificateUrl,
+    paymentMode
   ) => {
     const jsonPayload = {
       email: email,
       membership_type: membershipType,
       payment_amount: amount,
       membership_valid_upto: membershipValidity,
-      certificate_url: certificateUrl,
+      membership_certificate_url: certificateUrl,
+      payment_mode: paymentMode,
     };
-
     try {
       await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/membership_renewal`,
@@ -370,17 +379,22 @@ const SiteState = (props) => {
   };
 
   // Update user payment status
-  const updatePaymentStatus = async (userId) => {
+  const updatePaymentStatus = async (userId, membershipType) => {
     const jsonPayload = {
-      authorization_token: JSON.parse(localStorage.getItem("mesAAToken"))
-        .access_token,
       user_id: parseInt(userId),
+      membership_type: membershipType,
     };
 
     try {
       await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/payment_status`,
-        jsonPayload
+        jsonPayload,
+        {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("mesAAToken"))
+              .access_token,
+          },
+        }
       );
 
       dispatch({ type: PAYMENT_STATUS_UPDATE_SUCCESS });
@@ -489,6 +503,70 @@ const SiteState = (props) => {
   };
 
   //--------------------Payments End--------------------
+
+  //--------------------Events Start--------------------
+
+  const createNewEvent = async (
+    name,
+    description,
+    venue,
+    chiefGuest,
+    eventDate,
+    eventTime
+  ) => {
+    const jsonPayload = {
+      name: name,
+      description: description,
+      venue: venue,
+      event_date: eventDate,
+      event_time: eventTime,
+      chief_guest: chiefGuest,
+    };
+
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/events`,
+        jsonPayload
+      );
+
+      dispatch({ type: EVENTS_SUCCESS, payload: res.data });
+    } catch (err) {
+      dispatch({ type: EVENTS_FAILURE, payload: err.response.data.detail });
+    }
+  };
+
+  const fetchEventByStatus = async (status) => {
+    try {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/events/${status}`
+      );
+
+      if (status === "upcoming") {
+        dispatch({ type: UPCOMING_EVENTS, payload: res.data });
+      }
+
+      if (status === "completed") {
+        dispatch({ type: COMPLETED_EVENTS, payload: res.data });
+      }
+    } catch (err) {
+      dispatch({ type: EVENTS_FAILURE, payload: err.response.data.detail });
+    }
+  };
+
+  const searchEvents = async (searchText) => {
+    if (!searchText) searchText = "%";
+
+    try {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/events/search/${searchText}`
+      );
+      dispatch({ type: COMPLETED_EVENTS, payload: res.data });
+    } catch (err) {
+      dispatch({ type: EVENTS_FAILURE, payload: err.response.data.detail });
+    }
+  };
+
+  //--------------------Events End----------------------
 
   //-----------------------Emails-----------------------
 
@@ -637,9 +715,36 @@ const SiteState = (props) => {
     }
   };
 
+  const sendEventsNotificationEmail = async (
+    eventName,
+    eventDate,
+    eventTime,
+    venue,
+    chiefGuest
+  ) => {
+    console.log(typeof eventDate);
+    const jsonPayload = {
+      event_name: eventName,
+      event_date: eventDate,
+      event_time: eventTime,
+      venue: venue,
+      chief_guest: chiefGuest,
+    };
+
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/email/events`,
+        jsonPayload
+      );
+      dispatch({ type: EMAIL_SEND_SUCCESS });
+    } catch (err) {
+      dispatch({ type: EMAIL_SEND_FAILURE });
+    }
+  };
+
   //---------------------Emails End---------------------
 
-  // Mail list unsubscription
+  // Mail list unsubscribe
   const unsubscribeFromMailingList = async (subscriberEmail) => {
     const jsonPayload = { email: subscriberEmail };
 
@@ -703,6 +808,10 @@ const SiteState = (props) => {
         emailSubscriptionStatus: state.emailSubscriptionStatus,
         jobs: state.jobs,
         renewalProcessed: state.renewalProcessed,
+        eventCreated: state.eventCreated,
+        events: state.events,
+        upcomingEvents: state.upcomingEvents,
+        completedEvents: state.completedEvents,
         setLoading,
         registerUser,
         checkForExistingEmail,
@@ -726,11 +835,15 @@ const SiteState = (props) => {
         sendTestimonialApprovalEmail,
         sendPaymentReceiptEmail,
         sendRenewalNotificationEmail,
+        sendEventsNotificationEmail,
         unsubscribeFromMailingList,
         loginUser,
         adminLogout,
         fetchJobStatus,
         clearJobStatus,
+        createNewEvent,
+        fetchEventByStatus,
+        searchEvents,
       }}
     >
       {props.children}

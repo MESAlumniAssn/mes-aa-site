@@ -41,6 +41,10 @@ import {
   CLEAR_JOB_STATUS,
   RENEWAL_PROCESSED_SUCCESS,
   RENEWAL_PROCESSED_ERROR,
+  EVENTS_SUCCESS,
+  EVENTS_FAILURE,
+  UPCOMING_EVENTS,
+  COMPLETED_EVENTS,
 } from "./Types";
 
 const siteReducer = (state, action) => {
@@ -202,6 +206,32 @@ const siteReducer = (state, action) => {
       return {
         ...state,
         jobs: null,
+      };
+    case EVENTS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        eventCreated: true,
+        events: action.payload,
+      };
+    case EVENTS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        eventCreated: false,
+        events: action.payload,
+      };
+    case UPCOMING_EVENTS:
+      return {
+        ...state,
+        loading: false,
+        upcomingEvents: action.payload,
+      };
+    case COMPLETED_EVENTS:
+      return {
+        ...state,
+        loading: false,
+        completedEvents: action.payload,
       };
     case CLEAR_STATE:
       return {

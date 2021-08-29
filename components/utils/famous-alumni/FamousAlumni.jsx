@@ -66,7 +66,7 @@ const FamousAlumni = (props) => {
         </Typography>
       </div>
       <div>
-        <Typography style={{ fontWeight: 700, paddingTop: 20 }} align="center">
+        <Typography style={{ fontWeight: 600, paddingTop: 20 }} align="center">
           <span className="subtitle">
             An ever-growing compendium of our alumni who emerged as
             front-runners in their respective vocations

@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import calculateDays from "../../../utils/calculateDays";
+import { calculateDays } from "../../../utils/calculateDays";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 

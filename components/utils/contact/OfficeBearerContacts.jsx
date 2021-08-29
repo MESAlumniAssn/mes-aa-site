@@ -18,17 +18,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgba(200, 198, 167, 0.15)",
     [theme.breakpoints.down("sm")]: {
       marginTop: 50,
-      padding: "50px 30px",
+      padding: "50px 15px",
     },
   },
   memberEmail: {
     fontSize: "1.1rem",
     fontWeight: "bold",
+    wordBreak: "break-all",
     [theme.breakpoints.down("sm")]: {
       fontSize: "0.9rem",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "0.85rem",
     },
   },
 }));

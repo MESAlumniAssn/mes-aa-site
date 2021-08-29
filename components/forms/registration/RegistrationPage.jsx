@@ -88,7 +88,7 @@ const RegistrationPage = (props) => {
   const [activeStep, setActiveStep] = useState(0);
   const [open, setOpen] = useState(false);
   const [paymentMessage, showPaymentMessage] = useState(false);
-  const [submissionError, setSubmissionError] = useState(false);
+
   const [mode, setMode] = useState("O");
   const router = useRouter();
 
@@ -581,8 +581,6 @@ const RegistrationPage = (props) => {
                   <AltPaymentModal
                     open={open}
                     setOpen={setOpen}
-                    submissionError={submissionError}
-                    setSubmissionError={setSubmissionError}
                     files={files}
                     mode={mode}
                     setMode={setMode}

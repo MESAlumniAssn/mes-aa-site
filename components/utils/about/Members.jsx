@@ -49,13 +49,14 @@ const Members = (props) => {
                     align="center"
                     gutterBottom
                     style={{
+                      fontSize: "1.2rem",
                       block: "true",
                       width: "100%",
                       fontWeight: "bold",
                       padding: "10px 0",
                     }}
                   >
-                    <span className="subtitle">{member.name}</span>
+                    <span>{member.name}</span>
                   </Typography>
                   {member.role === "ob" && (
                     <Typography
@@ -63,7 +64,7 @@ const Members = (props) => {
                       align="center"
                       style={{ width: "100%" }}
                     >
-                      <span className="subtitle">{member.designation}</span>
+                      <span>{member.designation}</span>
                     </Typography>
                   )}
                 </div>

@@ -31,12 +31,16 @@ const variants = {
     scale: 1,
     transition: { delay: 1.25, duration: 0.5 },
   },
+  animateEventNotification: {
+    opacity: 1,
+    transition: { delay: 2, duration: 0.5 },
+  },
 };
 
 const Header = ({ styles, router }) => {
   return (
     <Fragment>
-      <Banner />
+      {/* <Banner /> */}
       <div className={styles.headerContainer}>
         <motion.div
           variants={variants}

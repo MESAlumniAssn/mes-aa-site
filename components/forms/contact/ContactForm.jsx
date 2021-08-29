@@ -102,6 +102,7 @@ const ContactForm = ({ openContactForm, setOpenContactForm }) => {
           right: 10,
           cursor: "pointer",
         }}
+        className="hideEsc"
       >
         ESC
       </p>

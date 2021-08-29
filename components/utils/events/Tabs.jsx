@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-// Component Imports
-import AlumniStats from "./AlumniStats";
-import FundStats from "./FundStats";
-import AdminPanel from "./AdminPanel";
-
 // Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -14,13 +9,13 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
-// Fontawesome Imports
+// Component imports
+import UpcomingEvents from "./UpcomingEvents";
+import CompletedEvents from "./CompletedEvents";
+
+// Fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUsers,
-  faRupeeSign,
-  faUserCog,
-} from "@fortawesome/free-solid-svg-icons";
+import { faClock, faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -69,12 +64,12 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "1px",
     fontSize: "1rem",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "0.9rem",
+      fontSize: "0.8rem",
     },
   },
 }));
 
-export default function ScrollableTabsButtonForce() {
+export default function ScrollableTabsButtonForce({ eventsData }) {
   const classes = useStyles();
   const [value, setValue] = useState(0);
 
@@ -87,7 +82,7 @@ export default function ScrollableTabsButtonForce() {
       <AppBar
         position="static"
         elevation={0}
-        style={{ backgroundColor: "#fafafa", padding: "10px 0 0 0" }}
+        style={{ backgroundColor: "#FEF7DC", padding: "10px 0 0 0" }}
       >
         <Tabs
           value={value}
@@ -98,53 +93,31 @@ export default function ScrollableTabsButtonForce() {
           style={{ color: "var(--primary-color)" }}
         >
           <Tab
-            label="Alumni"
+            label="Upcoming Events"
             icon={
-              <FontAwesomeIcon icon={faUsers} style={{ fontSize: "2rem" }} />
+              <FontAwesomeIcon icon={faClock} style={{ fontSize: "2rem" }} />
             }
             className={classes.tabStyle}
             {...a11yProps(0)}
           />
           <Tab
-            label="Funds"
+            label="Completed Events"
             icon={
               <FontAwesomeIcon
-                icon={faRupeeSign}
+                icon={faFlagCheckered}
                 style={{ fontSize: "2rem" }}
               />
             }
             className={classes.tabStyle}
             {...a11yProps(1)}
           />
-          {/* <Tab
-            label="Alumni Search"
-            icon={
-              <FontAwesomeIcon icon={faSearch} style={{ fontSize: "2rem" }} />
-            }
-            className={classes.tabStyle}
-            {...a11yProps(2)}
-          /> */}
-          <Tab
-            label="Admin Panel"
-            icon={
-              <FontAwesomeIcon icon={faUserCog} style={{ fontSize: "2rem" }} />
-            }
-            className={classes.tabStyle}
-            {...a11yProps(2)}
-          />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <AlumniStats />
+        <UpcomingEvents />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <FundStats />
-      </TabPanel>
-      {/* <TabPanel value={value} index={2}>
-        <AlumniSearch />
-      </TabPanel> */}
-      <TabPanel value={value} index={2}>
-        <AdminPanel />
+        <CompletedEvents />
       </TabPanel>
     </div>
   );

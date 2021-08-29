@@ -10,4 +10,10 @@ const calculateDays = (date) => {
   return parseInt(daysToRegistration / (1000 * 60 * 60 * 24));
 };
 
-export default calculateDays;
+const formatDate = (date) => {
+  let posted = new Date(date);
+  posted = posted.toDateString().split(" ");
+  return posted[1] + " " + posted[2] + ", " + posted[3];
+};
+
+export { calculateDays, formatDate };

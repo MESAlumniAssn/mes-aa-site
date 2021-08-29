@@ -9,7 +9,6 @@ import ImageCarousel from "./ImageCarousel";
 import LoadPhotosButton from "./LoadPhotosButton";
 
 // Material UI imports
-import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
@@ -42,12 +41,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const breakpoints = {
-  default: 3,
-  960: 1,
-  600: 1,
-};
-
 const Gallery = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -69,13 +62,7 @@ const Gallery = (props) => {
   };
 
   return (
-    <div className={classes.parentContainer}>
-      <div style={{ paddingBottom: "30px" }}>
-        <Typography component="h1" align="center" className="styledHeading">
-          <span className="mainHeading">Nostalgia</span>
-        </Typography>
-      </div>
-
+    <div>
       {showLoader ? (
         <div
           style={{
@@ -98,21 +85,21 @@ const Gallery = (props) => {
           >
             <Masonry gutter="1">
               {props.galleryData.slice(0, photoLimit).map((image, index) => (
-                <Link href="#" key={image.fileId}>
-                  <a
-                    style={{
-                      overflow: "hidden",
-                    }}
-                    onClick={() => handleOpen(index)}
-                  >
-                    <img
-                      src={image.url + "?tr=w-401,q-80"}
-                      alt={`gallery image-${image.fileId}`}
-                      width="98%"
-                      style={{ borderRadius: "5%", margin: 1 }}
-                    />
-                  </a>
-                </Link>
+                <a
+                  href="#"
+                  key={image.fileId}
+                  style={{
+                    overflow: "hidden",
+                  }}
+                  onClick={() => handleOpen(index)}
+                >
+                  <img
+                    src={image.url + "?tr=w-401,q-80"}
+                    alt={`gallery image-${image.fileId}`}
+                    width="98%"
+                    style={{ borderRadius: "5%", margin: 1 }}
+                  />
+                </a>
               ))}
             </Masonry>
           </ResponsiveMasonry>

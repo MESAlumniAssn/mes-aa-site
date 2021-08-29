@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ImageCarousel = (props) => {
   const classes = useStyles();
+
   return (
     <div>
       <FontAwesomeIcon
@@ -44,6 +45,7 @@ const ImageCarousel = (props) => {
           right: 22,
           cursor: "pointer",
         }}
+        className="hideEsc"
       >
         ESC
       </div>

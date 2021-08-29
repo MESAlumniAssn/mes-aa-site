@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import "../styles/globals.css";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
@@ -9,9 +9,11 @@ import { ToastContainer, Zoom } from "react-toastify";
 import { motion } from "framer-motion";
 
 // Component imports
-const Layout = dynamic(() => import("../components/layout/Layout"), {
-  ssr: false,
-});
+// const Layout = dynamic(() => import("../components/layout/Layout"), {
+//   ssr: false,
+// });
+
+import Layout from "../components/layout/Layout";
 
 // Material UI imports
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";

@@ -36,6 +36,11 @@ export const getServerSideProps = async (context) => {
 
   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/${id}`);
 
+  // If payment was done online, clear the renewal hash
+  await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/renewal_hash/clear`, {
+    id: id,
+  });
+
   if (!res.data) {
     return {
       notFound: true,

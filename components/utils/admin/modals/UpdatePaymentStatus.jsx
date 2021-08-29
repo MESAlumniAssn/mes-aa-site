@@ -54,7 +54,7 @@ const variants = {
 const validationSchema = Yup.object({
   membershipId: Yup.string()
     .required("Membership id is required")
-    .matches(/^MESAA-(LM|AM)-\d+-\d+$/, "Invalid Membership Id format"),
+    .matches(/^MESAA-(LM|OM)-\d+-\d+$/, "Invalid Membership Id format"),
 });
 
 const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
@@ -96,12 +96,23 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
             style={{
               position: "absolute",
               top: 10,
-              right: 10,
+              right: 20,
               cursor: "pointer",
             }}
             className="timesButtonAnimation"
             onClick={handleClose}
           />
+          <div
+            style={{
+              position: "absolute",
+              right: 10,
+              top: 25,
+              color: "var(--primary-color)",
+            }}
+            className="hideEsc"
+          >
+            ESC
+          </div>
           <div>
             <Formik
               initialValues={{
@@ -235,7 +246,7 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  marginTop: 10,
+                  marginTop: 25,
                 }}
               >
                 Fee Paid:&nbsp;
@@ -259,7 +270,7 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                 <Button
                   variant="outlined"
                   style={{
-                    marginTop: 20,
+                    marginTop: 25,
                     height: 40,
                     width: 80,
                     backgroundColor: "var(--primary-color)",
@@ -268,7 +279,7 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                   onClick={() => {
                     let invoiceNumber = generateInvoiceNumber(user.user_id);
 
-                    updatePaymentStatus(user.user_id);
+                    updatePaymentStatus(user.user_id, user.membership_type);
                     sendWelcomeEmail(user.email, user.name);
                     sendPaymentReceiptEmail(
                       user.name,

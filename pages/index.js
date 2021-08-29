@@ -10,11 +10,7 @@ import TestimonialSection from "../components/utils/home/TestimonialSection";
 import Footer from "../components/layout/Footer";
 import Header from "../components/utils/home/Header";
 import Welcome from "../components/utils/home/Welcome";
-
-// Fontawesome imports
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRegistered } from "@fortawesome/free-regular-svg-icons";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import EventsBanner from "../components/utils/home/EventsBanner";
 
 const Home = (props) => {
   const router = useRouter();
@@ -37,19 +33,25 @@ const Home = (props) => {
       <section id="testimonials" className={styles.testimonials}>
         <TestimonialSection styles={styles} testimonials={props.testimonials} />
       </section>
+      {props.events.length !== 0 && <EventsBanner events={props.events} />}
       <Footer />
     </HomeHeadLayout>
   );
 };
 
 export const getServerSideProps = async (context) => {
-  const res = await axios.get(
+  const testimonials = await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/testimonials`
+  );
+
+  const events = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/events/upcoming/current_week`
   );
 
   return {
     props: {
-      testimonials: res.data,
+      testimonials: testimonials.data,
+      events: events.data,
     },
   };
 };

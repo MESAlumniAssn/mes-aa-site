@@ -8,6 +8,8 @@ import {
   faUserFriends,
   faPrayingHands,
   faStar,
+  faCalendarAlt,
+  faBlog,
 } from "@fortawesome/free-solid-svg-icons";
 import { faImages } from "@fortawesome/free-regular-svg-icons";
 
@@ -64,15 +66,55 @@ const contact = {
   icon: <FontAwesomeIcon icon={faEnvelope} style={{ fontSize: "1.5rem" }} />,
 };
 
+const event = {
+  path: "Events",
+  url: "/events",
+  icon: <FontAwesomeIcon icon={faCalendarAlt} style={{ fontSize: "1.5rem" }} />,
+};
+
+const blog = {
+  path: "Blog",
+  url: "/blog",
+  icon: <FontAwesomeIcon icon={faBlog} style={{ fontSize: "1.5rem" }} />,
+};
+
 const navLinks = {
-  "/": [welcome, pricing, alumniSpeak, famousAlumni, gallery, about, contact],
+  "/": [
+    welcome,
+    pricing,
+    alumniSpeak,
+    famousAlumni,
+    gallery,
+    event,
+    blog,
+    about,
+    contact,
+  ],
   "/register": [home, pricing, alumniSpeak, famousAlumni, about, contact],
   "/pricing": [home, alumniSpeak, famousAlumni, about, contact],
   "/about": [home, pricing, contact],
   "/contact": [home, pricing, about],
-  "/famousalumni": [home, pricing, alumniSpeak, gallery, about, contact],
+  "/famousalumni": [
+    home,
+    pricing,
+    alumniSpeak,
+    gallery,
+    event,
+    blog,
+    about,
+    contact,
+  ],
   "/404": [home, pricing, about, contact],
-  "/testimonials": [home, pricing, famousAlumni, gallery, about, contact],
+  "/testimonials": [
+    home,
+    pricing,
+    famousAlumni,
+    gallery,
+    event,
+    blog,
+    about,
+    contact,
+  ],
   "/gallery": [home, pricing, famousAlumni, alumniSpeak, about, contact],
   "/card/[id]": [home],
   "/certificate/[id]": [home],
@@ -101,6 +143,26 @@ const navLinks = {
   "/terms": [home, pricing, famousAlumni, alumniSpeak, about, contact],
   "/privacy": [home, pricing, famousAlumni, alumniSpeak, about, contact],
   "/renewal/[hash]": [home, pricing, famousAlumni, alumniSpeak, about, contact],
+  "/events": [home, pricing, famousAlumni, alumniSpeak, blog, about, contact],
+  "/events/[id]": [
+    home,
+    pricing,
+    famousAlumni,
+    alumniSpeak,
+    blog,
+    about,
+    contact,
+  ],
+  "/blog": [home, pricing, famousAlumni, alumniSpeak, event, about, contact],
+  "/blog/[slug]": [
+    home,
+    pricing,
+    famousAlumni,
+    alumniSpeak,
+    event,
+    about,
+    contact,
+  ],
 };
 
 export default navLinks;

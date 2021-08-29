@@ -25,7 +25,7 @@ const OfficeBearers = (props) => {
 
   return (
     <div className={classes.container}>
-      <Container maxWidth="lg" style={{ padding: "50px 0" }}>
+      <Container maxWidth="xl" style={{ padding: "50px 0" }}>
         <Typography component="h2" align="center" gutterBottom>
           <span className="secondaryHeading">
             Say hello to the <span className={classes.mcHeadingStyle}>M</span>

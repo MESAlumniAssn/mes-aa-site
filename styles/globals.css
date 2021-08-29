@@ -300,4 +300,8 @@ body {
   .subtitle {
     font-size: var(--subtitle-size-mobile);
   }
+
+  .hideEsc {
+    display: none;
+  }
 }

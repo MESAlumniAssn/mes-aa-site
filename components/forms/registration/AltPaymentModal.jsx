@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import SiteContext from "../../../context/siteContext";
-import Image from "next/image";
 import {
   collegeAddress1,
   collegeAddress2,
@@ -12,11 +11,11 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Typography from "@material-ui/core/Typography";
 import Tooltip from "@material-ui/core/Tooltip";
-import Button from "@material-ui/core/Button";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
-// Component imports
-import AlertDialog from "../../utils/generic/AlertDialog";
+// Component import
+import ManualPaymentConfirmButton from "./ManualPaymentConfirmButton";
+import ManualRenewalPaymentConfirmationButton from "../../utils/renewal/ManualRenewalPaymentConfirmationButton";
 
 // Fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -57,20 +56,22 @@ const AddressTooltip = withStyles({
 const AltPaymentModal = ({
   open,
   setOpen,
-  submissionError,
-  setSubmissionError,
   files,
   mode,
   setMode,
+  memberDetails, // For renewals only
+  membershipType, // For renewals only
+  formattedDate, // For renewals only
 }) => {
   const [showLoader, setShowLoader] = useState(false);
+  // const [submissionError, setSubmissionError] = useState(false);
 
   const classes = useStyles();
 
   const router = useRouter();
 
   const siteContext = useContext(SiteContext);
-  const { authError, registerUser, isRegistered } = siteContext;
+  const { isRegistered } = siteContext;
 
   useEffect(() => {
     setTimeout(() => {
@@ -81,16 +82,9 @@ const AltPaymentModal = ({
     }, 1000);
   }, [isRegistered]);
 
-  useEffect(() => {
-    if (authError) {
-      setShowLoader(false);
-      setSubmissionError(true);
-    }
-  }, [authError]);
-
   const handleClose = () => {
     setOpen(false);
-    setSubmissionError(false);
+    // setSubmissionError(false);
   };
 
   const address = collegeAddress1 + " " + collegeAddress2;
@@ -126,6 +120,7 @@ const AltPaymentModal = ({
               top: 25,
               color: "var(--primary-color)",
             }}
+            className="hideEsc"
           >
             ESC
           </div>
@@ -175,6 +170,10 @@ const AltPaymentModal = ({
 
           <div className="counter">
             <p className="counterSection">
+              Click on the <span style={{ fontWeight: 600 }}>CONFIRM</span>{" "}
+              button below to generate your personal membership id
+            </p>
+            <p className="counterSection">
               Draw a cheque/DD for{" "}
               <FontAwesomeIcon
                 icon={faRupeeSign}
@@ -187,12 +186,8 @@ const AltPaymentModal = ({
               </span>{" "}
               in favour of{" "}
               <span style={{ fontWeight: "bold" }}>
-                The MES College Alumni Assocation
+                The MES College Alumni Association
               </span>
-            </p>
-            <p className="counterSection">
-              Click on the <span style={{ fontWeight: 600 }}>CONFIRM</span>{" "}
-              button below to generate your personal membership id
             </p>
             <p className="counterSection">
               Write down your membership id on the back of your cheque/DD
@@ -270,78 +265,24 @@ const AltPaymentModal = ({
             </p>
           </div>
 
-          {authError && authError && open && (
-            <div style={{ margin: "20px 0" }}>
-              <AlertDialog error={authError && authError} />
-            </div>
+          {router.pathname === "/register" && (
+            <ManualPaymentConfirmButton
+              showLoader={showLoader}
+              setShowLoader={setShowLoader}
+              // setSubmissionError={setSubmissionError}
+              setMode={setMode}
+              files={files}
+            />
           )}
 
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <Button
-              disabled={authError && authError}
-              style={{
-                backgroundColor: "#ff5200",
-                height: "3rem",
-                width: "12rem",
-                color: "#FFF",
-                fontWeight: "bold",
-                letterSpacing: "1px",
-              }}
-              onClick={() => {
-                setMode("M");
-                registerUser(
-                  JSON.parse(localStorage.getItem("mesAAUser")).prefix,
-                  JSON.parse(localStorage.getItem("mesAAUser")).firstName,
-                  JSON.parse(localStorage.getItem("mesAAUser")).lastName,
-                  JSON.parse(localStorage.getItem("mesAAUser")).email,
-                  JSON.parse(localStorage.getItem("mesAAUser")).mobile,
-                  JSON.parse(localStorage.getItem("mesAAUser")).birthday,
-                  JSON.parse(localStorage.getItem("mesAAUser")).address1,
-                  JSON.parse(localStorage.getItem("mesAAUser")).address2,
-                  JSON.parse(localStorage.getItem("mesAAUser")).city,
-                  JSON.parse(localStorage.getItem("mesAAUser")).state,
-                  JSON.parse(localStorage.getItem("mesAAUser")).pincode,
-                  JSON.parse(localStorage.getItem("mesAAUser")).country,
-                  JSON.parse(localStorage.getItem("mesAAUser")).fromYear,
-                  JSON.parse(localStorage.getItem("mesAAUser")).toYear,
-                  JSON.parse(localStorage.getItem("mesAAUser")).streamPuc,
-                  JSON.parse(localStorage.getItem("mesAAUser")).streamDegree,
-                  JSON.parse(localStorage.getItem("mesAAUser")).streamPg,
-                  JSON.parse(localStorage.getItem("mesAAUser")).streamOthers,
-                  JSON.parse(localStorage.getItem("mesAAUser")).vision,
-                  JSON.parse(localStorage.getItem("mesAAUser")).profession,
-                  JSON.parse(localStorage.getItem("mesAAUser")).interest,
-                  JSON.parse(localStorage.getItem("mesAAUser")).membership,
-                  "M",
-                  false, // payment status
-                  null, // razorpay order id
-                  files
-                );
-
-                setShowLoader(true);
-              }}
-            >
-              {showLoader ? (
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-around",
-                  }}
-                >
-                  <span style={{ marginRight: 5 }}>Please wait</span>
-                  <Image
-                    src={"/loader.svg"}
-                    alt="Loading..."
-                    height={25}
-                    width={25}
-                  />
-                </div>
-              ) : (
-                "Confirm"
-              )}
-            </Button>
-          </div>
+          {router.pathname.includes("/renewal") && (
+            <ManualRenewalPaymentConfirmationButton
+              memberDetails={memberDetails}
+              membershipType={membershipType}
+              formattedDate={formattedDate}
+              setMode={setMode}
+            />
+          )}
 
           {!showLoader && (
             <div

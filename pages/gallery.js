@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 // Component imports
-import Gallery from "../components/utils/gallery/Gallery";
+import GalleryHeader from "../components/utils/gallery/GalleryHeader";
 import Footer from "../components/layout/Footer";
 import GalleryHeadLayout from "../components/layout/head/GalleryHeadLayout";
 
@@ -19,7 +19,7 @@ const gallery = (props) => {
 
   return (
     <GalleryHeadLayout>
-      <Gallery galleryData={props.galleryData} />
+      <GalleryHeader galleryData={props.galleryData} />
       <div style={{ marginTop: 30 }}>
         <Footer />
       </div>

@@ -264,7 +264,12 @@ const PersonalDetails = (props) => {
               />
             </div>
 
-            <div style={{ position: "absolute", right: 13, top: 30 }}>ESC</div>
+            <div
+              style={{ position: "absolute", right: 13, top: 30 }}
+              className="hideEsc"
+            >
+              ESC
+            </div>
             <Typography component="h3" align="center" gutterBottom>
               <span className="secondaryHeading">Upload your recent photo</span>
             </Typography>

@@ -6,10 +6,14 @@ import shortId from "../../../utils/generateShortId";
 import { LOGO } from "../../../utils/images";
 import generateInvoiceNumber from "../../../utils/generateInvoiceNumber";
 
+// Component imports
+import AltPaymentModal from "../../forms/registration/AltPaymentModal";
+
 // Material UI imports
 import Typography from "@material-ui/core/Typography";
 import Checkbox from "@material-ui/core/Checkbox";
 import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 // Fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 30,
     width: 500,
     [theme.breakpoints.down("sm")]: {
-      width: 375,
+      width: 320,
     },
   },
   renewalDetailsText: {
@@ -35,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     paddingTop: 20,
     [theme.breakpoints.down("sm")]: {
-      fontSize: "1rem",
+      fontSize: "0.9rem",
     },
   },
   upgradeNotification: {
@@ -72,6 +76,9 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     textTransform: "uppercase",
     fontFamily: "Nunito Sans",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1rem",
+    },
   },
   rupeeSignStyle: {
     fontSize: "1rem",
@@ -92,6 +99,8 @@ const RenewalDetails = ({ memberDetails }) => {
 
   const [checked, setChecked] = useState(false);
   const [paymentMessage, showPaymentMessage] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState("O");
   const siteContext = useContext(SiteContext);
 
   const router = useRouter();
@@ -107,10 +116,14 @@ const RenewalDetails = ({ memberDetails }) => {
   var formattedDate =
     Math.abs(renewalDate.getFullYear()) +
     "-" +
-    renewalDate.getMonth() +
-    1 +
+    parseInt(renewalDate.getMonth() + 1) +
     "-" +
     renewalDate.getDate();
+
+  let certificate =
+    membershipType === "Lifetime"
+      ? memberDetails && memberDetails.membership_certificate_url
+      : null;
 
   const {
     createOrder,
@@ -137,9 +150,8 @@ const RenewalDetails = ({ memberDetails }) => {
           membershipType,
           parseInt(amount),
           formattedDate,
-          membershipType === "Lifetime"
-            ? memberDetails.membership_certificate_url
-            : null
+          certificate,
+          mode // Payment Mode
         );
       }
     }
@@ -147,22 +159,24 @@ const RenewalDetails = ({ memberDetails }) => {
 
   useEffect(() => {
     if (renewalProcessed) {
-      let invoiceNumber = generateInvoiceNumber(memberDetails.id);
+      if (mode === "O") {
+        let invoiceNumber = generateInvoiceNumber(memberDetails.id);
 
-      sendPaymentReceiptEmail(
-        memberDetails.name,
-        memberDetails.address1,
-        memberDetails.address2,
-        memberDetails.city,
-        memberDetails.state,
-        memberDetails.pincode,
-        memberDetails.country,
-        memberDetails.email,
-        invoiceNumber,
-        membershipType,
-        formattedDate
-      );
-      router.push(`/paymentverified/${memberDetails.alt_user_id}`);
+        sendPaymentReceiptEmail(
+          memberDetails.name,
+          memberDetails.address1,
+          memberDetails.address2,
+          memberDetails.city,
+          memberDetails.state,
+          memberDetails.pincode,
+          memberDetails.country,
+          memberDetails.email,
+          invoiceNumber,
+          membershipType,
+          formattedDate
+        );
+        router.push(`/paymentverified/${memberDetails.alt_user_id}`);
+      }
     }
   }, [renewalProcessed]);
 
@@ -336,9 +350,7 @@ const RenewalDetails = ({ memberDetails }) => {
           className={classes.renewalDetailsText}
           style={{ display: "flex", alignItems: "center" }}
         >
-          <span style={{ marginRight: 10 }}>
-            Upgrade Membership to Lifetime?
-          </span>
+          <span style={{ marginRight: 10 }}>Upgrade to Lifetime?</span>
           <Checkbox
             checked={checked}
             onChange={handleChange}
@@ -394,6 +406,36 @@ const RenewalDetails = ({ memberDetails }) => {
             </p>
           </span>
         )}
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: 32,
+          }}
+        >
+          <Button
+            style={{
+              color: "#87431d",
+              fontWeight: 700,
+              fontSize: "0.95rem",
+              letterSpacing: "1px",
+            }}
+            className="styledLink"
+            onClick={() => setOpen(true)}
+          >
+            See alternate payment option
+          </Button>
+        </div>
+
+        <AltPaymentModal
+          open={open}
+          setOpen={setOpen}
+          memberDetails={memberDetails}
+          membershipType={membershipType}
+          formattedDate={formattedDate}
+          setMode={setMode}
+        />
       </div>
     </div>
   );

@@ -55,7 +55,7 @@ const useStyles = makeStyles({
 
     [theme.breakpoints.down("md")]: {
       height: 200,
-      width: 350,
+      width: 325,
     },
   },
   mainContactContainer: {

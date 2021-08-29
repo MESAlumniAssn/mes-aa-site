@@ -59,6 +59,7 @@ const RegistrationCertificateModal = ({
           </div>
           <div
             style={{ position: "absolute", right: 22, top: 50, color: "#FFF" }}
+            className="hideEsc"
           >
             ESC
           </div>

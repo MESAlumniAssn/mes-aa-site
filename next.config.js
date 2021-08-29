@@ -5,7 +5,7 @@ const moduleExports = {
     webpack5: true,
   },
   images: {
-    domains: ["res.cloudinary.com", "ik.imagekit.io"],
+    domains: ["res.cloudinary.com", "ik.imagekit.io", "images.ctfassets.net"],
   },
   // webpack: (config, { isServer }) => {
   //   // Fixes npm packages that depend on `fs` module

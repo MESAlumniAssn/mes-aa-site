@@ -27,6 +27,16 @@ const useStyles = makeStyles((theme) => ({
     padding: "100px 0 50px 0",
     textAlign: "center",
   },
+  heroImage: {
+    transform: "rotate(0deg)",
+    height: 300,
+    width: 500,
+    boxShadow: "0 12px 37px rgba(0,0,0,0.3)",
+    [theme.breakpoints.down("md")]: {
+      height: 200,
+      width: 325,
+    },
+  },
   modal: {
     display: "flex",
     alignItems: "center",
@@ -97,13 +107,8 @@ const AboutHeader = () => {
             paddingBottom: 30,
           }}
         >
-          <div>
-            <Image
-              src={ABOUT_HEADER}
-              alt={"MES College"}
-              height={350}
-              width={550}
-            />
+          <div className={classes.heroImage}>
+            <Image src={ABOUT_HEADER} alt={"MES College"} layout="fill" />
           </div>
           <div style={{ paddingTop: "50px" }}>
             <p className={classes.almaMaterText} onClick={handleOpen}>
@@ -142,7 +147,7 @@ const AboutHeader = () => {
           >
             MES College (accredited{" "}
             <span style={{ fontWeight: "bold" }}>A</span> by NAAC) has been an
-            institute par excellence for over 65 years. It has a galaxy of
+            institute par excellence for over six decades. It has a galaxy of
             distinguished alumni, who with their excellence in their chosen
             field have not only bought laurels to college and the country but
             have also been recognised worldwide.
@@ -198,7 +203,12 @@ const AboutHeader = () => {
                   className="timesButtonAnimation"
                 />
               </div>
-              <div style={{ position: "absolute", right: 8, top: 30 }}>ESC</div>
+              <div
+                style={{ position: "absolute", right: 8, top: 30 }}
+                className="hideEsc"
+              >
+                ESC
+              </div>
               <Typography component="h2" align="center">
                 <span className="secondaryHeading">Your Alma Mater</span>
               </Typography>

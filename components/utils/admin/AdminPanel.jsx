@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // Component imports
 import UpdatePaymentStatus from "./modals/UpdatePaymentStatus";
 import JobStatus from "./modals/JobStatus";
+import CreateEvent from "./modals/CreateEvent";
 
 const panelVariants = {
   hoverPaymentStatus: {
@@ -17,6 +18,10 @@ const panelVariants = {
   },
   hoverJobStatus: {
     backgroundColor: "#2978B5",
+    color: "#FFFFFF",
+  },
+  hoverEventStatus: {
+    backgroundColor: "#F0A500",
     color: "#FFFFFF",
   },
   tap: {
@@ -55,6 +60,7 @@ const AdminPanel = () => {
 
   const [paymentStatusOpen, setPaymentStatusOpen] = useState(false);
   const [jobStatusOpen, setJobStatusOpen] = useState(false);
+  const [createEventOpen, setCreateEventOpen] = useState(false);
 
   return (
     <div className={classes.parentContainer}>
@@ -96,6 +102,25 @@ const AdminPanel = () => {
               JOB STATUS
             </motion.div>
           </Grid>
+
+          <Grid item xs={12} md={4} lg={3}>
+            <motion.div
+              variants={panelVariants}
+              whileTap="tap"
+              whileHover="hoverEventStatus"
+              className={classes.commonTileStyle}
+              style={{
+                backgroundColor: "#FDF5CA",
+                border: "2px solid #AC4B1C",
+                color: "#AC4B1C",
+              }}
+              onClick={() => {
+                setCreateEventOpen(true);
+              }}
+            >
+              CREATE EVENT
+            </motion.div>
+          </Grid>
         </Grid>
         <UpdatePaymentStatus
           paymentStatusOpen={paymentStatusOpen}
@@ -104,6 +129,10 @@ const AdminPanel = () => {
         <JobStatus
           jobStatusOpen={jobStatusOpen}
           setJobStatusOpen={setJobStatusOpen}
+        />
+        <CreateEvent
+          createEventOpen={createEventOpen}
+          setCreateEventOpen={setCreateEventOpen}
         />
       </div>
     </div>
