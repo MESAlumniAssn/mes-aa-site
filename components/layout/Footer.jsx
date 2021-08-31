@@ -34,6 +34,9 @@ import {
   faCircle,
   faSitemap,
   faPencilAlt,
+  faCalendarAlt,
+  faBlog,
+  faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Component imports
@@ -104,7 +107,7 @@ const Footer = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          padding: "50px 0",
+          padding: "50px 0 0 0",
         }}
       >
         {" "}
@@ -125,6 +128,98 @@ const Footer = () => {
         >
           All rights reserved
         </Typography>
+      </Container>
+
+      <Container maxWidth="md" style={{ marginTop: 50, marginBottom: 50 }}>
+        <Typography align="center" gutterBottom style={{ marginBottom: 25 }}>
+          <span className="tertiaryHeading">Quick Links</span>
+        </Typography>
+        <Grid container justify="center" alignItems="flex-start" spacing={5}>
+          <Grid item>
+            <div style={{ marginBottom: 15 }}>
+              <FontAwesomeIcon icon={faUserSecret} style={{ marginRight: 5 }} />
+              <Link href="/privacy">
+                <a
+                  style={{ fontSize: "1.1rem", textDecoration: "none" }}
+                  className="styledLink"
+                >
+                  Privacy Policy
+                </a>
+              </Link>
+            </div>
+            <div style={{ marginBottom: 15 }}>
+              <FontAwesomeIcon icon={faBookOpen} style={{ marginRight: 5 }} />
+              <Link href="/terms">
+                <a
+                  style={{ fontSize: "1.1rem", textDecoration: "none" }}
+                  className="styledLink"
+                >
+                  Terms of Use
+                </a>
+              </Link>
+            </div>
+            <div>
+              <FontAwesomeIcon icon={faSitemap} style={{ marginRight: 5 }} />
+              <Link href="/sitemap.xml">
+                <a
+                  style={{ fontSize: "1.1rem", textDecoration: "none" }}
+                  className="styledLink"
+                >
+                  Sitemap
+                </a>
+              </Link>
+            </div>
+          </Grid>
+          <Grid item>
+            <div style={{ marginBottom: 15 }}>
+              <FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: 5 }} />
+              <Link href="/about">
+                <a
+                  style={{ fontSize: "1.1rem", textDecoration: "none" }}
+                  className="styledLink"
+                >
+                  More About Us
+                </a>
+              </Link>
+            </div>
+            <div style={{ marginBottom: 15 }}>
+              <FontAwesomeIcon icon={faEnvelope} style={{ marginRight: 5 }} />
+              <Link href="/contact">
+                <a
+                  style={{ fontSize: "1.1rem", textDecoration: "none" }}
+                  className="styledLink"
+                >
+                  Contact Us
+                </a>
+              </Link>
+            </div>
+            <div style={{ marginBottom: 15 }}>
+              <FontAwesomeIcon
+                icon={faCalendarAlt}
+                style={{ marginRight: 5 }}
+              />
+              <Link href="/events">
+                <a
+                  style={{ fontSize: "1.1rem", textDecoration: "none" }}
+                  className="styledLink"
+                >
+                  Events
+                </a>
+              </Link>
+            </div>
+            <div>
+              <FontAwesomeIcon icon={faBlog} style={{ marginRight: 5 }} />
+              <Link href="/blog">
+                <a
+                  style={{ fontSize: "1.1rem", textDecoration: "none" }}
+                  className="styledLink"
+                >
+                  Blog
+                </a>
+              </Link>
+            </div>
+          </Grid>
+        </Grid>
       </Container>
 
       <Container
@@ -211,7 +306,7 @@ const Footer = () => {
         </div>
       </Container>
 
-      <Container maxWidth="md" style={{ marginTop: 50 }}>
+      {/* <Container maxWidth="md" style={{ marginTop: 50 }}>
         <Grid container justify="center" alignItems="center" spacing={2}>
           <FontAwesomeIcon icon={faUserSecret} style={{ marginRight: 5 }} />
           <Link href="/privacy">
@@ -249,7 +344,7 @@ const Footer = () => {
             </a>
           </Link>
         </Grid>
-      </Container>
+      </Container> */}
 
       <div
         style={{
