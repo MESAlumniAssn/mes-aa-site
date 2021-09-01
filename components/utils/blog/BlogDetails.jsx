@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-
+    padding: 10,
     [theme.breakpoints.down("sm")]: {
       margin: "100px 20px 50px 20px",
     },
@@ -84,13 +84,13 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 25,
   },
   secondaryContentLabel: {
-    color: "#87A7B3",
+    color: "#455a64",
   },
   secondaryContentText: {
     fontWeight: 700,
   },
   authorPostDetails: {
-    fontSize: "1rem",
+    fontSize: "1.1rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "0.9rem",
     },

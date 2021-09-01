@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     width: 700,
     padding: "10px 15px",
     margin: "20px 0",
-    borderLeft: "6px solid var(--contact-color)",
+    borderLeft: "6px solid #C24914",
     boxShadow: "0 3px 12px rgba(0, 0, 0, 0.1)",
     borderRadius: 5,
     cursor: "pointer",
@@ -51,11 +51,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.9rem",
     fontWeight: 700,
     fontFamily: "Nunito sans",
-    backgroundColor: "#D79771",
+    backgroundColor: "#C24914",
     borderRadius: 3,
+    border: "none",
     margin: 0,
     "&:hover": {
-      backgroundColor: "#753422",
+      backgroundColor: "#682C0E",
     },
     [theme.breakpoints.down("sm")]: {
       fontSize: "0.7rem",
@@ -89,7 +90,7 @@ const EventSummary = ({ event }) => {
 
         <div style={{ marginBottom: 20 }}>
           <span className={classes.secondaryContentStyle}>
-            Venue: <span style={{ color: "#D79771" }}>{event.venue}</span>
+            Venue: <span style={{ color: "#C24914" }}>{event.venue}</span>
           </span>
         </div>
 
@@ -97,17 +98,17 @@ const EventSummary = ({ event }) => {
           <div style={{ marginBottom: 20 }}>
             <span className={classes.secondaryContentStyle}>
               Chief Guest:{" "}
-              <span style={{ color: "#D79771" }}>{event.chief_guest}</span>
+              <span style={{ color: "#C24914" }}>{event.chief_guest}</span>
             </span>
           </div>
         )}
 
         <div className={classes.eventDateContainer}>
           <p className={classes.dateStyle}>
-            Date: <span style={{ color: "#D79771" }}>{event.date}</span>
+            Date: <span style={{ color: "#C24914" }}>{event.date}</span>
           </p>
           <p className={classes.dateStyle}>
-            Time: <span style={{ color: "#D79771" }}>{event.time}</span>
+            Time: <span style={{ color: "#C24914" }}>{event.time}</span>
           </p>
 
           <Button

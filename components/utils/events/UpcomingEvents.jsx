@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   numberedBullet: {
     fontSize: "1.5rem",
     marginRight: 10,
-    backgroundColor: "orange",
+    backgroundColor: "#C24914",
     padding: "10px 15px",
     height: "20%",
     color: "#ffffff",

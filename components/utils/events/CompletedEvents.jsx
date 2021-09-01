@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Image from "next/image";
 import SiteContext from "../../../context/siteContext";
+import { motion } from "framer-motion";
 
 // Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   numberedBullet: {
     fontSize: "1.5rem",
     marginRight: 10,
-    backgroundColor: "orange",
+    backgroundColor: "#C24914",
     padding: "10px 15px",
     height: "20%",
     color: "#ffffff",

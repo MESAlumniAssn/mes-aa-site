@@ -93,6 +93,12 @@ const useStyles = makeStyles((theme) => ({
       width: "400px",
     },
   },
+  footerMessage: {
+    fontSize: "1.2rem",
+    fontWeight: 600,
+    paddingBottom: 30,
+    [theme.breakpoints.down("sm")]: { fontSize: "1rem" },
+  },
 }));
 
 const Footer = () => {
@@ -403,7 +409,7 @@ const Footer = () => {
             <a style={{ marginRight: 15 }}>
               <Image
                 src={"/images/social/youtube.svg"}
-                alt="Youtube"
+                alt="YouTube"
                 height={40}
                 width={40}
               />
