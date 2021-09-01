@@ -121,12 +121,11 @@ const BlogCard = ({ blog }) => {
         </Typography>
         <div className={classes.cardFooter}>
           <Typography
-            style={{ fontSize: "0.9rem" }}
-            color="textSecondary"
+            style={{ fontSize: "0.9rem", fontWeight: 700 }}
             component="p"
             gutterBottom
           >
-            Posted on {formattedDate}
+            <span style={{ color: "#455a64" }}>Posted on {formattedDate}</span>
           </Typography>
           <motion.button
             variants={variants}

@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   gridContainer: {
     margin: "50px 100px",
     [theme.breakpoints.down("sm")]: {
-      margin: "50px 30px",
+      margin: "50px",
     },
   },
   articleSubmissionLabel: {
@@ -85,8 +85,11 @@ const BlogHeader = ({ blogs }) => {
         <span className="mainHeading">Blog</span>
       </Typography>
 
-      <div style={{ marginTop: 30, fontSize: "1.1rem" }}>
-        <Typography style={{ fontWeight: 600, paddingTop: 20 }} align="center">
+      <div style={{ marginTop: 30 }}>
+        <Typography
+          style={{ fontWeight: 600, padding: "20px 5px 0 5px" }}
+          align="center"
+        >
           <span className="subtitle">
             A growing collection of articles submitted by our talented alumni
           </span>

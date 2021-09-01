@@ -22,7 +22,7 @@ const BlogSubmissionDetails = () => {
   const classes = useStyles();
 
   return (
-    <div style={{ margin: "0 40px" }}>
+    <div style={{ margin: "30px", marginBottom: 0 }}>
       <div style={{ textAlign: "left" }} className="counter">
         <p className="counterSection">
           Email your article to{" "}

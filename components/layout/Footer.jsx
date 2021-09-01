@@ -417,10 +417,7 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-      <Typography
-        style={{ fontSize: "1.2rem", fontWeight: 600, paddingBottom: 30 }}
-        align="center"
-      >
+      <Typography className={classes.footerMessage} align="center">
         Built with <FontAwesomeIcon icon={faHeart} style={{ color: "red" }} />{" "}
         for the alumni by the alumni
       </Typography>
