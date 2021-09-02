@@ -199,7 +199,7 @@ const CreateEvent = ({ createEventOpen, setCreateEventOpen }) => {
                     align="center"
                     style={{ paddingBottom: 20 }}
                   >
-                    <span className="mainHeading">Post an Event</span>
+                    <span className="secondaryHeading">Post an Event</span>
                   </Typography>
                   {/* {message && (
                     <div

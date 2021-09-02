@@ -115,7 +115,7 @@ const JobStatus = ({ jobStatusOpen, setJobStatusOpen }) => {
             onClick={handleClose}
           />
           <Typography component="h1" align="center">
-            <span className="mainHeading">Job Status</span>
+            <span className="secondaryHeading">Job Status</span>
           </Typography>
 
           <TableContainer className={classes.tableContainer}>
@@ -171,7 +171,7 @@ const JobStatus = ({ jobStatusOpen, setJobStatusOpen }) => {
                   );
                 })
               ) : (
-                <div syle={{ textAlign: "center" }}>
+                <div style={{ textAlign: "center" }}>
                   <Image
                     src="/loader.svg"
                     alt="Loading..."

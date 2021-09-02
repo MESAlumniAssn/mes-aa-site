@@ -148,7 +148,9 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                     align="center"
                     style={{ paddingBottom: 30 }}
                   >
-                    <span className="mainHeading">Update Payment Status</span>
+                    <span className="secondaryHeading">
+                      Update Payment Status
+                    </span>
                   </Typography>
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <TextField
