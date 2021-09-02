@@ -66,6 +66,7 @@ const ExpiredMemberships = (props) => {
     expiredMemberships,
     getExpiredMembershipDetails,
     sendRenewalNotificationEmail,
+    dashboardError,
   } = siteContext;
   const classes = useStyles();
 
@@ -147,36 +148,38 @@ const ExpiredMemberships = (props) => {
 
   return (
     <div>
-      <div style={{ margin: "75px 0 25px 0" }}>
-        <Typography component="h2">
-          <span className="secondaryHeading">
-            <span className={classes.membershipExpiredBorderStyle}>
-              Expired
-            </span>{" "}
-            Annual Memberships
-          </span>
-        </Typography>
-      </div>
-      <div
-        style={{
-          height: 400,
-          width: "100%",
-        }}
-        className={classes.root}
-      >
-        {expiredMemberships && (
-          <DataGrid
-            rows={expiredMemberships && expiredMemberships}
-            columns={expiredTableFields}
-            pagination
-            pageSize={5}
-            components={{
-              Toolbar: exportToolbar,
-              Pagination: CustomPagination,
+      {expiredMemberships && !dashboardError && (
+        <div>
+          <div style={{ margin: "75px 0 25px 0" }}>
+            <Typography component="h2">
+              <span className="secondaryHeading">
+                <span className={classes.membershipExpiredBorderStyle}>
+                  Expired
+                </span>{" "}
+                Annual Memberships
+              </span>
+            </Typography>
+          </div>
+          <div
+            style={{
+              height: 400,
+              width: "100%",
             }}
-          />
-        )}
-      </div>
+            className={classes.root}
+          >
+            <DataGrid
+              rows={expiredMemberships && expiredMemberships}
+              columns={expiredTableFields}
+              pagination
+              pageSize={5}
+              components={{
+                Toolbar: exportToolbar,
+                Pagination: CustomPagination,
+              }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

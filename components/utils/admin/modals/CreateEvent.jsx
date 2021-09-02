@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 
 // Material UI imports
 import Modal from "@material-ui/core/Modal";
@@ -84,17 +85,42 @@ const validationSchema = Yup.object({
     ),
 });
 
+const sessionExpiredToast = () =>
+  toast.dark("Your session has expired. Please login again.", {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
+
 const CreateEvent = ({ createEventOpen, setCreateEventOpen }) => {
   const siteContext = useContext(SiteContext);
   const classes = useStyles();
   const router = useRouter();
 
-  const { createNewEvent, eventCreated, sendEventsNotificationEmail } =
-    siteContext;
+  const {
+    createNewEvent,
+    eventCreated,
+    sendEventsNotificationEmail,
+    dashboardError,
+  } = siteContext;
 
   useEffect(() => {
     if (eventCreated) router.push("/events");
   }, [eventCreated]);
+
+  useEffect(() => {
+    if (dashboardError && dashboardError) {
+      localStorage.removeItem("mesAAToken");
+      sessionExpiredToast();
+      setTimeout(
+        () => router.push(`/dashboard/${process.env.NEXT_PUBLIC_ADMIN_ID}`),
+        2000
+      );
+    }
+  }, [dashboardError]);
 
   const handleClose = () => {
     setCreateEventOpen(false);

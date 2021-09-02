@@ -140,9 +140,6 @@ export default function ScrollableTabsButtonForce() {
       <TabPanel value={value} index={1}>
         <FundStats />
       </TabPanel>
-      {/* <TabPanel value={value} index={2}>
-        <AlumniSearch />
-      </TabPanel> */}
       <TabPanel value={value} index={2}>
         <AdminPanel />
       </TabPanel>

@@ -105,6 +105,7 @@ const AlumniMembers = (props) => {
     pendingAnnualMembers,
     getLifeMembers,
     getAnnualMembers,
+    dashboardError,
   } = siteContext;
   const classes = useStyles();
 
@@ -235,13 +236,13 @@ const AlumniMembers = (props) => {
     {
       field: "id_card_url",
       headerName: "ID Card",
-      width: 500,
+      width: 700,
       headerClassName: headerStyle,
     },
     {
       field: "membership_certificate_url",
       headerName: "Membership Certificate",
-      width: 500,
+      width: 700,
       headerClassName: headerStyle,
     },
   ];
@@ -283,102 +284,112 @@ const AlumniMembers = (props) => {
 
   return (
     <div>
-      <div style={{ margin: "75px 0 25px 0" }}>
-        <Typography component="h2">
-          {props.paymentStatus === "active" ? (
-            <span
-              className={
-                props.memberType === "Lifetime"
-                  ? "secondaryHeading " + classes.registeredLifeBorderStyle
-                  : "secondaryHeading " + classes.registeredAnnualBorderStyle
-              }
+      {lifeMembers &&
+        annualMembers &&
+        pendingLifeMembers &&
+        pendingAnnualMembers &&
+        !dashboardError && (
+          <div>
+            <div style={{ margin: "75px 0 25px 0" }}>
+              <Typography component="h2">
+                {props.paymentStatus === "active" ? (
+                  <span
+                    className={
+                      props.memberType === "Lifetime"
+                        ? "secondaryHeading " +
+                          classes.registeredLifeBorderStyle
+                        : "secondaryHeading " +
+                          classes.registeredAnnualBorderStyle
+                    }
+                  >
+                    Registered
+                  </span>
+                ) : (
+                  <span
+                    className={
+                      props.memberType === "Lifetime"
+                        ? "secondaryHeading " + classes.pendingLifeBorderStyle
+                        : "secondaryHeading " + classes.pendingAnnualBorderStyle
+                    }
+                  >
+                    Pending
+                  </span>
+                )}
+                <span className="secondaryHeading">
+                  {props.memberType === "Lifetime" ? " Life " : " Annual "}
+                  Members
+                </span>
+              </Typography>
+            </div>
+            <div
+              style={{
+                height: 400,
+                width: "100%",
+              }}
+              className={classes.root}
             >
-              Registered
-            </span>
-          ) : (
-            <span
-              className={
-                props.memberType === "Lifetime"
-                  ? "secondaryHeading " + classes.pendingLifeBorderStyle
-                  : "secondaryHeading " + classes.pendingAnnualBorderStyle
-              }
-            >
-              Pending
-            </span>
-          )}
-          <span className="secondaryHeading">
-            {props.memberType === "Lifetime" ? " Life " : " Annual "}
-            Members
-          </span>
-        </Typography>
-      </div>
-      <div
-        style={{
-          height: 400,
-          width: "100%",
-        }}
-        className={classes.root}
-      >
-        {props.memberType === "Lifetime" &&
-          props.paymentStatus === "active" &&
-          lifeMembers && (
-            <DataGrid
-              rows={lifeMembers && lifeMembers}
-              columns={allMemberFields}
-              pagination
-              pageSize={5}
-              components={{
-                Toolbar: exportToolbar,
-                Pagination: CustomPagination,
-              }}
-            />
-          )}
+              {props.memberType === "Lifetime" &&
+                props.paymentStatus === "active" &&
+                lifeMembers && (
+                  <DataGrid
+                    rows={lifeMembers && lifeMembers}
+                    columns={allMemberFields}
+                    pagination
+                    pageSize={5}
+                    components={{
+                      Toolbar: exportToolbar,
+                      Pagination: CustomPagination,
+                    }}
+                  />
+                )}
 
-        {props.memberType === "Annual" &&
-          props.paymentStatus === "active" &&
-          annualMembers && (
-            <DataGrid
-              rows={annualMembers && annualMembers}
-              columns={allMemberFields}
-              pagination
-              pageSize={5}
-              components={{
-                Toolbar: exportToolbar,
-                Pagination: CustomPagination,
-              }}
-            />
-          )}
+              {props.memberType === "Annual" &&
+                props.paymentStatus === "active" &&
+                annualMembers && (
+                  <DataGrid
+                    rows={annualMembers && annualMembers}
+                    columns={allMemberFields}
+                    pagination
+                    pageSize={5}
+                    components={{
+                      Toolbar: exportToolbar,
+                      Pagination: CustomPagination,
+                    }}
+                  />
+                )}
 
-        {props.memberType === "Lifetime" &&
-          props.paymentStatus === "pending" &&
-          pendingLifeMembers && (
-            <DataGrid
-              rows={pendingLifeMembers && pendingLifeMembers}
-              columns={allMemberFields}
-              pagination
-              pageSize={5}
-              components={{
-                Toolbar: exportToolbar,
-                Pagination: CustomPagination,
-              }}
-            />
-          )}
+              {props.memberType === "Lifetime" &&
+                props.paymentStatus === "pending" &&
+                pendingLifeMembers && (
+                  <DataGrid
+                    rows={pendingLifeMembers && pendingLifeMembers}
+                    columns={allMemberFields}
+                    pagination
+                    pageSize={5}
+                    components={{
+                      Toolbar: exportToolbar,
+                      Pagination: CustomPagination,
+                    }}
+                  />
+                )}
 
-        {props.memberType === "Annual" &&
-          props.paymentStatus === "pending" &&
-          pendingAnnualMembers && (
-            <DataGrid
-              rows={pendingAnnualMembers && pendingAnnualMembers}
-              columns={allMemberFields}
-              pagination
-              pageSize={5}
-              components={{
-                Toolbar: exportToolbar,
-                Pagination: CustomPagination,
-              }}
-            />
-          )}
-      </div>
+              {props.memberType === "Annual" &&
+                props.paymentStatus === "pending" &&
+                pendingAnnualMembers && (
+                  <DataGrid
+                    rows={pendingAnnualMembers && pendingAnnualMembers}
+                    columns={allMemberFields}
+                    pagination
+                    pageSize={5}
+                    components={{
+                      Toolbar: exportToolbar,
+                      Pagination: CustomPagination,
+                    }}
+                  />
+                )}
+            </div>
+          </div>
+        )}
     </div>
   );
 };

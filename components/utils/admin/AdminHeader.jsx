@@ -33,7 +33,6 @@ const AdminHeader = () => {
         onClick={() => {
           setLogout(true);
           adminLogout();
-
           setTimeout(() => router.push(`/`), 2000);
         }}
       >

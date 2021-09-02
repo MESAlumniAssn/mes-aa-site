@@ -78,6 +78,7 @@ const SiteState = (props) => {
     events: null,
     completedEvents: null,
     upcomingEvents: null,
+    dashboardError: null,
   };
 
   const [state, dispatch] = useReducer(siteReducer, initialState);
@@ -526,7 +527,13 @@ const SiteState = (props) => {
     try {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/events`,
-        jsonPayload
+        jsonPayload,
+        {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("mesAAToken"))
+              .access_token,
+          },
+        }
       );
 
       dispatch({ type: EVENTS_SUCCESS, payload: res.data });
@@ -722,7 +729,6 @@ const SiteState = (props) => {
     venue,
     chiefGuest
   ) => {
-    console.log(typeof eventDate);
     const jsonPayload = {
       event_name: eventName,
       event_date: eventDate,
@@ -812,6 +818,7 @@ const SiteState = (props) => {
         events: state.events,
         upcomingEvents: state.upcomingEvents,
         completedEvents: state.completedEvents,
+        dashboardError: state.dashboardError,
         setLoading,
         registerUser,
         checkForExistingEmail,

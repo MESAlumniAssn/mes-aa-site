@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Formik, Form } from "formik";
 import SiteContext from "../../../../context/siteContext";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import * as Yup from "yup";
@@ -58,6 +59,7 @@ const validationSchema = Yup.object({
 });
 
 const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
+  const router = useRouter();
   const siteContext = useContext(SiteContext);
   const classes = useStyles();
 
@@ -71,12 +73,23 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
     clearUserState,
     sendWelcomeEmail,
     sendPaymentReceiptEmail,
+    dashboardError,
   } = siteContext;
 
   const handleClose = () => {
     setPaymentStatusOpen(false);
     clearUserState();
   };
+
+  useEffect(() => {
+    if (dashboardError && dashboardError) {
+      localStorage.removeItem("mesAAToken");
+      setTimeout(
+        () => router.push(`/dashboard/${process.env.NEXT_PUBLIC_ADMIN_ID}`),
+        2000
+      );
+    }
+  }, [dashboardError]);
 
   return (
     <div>

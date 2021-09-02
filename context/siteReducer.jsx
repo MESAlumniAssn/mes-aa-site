@@ -69,66 +69,69 @@ const siteReducer = (state, action) => {
         authError: action.payload,
       };
     case METRICS_SUCCESS:
-    case METRICS_ERROR:
       return {
         ...state,
         loading: false,
         metrics: action.payload,
       };
     case LM_FETCH_SUCCESS:
-    case LM_FETCH_ERROR:
       return {
         ...state,
         loading: false,
         lifeMembers: action.payload,
       };
     case LM_PENDING_FETCH_SUCCESS:
-    case LM_PENDING_FETCH_ERROR:
       return {
         ...state,
         loading: false,
         pendingLifeMembers: action.payload,
       };
     case AM_FETCH_SUCCESS:
-    case AM_FETCH_ERROR:
       return {
         ...state,
         loading: false,
         annualMembers: action.payload,
       };
     case AM_PENDING_FETCH_SUCCESS:
-    case AM_PENDING_FETCH_ERROR:
       return {
         ...state,
         loading: false,
         pendingAnnualMembers: action.payload,
       };
     case EXPIRED_MEMBERSHIP_FETCHED_SUCCESS:
-    case EXPIRED_MEMBERSHIP_FETCHED_ERROR:
       return {
         ...state,
         loading: false,
         expiredMemberships: action.payload,
       };
     case RENEWED_MEMBERSHIP_FETCHED_SUCCESS:
-    case RENEWED_MEMBERSHIP_FETCHED_ERROR:
       return {
         ...state,
         loading: false,
         renewedMemberships: action.payload,
       };
+
+    case METRICS_ERROR:
+    case LM_FETCH_ERROR:
+    case LM_PENDING_FETCH_ERROR:
+    case AM_FETCH_ERROR:
+    case AM_PENDING_FETCH_ERROR:
+    case EXPIRED_MEMBERSHIP_FETCHED_ERROR:
+    case RENEWED_MEMBERSHIP_FETCHED_ERROR:
+    case MEMBERSHIP_DETAILS_FETCH_ERROR:
+      return {
+        ...state,
+        loading: false,
+        dashboardError: action.payload,
+      };
+
     case MEMBERSHIP_DETAILS_FETCH_SUCCESS:
       return {
         ...state,
         user: action.payload,
         loading: false,
       };
-    case MEMBERSHIP_DETAILS_FETCH_ERROR:
-      return {
-        ...state,
-        loading: false,
-        authError: action.payload,
-      };
+
     case PAYMENT_STATUS_UPDATE_SUCCESS:
       return {
         ...state,
@@ -140,6 +143,7 @@ const siteReducer = (state, action) => {
         ...state,
         loading: false,
         paymentStatus: false,
+        dashboardError: action.payload,
       };
     case PAYMENT_ORDER:
       return {
@@ -219,7 +223,7 @@ const siteReducer = (state, action) => {
         ...state,
         loading: false,
         eventCreated: false,
-        events: action.payload,
+        dashboardError: action.payload,
       };
     case UPCOMING_EVENTS:
       return {

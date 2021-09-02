@@ -49,8 +49,12 @@ const exportToolbar = () => {
 
 const AlumniMembers = (props) => {
   const siteContext = useContext(SiteContext);
-  const { loading, renewedMemberships, getRenewedMembershipDetails } =
-    siteContext;
+  const {
+    loading,
+    renewedMemberships,
+    getRenewedMembershipDetails,
+    dashboardError,
+  } = siteContext;
   const classes = useStyles();
 
   const headerStyle = "dg-renewed";
@@ -110,39 +114,41 @@ const AlumniMembers = (props) => {
 
   return (
     <div>
-      <div style={{ margin: "75px 0 25px 0" }}>
-        <Typography component="h2">
-          <span className="secondaryHeading">
-            <span className={classes.membershipRenewedBorderStyle}>
-              Recently Renewed
-            </span>{" "}
-            Annual Memberships
-          </span>
-        </Typography>
-        <Typography style={{ paddingTop: 15 }}>
-          <span className="subtitle">Renewed within the last 30 days</span>
-        </Typography>
-      </div>
-      <div
-        style={{
-          height: 400,
-          width: "100%",
-        }}
-        className={classes.root}
-      >
-        {renewedMemberships && (
-          <DataGrid
-            rows={renewedMemberships && renewedMemberships}
-            columns={renewedTableFields}
-            pagination
-            pageSize={5}
-            components={{
-              Toolbar: exportToolbar,
-              Pagination: CustomPagination,
+      {renewedMemberships && !dashboardError && (
+        <div>
+          <div style={{ margin: "75px 0 25px 0" }}>
+            <Typography component="h2">
+              <span className="secondaryHeading">
+                <span className={classes.membershipRenewedBorderStyle}>
+                  Recently Renewed
+                </span>{" "}
+                Annual Memberships
+              </span>
+            </Typography>
+            <Typography style={{ paddingTop: 15 }}>
+              <span className="subtitle">Renewed within the last 30 days</span>
+            </Typography>
+          </div>
+          <div
+            style={{
+              height: 400,
+              width: "100%",
             }}
-          />
-        )}
-      </div>
+            className={classes.root}
+          >
+            <DataGrid
+              rows={renewedMemberships && renewedMemberships}
+              columns={renewedTableFields}
+              pagination
+              pageSize={5}
+              components={{
+                Toolbar: exportToolbar,
+                Pagination: CustomPagination,
+              }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
