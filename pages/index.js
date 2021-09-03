@@ -19,6 +19,7 @@ const Home = (props) => {
     localStorage.removeItem("mesAAMembershipPlan");
     localStorage.removeItem("mesAAUser");
     localStorage.removeItem("testimonialSubmission");
+    sessionStorage.setItem("aa__preferences", JSON.stringify({ banner: true }));
   }
 
   return (

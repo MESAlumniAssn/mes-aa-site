@@ -56,87 +56,88 @@ const EventsBanner = ({ events }) => {
   return (
     <div>
       <AnimatePresence exitBeforeEnter>
-        {showBanner && !sessionStorage.getItem("aa__preferences") && (
-          <motion.div
-            variants={variants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className={classes.bannerContainer}
-          >
-            <FontAwesomeIcon
-              icon={faTimes}
-              className="timesButtonAnimation"
-              style={{
-                position: "absolute",
-                top: 10,
-                right: 10,
-                cursor: "pointer",
-                fontSize: "1.2rem",
-              }}
-              onClick={() => {
-                setShowBanner(false);
-                sessionStorage.setItem(
-                  "aa__preferences",
-                  JSON.stringify({ banner: false })
-                );
-              }}
-            />
-            <div>
-              <Typography align="center" component="h3">
-                <span className="tertiaryHeading">
-                  <FontAwesomeIcon
-                    icon={faBullhorn}
-                    style={{
-                      color: "var(--secondary-color)",
-                    }}
-                  />{" "}
-                  Upcoming Event Alert
-                  {events.length && events.length === 1 ? null : "s"}
-                </span>
-              </Typography>
-
-              <Typography
-                align="center"
-                component="p"
+        {showBanner &&
+          JSON.parse(sessionStorage.getItem("aa__preferences"))["banner"] && (
+            <motion.div
+              variants={variants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className={classes.bannerContainer}
+            >
+              <FontAwesomeIcon
+                icon={faTimes}
+                className="timesButtonAnimation"
                 style={{
-                  marginTop: "30px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
+                  position: "absolute",
+                  top: 10,
+                  right: 10,
+                  cursor: "pointer",
+                  fontSize: "1.2rem",
                 }}
-              >
-                {events.map((event) => {
-                  return (
-                    <div style={{ fontSize: "1.2rem", marginBottom: 30 }}>
-                      <FontAwesomeIcon
-                        icon={faCalendarAlt}
-                        style={{
-                          marginRight: 5,
-                          color: "var(--secondary-color)",
-                        }}
-                      />
-                      {event.name} on{" "}
-                      <span style={{ fontWeight: "bold" }}>{event.date}</span>
-                      <Link href={`/events/${event.event_id}`}>
-                        <a>
-                          <FontAwesomeIcon
-                            icon={faChevronCircleRight}
-                            style={{
-                              marginLeft: 10,
-                              fontSize: "1.5rem",
-                              color: "var(--secondary-color)",
-                            }}
-                          />
-                        </a>
-                      </Link>
-                    </div>
+                onClick={() => {
+                  setShowBanner(false);
+                  sessionStorage.setItem(
+                    "aa__preferences",
+                    JSON.stringify({ banner: false })
                   );
-                })}
-              </Typography>
-            </div>
-          </motion.div>
-        )}
+                }}
+              />
+              <div>
+                <Typography align="center" component="h3">
+                  <span className="tertiaryHeading">
+                    <FontAwesomeIcon
+                      icon={faBullhorn}
+                      style={{
+                        color: "var(--secondary-color)",
+                      }}
+                    />{" "}
+                    Upcoming Event Alert
+                    {events.length && events.length === 1 ? null : "s"}
+                  </span>
+                </Typography>
+
+                <Typography
+                  align="center"
+                  component="p"
+                  style={{
+                    marginTop: "30px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  {events.map((event) => {
+                    return (
+                      <div style={{ fontSize: "1.2rem", marginBottom: 30 }}>
+                        <FontAwesomeIcon
+                          icon={faCalendarAlt}
+                          style={{
+                            marginRight: 5,
+                            color: "var(--secondary-color)",
+                          }}
+                        />
+                        {event.name} on{" "}
+                        <span style={{ fontWeight: "bold" }}>{event.date}</span>
+                        <Link href={`/events/${event.event_id}`}>
+                          <a>
+                            <FontAwesomeIcon
+                              icon={faChevronCircleRight}
+                              style={{
+                                marginLeft: 10,
+                                fontSize: "1.5rem",
+                                color: "var(--secondary-color)",
+                              }}
+                            />
+                          </a>
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </Typography>
+              </div>
+            </motion.div>
+          )}
       </AnimatePresence>
     </div>
   );
