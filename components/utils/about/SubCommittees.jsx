@@ -11,7 +11,11 @@ import Container from "@material-ui/core/Container";
 
 // Fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faHandPointRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faStar,
+  faHandPointRight,
+  faThumbsUp,
+} from "@fortawesome/free-solid-svg-icons";
 
 // Component imports
 import ContactForm from "../../forms/contact/ContactForm";
@@ -71,8 +75,22 @@ const SubCommittees = () => {
         >
           Contact us
         </button>{" "}
-        and tell us which sub-committee(s) you would like to join. We look
-        forward to having you onboard.
+        and tell us which sub-committee(s) you would like to join. <br />
+      </Typography>
+
+      <Typography
+        component="p"
+        align="center"
+        style={{ paddingBottom: "10px" }}
+      >
+        We look forward to having you onboard
+        <FontAwesomeIcon
+          icon={faThumbsUp}
+          style={{
+            color: "var(--secondary-color)",
+            marginLeft: 5,
+          }}
+        />
       </Typography>
 
       <Typography
