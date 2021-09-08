@@ -6,6 +6,7 @@ import AboutHeader from "../components/utils/about/AboutHeader";
 import AimsAndObjectives from "../components/utils/about/AimsAndObjectives";
 import Logo from "../components/utils/about/Logo";
 import OfficeBearers from "../components/utils/about/OfficeBearers";
+import SubCommittees from "../components/utils/about/SubCommittees";
 import AboutHeadLayout from "../components/layout/head/AboutHeadLayout";
 import Footer from "../components/layout/Footer";
 
@@ -28,6 +29,7 @@ const about = (props) => {
       {props.committeeData && props.committeeData && (
         <OfficeBearers committeeData={props.committeeData} />
       )}
+      <SubCommittees />
       <Footer />
     </AboutHeadLayout>
   );

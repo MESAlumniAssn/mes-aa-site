@@ -140,7 +140,7 @@ const ContactDetails = () => {
               </Typography>
             </div>
             <div>
-              <Typography component="body2" variant="body2">
+              <Typography component="p">
                 <span>{collegeAddress1}</span> <span>{collegeAddress2}</span>
               </Typography>
             </div>

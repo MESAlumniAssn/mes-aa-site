@@ -141,7 +141,6 @@ const Pricing = () => {
                   >
                     {item.icon}
                     <Typography
-                      variant="body1"
                       style={{
                         fontSize: "1rem",
                         textAlign: "left",
@@ -225,7 +224,6 @@ const Pricing = () => {
                   >
                     {item.icon}
                     <Typography
-                      variant="body1"
                       style={{
                         fontSize: "1rem",
                         textAlign: "left",

@@ -99,7 +99,7 @@ const EventsBanner = ({ events }) => {
 
                 <Typography
                   align="center"
-                  component="p"
+                  component="div"
                   style={{
                     marginTop: "30px",
                     display: "flex",
@@ -107,9 +107,12 @@ const EventsBanner = ({ events }) => {
                     alignItems: "flex-start",
                   }}
                 >
-                  {events.map((event) => {
+                  {events.map((event, index) => {
                     return (
-                      <div style={{ fontSize: "1.2rem", marginBottom: 30 }}>
+                      <div
+                        key={index}
+                        style={{ fontSize: "1.2rem", marginBottom: 30 }}
+                      >
                         <FontAwesomeIcon
                           icon={faCalendarAlt}
                           style={{

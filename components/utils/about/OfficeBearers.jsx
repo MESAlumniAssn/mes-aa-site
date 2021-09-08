@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
   container: {
     margin: "50px 0 0 0",
     backgroundImage: "url(/images/about/pattern1.svg)",
+    position: "relative",
+    clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 5vw), 0 100%)",
+    zIndex: 50,
   },
   mcHeadingStyle: {
     borderBottom: "5px solid var(--secondary-color)",

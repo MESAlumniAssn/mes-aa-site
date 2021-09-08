@@ -43,10 +43,6 @@ import {
 import ContactForm from "../forms/contact/ContactForm";
 
 const variants = {
-  hover: {
-    backgroundColor: "#DCCCC0",
-    transition: { ease: "easeOut", duration: "1s" },
-  },
   tap: { y: "1px" },
 };
 
@@ -98,6 +94,19 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     paddingBottom: 30,
     [theme.breakpoints.down("sm")]: { fontSize: "1rem" },
+  },
+  buttonStyle: {
+    fontWeight: "bold",
+    width: 20,
+    height: 20,
+    backgroundColor: "transparent",
+    border: "none",
+    boxShadow: "none",
+    cursor: "pointer",
+    borderRadius: "5px",
+    "&:hover": {
+      backgroundColor: "#F1F1F1",
+    },
   },
 }));
 
@@ -263,18 +272,8 @@ const Footer = () => {
               {officialEmail}{" "}
               <motion.button
                 variants={variants}
-                whileHover="hover"
                 whileTap="tap"
-                style={{
-                  fontWeight: "bold",
-                  width: 20,
-                  height: 20,
-                  backgroundColor: "inherit",
-                  border: "none",
-                  boxShadow: "none",
-                  cursor: "pointer",
-                  borderRadius: "5px",
-                }}
+                className={classes.buttonStyle}
                 onClick={() => setOpenContactForm(true)}
               >
                 <FontAwesomeIcon icon={faPencilAlt} />

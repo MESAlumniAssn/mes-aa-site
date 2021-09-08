@@ -47,9 +47,7 @@ const AimsAndObjectives = () => {
         <Accordion
           elevation={0}
           style={{ borderRadius: 0 }}
-          className={{
-            root: classes.MuiAccordionroot,
-          }}
+          className={classes.MuiAccordionroot}
         >
           <AccordionSummary
             expandIcon={
@@ -65,7 +63,7 @@ const AimsAndObjectives = () => {
               <span className="secondaryHeading">Aims & Objectives</span>
             </Typography>
           </AccordionSummary>
-          <AccordionDetails className={classes.hideBorder}>
+          <AccordionDetails>
             <div
               style={{
                 display: "flex",
@@ -82,7 +80,7 @@ const AimsAndObjectives = () => {
                       paddingBottom: 15,
                     }}
                   >
-                    <Typography component="body2" className={classes.aims}>
+                    <Typography component="p" className={classes.aims}>
                       <FontAwesomeIcon
                         icon={faGraduationCap}
                         style={{

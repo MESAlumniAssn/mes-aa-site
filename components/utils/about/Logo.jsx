@@ -43,9 +43,7 @@ const AimsAndObjectives = () => {
       <Container maxWidth="md">
         <Accordion
           elevation={0}
-          className={{
-            root: classes.MuiAccordionroot,
-          }}
+          className={classes.MuiAccordionroot}
           style={{ borderRadius: 0 }}
         >
           <AccordionSummary
@@ -67,7 +65,7 @@ const AimsAndObjectives = () => {
             </Typography>
             {/* <Image src={'/logo.png'} alt={'Logo'} height={10} width={50} /> */}
           </AccordionSummary>
-          <AccordionDetails className={classes.hideBorder}>
+          <AccordionDetails>
             <div
               style={{
                 display: "flex",
@@ -82,11 +80,7 @@ const AimsAndObjectives = () => {
                 width={350}
                 height={350}
               />
-              <Typography
-                variant="body1"
-                style={{ paddingTop: 10 }}
-                gutterBottom
-              >
+              <Typography style={{ paddingTop: 10 }} gutterBottom>
                 The logo of an association is a unique representation that
                 communicates its ideology. The logo of The MES College Alumni
                 Association
@@ -105,7 +99,6 @@ const AimsAndObjectives = () => {
                 vision possesses tremendous power.
               </Typography>
               <Typography
-                variant="body1"
                 display="block"
                 style={{ paddingTop: 10 }}
                 gutterBottom

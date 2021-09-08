@@ -118,13 +118,12 @@ const AboutHeader = () => {
         </div>
 
         <Container maxWidth="md">
-          <Typography variant="body1" component="body1" gutterBottom>
+          <Typography component="p" gutterBottom>
             The word “alumnus” stems from a combination of the Latin words
             “foster” and “child.”
           </Typography>
           <Typography
-            variant="body1"
-            component="body1"
+            component="p"
             display="block"
             gutterBottom
             style={{ paddingTop: 20 }}
@@ -139,8 +138,7 @@ const AboutHeader = () => {
             promote activities that are beneficial to the student community.
           </Typography>
           <Typography
-            variant="body1"
-            component="body1"
+            component="p"
             display="block"
             gutterBottom
             style={{ paddingTop: 20 }}
@@ -153,8 +151,7 @@ const AboutHeader = () => {
             have also been recognised worldwide.
           </Typography>
           <Typography
-            variant="body1"
-            component="body1"
+            component="p"
             display="block"
             gutterBottom
             style={{ paddingTop: 20 }}

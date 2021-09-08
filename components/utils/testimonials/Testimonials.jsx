@@ -38,9 +38,9 @@ const Testimonials = (props) => {
         <Masonry>
           {props.testimonials.map((testimonial, i) => (
             <motion.div
+              key={i}
               custom={i}
               animate={animation}
-              key={testimonial.id}
               style={{
                 margin: "20px 0 20px 0",
                 display: "flex",

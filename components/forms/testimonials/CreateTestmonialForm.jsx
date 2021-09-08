@@ -52,7 +52,7 @@ const variants = {
   },
 };
 
-const CreateTestmonialForm = ({
+const CreateTestimonialForm = ({
   openTestimonialForm,
   setOpenTestimonialForm,
 }) => {
@@ -60,7 +60,7 @@ const CreateTestmonialForm = ({
 
   const [message, setMessage] = useState("");
   const siteContext = useContext(SiteContext);
-  const { createTestimonial, testimonial, sendTestimonialApprovalEmail } =
+  const { testimonial, createTestimonial, sendTestimonialApprovalEmail } =
     siteContext;
 
   useEffect(() => {
@@ -182,11 +182,11 @@ const CreateTestmonialForm = ({
                 inputProps={{ maxLength: 50 }}
                 onChange={props.handleChange}
                 onBlur={props.handleBlur}
-                error={props.touched.name && props.errors.name}
+                error={props.touched.name && !!props.errors.name}
                 fullWidth
               />
             </div>
-            {props.touched.name && props.errors.name && (
+            {props.touched.name && !!props.errors.name && (
               <Typography
                 style={{
                   textAlign: "left",
@@ -209,11 +209,11 @@ const CreateTestmonialForm = ({
                 inputProps={{ maxLength: 4 }}
                 onChange={props.handleChange}
                 onBlur={props.handleBlur}
-                error={props.touched.batch && props.errors.batch}
+                error={props.touched.batch && !!props.errors.batch}
                 fullWidth
               />
             </div>
-            {props.touched.batch && props.errors.batch && (
+            {props.touched.batch && !!props.errors.batch && (
               <Typography
                 style={{
                   textAlign: "left",
@@ -238,11 +238,11 @@ const CreateTestmonialForm = ({
                 inputProps={{ maxLength: 1000 }}
                 onChange={props.handleChange}
                 onBlur={props.handleBlur}
-                error={props.touched.message && props.errors.message}
+                error={props.touched.message && !!props.errors.message}
                 fullWidth
               />
             </div>
-            {props.touched.message && props.errors.message && (
+            {props.touched.message && !!props.errors.message && (
               <Typography
                 style={{
                   textAlign: "left",
@@ -285,4 +285,4 @@ const CreateTestmonialForm = ({
   );
 };
 
-export default CreateTestmonialForm;
+export default CreateTestimonialForm;

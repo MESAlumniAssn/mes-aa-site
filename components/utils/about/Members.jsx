@@ -9,15 +9,15 @@ import Typography from "@material-ui/core/Typography";
 const Members = (props) => {
   return (
     <div>
-      <Grid container justify="center" alignItems="center" spacing={6}>
+      <Grid container justify="center" alignItems="center">
         {props.committeeData
           .filter((role) => {
             return role.role === props.filter;
           })
           .map((member, index) => {
             return (
-              <Grid item xs={12} sm={6} md={4} key={index} align="center">
-                <div>
+              <Grid key={index} item xs={12} sm={6} md={4} align="center">
+                <div style={{ paddingBottom: 40 }}>
                   {member.image_url ? (
                     <div
                       className={`mcImageBorder ${
@@ -29,8 +29,8 @@ const Members = (props) => {
                       <Image
                         src={member.image_url}
                         alt={member.name}
-                        height={255}
-                        width={245}
+                        height={245}
+                        width={235}
                         className="mcImages"
                       />
                     </div>
@@ -45,7 +45,7 @@ const Members = (props) => {
                   )}
                   <Typography
                     display="block"
-                    component="subtitle"
+                    component="p"
                     align="center"
                     gutterBottom
                     style={{
@@ -60,7 +60,7 @@ const Members = (props) => {
                   </Typography>
                   {member.role === "ob" && (
                     <Typography
-                      component="subtitle"
+                      component="p"
                       align="center"
                       style={{ width: "100%" }}
                     >

@@ -66,7 +66,7 @@ const UpcomingEvents = () => {
         {upcomingEvents && upcomingEvents.length > 0 ? (
           upcomingEvents.map((event, index) => {
             return (
-              <div style={{ display: "flex" }}>
+              <div key={index} style={{ display: "flex" }}>
                 <p className={classes.numberedBullet}>{index + 1}</p>
                 <EventSummary event={event} />
               </div>

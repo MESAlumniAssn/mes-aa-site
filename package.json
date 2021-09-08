@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.2.0",
@@ -39,5 +40,13 @@
     "react-toastify": "^7.0.4",
     "smoothscroll-polyfill": "^0.4.4",
     "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "babel-jest": "^27.1.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.1.0",
+    "react-test-renderer": "^17.0.2"
   }
 }

@@ -1,7 +1,5 @@
 import React from "react-fast-compare";
 import styles from "../styles/Home.module.css";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import axios from "axios";
 
 // Component imports
@@ -13,8 +11,6 @@ import Welcome from "../components/utils/home/Welcome";
 import EventsBanner from "../components/utils/home/EventsBanner";
 
 const Home = (props) => {
-  const router = useRouter();
-
   if (typeof window !== "undefined") {
     localStorage.removeItem("mesAAMembershipPlan");
     localStorage.removeItem("mesAAUser");
@@ -25,7 +21,7 @@ const Home = (props) => {
   return (
     <HomeHeadLayout>
       <section id="header" className={styles.container}>
-        <Header styles={styles} router={router} />
+        <Header styles={styles} />
       </section>
       <section id="welcome-letter">
         <Welcome styles={styles} />

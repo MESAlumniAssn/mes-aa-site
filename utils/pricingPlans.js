@@ -67,7 +67,7 @@ const lifetime = [
     ),
   },
   {
-    incentive: "Discounts on merchandise and ticketed events",
+    incentive: "Discounts on select merchandise and ticketed events",
     icon: (
       <FontAwesomeIcon
         icon={faCheckCircle}
