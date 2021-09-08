@@ -71,7 +71,7 @@ const ContactForm = ({ openContactForm, setOpenContactForm }) => {
   const siteContext = useContext(SiteContext);
   const classes = useStyles();
 
-  const { sendContactEmail } = siteContext;
+  const { sendContactEmail, sendAutoResponseEmail } = siteContext;
 
   useEffect(() => {
     if (message) {
@@ -113,6 +113,7 @@ const ContactForm = ({ openContactForm, setOpenContactForm }) => {
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
             sendContactEmail(values.email, values.name, values.message);
+            sendAutoResponseEmail(values.email);
             showMessage(true);
             setTimeout(() => setSubmitting(false), 2000);
           }}

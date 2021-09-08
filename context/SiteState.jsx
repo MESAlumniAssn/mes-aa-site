@@ -748,6 +748,22 @@ const SiteState = (props) => {
     }
   };
 
+  const sendAutoResponseEmail = async (recipientEmail) => {
+    const jsonPayload = {
+      to_email: recipientEmail,
+    };
+
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/email/auto_response`,
+        jsonPayload
+      );
+      dispatch({ type: EMAIL_SEND_SUCCESS });
+    } catch (err) {
+      dispatch({ type: EMAIL_SEND_FAILURE });
+    }
+  };
+
   //---------------------Emails End---------------------
 
   // Mail list unsubscribe
@@ -843,6 +859,7 @@ const SiteState = (props) => {
         sendPaymentReceiptEmail,
         sendRenewalNotificationEmail,
         sendEventsNotificationEmail,
+        sendAutoResponseEmail,
         unsubscribeFromMailingList,
         loginUser,
         adminLogout,

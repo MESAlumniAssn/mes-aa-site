@@ -99,9 +99,7 @@ const FamousAlumniAccordion = (props) => {
             <Accordion
               key={index}
               elevation={0}
-              className={{
-                root: classes.MuiAccordionroot,
-              }}
+              className={classes.MuiAccordionroot}
               style={{
                 boxShadow: "0 20px 31px rgba(0, 0, 0, 0.1)",
               }}

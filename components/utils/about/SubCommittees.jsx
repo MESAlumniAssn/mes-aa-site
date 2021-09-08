@@ -67,7 +67,7 @@ const SubCommittees = () => {
         <span className="secondaryHeading">Our Sub-Committee's</span>
       </Typography>
 
-      <Typography component="p" align="center" style={{ padding: "15px" }}>
+      <Typography component="p" align="center" style={{ padding: "15px 5px" }}>
         Our alumni are welcome to join one or more of our many sub-committees.{" "}
         <button
           className={classes.buttonStyles}
