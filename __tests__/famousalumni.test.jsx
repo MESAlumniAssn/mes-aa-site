@@ -5,6 +5,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import FamousAlumni from "../components/utils/famous-alumni/FamousAlumni";
+import FamousAlumniAccordion from "../components/utils/famous-alumni/FamousAlumniAccordion";
 
 const famousAlumni = [
   {
@@ -28,5 +29,13 @@ describe("Render the famous alumni page", () => {
     });
 
     expect(heading).toBeInTheDocument();
+  });
+
+  it("test if the category is displayed", () => {
+    render(<FamousAlumniAccordion famousAlumni={famousAlumni} />);
+
+    const category = screen.getByText(/sports/i);
+
+    expect(category).toBeInTheDocument();
   });
 });

@@ -90,12 +90,7 @@ const FamousAlumni = (props) => {
         </div>
 
         <Container>
-          <Grid
-            container
-            spacing={5}
-            justifyContent="center"
-            alignItems="center"
-          >
+          <Grid container spacing={5}>
             {props.famousAlumni
               .filter((record) => {
                 return record.award && record.award.includes("Padma");
