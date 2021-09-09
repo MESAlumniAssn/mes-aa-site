@@ -269,7 +269,7 @@ const RenewalDetails = ({ memberDetails }) => {
         Tired of annual renewals? Upgrade to a{" "}
         <span
           className="divStylingSecondary"
-          style={{ borderColor: "#CDF0EA" }}
+          style={{ borderColor: "rgba(255, 82, 0, 0.5)" }}
         >
           Lifetime
         </span>{" "}
@@ -320,7 +320,7 @@ const RenewalDetails = ({ memberDetails }) => {
               Valid up to{" "}
               <span
                 className="divStylingSecondary"
-                style={{ borderColor: "#CDF0EA" }}
+                style={{ borderColor: "rgba(255, 82, 0, 0.5)" }}
               >
                 {memberDetails.current_membership_valid_up_to}
               </span>
@@ -336,7 +336,7 @@ const RenewalDetails = ({ memberDetails }) => {
               Up to{" "}
               <span
                 className="divStylingSecondary"
-                style={{ borderColor: "#CDF0EA" }}
+                style={{ borderColor: "rgba(255, 82, 0, 0.5)" }}
               >
                 {memberDetails.new_renewal_date}
               </span>
