@@ -497,7 +497,7 @@ const RegistrationPage = (props) => {
                           <Button
                             type="submit"
                             variant="contained"
-                            disabled={props.isSubmitting}
+                            disabled={props.isSubmitting || paymentMessage}
                             style={{
                               width: isLastStep ? "12rem" : "9rem",
                               padding: "10px",
@@ -522,7 +522,32 @@ const RegistrationPage = (props) => {
                                 width={25}
                               />
                             ) : isLastStep ? (
-                              "Pay Online"
+                              paymentMessage ? (
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "space-around",
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      marginRight: 5,
+                                      fontSize: "0.8rem",
+                                    }}
+                                  >
+                                    Please wait
+                                  </span>
+                                  <Image
+                                    src={"/loader.svg"}
+                                    alt="Loading..."
+                                    height={25}
+                                    width={25}
+                                  />
+                                </div>
+                              ) : (
+                                "Pay Online"
+                              )
                             ) : (
                               "Next"
                             )}

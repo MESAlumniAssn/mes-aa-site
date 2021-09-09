@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import Image from "next/image";
 import SiteContext from "../../../context/siteContext";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
@@ -65,8 +66,8 @@ const useStyles = makeStyles((theme) => ({
     outline: "none",
     border: "none",
     backgroundColor: "#ff5200",
-    padding: "15px 20px",
-    width: "150px",
+    padding: "15px",
+    width: "175px",
     color: "#FFF",
     fontSize: "1.2rem",
     borderRadius: "10px",
@@ -377,13 +378,34 @@ const RenewalDetails = ({ memberDetails }) => {
           <motion.button
             variants={variants}
             whileTap="tap"
+            disabled={paymentMessage}
             className={classes.buttonStyle}
             onClick={() => {
               showPaymentMessage(true);
               handlePayment();
             }}
           >
-            Renew
+            {paymentMessage ? (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-around",
+                }}
+              >
+                <span style={{ marginRight: 5, fontSize: "0.9rem" }}>
+                  Please wait
+                </span>
+                <Image
+                  src={"/loader.svg"}
+                  alt="Loading..."
+                  height={25}
+                  width={25}
+                />
+              </div>
+            ) : (
+              "Renew"
+            )}
           </motion.button>
         </div>
 
