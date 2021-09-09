@@ -133,6 +133,7 @@ const CreateEvent = ({ createEventOpen, setCreateEventOpen }) => {
         open={createEventOpen}
         onClose={handleClose}
         closeAfterTransition
+        disableScrollLock={true}
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,

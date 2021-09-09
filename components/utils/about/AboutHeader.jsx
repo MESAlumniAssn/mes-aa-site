@@ -185,6 +185,7 @@ const AboutHeader = () => {
           open={open}
           onClose={handleClose}
           closeAfterTransition
+          disableScrollLock={true}
           BackdropComponent={Backdrop}
           BackdropProps={{
             timeout: 500,

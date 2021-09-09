@@ -97,6 +97,7 @@ const JobStatus = ({ jobStatusOpen, setJobStatusOpen }) => {
         open={jobStatusOpen}
         onClose={handleClose}
         closeAfterTransition
+        disableScrollLock={true}
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,

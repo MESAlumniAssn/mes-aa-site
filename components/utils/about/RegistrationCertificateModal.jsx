@@ -41,6 +41,7 @@ const RegistrationCertificateModal = ({
         open={openRegistrationCert}
         onClose={() => setOpenRegistrationCert(false)}
         closeAfterTransition
+        disableScrollLock={true}
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,

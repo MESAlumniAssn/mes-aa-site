@@ -294,6 +294,7 @@ const Footer = () => {
             open={openContactForm}
             onClose={() => setOpenContactForm(false)}
             closeAfterTransition
+            disableScrollLock={true}
             BackdropComponent={Backdrop}
             BackdropProps={{
               timeout: 500,

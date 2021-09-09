@@ -128,6 +128,7 @@ const BlogHeader = ({ blogs }) => {
         open={blogSubmissionDetails}
         onClose={handleClose}
         closeAfterTransition
+        disableScrollLock={true}
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,

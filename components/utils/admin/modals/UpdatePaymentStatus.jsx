@@ -98,6 +98,7 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
         open={paymentStatusOpen}
         onClose={handleClose}
         closeAfterTransition
+        disableScrollLock={true}
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,

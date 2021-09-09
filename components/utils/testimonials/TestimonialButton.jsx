@@ -73,6 +73,7 @@ const TestimonialButton = () => {
           open={openTestimonialForm}
           onClose={() => setOpenTestimonialForm(false)}
           closeAfterTransition
+          disableScrollLock={true}
           BackdropComponent={Backdrop}
           BackdropProps={{
             timeout: 500,
