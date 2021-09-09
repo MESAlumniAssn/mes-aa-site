@@ -1,6 +1,6 @@
 ---
 name: Add new feature
-about: Document a new feature for the website
+about: Developers should use this template when creating a new feature request
 title: A new feature for mesalumniassociation.com
 labels: new feature
 assignees: ''
