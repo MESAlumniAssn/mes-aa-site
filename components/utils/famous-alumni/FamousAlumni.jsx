@@ -101,7 +101,7 @@ const FamousAlumni = (props) => {
                     <div className={styles.cardPadmaContainer}>
                       <div className={styles.cardPadma}>
                         <div className={styles.cardContentPadma}>
-                          <div classname={styles.cardFront}>
+                          <div className={styles.cardFront}>
                             <div className={styles.cardFrontContent}>
                               <Image
                                 src={awardee.image}

@@ -116,12 +116,16 @@ const EventsBanner = ({ events }) => {
                         <FontAwesomeIcon
                           icon={faCalendarAlt}
                           style={{
-                            marginRight: 5,
+                            marginRight: 10,
                             color: "var(--secondary-color)",
                           }}
                         />
-                        {event.name} on{" "}
-                        <span style={{ fontWeight: "bold" }}>{event.date}</span>
+                        {event.name}{" "}
+                        <span style={{ fontWeight: "bold" }}>
+                          {event.date === "today"
+                            ? "- " + event.date.toUpperCase()
+                            : "on " + event.date}
+                        </span>
                         <Link href={`/events/${event.event_id}`}>
                           <a>
                             <FontAwesomeIcon
