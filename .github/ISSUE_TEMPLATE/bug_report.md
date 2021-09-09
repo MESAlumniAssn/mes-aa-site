@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Developers should use this template when creating new bug reports
 title: A new bug
 labels: bug
 assignees: ''
