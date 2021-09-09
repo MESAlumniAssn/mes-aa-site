@@ -43,6 +43,7 @@ const ManualPaymentConfirmButton = ({
             color: "#FFF",
             fontWeight: "bold",
             letterSpacing: "1px",
+            fontSize: "var(--button-font-size)",
           }}
           onClick={() => {
             setMode("M");

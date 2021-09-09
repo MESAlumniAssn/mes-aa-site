@@ -28,7 +28,7 @@ const AdminHeader = () => {
           top: 20,
           right: 30,
           fontWeight: 700,
-          fontSize: "1rem",
+          fontSize: "var(--button-font-size)",
         }}
         onClick={() => {
           setLogout(true);

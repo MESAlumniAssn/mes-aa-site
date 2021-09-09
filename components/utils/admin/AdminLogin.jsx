@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => {
       display: "flex",
       justifyContent: "center",
     },
-    logincontainer: {
+    loginContainer: {
       margin: "0 50px",
       display: "flex",
       justifyContent: "center",
@@ -95,7 +95,7 @@ const AdminLogin = () => {
           <span className="mainHeading">The Admin Dashboard</span>
         </Typography>
       </div>
-      <div className={classes.logincontainer}>
+      <div className={classes.loginContainer}>
         <div className={classes.loginImageContainer}>
           <div
             style={{
@@ -209,7 +209,7 @@ const AdminLogin = () => {
                         margin: "30px 0",
                         width: 200,
                         height: 50,
-                        fontSize: "1.1rem",
+                        fontSize: "var(--button-font-size)",
                         backgroundColor: "#7952B3",
                         fontWeight: 700,
                         color: "#FFFFFF",

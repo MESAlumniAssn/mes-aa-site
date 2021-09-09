@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "15px",
     width: "200px",
     color: "#FFF",
-    fontSize: "1.1rem",
+    fontSize: "var(--button-font-size)",
     borderRadius: "10px",
     letterSpacing: "1px",
     boxShadow: "0 13px 27px rgba(0, 0, 0, 0.3)",

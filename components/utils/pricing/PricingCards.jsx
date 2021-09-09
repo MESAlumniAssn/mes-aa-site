@@ -119,6 +119,7 @@ const Pricing = () => {
                       backgroundColor: "var(--primary-color)",
                       color: "#FFFFFF",
                       fontWeight: 700,
+                      fontSize: "var(--button-font-size)",
                     }}
                     onClick={() => {
                       localStorage.setItem("mesAAMembershipPlan", "Lifetime");
@@ -203,6 +204,7 @@ const Pricing = () => {
                       backgroundColor: "var(--primary-color)",
                       color: "#FFFFFF",
                       fontWeight: 700,
+                      fontSize: "var(--button-font-size)",
                     }}
                     onClick={() => {
                       localStorage.setItem("mesAAMembershipPlan", "Annual");

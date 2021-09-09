@@ -180,6 +180,7 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                           backgroundColor: "#b9ac92",
                           height: 59,
                           width: 60,
+                          fontSize: "var(--button-font-size)",
                         }}
                       >
                         <FontAwesomeIcon
@@ -289,6 +290,7 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                     marginTop: 25,
                     height: 40,
                     width: 80,
+                    fontSize: "var(--button-font-size)",
                     backgroundColor: "var(--primary-color)",
                     color: "#FFFFFF",
                   }}

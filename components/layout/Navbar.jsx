@@ -162,6 +162,7 @@ export default function Navbar(props) {
               position: "absolute",
               backgroundColor: "#EFEFEF",
               borderRadius: "50%",
+              fontSize: "var(--button-font-size)",
               height: 50,
               width: 50,
               top: 15,

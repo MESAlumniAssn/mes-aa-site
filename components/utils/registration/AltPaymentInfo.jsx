@@ -145,7 +145,7 @@ const AltPaymentInfo = (props) => {
             <Typography
               style={{
                 fontSize: "0.9rem",
-                marginRight: 5,
+                marginRight: 10,
               }}
             >
               Did not receive the email?{" "}
@@ -156,7 +156,8 @@ const AltPaymentInfo = (props) => {
                 fontSize: "0.8rem",
                 fontWeight: "bold",
                 color: "#ff5200",
-                borderColor: "#ff5200",
+                borderColor: "currentcolor",
+                padding: 1.5,
               }}
               onClick={() => {
                 sendManualPaymentEmail(

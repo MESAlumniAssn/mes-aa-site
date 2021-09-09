@@ -473,7 +473,7 @@ const RegistrationPage = (props) => {
                             style={{
                               width: "9rem",
                               padding: "10px",
-                              fontSize: "1rem",
+                              fontSize: "var(--button-font-size)",
                               fontWeight: 900,
                               backgroundColor: "#fecb89",
                               color: "var(--primary-color)",
@@ -501,7 +501,7 @@ const RegistrationPage = (props) => {
                             style={{
                               width: isLastStep ? "12rem" : "9rem",
                               padding: "10px",
-                              fontSize: "1rem",
+                              fontSize: "var(--button-font-size)",
                               fontWeight: 900,
                               backgroundColor: "#b9ac92",
                               color: "var(--primary-color)",
@@ -564,7 +564,7 @@ const RegistrationPage = (props) => {
                           style={{
                             color: "#87431d",
                             fontWeight: 700,
-                            fontSize: "0.95rem",
+                            fontSize: "var(--button-font-size)",
                             letterSpacing: "1px",
                           }}
                           className="styledLink"
@@ -584,6 +584,7 @@ const RegistrationPage = (props) => {
                     files={files}
                     mode={mode}
                     setMode={setMode}
+                    elementColor="#ff5200"
                   />
                 </Form>
               </div>

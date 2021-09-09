@@ -52,10 +52,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   renewalDetailsTextColor: {
-    color: "#039987",
+    color: "#ff5200",
   },
   validityDates: {
-    color: "#055052",
+    color: "rgba(255, 82, 0, 0.5)",
   },
   buttonContainer: {
     textAlign: "center",
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   buttonStyle: {
     outline: "none",
     border: "none",
-    backgroundColor: "#039987",
+    backgroundColor: "#ff5200",
     padding: "15px 20px",
     width: "150px",
     color: "#FFF",

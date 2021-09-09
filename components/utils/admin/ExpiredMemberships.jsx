@@ -84,7 +84,11 @@ const ExpiredMemberships = (props) => {
             variant="contained"
             color="primary"
             size="small"
-            style={{ fontWeight: "bold", padding: 5 }}
+            style={{
+              fontWeight: "bold",
+              padding: 5,
+              fontSize: "var(--button-font-size)",
+            }}
             onClick={() => {
               sendRenewalNotificationEmail(
                 params.row.full_name,

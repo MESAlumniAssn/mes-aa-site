@@ -162,7 +162,12 @@ const PersonalDetails = (props) => {
             variant="contained"
             size="large"
             disableElevation
-            style={{ borderRadius: "50%", padding: 20, marginRight: 8 }}
+            style={{
+              borderRadius: "50%",
+              padding: 20,
+              marginRight: 8,
+              fontSize: "var(--button-font-size)",
+            }}
             className={
               !props.profilePicUploaded && classes.profilePicValidationBorder
             }
@@ -275,7 +280,7 @@ const PersonalDetails = (props) => {
               <span className="secondaryHeading">Upload your recent photo</span>
             </Typography>
 
-            <div style={{ width: "100%" }}>
+            <div style={{ width: "100%", textAlign: "center" }}>
               <ProfilePicTooltip
                 title="This photo will be used while generating your membership identification card."
                 interactive
@@ -286,9 +291,8 @@ const PersonalDetails = (props) => {
                   variant="subtitle2"
                   align="center"
                   style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    textDecoration: "underline",
+                    borderBottom: "2px solid",
+                    paddingBottom: 1,
                     cursor: "pointer",
                   }}
                   gutterBottom

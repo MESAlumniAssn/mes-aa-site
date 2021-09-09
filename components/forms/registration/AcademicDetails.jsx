@@ -181,6 +181,7 @@ const AcademicDetails = (props) => {
               style={{
                 color: "#290001",
                 fontWeight: 700,
+                fontSize: "var(--button-font-size)",
                 backgroundColor: "#fbe6d4",
               }}
               onClick={() => {
