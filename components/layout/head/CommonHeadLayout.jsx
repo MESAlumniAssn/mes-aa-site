@@ -106,6 +106,28 @@ const CommonHeadLayout = () => {
       <meta property="og:image" content={process.env.NEXT_PUBLIC_SITE_ICON} />
       <meta property="og:image:width" content="256" />
       <meta property="og:image:height" content="256" />
+
+      {/* Fonts */}
+      <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+      <link
+        rel="preload"
+        as="style"
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap"
+      />
+      <link
+        rel="preload"
+        as="style"
+        href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;400;700&display=swap"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;400;700&display=swap"
+      />
+
       <link
         rel="stylesheet"
         href="https://use.fontawesome.com/releases/v5.12.1/css/svg-with-js.css"
