@@ -16,7 +16,7 @@ const collegeName = "MES College of Arts, Commerce & Science";
 
 const officialEmail = "contact@mesalumniassociation.com";
 
-const officialPhone = "9480797323";
+const officialPhone = "+91 9480797323";
 
 const collegeAddress1 =
   "Vidyasagara Prof. M.P.L Sastry Road, 15th Cross, 10th Main,";

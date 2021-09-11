@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import SiteContext from "../../../context/siteContext";
 import { toast } from "react-toastify";
@@ -57,6 +58,13 @@ const exportToolbar = () => {
       <GridToolbarExport />
     </GridToolbarContainer>
   );
+};
+
+const variants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: { opacity: 1, transition: { delay: 0.4, duration: 0.2 } },
 };
 
 const ExpiredMemberships = (props) => {
@@ -151,7 +159,7 @@ const ExpiredMemberships = (props) => {
   }
 
   return (
-    <div>
+    <motion.div variants={variants} initial="initial" animate="animate">
       {expiredMemberships && !dashboardError && (
         <div>
           <div style={{ margin: "75px 0 25px 0" }}>
@@ -184,7 +192,7 @@ const ExpiredMemberships = (props) => {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

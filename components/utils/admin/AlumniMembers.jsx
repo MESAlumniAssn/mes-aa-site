@@ -1,4 +1,5 @@
-import React, { Fragment, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import SiteContext from "../../../context/siteContext";
 
@@ -84,6 +85,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+const variants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: { opacity: 1, transition: { delay: 0.2, duration: 0.2 } },
+};
 
 const exportToolbar = () => {
   return (
@@ -283,7 +291,7 @@ const AlumniMembers = (props) => {
   }
 
   return (
-    <div>
+    <motion.div variants={variants} initial="initial" animate="animate">
       {lifeMembers &&
         annualMembers &&
         pendingLifeMembers &&
@@ -390,7 +398,7 @@ const AlumniMembers = (props) => {
             </div>
           </div>
         )}
-    </div>
+    </motion.div>
   );
 };
 
