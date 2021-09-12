@@ -51,7 +51,7 @@ const OfficeBearers = (props) => {
             margin: "50px 0 50px 0",
           }}
         >
-          <span className="secondaryHeading">Office Bearers</span>
+          <span className="tertiaryHeading">Office Bearers</span>
         </Typography>
         <Members committeeData={props.committeeData} filter={"ob"} />
 
@@ -61,7 +61,7 @@ const OfficeBearers = (props) => {
           gutterBottom
           style={{ fontWeight: "bold", margin: "50px 0" }}
         >
-          <span className="secondaryHeading">Management Committee Members</span>
+          <span className="tertiaryHeading">Management Committee Members</span>
         </Typography>
         <Members committeeData={props.committeeData} filter={"mc"} />
       </Container>

@@ -1,7 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import {
   facebookProfile,
   twitterProfile,
@@ -12,12 +13,14 @@ import { LOGO } from "../../utils/images";
 // Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
-import SvgIcon from "@material-ui/core/SvgIcon";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+
+// Fontawesome imports
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStream } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles({
   list: {
@@ -30,6 +33,10 @@ const useStyles = makeStyles({
     color: "#290001",
   },
 });
+
+const variants = {
+  tap: "2px",
+};
 
 export default function Navbar(props) {
   const classes = useStyles();
@@ -156,22 +163,27 @@ export default function Navbar(props) {
     <div>
       {["right"].map((anchor) => (
         <div key={anchor}>
-          <Button
+          <button
             aria-label="Navigation Menu"
             style={{
+              display: "flex",
+              justifyContents: "center",
+              alignItems: "center",
               position: "absolute",
               backgroundColor: "#EFEFEF",
+              color: "var(--primary-color)",
               borderRadius: "50%",
-              fontSize: "var(--button-font-size)",
-              height: 50,
-              width: 50,
+              fontSize: "1.5rem",
+              padding: 10,
               top: 15,
-              left: 10,
+              left: 15,
               opacity: 0.6,
+              border: "none",
+              cursor: "pointer",
             }}
             onClick={toggleDrawer(anchor, true)}
           >
-            {/* Couldn't get Font Awesome to work with MUI in any other way */}
+            {/* Couldn't get Font Awesome to work with MUI in any other way
             <SvgIcon>
               <svg
                 aria-hidden="true"
@@ -188,8 +200,9 @@ export default function Navbar(props) {
                   d="M16 128h416c8.84 0 16-7.16 16-16V48c0-8.84-7.16-16-16-16H16C7.16 32 0 39.16 0 48v64c0 8.84 7.16 16 16 16zm480 80H80c-8.84 0-16 7.16-16 16v64c0 8.84 7.16 16 16 16h416c8.84 0 16-7.16 16-16v-64c0-8.84-7.16-16-16-16zm-64 176H16c-8.84 0-16 7.16-16 16v64c0 8.84 7.16 16 16 16h416c8.84 0 16-7.16 16-16v-64c0-8.84-7.16-16-16-16z"
                 ></path>
               </svg>
-            </SvgIcon>
-          </Button>
+            </SvgIcon> */}
+            <FontAwesomeIcon icon={faStream} />
+          </button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

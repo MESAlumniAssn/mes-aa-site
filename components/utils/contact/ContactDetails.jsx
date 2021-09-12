@@ -105,6 +105,13 @@ const useStyles = makeStyles({
       width: "400px",
     },
   },
+  emailButton: {
+    all: "unset",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    cursor: "pointer",
+    borderBottom: "3px solid",
+  },
 });
 
 const ContactDetails = () => {
@@ -152,12 +159,12 @@ const ContactDetails = () => {
               {/* <Typography style={{ fontSize: "1.1rem", fontWeight: "bold" }}>
                 {officialEmail}
               </Typography> */}
-              <Button
-                style={{ fontWeight: "bold" }}
+              <button
+                className={classes.emailButton}
                 onClick={() => setOpenContactForm(true)}
               >
                 Email Us
-              </Button>
+              </button>
             </div>
             <div className={classes.mainContactEmailPhone}>
               <FontAwesomeIcon

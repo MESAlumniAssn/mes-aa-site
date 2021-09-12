@@ -10,13 +10,13 @@
   --scrollbar-track-color: rgba(185, 172, 146, 0.3);
   --main-heading-size: 3rem;
   --secondary-heading-size: 2.5rem;
-  --tertiary-heading-size: 1.5rem;
+  --tertiary-heading-size: 1.75rem;
   --subtitle-size: 1.5rem;
   --main-heading-size-mobile: 2rem;
-  --secondary-heading-size-mobile: 1.5rem;
-  --tertiary-heading-size-mobile: 1.25rem;
-  --subtitle-size-mobile: 1rem;
-  --button-font-size: 1rem;
+  --secondary-heading-size-mobile: 1.75rem;
+  --tertiary-heading-size-mobile: 1.6rem;
+  --subtitle-size-mobile: 1.25rem;
+  --button-font-size: 1.1rem;
 }
 
 html,
