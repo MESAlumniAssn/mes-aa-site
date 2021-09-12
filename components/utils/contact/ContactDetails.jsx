@@ -22,7 +22,6 @@ import {
 import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
-import Button from "@material-ui/core/Button";
 import Fade from "@material-ui/core/Fade";
 
 // Fontawesome imports
