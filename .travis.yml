@@ -3,6 +3,9 @@ node_js:
   - "12.16"
 addons:
   ssh_known_hosts: 143.244.132.151
+branches:
+  only:
+    - main
 cache:
   directories:
     - "$HOME/.cache/npm"
