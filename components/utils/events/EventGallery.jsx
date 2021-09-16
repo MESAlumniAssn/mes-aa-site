@@ -12,6 +12,10 @@ import Gallery from "../gallery/Gallery";
 const useStyles = makeStyles((theme) => ({
   galleryContainer: {
     margin: "50px 0",
+    paddingTop: 25,
+    paddingBottom: 10,
+    backgroundColor: "var(--secondary-background)",
+    borderRadius: 5,
   },
   heading: {
     paddingBottom: 25,

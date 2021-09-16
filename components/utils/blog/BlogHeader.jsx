@@ -46,7 +46,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.95rem",
     cursor: "pointer",
     marginBottom: 0,
-    textDecoration: "underline",
+    paddingBottom: 2,
+    borderBottom: "2px solid",
+    width: "max-content",
   },
   buttonStyle: {
     outline: "none",
@@ -94,13 +96,14 @@ const BlogHeader = ({ blogs }) => {
             A growing collection of articles submitted by our talented alumni
           </span>
         </Typography>
-
-        <p
-          className={classes.articleSubmissionLabel}
-          onClick={() => setBlogSubmissionDetails(true)}
-        >
-          Want to submit an article?
-        </p>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <p
+            className={classes.articleSubmissionLabel}
+            onClick={() => setBlogSubmissionDetails(true)}
+          >
+            Want to submit an article?
+          </p>
+        </div>
       </div>
 
       <div className={classes.gridContainer}>

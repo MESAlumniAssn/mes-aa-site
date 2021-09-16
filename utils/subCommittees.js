@@ -23,6 +23,11 @@ const subCommitteeData = [
     name: "Sports Committee",
     objective: "To conduct tournaments and other sporting related events",
   },
+  {
+    name: "Website Committee",
+    objective:
+      "To maintain and update the website at regular intervals as per the requirements of the Association",
+  },
 ];
 
 export default subCommitteeData;

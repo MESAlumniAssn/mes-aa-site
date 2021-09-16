@@ -80,8 +80,8 @@ const validationSchema = Yup.object({
   eventTime: Yup.string()
     .required("Time of event is required")
     .matches(
-      /^([1-9]|1[0-2])\s([aA]|[pP])[mM]$/,
-      "Invalid time format (ex: 6 PM)"
+      /^([1-9]|1[0-2]):(\d{2})\s([aA]|[pP])[mM]$/,
+      "Invalid time format (ex: 6:30 PM)"
     ),
 });
 
@@ -374,7 +374,7 @@ const CreateEvent = ({ createEventOpen, setCreateEventOpen }) => {
                           id="eventTime"
                           name="eventTime"
                           variant="outlined"
-                          label="Event Time"
+                          label="Event Time*"
                           inputProps={{ maxLength: 10 }}
                           onChange={props.handleChange}
                           onBlur={props.handleBlur}

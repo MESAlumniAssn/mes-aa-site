@@ -137,11 +137,24 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} - {associationName}
         </Typography>
         <Typography
-          style={{ fontSize: "1.1rem", fontWeight: 700 }}
+          style={{ fontSize: "1.1rem", fontWeight: 700, paddingTop: 10 }}
           align="center"
           gutterBottom
         >
-          All rights reserved
+          All rights reserved.
+        </Typography>
+        <Typography
+          style={{
+            fontSize: "0.95rem",
+            fontWeight: 700,
+            padding: "0 10px",
+            letterSpacing: 0.5,
+          }}
+          align="center"
+          gutterBottom
+        >
+          This website is owned and operated exclusively by the{" "}
+          {associationName}
         </Typography>
       </Container>
 
