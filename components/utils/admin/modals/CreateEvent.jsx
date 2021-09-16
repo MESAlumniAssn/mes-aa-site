@@ -229,7 +229,7 @@ const CreateEvent = ({ createEventOpen, setCreateEventOpen }) => {
                       name="name"
                       variant="outlined"
                       label="Name*"
-                      inputProps={{ maxLength: 50 }}
+                      inputProps={{ maxLength: 200 }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       error={props.touched.name && props.errors.name}
