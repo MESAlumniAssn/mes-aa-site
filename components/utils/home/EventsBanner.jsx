@@ -120,11 +120,11 @@ const EventsBanner = ({ events }) => {
                             color: "var(--secondary-color)",
                           }}
                         />
-                        {event.name}{" "}
+                        {event.name} -{" "}
                         <span style={{ fontWeight: "bold" }}>
                           {event.date === "today"
-                            ? "- " + event.date.toUpperCase()
-                            : "on " + event.date}
+                            ? event.date.toUpperCase()
+                            : event.date}
                         </span>
                         <Link href={`/events/${event.event_id}`}>
                           <a>

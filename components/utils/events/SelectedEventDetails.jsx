@@ -13,26 +13,26 @@ import { faChevronCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
   eventContainer: {
-    margin: "150px 0 50px 0",
+    margin: "150px 30px 50px 30px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      margin: "100px 10px 50px 10px",
+    },
   },
   eventDetails: {
     padding: 20,
     boxShadow: "0 5px 11px rgba(0, 0, 0, 0.1)",
     borderLeft: "6px solid var(--contact-color)",
-    width: 800,
+    background: "#eacda3",
+    background: "linear-gradient(to right, #FFFBEF, #ffffff);",
+
     borderRadius: 5,
-    [theme.breakpoints.down("sm")]: {
-      width: 350,
-    },
   },
   eventTitle: {
     fontWeight: 600,
-    whiteSpace: "pre-wrap",
-    display: "block",
   },
 
   navigationLinkContainer: {
@@ -43,6 +43,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     textDecoration: "none",
     color: "var(--contact-color)",
+  },
+  galleryContainer: {
+    margin: "0 30px",
+    [theme.breakpoints.down("sm")]: { margin: "0 10px" },
   },
 }));
 
@@ -78,7 +82,7 @@ const SelectedEventDetails = ({ event }) => {
               EVENT
             </p>
             <Typography component="h1" className={classes.eventTitle}>
-              <span className="secondaryHeading">{event.name}</span>
+              <span className="tertiaryHeading">{event.name}</span>
             </Typography>
           </div>
           <div style={{ marginBottom: 25 }}>
@@ -118,7 +122,7 @@ const SelectedEventDetails = ({ event }) => {
           </div>
         </div>
       </div>
-      <div style={{ margin: "0 30px" }}>
+      <div className={classes.galleryContainer}>
         <EventGallery images={event.images} />
       </div>
     </div>
