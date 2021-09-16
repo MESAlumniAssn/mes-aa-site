@@ -258,7 +258,7 @@ const CreateEvent = ({ createEventOpen, setCreateEventOpen }) => {
                       label="Description*"
                       multiline
                       rows={5}
-                      inputProps={{ maxLength: 1000 }}
+                      inputProps={{ maxLength: 2000 }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       error={
@@ -287,7 +287,7 @@ const CreateEvent = ({ createEventOpen, setCreateEventOpen }) => {
                       name="venue"
                       variant="outlined"
                       label="Venue*"
-                      inputProps={{ maxLength: 50 }}
+                      inputProps={{ maxLength: 100 }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       error={props.touched.venue && props.errors.venue}
@@ -314,7 +314,7 @@ const CreateEvent = ({ createEventOpen, setCreateEventOpen }) => {
                       name="chiefGuest"
                       variant="outlined"
                       label="Chief Guest"
-                      inputProps={{ maxLength: 50 }}
+                      inputProps={{ maxLength: 100 }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       error={
