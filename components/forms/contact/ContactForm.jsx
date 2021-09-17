@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import Image from "next/image";
 import SiteContext from "../../../context/siteContext";
 import { motion } from "framer-motion";
 import { Formik, Form } from "formik";
@@ -47,6 +48,9 @@ const useStyles = makeStyles((theme) => {
       boxShadow: "0 13px 27px rgba(0, 0, 0, 0.3)",
       cursor: "pointer",
       textTransform: "uppercase",
+    },
+    disallowButton: {
+      cursor: "not-allowed",
     },
   };
 });
@@ -114,8 +118,11 @@ const ContactForm = ({ openContactForm, setOpenContactForm }) => {
             setSubmitting(true);
             sendContactEmail(values.email, values.name, values.message);
             sendAutoResponseEmail(values.email);
-            showMessage(true);
-            setTimeout(() => setSubmitting(false), 2000);
+
+            setTimeout(() => {
+              showMessage(true);
+              setSubmitting(false);
+            }, 2000);
           }}
         >
           {(props) => (
@@ -238,9 +245,21 @@ const ContactForm = ({ openContactForm, setOpenContactForm }) => {
                   variants={variants}
                   whileTap="tap"
                   type="submit"
-                  className={classes.buttonStyle}
+                  disabled={props.isSubmitting || message}
+                  className={`${classes.buttonStyle} ${
+                    message ? classes.disallowButton : null
+                  }`}
                 >
-                  Send
+                  {props.isSubmitting ? (
+                    <Image
+                      src={"/loader.svg"}
+                      alt="Loading..."
+                      height={25}
+                      width={25}
+                    />
+                  ) : (
+                    "Send"
+                  )}
                 </motion.button>
               </div>
             </Form>

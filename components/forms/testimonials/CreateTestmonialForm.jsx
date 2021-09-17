@@ -44,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     textTransform: "uppercase",
   },
+  disallowButton: {
+    cursor: "not-allowed",
+  },
 }));
 
 const variants = {
@@ -264,7 +267,9 @@ const CreateTestimonialForm = ({
                 whileTap="tap"
                 type="submit"
                 disabled={props.isSubmitting || message}
-                className={classes.buttonStyle}
+                className={`${classes.buttonStyle} ${
+                  message ? classes.disallowButton : null
+                }`}
               >
                 {props.isSubmitting ? (
                   <Image
