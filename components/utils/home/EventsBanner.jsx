@@ -111,7 +111,12 @@ const EventsBanner = ({ events }) => {
                     return (
                       <div
                         key={index}
-                        style={{ fontSize: "1.2rem", marginBottom: 30 }}
+                        style={{
+                          fontSize: "1.2rem",
+                          marginBottom: 30,
+                          textAlign: "left",
+                          padding: "0 20px",
+                        }}
                       >
                         <FontAwesomeIcon
                           icon={faCalendarAlt}
