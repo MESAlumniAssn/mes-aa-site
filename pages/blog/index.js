@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createClient } from "contentful";
 
 // Component imports
@@ -7,6 +7,10 @@ import BlogHeader from "../../components/utils/blog/BlogHeader";
 import Footer from "../../components/layout/Footer";
 
 const blog = ({ blogs }) => {
+  useEffect(() => {
+    window.scroll({ top: 1, left: 1, behavior: "smooth" });
+  }, []);
+
   return (
     <BlogHeadLayout>
       <BlogHeader blogs={blogs} />

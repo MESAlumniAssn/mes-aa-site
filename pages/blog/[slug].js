@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { createClient } from "contentful";
 
@@ -13,6 +13,10 @@ const client = createClient({
 });
 
 const blogpost = ({ blog }) => {
+  useEffect(() => {
+    window.scroll({ top: 1, left: 1, behavior: "smooth" });
+  }, []);
+
   return (
     <BlogHeadLayout>
       <BlogDetails blog={blog} />

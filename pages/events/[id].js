@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 // Component imports
@@ -7,6 +7,10 @@ import SelectedEventDetails from "../../components/utils/events/SelectedEventDet
 import Footer from "../../components/layout/Footer";
 
 const eventdetails = (props) => {
+  useEffect(() => {
+    window.scroll({ top: 1, left: 1, behavior: "smooth" });
+  }, []);
+
   return (
     <EventsHeadLayout>
       <SelectedEventDetails event={props.eventData} />
