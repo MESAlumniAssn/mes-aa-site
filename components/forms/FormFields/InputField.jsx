@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
 });
 
-const InputField = ({ placeholder, ...props }) => {
+const InputField = ({ placeholder, length, ...props }) => {
   const { ...rest } = props;
   const [field, meta] = useField(props);
 
@@ -26,6 +26,7 @@ const InputField = ({ placeholder, ...props }) => {
       helperText={errorText}
       {...field}
       {...rest}
+      inputProps={{ maxLength: length }}
       variant="outlined"
       FormHelperTextProps={{
         className: classes.helperText,

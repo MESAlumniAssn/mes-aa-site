@@ -50,6 +50,7 @@ const ProfessionalDetails = (props) => {
             fullWidth
             multiline
             rows={4}
+            length={1000}
             helperText={
               "You can list you hobbies or anything you do outside of your professional life like charity work, association with NGO's or non-profit's etc..."
             }
@@ -63,6 +64,7 @@ const ProfessionalDetails = (props) => {
             fullWidth
             multiline
             rows={4}
+            length={1000}
             helperText={
               "This is your association. Tell us what you would like to get out of it."
             }

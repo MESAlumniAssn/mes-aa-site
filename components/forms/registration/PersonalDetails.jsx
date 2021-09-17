@@ -189,23 +189,39 @@ const PersonalDetails = (props) => {
       </Grid>
       <Grid id="name" container spacing={3}>
         <Grid item xs={12} md={6}>
-          <InputField name={firstName.name} label={firstName.label} fullWidth />
+          <InputField
+            name={firstName.name}
+            label={firstName.label}
+            length={50}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <InputField name={lastName.name} label={lastName.label} fullWidth />
+          <InputField
+            name={lastName.name}
+            label={lastName.label}
+            length={50}
+            fullWidth
+          />
         </Grid>
 
         <Grid item xs={12}>
           <InputField
             name={email.name}
             label={email.label}
+            length={50}
             fullWidth
             onKeyDown={(e) => checkForExistingEmail(e.target.value)}
           />
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <InputField name={mobile.name} label={mobile.label} fullWidth />
+          <InputField
+            name={mobile.name}
+            label={mobile.label}
+            length={15}
+            fullWidth
+          />
         </Grid>
 
         <Grid item xs={12} md={6}>
@@ -221,22 +237,47 @@ const PersonalDetails = (props) => {
         </Grid>
 
         <Grid item xs={12}>
-          <InputField name={address1.name} label={address1.label} fullWidth />
+          <InputField
+            name={address1.name}
+            label={address1.label}
+            length={100}
+            fullWidth
+          />
         </Grid>
 
         <Grid item xs={12}>
-          <InputField name={address2.name} label={address2.label} fullWidth />
+          <InputField
+            name={address2.name}
+            label={address2.label}
+            length={100}
+            fullWidth
+          />
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <InputField name={city.name} label={city.label} fullWidth />
+          <InputField
+            name={city.name}
+            label={city.label}
+            length={50}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <InputField name={state.name} label={state.label} fullWidth />
+          <InputField
+            name={state.name}
+            label={state.label}
+            length={50}
+            fullWidth
+          />
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <InputField name={pincode.name} label={pincode.label} fullWidth />
+          <InputField
+            name={pincode.name}
+            label={pincode.label}
+            length={15}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={12} md={6}>
           <SelectField
