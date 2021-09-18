@@ -28,7 +28,16 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 99,
     boxShadow: "2px 15px 33px rgba(0, 0, 0, 0.4)",
   },
-  events: {},
+  events: {
+    fontSize: "1.2rem",
+    marginBottom: 30,
+    textAlign: "left",
+    padding: "0 20px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.1rem",
+      padding: "0 15px",
+    },
+  },
 }));
 
 const variants = {
@@ -109,15 +118,7 @@ const EventsBanner = ({ events }) => {
                 >
                   {events.map((event, index) => {
                     return (
-                      <div
-                        key={index}
-                        style={{
-                          fontSize: "1.2rem",
-                          marginBottom: 30,
-                          textAlign: "left",
-                          padding: "0 20px",
-                        }}
-                      >
+                      <div key={index} className={classes.events}>
                         <FontAwesomeIcon
                           icon={faCalendarAlt}
                           style={{
@@ -137,7 +138,7 @@ const EventsBanner = ({ events }) => {
                               icon={faChevronCircleRight}
                               style={{
                                 marginLeft: 10,
-                                fontSize: "1.5rem",
+                                fontSize: "1.3rem",
                                 color: "var(--secondary-color)",
                               }}
                             />

@@ -57,8 +57,8 @@ const variants = {
   initial: {
     opacity: 0,
   },
-  animate: { opacity: 1, transition: { duration: 0.2 } },
-  hover: { scale: 1.06, transition: { duration: 0.2, ease: "easeInOut" } },
+  animate: { opacity: 1 },
+  hover: { scale: 1.06 },
 };
 
 const sessionExpiredToast = () =>

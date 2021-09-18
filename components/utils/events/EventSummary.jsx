@@ -6,6 +6,10 @@ import { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
+// Fontawesome imports
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBullhorn } from "@fortawesome/free-solid-svg-icons";
+
 const useStyles = makeStyles((theme) => ({
   eventSummaryContainer: {
     width: 700,
@@ -14,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     borderLeft: "6px solid #C24914",
     boxShadow: "0 3px 12px rgba(0, 0, 0, 0.1)",
     borderRadius: 5,
-    cursor: "pointer",
     [theme.breakpoints.down("sm")]: {
       margin: "15px 0",
       width: 325,
@@ -105,7 +108,13 @@ const EventSummary = ({ event }) => {
 
         <div className={classes.eventDateContainer}>
           <p className={classes.dateStyle}>
-            Date: <span style={{ color: "#C24914" }}>{event.date}</span>
+            Date:{" "}
+            <span style={{ color: "#C24914" }}>
+              {event.date}&nbsp;
+              {event.date === "TODAY" && (
+                <FontAwesomeIcon icon={faBullhorn} style={{ marginLeft: 3 }} />
+              )}
+            </span>
           </p>
           <p className={classes.dateStyle}>
             Time: <span style={{ color: "#C24914" }}>{event.time}</span>

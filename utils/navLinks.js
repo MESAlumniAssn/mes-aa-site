@@ -119,7 +119,7 @@ const navLinks = {
   "/card/[id]": [home],
   "/certificate/[id]": [home],
   "/paymentinfo/[email]": [
-    welcome,
+    home,
     pricing,
     alumniSpeak,
     famousAlumni,
@@ -128,7 +128,7 @@ const navLinks = {
     contact,
   ],
   "/paymentverified/[id]": [
-    welcome,
+    home,
     pricing,
     alumniSpeak,
     famousAlumni,
