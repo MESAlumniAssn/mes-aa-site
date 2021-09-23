@@ -61,7 +61,7 @@ const Banner = () => {
     <Fragment>
       {showBanner && (
         <motion.div className={`animateNavLogoBanner ${classes.banner}`}>
-          <Typography component="p" style={{ textAlign: "center" }}>
+          <Typography component="div" style={{ textAlign: "center" }}>
             <div className={`subtitle ${classes.bannerText}`}>
               <FontAwesomeIcon
                 icon={faBullhorn}

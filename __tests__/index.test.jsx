@@ -44,15 +44,15 @@ describe("render the home page", () => {
     expect(heading).toBeInTheDocument();
   });
 
-  it("test if the CTA button is rendered", () => {
-    render(<Header styles={styles} />);
+  // it("test if the CTA button is rendered", () => {
+  //   render(<Header styles={styles} />);
 
-    const button = screen.getByRole("button", {
-      name: /register/i,
-    });
+  //   const button = screen.getByRole("button", {
+  //     name: /register/i,
+  //   });
 
-    expect(button).toBeInTheDocument();
-  });
+  //   expect(button).toBeInTheDocument();
+  // });
 
   it("test if the welcome message is displayed", () => {
     render(<Welcome styles={styles} />);
