@@ -76,7 +76,7 @@ const Banner = () => {
                   Dear Alumnus, registrations will be open in{" "}
                   <CountUp
                     end={daysToRegistration}
-                    duration={10}
+                    duration={5}
                     style={{
                       borderBottom: "5px var(--secondary-color) solid",
                       paddingBottom: "2px",

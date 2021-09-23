@@ -66,7 +66,7 @@ const Pricing = () => {
               className="pricingCard"
               style={{
                 color: "var(--primary-color)",
-                minHeight: 575,
+                minHeight: 500, // Make 575 before launch
               }}
               raised
             >
@@ -105,7 +105,8 @@ const Pricing = () => {
                   </Typography>
                 </div>
 
-                <div
+                {/* Uncomment before launch */}
+                {/* <div
                   style={{
                     textAlign: "center",
                     margin: "10px 0 20px 0",
@@ -128,7 +129,7 @@ const Pricing = () => {
                   >
                     Choose this plan
                   </Button>
-                </div>
+                </div> */}
 
                 {lifetime.map((item, index) => (
                   <div
@@ -156,7 +157,13 @@ const Pricing = () => {
             </Card>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Card style={{ minHeight: 400, minHeight: 575 }} raised>
+            <Card
+              style={{
+                minHeight: 400,
+                minHeight: 500, // Make 575 before launch
+              }}
+              raised
+            >
               <CardContent>
                 <div
                   className={classes.cardHeader}
@@ -190,7 +197,9 @@ const Pricing = () => {
                     {planValues.annualMembershipCost}/yr
                   </Typography>
                 </div>
-                <div
+
+                {/* Uncomment before launch */}
+                {/* <div
                   style={{
                     textAlign: "center",
                     margin: "10px 0 20px 0",
@@ -213,7 +222,8 @@ const Pricing = () => {
                   >
                     Choose this plan
                   </Button>
-                </div>
+                </div> */}
+
                 {annual.map((item, index) => (
                   <div
                     key={index}

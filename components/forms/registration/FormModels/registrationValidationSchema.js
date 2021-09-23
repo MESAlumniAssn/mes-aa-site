@@ -83,7 +83,8 @@ export default [
       .trim(),
     [birthday.name]: Yup.date()
       .required(`${birthday.requiredErrorMsg}`)
-      .max(new Date(today), `${birthday.invalidErrorMsg}`),
+      .max(new Date(today), `${birthday.invalidErrorMsg}`)
+      .typeError("Invalid date"),
   }),
   Yup.object({
     [fromYear.name]: Yup.date().required(`${fromYear.requiredErrorMsg}`),

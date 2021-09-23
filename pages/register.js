@@ -12,6 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // );
 import RegistrationPage from "../components/forms/registration/RegistrationPage";
 import RegisterHeadLayout from "../components/layout/head/RegisterHeadLayout";
+import RegistrationPreLaunch from "../components/utils/registration/RegistrationPreLaunch";
 import Footer from "../components/layout/Footer";
 
 const useStyles = makeStyles({
@@ -24,20 +25,24 @@ const Register = (props) => {
   const router = useRouter();
   const classes = useStyles();
 
-  if (typeof window !== "undefined") {
-    if (!localStorage.getItem("mesAAMembershipPlan")) {
-      if (process.browser) {
-        router.push("/pricing");
-      }
+  // Uncomment before launch
+  // if (typeof window !== "undefined") {
+  //   if (!localStorage.getItem("mesAAMembershipPlan")) {
+  //     if (process.browser) {
+  //       router.push("/pricing");
+  //     }
 
-      return <div></div>;
-    }
-  }
+  //     return <div></div>;
+  //   }
+  // }
 
   return (
     <RegisterHeadLayout>
-      <div className={classes.root}>
-        <RegistrationPage />
+      <div>
+        {/* Add className={classes.root} before launch */}
+        {/* Uncomment before launch */}
+        {/* <RegistrationPage /> */}
+        <RegistrationPreLaunch />
       </div>
       <Footer />
     </RegisterHeadLayout>

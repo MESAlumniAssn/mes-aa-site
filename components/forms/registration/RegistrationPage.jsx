@@ -313,6 +313,7 @@ const RegistrationPage = (props) => {
         if (files.length === 0) {
           actions.setSubmitting(false);
           setProfilePicUploaded(false);
+          window.scroll({ top: 1, left: 1, behavior: "smooth" });
           return;
         }
       }
@@ -480,7 +481,11 @@ const RegistrationPage = (props) => {
                               letterSpacing: "1px",
                             }}
                             onClick={handleBack}
-                            disabled={props.isSubmitting}
+                            disabled={
+                              props.isSubmitting ||
+                              paymentMessage ||
+                              paymentVerified
+                            }
                             startIcon={
                               <NavigateBeforeIcon
                                 style={{ fontSize: "2rem" }}
@@ -497,7 +502,11 @@ const RegistrationPage = (props) => {
                           <Button
                             type="submit"
                             variant="contained"
-                            disabled={props.isSubmitting || paymentMessage}
+                            disabled={
+                              props.isSubmitting ||
+                              paymentMessage ||
+                              paymentVerified
+                            }
                             style={{
                               width: isLastStep ? "12rem" : "9rem",
                               padding: "10px",
