@@ -43,7 +43,7 @@ const Header = ({ styles }) => {
 
   return (
     <Fragment>
-      {/* <Banner /> */}
+      <Banner />
       <div className={styles.headerContainer}>
         <motion.div
           variants={variants}
@@ -71,7 +71,8 @@ const Header = ({ styles }) => {
           We endeavour to strengthen the connect among our alumni.
         </motion.h3>
 
-        <motion.button
+        {/* Uncomment before launch */}
+        {/* <motion.button
           variants={variants}
           initial="initialButton"
           animate="animateButton"
@@ -80,7 +81,7 @@ const Header = ({ styles }) => {
           onClick={() => router.push("/pricing")}
         >
           Register
-        </motion.button>
+        </motion.button> */}
       </div>
       <div className={styles.chevronContainer}>
         <Link href="#welcome-letter">
