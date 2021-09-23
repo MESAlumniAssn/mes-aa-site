@@ -28,6 +28,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  contentBlock: {
+    margin: "0 40px",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 10px",
+    },
+  },
 }));
 
 const emailSentToast = () =>
@@ -100,46 +106,51 @@ const AltPaymentInfo = (props) => {
               </span>
             </span>
           </Typography>
-          <Typography
-            style={{
-              fontSize: "1.1rem",
-              padding: "20px 0",
-            }}
-          >
-            Please write down the membership id on the back of the cheque/DD or
-            mention it (as a comment) if paying via NEFT, IMPS or RTGS.
-          </Typography>
-          <Typography
-            style={{
-              fontSize: "1.1rem",
-            }}
-          >
-            We have emailed our bank details to{" "}
-            <span style={{ color: "#ff5200", fontWeight: 700 }}>
-              {props.alumniInformation.email}
-            </span>{" "}
-            .Once the payment is processed, you will receive the invoice via
-            email.
-          </Typography>
 
-          <Typography
-            style={{
-              fontSize: "1.1rem",
-              paddingTop: 20,
-            }}
-          >
-            Please <span style={{ fontWeight: "bold" }}>do not</span> hesitate
-            to{" "}
-            <Link href="/contact">
-              <a
-                style={{ color: "#ff5200", textDecoration: "none" }}
-                className="styledLink"
-              >
-                contact us
-              </a>
-            </Link>{" "}
-            if you have any questions.
-          </Typography>
+          <div className={classes.contentBlock}>
+            <Typography
+              style={{
+                fontSize: "1.1rem",
+                padding: "20px 0",
+              }}
+            >
+              Please write down the membership id on the back of the cheque/DD
+              or mention it (as a comment) if paying via NEFT, IMPS or RTGS. If
+              you are paying via UPI, please mention the membership id in your
+              email containing a screenshot of the transaction.
+            </Typography>
+            <Typography
+              style={{
+                fontSize: "1.1rem",
+              }}
+            >
+              We have emailed our bank details to{" "}
+              <span style={{ color: "#ff5200", fontWeight: 700 }}>
+                {props.alumniInformation.email}
+              </span>{" "}
+              .Once the payment is processed, you will receive the invoice via
+              email.
+            </Typography>
+
+            <Typography
+              style={{
+                fontSize: "1.1rem",
+                paddingTop: 20,
+              }}
+            >
+              Please <span style={{ fontWeight: "bold" }}>do not</span> hesitate
+              to{" "}
+              <Link href="/contact">
+                <a
+                  style={{ color: "#ff5200", textDecoration: "none" }}
+                  className="styledLink"
+                >
+                  contact us
+                </a>
+              </Link>{" "}
+              if you have any questions.
+            </Typography>
+          </div>
 
           <div style={{ marginTop: 20 }} className={classes.textStyles}>
             <Typography

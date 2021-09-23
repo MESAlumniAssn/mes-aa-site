@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import SiteContext from "../../../context/siteContext";
 import {
   collegeAddress1,
   collegeAddress2,
+  officialPhone,
+  officialEmail,
 } from "../../../utils/associationDetails";
 
 // Material UI imports
@@ -247,7 +250,7 @@ const AltPaymentModal = ({
             Payments:
           </Typography>
 
-          <div className="counter" style={{ marginBottom: 40 }}>
+          <div className="counter">
             <p className="counterSection">
               Click on the <span style={{ fontWeight: 600 }}>CONFIRM</span>{" "}
               button below to generate your personal membership id
@@ -263,6 +266,71 @@ const AltPaymentModal = ({
             <p className="counterSection">
               Make the payment in the bank or on your bank's website and mention
               the membership id during of the payment
+            </p>
+          </div>
+
+          <Typography
+            style={{
+              fontWeight: "bold",
+              paddingTop: 10,
+              lineHeight: "2rem",
+            }}
+            className="subtitle"
+            gutterBottom
+          >
+            <span
+              style={{
+                paddingBottom: 1,
+                borderBottom: "2px solid #ff5200",
+              }}
+            >
+              UPI
+            </span>{" "}
+            Payments
+          </Typography>
+
+          <div className="counter" style={{ marginBottom: 40 }}>
+            <p className="counterSection">
+              Click on the <span style={{ fontWeight: 600 }}>CONFIRM</span>{" "}
+              button below to generate your personal membership id
+            </p>
+            <p className="counterSection" style={{ display: "inline" }}>
+              Use our mobile number (
+              <span style={{ fontWeight: "bold", color: "#ff5200" }}>
+                {officialPhone}
+              </span>
+              ) and pay via UPI using either
+              <span style={{ fontWeight: 700, marginLeft: 3 }}>
+                Google Pay{" "}
+              </span>
+              <img
+                src="/images/registration/googlepay.svg"
+                alt="Google pay"
+                height={25}
+                width={25}
+                style={{
+                  marginLeft: 3,
+                  marginRight: 3,
+                  verticalAlign: "middle",
+                }}
+              />{" "}
+              or{" "}
+              <span style={{ fontWeight: 700, marginLeft: 3 }}>Phone Pe</span>{" "}
+              <img
+                src="/images/registration/phonepe.svg"
+                alt="Phone Pe"
+                height={25}
+                width={25}
+                style={{ marginLeft: 3, verticalAlign: "middle" }}
+              />
+            </p>
+            <p className="counterSection">
+              Send an email to{" "}
+              <span style={{ fontWeight: "bold", color: "#ff5200" }}>
+                {officialEmail}
+              </span>{" "}
+              with a screenshot of the transaction and mention your membership
+              id in the email
             </p>
           </div>
 
