@@ -76,11 +76,12 @@ const validationSchema = Yup.object({
   venue: Yup.string().required("Event venue is required"),
   eventDate: Yup.date()
     .required("Date of event is required")
-    .min(today, "Date is in the past"),
+    .min(today, "Date is in the past")
+    .typeError("Invalid date"),
   eventTime: Yup.string()
     .required("Time of event is required")
     .matches(
-      /^([1-9]|1[0-2]):(\d{2})\s([aA]|[pP])[mM]$/,
+      /^([1-9]|1[0-2])(:\d{2})?\s([aA]|[pP])[mM]$/,
       "Invalid time format (ex: 6:30 PM)"
     ),
 });

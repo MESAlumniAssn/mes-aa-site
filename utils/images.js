@@ -15,3 +15,6 @@ export const CONTACT_HEADER =
 
 export const ADMIN_LOGIN =
   "https://ik.imagekit.io/pwxm960evbp/tr:h-400,w-650/MES-AA/Site_Images/Admin/admin__6szeALB1NG.jpg?updatedAt=1628486787212";
+
+export const EVENT_DEFAULT =
+  "https://ik.imagekit.io/pwxm960evbp/tr:h-100,w-100/MES-AA/Site_Images/Admin/admin__6szeALB1NG.jpg?updatedAt=1628486787212";

@@ -104,7 +104,7 @@ const CompletedEvents = () => {
       {completedEvents && completedEvents.length > 0 ? (
         completedEvents.slice(0, count).map((event, index) => {
           return (
-            <div key={index} style={{ display: "flex" }}>
+            <div key={index} style={{ display: "flex", marginTop: 30 }}>
               <p className={classes.numberedBullet}>{index + 1}</p>
               <EventSummary event={event} />
             </div>

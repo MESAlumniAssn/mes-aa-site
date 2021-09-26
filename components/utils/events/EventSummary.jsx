@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import { EVENT_DEFAULT } from "../../../utils/images";
 
 // Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,7 +14,6 @@ import { faBullhorn } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
   eventSummaryContainer: {
-    width: 700,
     padding: "10px 15px",
     margin: "20px 0",
     borderLeft: "6px solid #C24914",
@@ -20,6 +21,25 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
     [theme.breakpoints.down("sm")]: {
       margin: "15px 0",
+    },
+  },
+  eventDetailsContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
+  },
+  eventImage: {
+    marginRight: 20,
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: 20,
+    },
+  },
+  eventInfo: {
+    width: 500,
+    [theme.breakpoints.down("sm")]: {
       width: 325,
     },
   },
@@ -86,47 +106,69 @@ const EventSummary = ({ event }) => {
       whileHover="hover"
       className={classes.eventSummaryContainer}
     >
-      <div>
-        <div style={{ marginBottom: 20 }}>
-          <span className={classes.nameStyle}>{event.name}</span>
+      <div className={classes.eventDetailsContainer}>
+        <div className={classes.eventImage}>
+          {event.cover_photo ? (
+            <Image
+              src={event.cover_photo}
+              alt="cover_photo"
+              height={100}
+              width={100}
+            />
+          ) : (
+            <Image
+              src={EVENT_DEFAULT}
+              alt="cover_photo"
+              height={100}
+              width={100}
+            />
+          )}
         </div>
+        <div className={classes.eventInfo}>
+          <div style={{ marginBottom: 20 }}>
+            <span className={classes.nameStyle}>{event.name}</span>
+          </div>
 
-        <div style={{ marginBottom: 20 }}>
-          <span className={classes.secondaryContentStyle}>
-            Venue: <span style={{ color: "#C24914" }}>{event.venue}</span>
-          </span>
-        </div>
-
-        {event && event.chief_guest && (
           <div style={{ marginBottom: 20 }}>
             <span className={classes.secondaryContentStyle}>
-              Chief Guest:{" "}
-              <span style={{ color: "#C24914" }}>{event.chief_guest}</span>
+              Venue: <span style={{ color: "#C24914" }}>{event.venue}</span>
             </span>
           </div>
-        )}
 
-        <div className={classes.eventDateContainer}>
-          <p className={classes.dateStyle}>
-            Date:{" "}
-            <span style={{ color: "#C24914" }}>
-              {event.date}&nbsp;
-              {event.date === "TODAY" && (
-                <FontAwesomeIcon icon={faBullhorn} style={{ marginLeft: 3 }} />
-              )}
-            </span>
-          </p>
-          <p className={classes.dateStyle}>
-            Time: <span style={{ color: "#C24914" }}>{event.time}</span>
-          </p>
+          {event && event.chief_guest && (
+            <div style={{ marginBottom: 20 }}>
+              <span className={classes.secondaryContentStyle}>
+                Chief Guest:{" "}
+                <span style={{ color: "#C24914" }}>{event.chief_guest}</span>
+              </span>
+            </div>
+          )}
 
-          <Button
-            variant="outlined"
-            className={classes.buttonStyle}
-            onClick={() => router.push(`/events/${event.event_id}`)}
-          >
-            Details
-          </Button>
+          <div className={classes.eventDateContainer}>
+            <p className={classes.dateStyle}>
+              Date:{" "}
+              <span style={{ color: "#C24914" }}>
+                {event.date}&nbsp;
+                {event.date === "TODAY" && (
+                  <FontAwesomeIcon
+                    icon={faBullhorn}
+                    style={{ marginLeft: 3 }}
+                  />
+                )}
+              </span>
+            </p>
+            <p className={classes.dateStyle}>
+              Time: <span style={{ color: "#C24914" }}>{event.time}</span>
+            </p>
+
+            <Button
+              variant="outlined"
+              className={classes.buttonStyle}
+              onClick={() => router.push(`/events/${event.event_id}`)}
+            >
+              Details
+            </Button>
+          </div>
         </div>
       </div>
     </motion.div>
