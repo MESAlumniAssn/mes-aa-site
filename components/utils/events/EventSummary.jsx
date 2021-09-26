@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   eventInfo: {
     width: 500,
     [theme.breakpoints.down("sm")]: {
-      width: 300,
+      width: 280,
     },
   },
   eventDateContainer: {
