@@ -9,6 +9,10 @@ import UpcomingEvents from "../components/utils/events/UpcomingEvents";
 import SelectedEventDetails from "../components/utils/events/SelectedEventDetails";
 import SiteContext from "../context/siteContext";
 
+jest.mock("next/image", () => {
+  return () => <></>;
+});
+
 describe("render the events page", () => {
   it("test if completed events are visible", () => {
     const fetchEventByStatus = jest.fn();
