@@ -25,6 +25,12 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 20,
     boxShadow: "0 22px 37px rgba(0, 0, 0, 0.3)",
     opacity: 0.98,
+    [theme.breakpoints.down("xs")]: {
+      justifyContent: "flex-start",
+      padding: "25px 15px 25px 5px",
+      marginRight: 10,
+      fontSize: "0.8rem",
+    },
   },
   bannerText: {
     fontWeight: "bold",
@@ -32,10 +38,15 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     position: "absolute",
     top: "35%",
-    right: 15,
+    right: 20,
     zIndex: 30,
     fontSize: "1.5rem",
     cursor: "pointer",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1rem",
+      top: "15%",
+      right: 10,
+    },
   },
 }));
 

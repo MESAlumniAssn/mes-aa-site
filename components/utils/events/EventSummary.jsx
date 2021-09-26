@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   eventInfo: {
     width: 500,
     [theme.breakpoints.down("sm")]: {
-      width: 325,
+      width: 300,
     },
   },
   eventDateContainer: {
@@ -160,7 +160,8 @@ const EventSummary = ({ event }) => {
             <p className={classes.dateStyle}>
               Time: <span style={{ color: "#C24914" }}>{event.time}</span>
             </p>
-
+          </div>
+          <div style={{ marginTop: 20 }}>
             <Button
               variant="outlined"
               className={classes.buttonStyle}
