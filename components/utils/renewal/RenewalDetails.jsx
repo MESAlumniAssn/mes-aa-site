@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 75,
+    },
   },
   renewalDetails: {
     marginTop: 30,
@@ -53,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   renewalDetailsTextColor: {
-    color: "#ff5200",
+    color: "#FF8E01",
   },
   validityDates: {
     color: "rgba(255, 82, 0, 0.5)",
@@ -65,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   buttonStyle: {
     outline: "none",
     border: "none",
-    backgroundColor: "#ff5200",
+    backgroundColor: "#FF8E01",
     padding: "15px",
     width: "175px",
     color: "#FFF",

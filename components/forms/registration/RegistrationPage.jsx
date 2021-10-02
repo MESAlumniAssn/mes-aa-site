@@ -618,7 +618,7 @@ const RegistrationPage = (props) => {
                     files={files}
                     mode={mode}
                     setMode={setMode}
-                    elementColor="#ff5200"
+                    elementColor="#FF8E01"
                   />
                 </Form>
               </div>

@@ -37,7 +37,7 @@ const ManualPaymentConfirmButton = ({
         <Button
           disabled={authError && authError}
           style={{
-            backgroundColor: "#ff5200",
+            backgroundColor: "#FF8E01",
             height: "3rem",
             width: "12rem",
             color: "#FFF",

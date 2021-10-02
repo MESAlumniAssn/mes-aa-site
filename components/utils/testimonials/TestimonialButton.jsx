@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 const CreateTestimonialButton = withStyles({
   root: {
-    background: "#ff5200",
+    background: "#FF8E01",
     color: "#FFFFFF",
     fontSize: 16,
     padding: "8px 12px",
@@ -52,7 +52,7 @@ const CreateTestimonialButton = withStyles({
     color: "#fff",
     fontWeight: "bold",
     "&:hover": {
-      backgroundColor: "#ff5200",
+      backgroundColor: "#FF8E01",
       boxShadow: "0 15px 29px rgba(0, 0, 0, 0.3)",
     },
   },

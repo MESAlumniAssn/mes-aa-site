@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
   aboutHero: {
     padding: "100px 0 50px 0",
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: 75,
+    },
   },
   heroImage: {
     transform: "rotate(0deg)",

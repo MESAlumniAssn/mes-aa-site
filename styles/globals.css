@@ -254,7 +254,7 @@ html::-webkit-scrollbar-track {
   position: absolute;
   left: -2rem;
   top: 0.2em;
-  background-color: #ff5200;
+  background-color: #ff8e01;
   color: #fff;
   font-weight: 700;
   height: 1.7em;
@@ -296,6 +296,27 @@ html::-webkit-scrollbar-track {
 .scrollToTop {
   color: #fff;
   font-size: 1.5rem;
+}
+
+/* The waves at the top of the footer */
+.waves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.waves svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 36px;
+}
+
+.waves .shape-fill {
+  fill: #ffffff;
 }
 
 @media only screen and (max-width: 900px) {

@@ -12,6 +12,9 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   parentContainer: {
     margin: "100px 0 50px 0",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 75,
+    },
   },
   altPaymentHero: {
     // margin: "100px 100px 50px 100px",
@@ -101,7 +104,7 @@ const AltPaymentInfo = (props) => {
           >
             <span className="tertiaryHeading">
               Your membership id is&nbsp;
-              <span style={{ color: "#ff5200" }}>
+              <span style={{ color: "#FF8E01" }}>
                 {props.alumniInformation.membership_id}
               </span>
             </span>
@@ -125,7 +128,7 @@ const AltPaymentInfo = (props) => {
               }}
             >
               We have emailed our bank details to{" "}
-              <span style={{ color: "#ff5200", fontWeight: 700 }}>
+              <span style={{ color: "#FF8E01", fontWeight: 700 }}>
                 {props.alumniInformation.email}
               </span>{" "}
               .Once the payment is processed, you will receive the invoice via
@@ -142,7 +145,7 @@ const AltPaymentInfo = (props) => {
               to{" "}
               <Link href="/contact">
                 <a
-                  style={{ color: "#ff5200", textDecoration: "none" }}
+                  style={{ color: "#FF8E01", textDecoration: "none" }}
                   className="styledLink"
                 >
                   contact us
@@ -166,7 +169,7 @@ const AltPaymentInfo = (props) => {
               style={{
                 fontSize: "0.8rem",
                 fontWeight: "bold",
-                color: "#ff5200",
+                color: "#FF8E01",
                 borderColor: "currentcolor",
                 padding: 1.5,
               }}

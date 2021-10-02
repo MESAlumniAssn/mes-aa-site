@@ -35,7 +35,7 @@ const EventGallery = ({ images }) => {
       </Typography>
 
       {images && images.length === 0 && (
-        <div style={{ textAlign: "center", color: "#87A7B3", paddingTop: 25 }}>
+        <div style={{ textAlign: "center", color: "#4B5563", paddingTop: 25 }}>
           No images in gallery
         </div>
       )}

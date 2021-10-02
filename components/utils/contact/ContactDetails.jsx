@@ -41,10 +41,13 @@ let theme = createMuiTheme();
 
 theme = responsiveFontSizes(theme);
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   contactHero: {
     margin: "100px 0 50px 0",
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 75,
+    },
   },
   heroImage: {
     transform: "rotate(-3deg)",
@@ -111,7 +114,7 @@ const useStyles = makeStyles({
     cursor: "pointer",
     borderBottom: "3px solid",
   },
-});
+}));
 
 const ContactDetails = () => {
   const [openContactForm, setOpenContactForm] = useState(false);

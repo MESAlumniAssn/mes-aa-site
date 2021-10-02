@@ -32,7 +32,7 @@ const ManualRenewalPaymentConfirmationButton = ({
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Button
         style={{
-          backgroundColor: "#ff5200",
+          backgroundColor: "#FF8E01",
           height: "3rem",
           width: "12rem",
           color: "#FFF",

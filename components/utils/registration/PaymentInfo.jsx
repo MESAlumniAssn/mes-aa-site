@@ -8,6 +8,9 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
   parentContainer: {
     margin: "100px 0 50px 0",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 75,
+    },
   },
   paymentInfoContainer: {
     display: "flex",
@@ -53,7 +56,7 @@ const PaymentInfo = (props) => {
           <Typography component="h2" className={classes.textStyles}>
             <span className="tertiaryHeading">
               Your membership id is{" "}
-              <span style={{ color: "#ff5200" }}>
+              <span style={{ color: "#FF8E01" }}>
                 {props.userData.membership_id}
               </span>
             </span>
@@ -67,7 +70,7 @@ const PaymentInfo = (props) => {
             }}
           >
             Your payment receipt and membership details will be emailed to&nbsp;
-            <span style={{ color: "#ff5200", fontWeight: 700 }}>
+            <span style={{ color: "#FF8E01", fontWeight: 700 }}>
               {props.userData.email}
             </span>
           </Typography>

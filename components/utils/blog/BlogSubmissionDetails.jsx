@@ -27,7 +27,7 @@ const BlogSubmissionDetails = () => {
         <p className="counterSection">
           Email your article to{" "}
           <Link href="mailto:contact@mesalumniassociation.com">
-            <a style={{ color: "#ff5200", textDecoration: "none" }}>
+            <a style={{ color: "#FF8E01", textDecoration: "none" }}>
               contact@mesalumniassociation.com
             </a>
           </Link>{" "}

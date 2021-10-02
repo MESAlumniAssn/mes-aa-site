@@ -9,9 +9,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     margin: "100px 0 50px 0",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 75,
+    },
   },
   termsContainer: {
     borderRadius: "10px",
@@ -32,9 +35,9 @@ const useStyles = makeStyles({
     paddingBottom: 5,
   },
   bulletLinkStyle: {
-    color: "#ff5200",
+    color: "#FF8E01",
   },
-});
+}));
 
 const Terms = () => {
   const classes = useStyles();

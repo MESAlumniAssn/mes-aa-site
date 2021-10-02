@@ -7,9 +7,14 @@ import { makeStyles } from "@material-ui/core/styles";
 // Component imports
 import Tabs from "./Tabs";
 
-const useStyles = makeStyles({
-  eventsHero: { margin: "100px 0 30px 0" },
-});
+const useStyles = makeStyles((theme) => ({
+  eventsHero: {
+    margin: "100px 0 30px 0",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "50px",
+    },
+  },
+}));
 
 const EventsHeader = ({ eventsData }) => {
   const classes = useStyles();
@@ -27,7 +32,7 @@ const EventsHeader = ({ eventsData }) => {
         </Typography>
       </div>
 
-      <div style={{ margin: "20px 0" }}>
+      <div style={{ margin: "40px 0" }}>
         <Tabs />
       </div>
     </div>

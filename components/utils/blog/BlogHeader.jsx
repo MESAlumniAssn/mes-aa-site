@@ -35,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
   blogContainer: {
     margin: "100px 0 50px 0",
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 75,
+    },
   },
   gridContainer: {
     margin: "50px 100px",

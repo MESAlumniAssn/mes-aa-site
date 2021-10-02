@@ -14,13 +14,14 @@ import { faBullhorn } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
   eventSummaryContainer: {
-    padding: "10px 15px",
+    padding: "15px",
     margin: "20px 0",
     borderLeft: "6px solid #C24914",
     boxShadow: "0 3px 12px rgba(0, 0, 0, 0.1)",
     borderRadius: 5,
     [theme.breakpoints.down("sm")]: {
       margin: "15px 0",
+      padding: "20px",
     },
   },
   eventDetailsContainer: {
@@ -40,7 +41,10 @@ const useStyles = makeStyles((theme) => ({
   eventInfo: {
     width: 500,
     [theme.breakpoints.down("sm")]: {
-      width: 280,
+      width: 350,
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: 300,
     },
   },
   eventDateContainer: {
@@ -52,26 +56,32 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "row",
     },
   },
-  nameStyle: { fontSize: "1.2rem", fontWeight: "bold" },
-  secondaryContentStyle: {
-    fontSize: "1rem",
+  nameStyle: {
+    fontSize: "1.5rem",
     fontWeight: "bold",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "0.85rem",
+      fontSize: "1.2rem",
+    },
+  },
+  secondaryContentStyle: {
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1rem",
     },
   },
   dateStyle: {
-    fontSize: "0.9rem",
+    fontSize: "1.2rem",
     fontWeight: "bold",
     margin: 0,
     [theme.breakpoints.down("sm")]: {
-      fontSize: "0.85rem",
+      fontSize: "1rem",
     },
   },
 
   buttonStyle: {
     color: "#FFF",
-    fontSize: "0.9rem",
+    fontSize: "1rem",
     fontWeight: 700,
     fontFamily: "Nunito sans",
     backgroundColor: "#C24914",

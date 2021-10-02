@@ -8,9 +8,14 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
-  adminHero: { margin: "100px 0 50px 0" },
-});
+const useStyles = makeStyles((theme) => ({
+  adminHero: {
+    margin: "100px 0 50px 0",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 75,
+    },
+  },
+}));
 
 const AdminHeader = () => {
   const [logout, setLogout] = useState(false);

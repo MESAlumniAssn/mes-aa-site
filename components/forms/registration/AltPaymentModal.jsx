@@ -134,7 +134,7 @@ const AltPaymentModal = ({
             gutterBottom
           >
             Hey,{" "}
-            <span style={{ color: "#ff5200", fontWeight: "bold" }}>
+            <span style={{ color: "#FF8E01", fontWeight: "bold" }}>
               {localStorage.getItem("mesAAUser")
                 ? JSON.parse(localStorage.getItem("mesAAUser")).firstName
                 : "there"}
@@ -155,7 +155,7 @@ const AltPaymentModal = ({
             <span
               style={{
                 paddingBottom: 1,
-                borderBottom: "2px solid #ff5200",
+                borderBottom: "2px solid #FF8E01",
               }}
             >
               Cheque
@@ -164,7 +164,7 @@ const AltPaymentModal = ({
             <span
               style={{
                 paddingBottom: 1,
-                borderBottom: "2px solid #ff5200",
+                borderBottom: "2px solid #FF8E01",
               }}
             >
               Demand Draft
@@ -202,7 +202,7 @@ const AltPaymentModal = ({
                 <span
                   style={{
                     textDecoration: "underline",
-                    color: "#ff5200",
+                    color: "#FF8E01",
                     cursor: "pointer",
                   }}
                 >
@@ -224,7 +224,7 @@ const AltPaymentModal = ({
             <span
               style={{
                 paddingBottom: 1,
-                borderBottom: "2px solid #ff5200",
+                borderBottom: "2px solid #FF8E01",
               }}
             >
               IMPS
@@ -233,7 +233,7 @@ const AltPaymentModal = ({
             <span
               style={{
                 paddingBottom: 1,
-                borderBottom: "2px solid #ff5200",
+                borderBottom: "2px solid #FF8E01",
               }}
             >
               NEFT
@@ -242,7 +242,7 @@ const AltPaymentModal = ({
             <span
               style={{
                 paddingBottom: 1,
-                borderBottom: "2px solid #ff5200",
+                borderBottom: "2px solid #FF8E01",
               }}
             >
               RTGS{" "}
@@ -257,7 +257,7 @@ const AltPaymentModal = ({
             </p>
             <p className="counterSection">
               All the details to perform the fund transfer will be sent to{" "}
-              <span style={{ color: "#ff5200", fontWeight: 700 }}>
+              <span style={{ color: "#FF8E01", fontWeight: 700 }}>
                 {localStorage.getItem("mesAAUser")
                   ? JSON.parse(localStorage.getItem("mesAAUser")).email
                   : "your registered email"}
@@ -281,7 +281,7 @@ const AltPaymentModal = ({
             <span
               style={{
                 paddingBottom: 1,
-                borderBottom: "2px solid #ff5200",
+                borderBottom: "2px solid #FF8E01",
               }}
             >
               UPI
@@ -296,7 +296,7 @@ const AltPaymentModal = ({
             </p>
             <p className="counterSection" style={{ display: "inline" }}>
               Use our mobile number (
-              <span style={{ fontWeight: "bold", color: "#ff5200" }}>
+              <span style={{ fontWeight: "bold", color: "#FF8E01" }}>
                 {officialPhone}
               </span>
               ) and pay via UPI using either
@@ -326,7 +326,7 @@ const AltPaymentModal = ({
             </p>
             <p className="counterSection">
               Send an email to{" "}
-              <span style={{ fontWeight: "bold", color: "#ff5200" }}>
+              <span style={{ fontWeight: "bold", color: "#FF8E01" }}>
                 {officialEmail}
               </span>{" "}
               with a screenshot of the transaction and mention your membership

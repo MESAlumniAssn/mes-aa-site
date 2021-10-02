@@ -12,7 +12,7 @@ import Container from "@material-ui/core/Container";
 // Component imports
 import FamousALumniAccordion from "./FamousAlumniAccordion";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   parentContainer: {
     height: "100%",
     padding: "0 20px 40px 20px",
@@ -20,6 +20,9 @@ const useStyles = makeStyles({
   famousAlumniHeader: {
     padding: "100px 0 0 0",
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: 75,
+    },
   },
   padmaAwardeesHeader: {
     margin: "70px 0 70px 0",
@@ -39,7 +42,7 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
   },
-});
+}));
 
 const variants = {
   animate: {

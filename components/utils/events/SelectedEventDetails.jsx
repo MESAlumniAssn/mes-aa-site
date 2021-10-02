@@ -9,7 +9,12 @@ import EventGallery from "./EventGallery";
 
 // Fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronCircleLeft,
+  faCalendarAlt,
+  faMapMarkerAlt,
+  faClock,
+} from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
   eventContainer: {
@@ -19,20 +24,24 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     [theme.breakpoints.down("sm")]: {
-      margin: "100px 10px 50px 10px",
+      margin: "100px 20px 50px 20px",
     },
   },
   eventDetails: {
     padding: 20,
     boxShadow: "0 5px 11px rgba(0, 0, 0, 0.1)",
     borderLeft: "6px solid var(--contact-color)",
-    background: "#eacda3",
-    background: "linear-gradient(to right, #FFFBEF, #ffffff);",
-
+    background: "#F9FAFB",
     borderRadius: 5,
+    [theme.breakpoints.down("sm")]: {
+      padding: "20px 10px",
+    },
   },
   eventTitle: {
     fontWeight: 600,
+  },
+  eventDescription: {
+    fontSize: "1.1rem",
   },
 
   navigationLinkContainer: {
@@ -78,8 +87,8 @@ const SelectedEventDetails = ({ event }) => {
         </div>
         <div className={classes.eventDetails}>
           <div style={{ marginBottom: 25 }}>
-            <p style={{ fontWeight: "bold", margin: 0, color: "#87A7B3" }}>
-              EVENT
+            <p style={{ fontWeight: "bold", margin: 0, color: "#4B5563" }}>
+              <FontAwesomeIcon icon={faCalendarAlt} /> EVENT
             </p>
             <Typography component="h1" className={classes.eventTitle}>
               <span className="tertiaryHeading">{event.name}</span>
@@ -90,11 +99,11 @@ const SelectedEventDetails = ({ event }) => {
               style={{
                 fontWeight: "bold",
                 margin: 0,
-                color: "#87A7B3",
+                color: "#4B5563",
                 paddingBottom: 10,
               }}
             >
-              WHERE
+              <FontAwesomeIcon icon={faMapMarkerAlt} /> WHERE
             </p>
             <Typography component="p" className={classes.eventTitle}>
               {event.venue}
@@ -105,20 +114,20 @@ const SelectedEventDetails = ({ event }) => {
               style={{
                 fontWeight: "bold",
                 margin: 0,
-                color: "#87A7B3",
+                color: "#4B5563",
                 paddingBottom: 10,
               }}
             >
-              WHEN
+              <FontAwesomeIcon icon={faClock} /> WHEN
             </p>
             <Typography component="p" className={classes.eventTitle}>
-              {event.date} <span style={{ color: "#87A7B3" }}>at</span>{" "}
+              {event.date} <span style={{ color: "#4B5563" }}>at</span>{" "}
               {event.time}
             </Typography>
           </div>
-          <Divider style={{ marginBottom: 25 }} />
+          <Divider style={{ marginBottom: 25, background: "#4B5563" }} />
           <div style={{ marginBottom: 25 }}>
-            <p className={classes.eventTitle}>{event.description}</p>
+            <p className={classes.eventDescription}>{event.description}</p>
           </div>
         </div>
       </div>

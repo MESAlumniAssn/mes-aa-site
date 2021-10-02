@@ -24,10 +24,8 @@ const useStyles = makeStyles((theme) => ({
     color: "#ffffff",
     fontWeight: "bold",
     borderRadius: 5,
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "0.8rem",
-      padding: "5px 10px",
-      marginRight: 2,
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
     },
   },
 }));

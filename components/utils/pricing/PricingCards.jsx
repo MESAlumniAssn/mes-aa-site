@@ -34,6 +34,9 @@ const useStyles = makeStyles({
   pricingHero: {
     margin: "100px 0 50px 0",
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 75,
+    },
   },
   card: {
     padding: 30,

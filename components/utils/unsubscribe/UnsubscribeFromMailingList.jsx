@@ -13,6 +13,9 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   parentContainer: {
     margin: "100px 0 50px 0",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 75,
+    },
 
     display: "flex",
     justifyContent: "center",

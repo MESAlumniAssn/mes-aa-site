@@ -187,8 +187,8 @@ const Lighthouse = () => {
                 whileHover="hover"
                 className={classes.countGridItemCount}
                 style={{
-                  border: "3px solid #ff5200",
-                  color: "#ff5200",
+                  border: "3px solid #FF8E01",
+                  color: "#FF8E01",
                   backgroundColor: "#f8d49d",
                   position: "relative",
                 }}

@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0 22px 37px rgba(0, 0, 0, 0.3)",
     opacity: 0.98,
     [theme.breakpoints.down("xs")]: {
-      justifyContent: "flex-start",
       padding: "25px 15px 25px 5px",
       marginRight: 10,
       fontSize: "0.8rem",
@@ -42,9 +41,10 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 30,
     fontSize: "1.5rem",
     cursor: "pointer",
+    color: "#9CA3AF",
     [theme.breakpoints.down("xs")]: {
       fontSize: "1rem",
-      top: "15%",
+      top: "10%",
       right: 10,
     },
   },
@@ -74,14 +74,14 @@ const Banner = () => {
         <motion.div className={`animateNavLogoBanner ${classes.banner}`}>
           <Typography component="div" style={{ textAlign: "center" }}>
             <div className={`subtitle ${classes.bannerText}`}>
-              <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 icon={faBullhorn}
                 style={{
                   marginRight: 15,
                   color: "#AAAAAA",
                   fontSize: "1.8rem",
                 }}
-              />
+              /> */}
               {daysToRegistration > 0 ? (
                 <span>
                   Dear Alumnus, registrations will be open in{" "}

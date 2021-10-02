@@ -20,7 +20,7 @@ const TestimonialSection = ({ styles, testimonials }) => {
 
     if (!inView) {
       animation.start({
-        y: 100,
+        y: 50,
       });
     }
   }, [inView]);

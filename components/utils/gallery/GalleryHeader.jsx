@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
   parentContainer: {
     margin: "100px 0 50px 0",
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 75,
+    },
   },
 }));
 

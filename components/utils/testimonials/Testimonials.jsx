@@ -23,8 +23,8 @@ const Testimonials = (props) => {
 
     if (!inView) {
       animation.start((i) => ({
-        opacity: 0,
-        y: 50,
+        opacity: 0.5,
+        y: 30,
       }));
     }
   }, [inView]);
