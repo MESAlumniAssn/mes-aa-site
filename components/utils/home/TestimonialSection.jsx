@@ -28,7 +28,7 @@ const TestimonialSection = ({ styles, testimonials }) => {
   return (
     <div ref={ref} className={styles.testimonialContainer}>
       <h2 className={styles.secondaryTitle}>Alumni Speak</h2>
-      <div style={{ marginTop: 20, marginBottom: 50 }}>
+      <div style={{ marginTop: 20, marginBottom: 20, textAlign: "center" }}>
         <Link href="/testimonials">
           <a className={`${styles.testimonialLink} styledLink`}>
             Read all the messages
