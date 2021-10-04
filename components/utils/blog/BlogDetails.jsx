@@ -51,6 +51,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     padding: 10,
     [theme.breakpoints.down("sm")]: {
+      paddingLeft: 15,
+      paddingRight: 15,
       margin: "100px 20px 50px 20px",
     },
   },
@@ -82,6 +84,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginTop: 25,
     marginBottom: 25,
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+
+      alignItems: "flex-start",
+    },
   },
   secondaryContentLabel: {
     color: "#455a64",
@@ -93,6 +100,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.1rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "0.9rem",
+      marginTop: 10,
     },
   },
 }));

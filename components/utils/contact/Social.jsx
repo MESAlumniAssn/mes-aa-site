@@ -84,7 +84,7 @@ const Social = () => {
               </a>
             </Link>
           </Grid>
-          <Grid item xs={3} align="center">
+          {/* <Grid item xs={3} align="center">
             <Link href="https://youtube.com" passHref={true}>
               <a target="_blank">
                 <Image
@@ -95,7 +95,7 @@ const Social = () => {
                 />
               </a>
             </Link>
-          </Grid>
+          </Grid> */}
         </Grid>
       </div>
     </div>

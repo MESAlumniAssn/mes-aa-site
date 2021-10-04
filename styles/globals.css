@@ -319,6 +319,52 @@ html::-webkit-scrollbar-track {
   fill: #ffffff;
 }
 
+/* Top tilt - contact */
+
+.top-tilt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.top-tilt svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 30px;
+  transform: rotateY(180deg);
+}
+
+.top-tilt .shape-fill {
+  fill: #ffffff;
+}
+
+/* Bottom waves - contact */
+.wave-bottom-contact {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.wave-bottom-contact svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 59px;
+  transform: rotateY(180deg);
+}
+
+.wave-bottom-contact .shape-fill {
+  fill: #ffffff;
+}
+
 @media only screen and (max-width: 900px) {
   .my-masonry-grid_column_testimonials {
     padding-left: 20px; /* gutter size */

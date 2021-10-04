@@ -145,7 +145,7 @@ export default function Navbar(props) {
             />
           </a>
         </Link>{" "}
-        <Link href="https://youtube.com" passHref={true}>
+        {/* <Link href="https://youtube.com" passHref={true}>
           <a style={{ marginRight: 25 }}>
             <Image
               src={"/images/social/youtube.svg"}
@@ -154,7 +154,7 @@ export default function Navbar(props) {
               width={35}
             />
           </a>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

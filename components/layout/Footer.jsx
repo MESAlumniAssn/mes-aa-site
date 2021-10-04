@@ -447,7 +447,7 @@ const Footer = () => {
               </a>
             </Link>
 
-            <Link href="https://youtube.com" passHref={true}>
+            {/* <Link href="https://youtube.com" passHref={true}>
               <a style={{ marginRight: 15 }}>
                 <Image
                   src={"/images/social/youtube.svg"}
@@ -456,7 +456,7 @@ const Footer = () => {
                   width={40}
                 />
               </a>
-            </Link>
+            </Link> */}
           </div>
         </div>
         <Typography className={classes.footerMessage} align="center">

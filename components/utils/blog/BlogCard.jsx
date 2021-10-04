@@ -52,7 +52,10 @@ const variants = {
 };
 
 const useStyles = makeStyles({
-  cardBorder: { border: "1px solid #DDDDDD", maxWidth: 345 },
+  cardBorder: {
+    maxWidth: 345,
+    boxShadow: "0 7px 17px rgba(0, 0, 0, 0.2)",
+  },
   title: {
     fontSize: "1.2rem",
     textAlign: "left",
