@@ -415,7 +415,7 @@ const Footer = () => {
           </Typography>
           <div style={{ paddingTop: 10, paddingBottom: 40 }}>
             <Link href={facebookProfile} passHref={true}>
-              <a style={{ marginRight: 15 }}>
+              <a style={{ marginRight: 15 }} target="_blank">
                 <Image
                   src={"/images/social/facebook.svg"}
                   alt="Facebook"
@@ -426,7 +426,7 @@ const Footer = () => {
             </Link>
 
             <Link href={twitterProfile} passHref={true}>
-              <a style={{ marginRight: 15 }}>
+              <a style={{ marginRight: 15 }} target="_blank">
                 <Image
                   src={"/images/social/twitter.svg"}
                   alt="Twitter"
@@ -437,7 +437,7 @@ const Footer = () => {
             </Link>
 
             <Link href={instagramProfile} passHref={true}>
-              <a style={{ marginRight: 15 }}>
+              <a style={{ marginRight: 15 }} target="_blank">
                 <Image
                   src={"/images/social/instagram.svg"}
                   alt="Instagram"

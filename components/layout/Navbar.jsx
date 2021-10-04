@@ -116,7 +116,7 @@ export default function Navbar(props) {
         }}
       >
         <Link href={facebookProfile} passHref={true}>
-          <a style={{ marginRight: 25 }}>
+          <a style={{ marginRight: 25 }} target="_blank">
             <Image
               src={"/images/social/facebook.svg"}
               alt="Facebook"
@@ -126,7 +126,7 @@ export default function Navbar(props) {
           </a>
         </Link>
         <Link href={twitterProfile} passHref={true}>
-          <a style={{ marginRight: 25 }}>
+          <a style={{ marginRight: 25 }} target="_blank">
             <Image
               src={"/images/social/twitter.svg"}
               alt="Twitter"
@@ -136,7 +136,7 @@ export default function Navbar(props) {
           </a>
         </Link>{" "}
         <Link href={instagramProfile} passHref={true}>
-          <a style={{ marginRight: 25 }}>
+          <a style={{ marginRight: 25 }} target="_blank">
             <Image
               src={"/images/social/instagram.svg"}
               alt="Instagram"
