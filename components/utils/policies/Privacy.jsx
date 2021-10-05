@@ -133,6 +133,7 @@ const Privacy = () => {
             <Link href="https://razorpay.com/privacy/" passHref={true}>
               <a
                 target="_blank"
+                rel="noopener"
                 className={classes.bulletLinkStyle}
                 style={{ fontWeight: "bold", textDecoration: "underline" }}
               >
@@ -172,6 +173,7 @@ const Privacy = () => {
             >
               <a
                 target="_blank"
+                rel="noopener"
                 className={classes.bulletLinkStyle}
                 style={{ fontWeight: "bold", textDecoration: "underline" }}
               >

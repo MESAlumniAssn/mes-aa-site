@@ -252,6 +252,7 @@ const AlumniMembers = (props) => {
           <Link
             href={params.value}
             target="_blank"
+            rel="noopener"
             style={{ cursor: "pointer", color: "#343434" }}
           >
             {params.value}
@@ -269,6 +270,7 @@ const AlumniMembers = (props) => {
           <Link
             href={params.value}
             target="_blank"
+            rel="noopener"
             style={{ cursor: "pointer", color: "#343434" }}
           >
             {params.value}
@@ -286,6 +288,7 @@ const AlumniMembers = (props) => {
           <Link
             href={params.value}
             target="_blank"
+            rel="noopener"
             style={{ cursor: "pointer", color: "#343434" }}
           >
             {params.value}

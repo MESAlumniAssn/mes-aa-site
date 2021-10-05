@@ -125,7 +125,7 @@ const Footer = () => {
 
   return (
     <div style={{ position: "relative" }}>
-      <div class="waves">
+      <div className="waves">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -419,7 +419,7 @@ const Footer = () => {
           </Typography>
           <div style={{ paddingTop: 10, paddingBottom: 40 }}>
             <Link href={facebookProfile} passHref={true}>
-              <a style={{ marginRight: 15 }} target="_blank">
+              <a style={{ marginRight: 15 }} target="_blank" rel="noopener">
                 <Image
                   src={FACEBOOK_LOGO}
                   alt="Facebook"
@@ -430,7 +430,7 @@ const Footer = () => {
             </Link>
 
             <Link href={twitterProfile} passHref={true}>
-              <a style={{ marginRight: 15 }} target="_blank">
+              <a style={{ marginRight: 15 }} target="_blank" rel="noopener">
                 <Image
                   src={TWITTER_LOGO}
                   alt="Twitter"
@@ -441,7 +441,7 @@ const Footer = () => {
             </Link>
 
             <Link href={instagramProfile} passHref={true}>
-              <a style={{ marginRight: 15 }} target="_blank">
+              <a style={{ marginRight: 15 }} target="_blank" rel="noopener">
                 <Image
                   src={INSTAGRAM_LOGO}
                   alt="Instagram"

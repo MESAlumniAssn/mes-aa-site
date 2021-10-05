@@ -54,7 +54,7 @@ const Social = () => {
         >
           <Grid item xs={3} align="center">
             <Link href={facebookProfile} passHref={true}>
-              <a target="_blank">
+              <a target="_blank" rel="noopener">
                 <Image
                   src={FACEBOOK_LOGO}
                   alt="Facebook"
@@ -67,7 +67,7 @@ const Social = () => {
 
           <Grid item xs={3} align="center">
             <Link href={twitterProfile} passHref={true}>
-              <a target="_blank">
+              <a target="_blank" rel="noopener">
                 <Image
                   src={TWITTER_LOGO}
                   alt="Twitter"
@@ -79,7 +79,7 @@ const Social = () => {
           </Grid>
           <Grid item xs={3} align="center">
             <Link href={instagramProfile} passHref={true}>
-              <a target="_blank">
+              <a target="_blank" rel="noopener">
                 <Image
                   src={INSTAGRAM_LOGO}
                   alt="Instagram"

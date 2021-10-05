@@ -120,17 +120,17 @@ export default function Navbar(props) {
         }}
       >
         <Link href={facebookProfile} passHref={true}>
-          <a style={{ marginRight: 25 }} target="_blank">
+          <a style={{ marginRight: 25 }} target="_blank" rel="noopener">
             <Image src={FACEBOOK_LOGO} alt="Facebook" height={35} width={35} />
           </a>
         </Link>
         <Link href={twitterProfile} passHref={true}>
-          <a style={{ marginRight: 25 }} target="_blank">
+          <a style={{ marginRight: 25 }} target="_blank" rel="noopener">
             <Image src={TWITTER_LOGO} alt="Twitter" height={35} width={35} />
           </a>
         </Link>{" "}
         <Link href={instagramProfile} passHref={true}>
-          <a style={{ marginRight: 25 }} target="_blank">
+          <a style={{ marginRight: 25 }} target="_blank" rel="noopener">
             <Image
               src={INSTAGRAM_LOGO}
               alt="Instagram"
