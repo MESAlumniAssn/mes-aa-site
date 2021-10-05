@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { DEFAULT_MC } from "../../../utils/images";
 
 // Material UI imports
@@ -26,20 +25,20 @@ const Members = (props) => {
                           : "mcImageBorderColor"
                       }`}
                     >
-                      <Image
-                        src={member.image_url}
+                      <img
+                        src={member.image_url + "/tr:w-250"}
                         alt={member.name}
-                        height={245}
-                        width={235}
+                        height="250px"
+                        width="250px"
                         className="mcImages"
                       />
                     </div>
                   ) : (
-                    <Image
-                      src={DEFAULT_MC}
+                    <img
+                      src={DEFAULT_MC + "/tr:w-250"}
                       alt="Default image"
-                      height={255}
-                      width={245}
+                      height="250px"
+                      width="250px"
                       className="mcImages"
                     />
                   )}
@@ -47,13 +46,12 @@ const Members = (props) => {
                     display="block"
                     component="p"
                     align="center"
-                    gutterBottom
                     style={{
                       fontSize: "1.2rem",
                       block: "true",
                       width: "100%",
                       fontWeight: "bold",
-                      padding: "10px 0",
+                      padding: "20px 0 0 0",
                     }}
                   >
                     <span>{member.name}</span>
@@ -62,7 +60,7 @@ const Members = (props) => {
                     <Typography
                       component="p"
                       align="center"
-                      style={{ width: "100%" }}
+                      style={{ width: "100%", margin: 0 }}
                     >
                       <span>{member.designation}</span>
                     </Typography>

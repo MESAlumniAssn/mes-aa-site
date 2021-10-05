@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0 5px 12px rgba(0, 0, 0, 0.2)",
     margin: "0 30px",
     padding: "15px 25px",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 15px",
+    },
   },
   paragraph: {
     marginTop: 20,

@@ -18,3 +18,16 @@ export const ADMIN_LOGIN =
 
 export const EVENT_DEFAULT =
   "https://ik.imagekit.io/pwxm960evbp/tr:h-100,w-100/MES-AA/Site_Images/Admin/admin__6szeALB1NG.jpg?updatedAt=1628486787212";
+
+// Social icons
+export const FACEBOOK_LOGO =
+  "https://ik.imagekit.io/pwxm960evbp/MES-AA/Site_Images/Social/facebook_UHIlNFerlq.svg?updatedAt=1633428381669";
+
+export const TWITTER_LOGO =
+  "https://ik.imagekit.io/pwxm960evbp/MES-AA/Site_Images/Social/twitter_Yec2MEzVj.svg?updatedAt=1633428381613";
+
+export const INSTAGRAM_LOGO =
+  "https://ik.imagekit.io/pwxm960evbp/MES-AA/Site_Images/Social/instagram_x7GpT7Fg4.svg?updatedAt=1633428381584";
+
+export const YOUTUBE_LOGO =
+  "https://ik.imagekit.io/pwxm960evbp/MES-AA/Site_Images/Social/youtube_AOusjO5KQ37r.svg?updatedAt=1633428381628";

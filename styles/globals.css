@@ -88,17 +88,18 @@ html::-webkit-scrollbar-track {
 
 .mcImageBorder {
   border-radius: 50%;
-  height: 255px;
-  width: 245px;
-  padding: 4px;
+  height: 250px;
+  width: 250px;
 }
 
 .obImageBorderColor {
-  border: 5px solid #fbc6a4;
+  outline: 3px solid #fbc6a4;
+  outline-offset: 4px;
 }
 
 .mcImageBorderColor {
-  border: 5px solid #ecd662;
+  outline: 3px solid #ecd662;
+  outline-offset: 4px;
 }
 
 /* Styled link */

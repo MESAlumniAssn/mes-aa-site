@@ -2,6 +2,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
+  FACEBOOK_LOGO,
+  TWITTER_LOGO,
+  INSTAGRAM_LOGO,
+} from "../../../utils/images";
+import {
   facebookProfile,
   twitterProfile,
   instagramProfile,
@@ -51,7 +56,7 @@ const Social = () => {
             <Link href={facebookProfile} passHref={true}>
               <a target="_blank">
                 <Image
-                  src={"/images/social/facebook.svg"}
+                  src={FACEBOOK_LOGO}
                   alt="Facebook"
                   height={50}
                   width={50}
@@ -64,7 +69,7 @@ const Social = () => {
             <Link href={twitterProfile} passHref={true}>
               <a target="_blank">
                 <Image
-                  src={"/images/social/twitter.svg"}
+                  src={TWITTER_LOGO}
                   alt="Twitter"
                   height={50}
                   width={50}
@@ -76,7 +81,7 @@ const Social = () => {
             <Link href={instagramProfile} passHref={true}>
               <a target="_blank">
                 <Image
-                  src={"/images/social/instagram.svg"}
+                  src={INSTAGRAM_LOGO}
                   alt="Instagram"
                   height={50}
                   width={50}

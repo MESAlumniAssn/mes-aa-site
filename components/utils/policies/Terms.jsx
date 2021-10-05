@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0 5px 12px rgba(0, 0, 0, 0.2)",
     margin: "0 30px",
     padding: "15px 25px",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 15px",
+    },
   },
   paragraph: {
     marginTop: 20,
@@ -196,6 +199,17 @@ const Terms = () => {
           <p className={classes.membershipBullets}>
             The Association will not entertain requests to refund membership
             fees under any circumstances.
+          </p>
+        </div>
+
+        <div className={classes.paragraph}>
+          <Typography component="h2" className={classes.subHeading}>
+            Terms of Use Modifications
+          </Typography>
+          <p className={classes.membershipBullets}>
+            The Association may revise these Terms of Use for its website at any
+            time without notice. By using this website you are agreeing to be
+            bound by the then current version of these Terms of Use.
           </p>
         </div>
       </div>

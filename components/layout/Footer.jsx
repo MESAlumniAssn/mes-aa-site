@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -13,6 +13,11 @@ import {
   twitterProfile,
   instagramProfile,
 } from "../../utils/associationDetails";
+import {
+  FACEBOOK_LOGO,
+  TWITTER_LOGO,
+  INSTAGRAM_LOGO,
+} from "../../utils/images";
 
 // Material UI imports
 import Grid from "@material-ui/core/Grid";
@@ -31,7 +36,6 @@ import {
   faHeart,
   faUserSecret,
   faBookOpen,
-  faCircle,
   faSitemap,
   faPencilAlt,
   faCalendarAlt,
@@ -417,7 +421,7 @@ const Footer = () => {
             <Link href={facebookProfile} passHref={true}>
               <a style={{ marginRight: 15 }} target="_blank">
                 <Image
-                  src={"/images/social/facebook.svg"}
+                  src={FACEBOOK_LOGO}
                   alt="Facebook"
                   height={40}
                   width={40}
@@ -428,7 +432,7 @@ const Footer = () => {
             <Link href={twitterProfile} passHref={true}>
               <a style={{ marginRight: 15 }} target="_blank">
                 <Image
-                  src={"/images/social/twitter.svg"}
+                  src={TWITTER_LOGO}
                   alt="Twitter"
                   height={40}
                   width={40}
@@ -439,7 +443,7 @@ const Footer = () => {
             <Link href={instagramProfile} passHref={true}>
               <a style={{ marginRight: 15 }} target="_blank">
                 <Image
-                  src={"/images/social/instagram.svg"}
+                  src={INSTAGRAM_LOGO}
                   alt="Instagram"
                   height={40}
                   width={40}

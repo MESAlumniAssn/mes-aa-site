@@ -13,6 +13,7 @@ import {
 } from "@material-ui/data-grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import Link from "@material-ui/core/Link";
 
 // Component imports
 import CustomPagination from "./CustomPagination";
@@ -242,16 +243,55 @@ const AlumniMembers = (props) => {
       headerClassName: headerStyle,
     },
     {
+      field: "profile_url",
+      headerName: "Profile Photo",
+      width: 1000,
+      headerClassName: headerStyle,
+      renderCell: (params) => (
+        <div>
+          <Link
+            href={params.value}
+            target="_blank"
+            style={{ cursor: "pointer", color: "#343434" }}
+          >
+            {params.value}
+          </Link>
+        </div>
+      ),
+    },
+    {
       field: "id_card_url",
       headerName: "ID Card",
       width: 700,
       headerClassName: headerStyle,
+      renderCell: (params) => (
+        <div>
+          <Link
+            href={params.value}
+            target="_blank"
+            style={{ cursor: "pointer", color: "#343434" }}
+          >
+            {params.value}
+          </Link>
+        </div>
+      ),
     },
     {
       field: "membership_certificate_url",
       headerName: "Membership Certificate",
       width: 700,
       headerClassName: headerStyle,
+      renderCell: (params) => (
+        <div>
+          <Link
+            href={params.value}
+            target="_blank"
+            style={{ cursor: "pointer", color: "#343434" }}
+          >
+            {params.value}
+          </Link>
+        </div>
+      ),
     },
   ];
 

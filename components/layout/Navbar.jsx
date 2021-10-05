@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import {
+  FACEBOOK_LOGO,
+  TWITTER_LOGO,
+  INSTAGRAM_LOGO,
+} from "../../utils/images";
 import {
   facebookProfile,
   twitterProfile,
@@ -117,28 +121,18 @@ export default function Navbar(props) {
       >
         <Link href={facebookProfile} passHref={true}>
           <a style={{ marginRight: 25 }} target="_blank">
-            <Image
-              src={"/images/social/facebook.svg"}
-              alt="Facebook"
-              height={35}
-              width={35}
-            />
+            <Image src={FACEBOOK_LOGO} alt="Facebook" height={35} width={35} />
           </a>
         </Link>
         <Link href={twitterProfile} passHref={true}>
           <a style={{ marginRight: 25 }} target="_blank">
-            <Image
-              src={"/images/social/twitter.svg"}
-              alt="Twitter"
-              height={35}
-              width={35}
-            />
+            <Image src={TWITTER_LOGO} alt="Twitter" height={35} width={35} />
           </a>
         </Link>{" "}
         <Link href={instagramProfile} passHref={true}>
           <a style={{ marginRight: 25 }} target="_blank">
             <Image
-              src={"/images/social/instagram.svg"}
+              src={INSTAGRAM_LOGO}
               alt="Instagram"
               height={35}
               width={35}
