@@ -24,6 +24,10 @@ beforeEach(() => {
 
 const mockSetOpenTestimonialForm = jest.fn();
 
+jest.mock("next/image", () => {
+  return () => <></>;
+});
+
 const testimonials = [
   {
     name: "name",
