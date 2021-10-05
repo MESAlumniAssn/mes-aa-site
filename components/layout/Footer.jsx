@@ -14,6 +14,7 @@ import {
   instagramProfile,
 } from "../../utils/associationDetails";
 import {
+  LOGO,
   FACEBOOK_LOGO,
   TWITTER_LOGO,
   INSTAGRAM_LOGO,
@@ -151,7 +152,12 @@ const Footer = () => {
         >
           {" "}
           <div style={{ marginBottom: 20 }}>
-            <Image src="/logo.png" alt="Logo" height={150} width={150} />
+            <Image
+              src={LOGO + "/tr:w-150"}
+              alt="Logo"
+              height={150}
+              width={150}
+            />
           </div>
           <Typography
             style={{ fontSize: "1.3rem", fontWeight: 700 }}
