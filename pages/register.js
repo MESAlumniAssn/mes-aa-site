@@ -26,23 +26,23 @@ const Register = (props) => {
   const classes = useStyles();
 
   // Uncomment before launch
-  // if (typeof window !== "undefined") {
-  //   if (!localStorage.getItem("mesAAMembershipPlan")) {
-  //     if (process.browser) {
-  //       router.push("/pricing");
-  //     }
+  if (typeof window !== "undefined") {
+    if (!localStorage.getItem("mesAAMembershipPlan")) {
+      if (process.browser) {
+        router.push("/pricing");
+      }
 
-  //     return <div></div>;
-  //   }
-  // }
+      return <div></div>;
+    }
+  }
 
   return (
     <RegisterHeadLayout>
-      <div>
+      <div className={classes.root}>
         {/* Add className={classes.root} before launch */}
         {/* Uncomment before launch */}
-        {/* <RegistrationPage /> */}
-        <RegistrationPreLaunch />
+        <RegistrationPage />
+        {/* <RegistrationPreLaunch /> */}
       </div>
       <Footer />
     </RegisterHeadLayout>

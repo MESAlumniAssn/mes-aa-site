@@ -169,8 +169,8 @@ const AboutHeader = () => {
                   fontWeight: "bold",
                   cursor: "pointer",
                   textDecoration: "none",
+                  borderBottom: "3px solid",
                 }}
-                className="styledLink"
                 onClick={() => setOpenRegistrationCert(true)}
               >
                 registered on 21

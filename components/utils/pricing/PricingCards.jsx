@@ -109,7 +109,7 @@ const Pricing = () => {
                 </div>
 
                 {/* Uncomment before launch */}
-                {/* <div
+                <div
                   style={{
                     textAlign: "center",
                     margin: "10px 0 20px 0",
@@ -132,7 +132,7 @@ const Pricing = () => {
                   >
                     Choose this plan
                   </Button>
-                </div> */}
+                </div>
 
                 {lifetime.map((item, index) => (
                   <div
@@ -200,9 +200,8 @@ const Pricing = () => {
                     {planValues.annualMembershipCost}/yr
                   </Typography>
                 </div>
-
                 {/* Uncomment before launch */}
-                {/* <div
+                <div
                   style={{
                     textAlign: "center",
                     margin: "10px 0 20px 0",
@@ -225,8 +224,7 @@ const Pricing = () => {
                   >
                     Choose this plan
                   </Button>
-                </div> */}
-
+                </div>{" "}
                 {annual.map((item, index) => (
                   <div
                     key={index}

@@ -295,11 +295,11 @@ const AltPaymentModal = ({
               button below to generate your personal membership id
             </p>
             <p className="counterSection" style={{ display: "inline" }}>
-              Use our mobile number (
-              <span style={{ fontWeight: "bold", color: "#FF8E01" }}>
+              Use our account number (
+              {/* <span style={{ fontWeight: "bold", color: "#FF8E01" }}>
                 {officialPhone}
-              </span>
-              ) and pay via UPI using either
+              </span> */}
+              will be sent via email) and pay via UPI using either
               <span style={{ fontWeight: 700, marginLeft: 3 }}>
                 Google Pay{" "}
               </span>

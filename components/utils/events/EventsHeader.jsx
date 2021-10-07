@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   eventsHero: {
     margin: "100px 0 30px 0",
     [theme.breakpoints.down("sm")]: {
-      marginTop: "50px",
+      marginTop: 75,
     },
   },
 }));

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SiteContext from "../../../context/siteContext";
 import Image from "next/image";
 import Link from "next/link";
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const emailSentToast = () =>
-  toast.dark("Email has been sent again", {
+  toast.dark("Email sent again", {
     position: "top-center",
     autoClose: 3000,
     hideProgressBar: true,
@@ -50,6 +50,7 @@ const emailSentToast = () =>
   });
 
 const AltPaymentInfo = (props) => {
+  const [emailSentCount, setEmailSentCount] = useState(0);
   const classes = useStyles();
   const siteContext = useContext(SiteContext);
 
@@ -69,6 +70,7 @@ const AltPaymentInfo = (props) => {
           props.alumniInformation.membership_type
         );
       updateManualPaymentNotificationStatus(props.alumniInformation.email);
+      setEmailSentCount((emailSentCount) => emailSentCount + 1);
     }
   }, []);
 
@@ -173,6 +175,7 @@ const AltPaymentInfo = (props) => {
                 borderColor: "currentcolor",
                 padding: 1.5,
               }}
+              disabled={emailSentCount >= 3}
               onClick={() => {
                 sendManualPaymentEmail(
                   props.alumniInformation.first_name,
@@ -184,6 +187,7 @@ const AltPaymentInfo = (props) => {
                   props.alumniInformation.email
                 );
                 emailSentToast();
+                setEmailSentCount((emailSentCount) => emailSentCount + 1);
               }}
             >
               Resend

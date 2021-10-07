@@ -72,7 +72,7 @@ const Header = ({ styles }) => {
         </motion.h3>
 
         {/* Uncomment before launch */}
-        {/* <motion.button
+        <motion.button
           variants={variants}
           initial="initialButton"
           animate="animateButton"
@@ -81,7 +81,7 @@ const Header = ({ styles }) => {
           onClick={() => router.push("/pricing")}
         >
           Register
-        </motion.button> */}
+        </motion.button>
       </div>
       <div className={styles.chevronContainer}>
         <Link href="#welcome-letter">

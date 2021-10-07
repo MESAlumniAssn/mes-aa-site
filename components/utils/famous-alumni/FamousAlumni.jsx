@@ -65,7 +65,7 @@ const FamousAlumni = (props) => {
           style={{ paddingLeft: 20, paddingRight: 20 }}
           className="styledHeading"
         >
-          <span className="mainHeading">The Stars of MES College</span>
+          <span className="mainHeading">Our Stars</span>
         </Typography>
       </div>
       <div>
