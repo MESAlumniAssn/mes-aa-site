@@ -25,7 +25,7 @@ describe("Render the famous alumni page", () => {
     render(<FamousAlumni famousAlumni={famousAlumni} />);
 
     const heading = screen.getByRole("heading", {
-      name: /the stars of MES college/i,
+      name: /our stars/i,
     });
 
     expect(heading).toBeInTheDocument();
