@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   buttonStyle: {
     outline: "none",
     border: "none",
-    backgroundColor: "var(--secondary-color)",
+    backgroundColor: "var(--primary-color)",
     padding: "15px 20px",
     width: "250px",
     color: "#FFF",
@@ -112,6 +112,7 @@ const CreateTestimonialForm = ({
           right: 10,
           cursor: "pointer",
         }}
+        className="hideEsc"
       >
         ESC
       </p>
