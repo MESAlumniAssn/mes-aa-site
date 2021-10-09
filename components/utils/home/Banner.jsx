@@ -96,7 +96,7 @@ const Banner = () => {
                   {daysToRegistration === 1 ? "day" : "days"}.
                 </span>
               ) : (
-                "Registrations are now open"
+                "Registrations are now open 🎉"
               )}
             </div>
           </Typography>
