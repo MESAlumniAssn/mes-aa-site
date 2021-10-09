@@ -84,7 +84,7 @@ const AltPaymentInfo = (props) => {
             className={classes.textStyles}
           >
             <span className="secondaryHeading">
-              {props.alumniInformation.first_name}, You're almost there...
+              {props.alumniInformation.first_name}, you're almost there...
             </span>
           </Typography>
           {/* <div style={{ padding: "25px 0" }}>
@@ -132,9 +132,19 @@ const AltPaymentInfo = (props) => {
               We have emailed our bank details to{" "}
               <span style={{ color: "#FF8E01", fontWeight: 700 }}>
                 {props.alumniInformation.email}
-              </span>{" "}
-              .Once the payment is processed, you will receive the invoice via
-              email.
+              </span>
+              . Once the payment is processed, you will receive the receipt via
+              email. Also, the details about your{" "}
+              <span style={{ color: "#FF8E01", fontWeight: 700 }}>id card</span>{" "}
+              {props.alumniInformation.membership_type === "Lifetime" && (
+                <span>
+                  and{" "}
+                  <span style={{ color: "#FF8E01", fontWeight: 700 }}>
+                    membership certificate
+                  </span>
+                </span>
+              )}{" "}
+              will be communicated to you.
             </Typography>
 
             <Typography

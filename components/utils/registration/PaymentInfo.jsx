@@ -65,7 +65,7 @@ const PaymentInfo = (props) => {
           <Typography
             component="p"
             style={{
-              padding: "20px 0",
+              paddingTop: "20px",
               textAlign: "center",
             }}
           >
@@ -73,6 +73,26 @@ const PaymentInfo = (props) => {
             <span style={{ color: "#FF8E01", fontWeight: 700 }}>
               {props.userData.email}
             </span>
+          </Typography>
+
+          <Typography
+            component="p"
+            style={{
+              padding: "20px 0",
+              textAlign: "center",
+            }}
+          >
+            Details about your{" "}
+            <span style={{ color: "#FF8E01", fontWeight: 700 }}>id card</span>{" "}
+            {props.userData.membership_id.includes("-LM-") && (
+              <span>
+                and the{" "}
+                <span style={{ color: "#FF8E01", fontWeight: 700 }}>
+                  membership certificate
+                </span>
+              </span>
+            )}{" "}
+            will be shared with you soon!
           </Typography>
         </div>
       </div>
