@@ -71,7 +71,6 @@ const Header = ({ styles }) => {
           We endeavour to strengthen the connect among our alumni.
         </motion.h3>
 
-        {/* Uncomment before launch */}
         <motion.button
           variants={variants}
           initial="initialButton"

@@ -108,7 +108,6 @@ const Pricing = () => {
                   </Typography>
                 </div>
 
-                {/* Uncomment before launch */}
                 <div
                   style={{
                     textAlign: "center",
@@ -200,7 +199,6 @@ const Pricing = () => {
                     {planValues.annualMembershipCost}/yr
                   </Typography>
                 </div>
-                {/* Uncomment before launch */}
                 <div
                   style={{
                     textAlign: "center",

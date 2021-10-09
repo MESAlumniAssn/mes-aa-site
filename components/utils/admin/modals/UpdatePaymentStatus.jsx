@@ -288,8 +288,8 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                   variant="outlined"
                   style={{
                     marginTop: 25,
-                    height: 40,
-                    width: 80,
+                    height: 50,
+                    width: 90,
                     fontSize: "var(--button-font-size)",
                     backgroundColor: "var(--primary-color)",
                     color: "#FFFFFF",

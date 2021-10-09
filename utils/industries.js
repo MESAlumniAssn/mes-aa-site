@@ -1,4 +1,5 @@
 var industries = [
+  "Academics",
   "Accounting",
   "Airlines / Aviation",
   "Alternative Dispute Resolution",
@@ -54,7 +55,6 @@ var industries = [
   "Government Relations",
   "Graphic Design / Web Design",
   "Health / Fitness",
-  "Higher Education / Acadamia",
   "Hospital / Health Care",
   "Hospitality",
   "Human Resources / HR",

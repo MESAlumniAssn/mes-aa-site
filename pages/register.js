@@ -25,7 +25,6 @@ const Register = (props) => {
   const router = useRouter();
   const classes = useStyles();
 
-  // Uncomment before launch
   if (typeof window !== "undefined") {
     if (!localStorage.getItem("mesAAMembershipPlan")) {
       if (process.browser) {
@@ -39,8 +38,6 @@ const Register = (props) => {
   return (
     <RegisterHeadLayout>
       <div className={classes.root}>
-        {/* Add className={classes.root} before launch */}
-        {/* Uncomment before launch */}
         <RegistrationPage />
         {/* <RegistrationPreLaunch /> */}
       </div>

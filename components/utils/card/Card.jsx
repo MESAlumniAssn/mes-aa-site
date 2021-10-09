@@ -110,7 +110,7 @@ const Card = (props) => {
           <div
             style={{
               height: 200,
-              width: 200,
+              width: 190,
               borderRadius: "10px",
               padding: 3,
             }}
@@ -121,9 +121,9 @@ const Card = (props) => {
             }
           >
             <Image
-              src={props.userData.profile_url + "?tr:w-250"}
+              src={props.userData.profile_url + "/tr:w-200"}
               alt="User profile picture"
-              width={200}
+              width={190}
               height={200}
               className={classes.profileImage}
             />
@@ -134,6 +134,7 @@ const Card = (props) => {
             fontSize: "1.5rem",
             fontWeight: 900,
             textTransform: "uppercase",
+            padding: "0 2px",
           }}
           gutterBottom
         >

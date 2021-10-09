@@ -506,7 +506,6 @@ const RegistrationPage = (props) => {
                             type="submit"
                             variant="contained"
                             disabled={
-                              isLastStep || // Uncomment during launch
                               props.isSubmitting ||
                               paymentMessage ||
                               paymentVerified
@@ -519,9 +518,6 @@ const RegistrationPage = (props) => {
                               backgroundColor: "#b9ac92",
                               color: "var(--primary-color)",
                               letterSpacing: "1px",
-                              // Uncomment before launch
-                              textDecoration:
-                                isLastStep && "line-through solid 3px",
                             }}
                             endIcon={
                               <NavigateNextIcon style={{ fontSize: "2rem" }} />
@@ -571,37 +567,6 @@ const RegistrationPage = (props) => {
                         }
                       </Grid>
                     </Grid>
-
-                    {/* Uncomment during launch */}
-                    {isLastStep && (
-                      <div
-                        style={{
-                          marginTop: 20,
-                          fontWeight: 600,
-                          padding: "0 20px",
-                        }}
-                      >
-                        <FontAwesomeIcon
-                          icon={faHandPointRight}
-                          style={{
-                            marginRight: 5,
-                            fontSize: "1.3rem",
-                            color: "var(--primary-color)",
-                          }}
-                        />
-                        Online payments will start on{" "}
-                        <span
-                          style={{
-                            color: "var(--secondary-color)",
-                            borderBottom: "2px solid",
-                            fontWeight: 700,
-                          }}
-                        >
-                          10/10/2021
-                        </span>
-                        . Please use the manual payment option until then.
-                      </div>
-                    )}
 
                     {isLastStep && paymentMessage && (
                       <span

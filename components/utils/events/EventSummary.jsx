@@ -33,9 +33,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   eventImage: {
-    marginRight: 20,
+    marginRight: 30,
+    height: 150,
+    width: 150,
+    outline: "3px solid #F15C1C",
+    outlineOffset: 3,
+    borderRadius: 10,
     [theme.breakpoints.down("sm")]: {
       marginBottom: 20,
+      marginRight: 0,
     },
   },
   eventInfo: {
@@ -78,7 +84,9 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1rem",
     },
   },
-
+  coverPhoto: {
+    borderRadius: 10,
+  },
   buttonStyle: {
     color: "#FFF",
     fontSize: "1rem",
@@ -120,17 +128,19 @@ const EventSummary = ({ event }) => {
         <div className={classes.eventImage}>
           {event.cover_photo ? (
             <Image
-              src={event.cover_photo}
+              src={event.cover_photo + "/tr:w-150,h-150"}
               alt="cover_photo"
-              height={100}
-              width={100}
+              height={150}
+              width={150}
+              className={classes.coverPhoto}
             />
           ) : (
             <Image
               src={EVENT_DEFAULT}
               alt="cover_photo"
-              height={100}
-              width={100}
+              height={150}
+              width={150}
+              className={classes.coverPhoto}
             />
           )}
         </div>
