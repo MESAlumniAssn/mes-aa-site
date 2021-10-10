@@ -306,10 +306,10 @@ const RegistrationPage = (props) => {
 
     if (isLastStep) {
       // submitForm(values, actions);
-      actions.setSubmitting(false);
-      createOrder(parseInt(amount), "INR", shortId(), {
-        membershipType: localStorage.getItem("mesAAMembershipPlan"),
-      });
+      //  actions.setSubmitting(false);
+      // createOrder(parseInt(amount), "INR", shortId(), {
+      //   membershipType: localStorage.getItem("mesAAMembershipPlan"),
+      // });
     } else {
       // Validation for the profile pic
       if (activeStep === 0) {
@@ -452,7 +452,7 @@ const RegistrationPage = (props) => {
           >
             {(props) => (
               <div>
-                <Form id={formId} noValidate autoComplete="off">
+                <Form id={formId} autoComplete="off">
                   <Box boxShadow={10} className={classes.container}>
                     {authError && authError && !open && (
                       <div style={{ marginBottom: "20px" }}>
@@ -500,41 +500,134 @@ const RegistrationPage = (props) => {
                         )}
                       </Grid>
 
-                      <Grid item>
-                        {
-                          <Button
-                            type="submit"
-                            variant="contained"
-                            disabled={
-                              props.isSubmitting ||
-                              paymentMessage ||
-                              paymentVerified
-                            }
-                            style={{
-                              width: isLastStep ? "12rem" : "9rem",
-                              padding: "10px",
-                              fontSize: "var(--button-font-size)",
-                              fontWeight: 900,
-                              backgroundColor: "#b9ac92",
-                              color: "var(--primary-color)",
-                              letterSpacing: "1px",
-                            }}
-                            endIcon={
-                              <NavigateNextIcon style={{ fontSize: "2rem" }} />
-                            }
-                            onClick={() => {
-                              isLastStep && showPaymentMessage(true);
-                            }}
-                          >
-                            {props.isSubmitting && !authError ? (
-                              <Image
-                                src={"/loader.svg"}
-                                alt="Loading..."
-                                height={25}
-                                width={25}
-                              />
-                            ) : isLastStep ? (
-                              paymentMessage ? (
+                      {!isLastStep && (
+                        <Grid item>
+                          {
+                            <Button
+                              type="submit"
+                              variant="contained"
+                              disabled={
+                                props.isSubmitting ||
+                                paymentMessage ||
+                                paymentVerified
+                              }
+                              style={{
+                                width: isLastStep ? "12rem" : "9rem",
+                                padding: "10px",
+                                fontSize: "var(--button-font-size)",
+                                fontWeight: 900,
+                                backgroundColor: "#b9ac92",
+                                color: "var(--primary-color)",
+                                letterSpacing: "1px",
+                              }}
+                              endIcon={
+                                <NavigateNextIcon
+                                  style={{ fontSize: "2rem" }}
+                                />
+                              }
+                              onClick={() => {
+                                isLastStep && showPaymentMessage(true);
+                              }}
+                            >
+                              {props.isSubmitting && !authError ? (
+                                <Image
+                                  src={"/loader.svg"}
+                                  alt="Loading..."
+                                  height={25}
+                                  width={25}
+                                />
+                              ) : isLastStep ? (
+                                paymentMessage ? (
+                                  <div
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      justifyContent: "space-around",
+                                    }}
+                                  >
+                                    <span
+                                      style={{
+                                        marginRight: 5,
+                                        fontSize: "0.8rem",
+                                      }}
+                                    >
+                                      Please wait
+                                    </span>
+                                    <Image
+                                      src={"/loader.svg"}
+                                      alt="Loading..."
+                                      height={25}
+                                      width={25}
+                                    />
+                                  </div>
+                                ) : (
+                                  "Pay Online"
+                                )
+                              ) : (
+                                "Next"
+                              )}
+                            </Button>
+                          }
+                        </Grid>
+                      )}
+
+                      {isLastStep && (
+                        <Grid item>
+                          {
+                            <Button
+                              variant="contained"
+                              disabled={
+                                props.isSubmitting ||
+                                paymentMessage ||
+                                paymentVerified
+                              }
+                              style={{
+                                width: "12rem",
+                                padding: "10px",
+                                fontSize: "var(--button-font-size)",
+                                fontWeight: 900,
+                                backgroundColor: "#b9ac92",
+                                color: "var(--primary-color)",
+                                letterSpacing: "1px",
+                              }}
+                              endIcon={
+                                <NavigateNextIcon
+                                  style={{ fontSize: "2rem" }}
+                                />
+                              }
+                              onClick={() => {
+                                var amount =
+                                  localStorage.getItem(
+                                    "mesAAMembershipPlan"
+                                  ) === "Lifetime"
+                                    ? process.env
+                                        .NEXT_PUBLIC_LIFE_MEMBERSHIP_AMOUNT *
+                                      100
+                                    : process.env
+                                        .NEXT_PUBLIC_ANNUAL_MEMBERSHIP_AMOUNT *
+                                      100;
+
+                                isLastStep && showPaymentMessage(true);
+                                createOrder(
+                                  parseInt(amount),
+                                  "INR",
+                                  shortId(),
+                                  {
+                                    membershipType: localStorage.getItem(
+                                      "mesAAMembershipPlan"
+                                    ),
+                                  }
+                                );
+                              }}
+                            >
+                              {props.isSubmitting && !authError ? (
+                                <Image
+                                  src={"/loader.svg"}
+                                  alt="Loading..."
+                                  height={25}
+                                  width={25}
+                                />
+                              ) : paymentMessage ? (
                                 <div
                                   style={{
                                     display: "flex",
@@ -559,13 +652,11 @@ const RegistrationPage = (props) => {
                                 </div>
                               ) : (
                                 "Pay Online"
-                              )
-                            ) : (
-                              "Next"
-                            )}
-                          </Button>
-                        }
-                      </Grid>
+                              )}
+                            </Button>
+                          }
+                        </Grid>
+                      )}
                     </Grid>
 
                     {isLastStep && paymentMessage && (
