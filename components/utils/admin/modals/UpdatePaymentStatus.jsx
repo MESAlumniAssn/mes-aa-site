@@ -223,7 +223,7 @@ const UpdatePaymentStatus = ({ paymentStatusOpen, setPaymentStatusOpen }) => {
                 width={30}
               />
             </div>
-          ) : user && user !== "That id does not exist" ? (
+          ) : user && user !== "That id does not exist for a manual payment" ? (
             <div style={{ marginTop: 25 }}>
               <Typography style={{ fontSize: "1.3rem" }}>
                 Details for{" "}

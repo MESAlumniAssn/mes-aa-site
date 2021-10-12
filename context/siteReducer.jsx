@@ -45,6 +45,7 @@ import {
   EVENTS_FAILURE,
   UPCOMING_EVENTS,
   COMPLETED_EVENTS,
+  DELETE_TEMP_USER,
 } from "./Types";
 
 const siteReducer = (state, action) => {
@@ -110,7 +111,12 @@ const siteReducer = (state, action) => {
         loading: false,
         renewedMemberships: action.payload,
       };
-
+    case DELETE_TEMP_USER:
+      return {
+        ...state,
+        isRegistered: false,
+        user: null,
+      };
     case METRICS_ERROR:
     case LM_FETCH_ERROR:
     case LM_PENDING_FETCH_ERROR:

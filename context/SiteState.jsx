@@ -48,6 +48,7 @@ import {
   EVENTS_FAILURE,
   UPCOMING_EVENTS,
   COMPLETED_EVENTS,
+  DELETE_TEMP_USER,
 } from "./Types";
 
 const SiteState = (props) => {
@@ -110,6 +111,7 @@ const SiteState = (props) => {
     paymentMode,
     paymentStatus,
     orderId,
+    paymentId,
     images
   ) => {
     const formData = new FormData();
@@ -139,6 +141,7 @@ const SiteState = (props) => {
     formData.set("payment_mode", paymentMode);
     formData.set("payment_status", paymentStatus);
     formData.set("razorpay_order_id", orderId);
+    formData.set("razorpay_payment_id", paymentId);
     images !== []
       ? images.forEach((file) => formData.append("images", file))
       : formData.set("images", images);
@@ -194,15 +197,16 @@ const SiteState = (props) => {
   };
 
   // Delete temporary user - this is run if the user closes the payment modal
-  // const deleteTempUser = async (altUserId) => {
-  //   try {
-  //     await axios.delete(
-  //       `${process.env.NEXT_PUBLIC_API_URL}/user/delete/${altUserId}`
-  //     );
-  //   } catch (err) {
-  //     console.error(err.response.data.detail);
-  //   }
-  // };
+  const deleteTempUser = async (altUserId) => {
+    try {
+      await axios.delete(
+        `${process.env.NEXT_PUBLIC_API_URL}/user/delete/${altUserId}`
+      );
+      dispatch({ type: DELETE_TEMP_USER });
+    } catch (err) {
+      console.error(err.response.data.detail);
+    }
+  };
 
   // Metrics
   const generateMetricCounts = async () => {
@@ -838,7 +842,7 @@ const SiteState = (props) => {
         setLoading,
         registerUser,
         checkForExistingEmail,
-        // deleteTempUser,
+        deleteTempUser,
         generateMetricCounts,
         getLifeMembers,
         getAnnualMembers,

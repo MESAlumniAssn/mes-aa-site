@@ -109,7 +109,7 @@ const RegistrationPage = (props) => {
     isRegistered,
     verifyPayment,
     user,
-    // deleteTempUser,
+    deleteTempUser,
     sendWelcomeEmail,
     sendPaymentReceiptEmail,
   } = siteContext;
@@ -140,70 +140,99 @@ const RegistrationPage = (props) => {
   // Runs once the registration is complete and we are ready for payment
   useEffect(() => {
     if (!authError && paymentOrder) {
-      displayRazorPay();
+      registerUser(
+        JSON.parse(localStorage.getItem("mesAAUser")).prefix,
+        JSON.parse(localStorage.getItem("mesAAUser")).firstName,
+        JSON.parse(localStorage.getItem("mesAAUser")).lastName,
+        JSON.parse(localStorage.getItem("mesAAUser")).email,
+        JSON.parse(localStorage.getItem("mesAAUser")).mobile,
+        JSON.parse(localStorage.getItem("mesAAUser")).birthday,
+        JSON.parse(localStorage.getItem("mesAAUser")).address1,
+        JSON.parse(localStorage.getItem("mesAAUser")).address2,
+        JSON.parse(localStorage.getItem("mesAAUser")).city,
+        JSON.parse(localStorage.getItem("mesAAUser")).state,
+        JSON.parse(localStorage.getItem("mesAAUser")).pincode,
+        JSON.parse(localStorage.getItem("mesAAUser")).country,
+        JSON.parse(localStorage.getItem("mesAAUser")).fromYear,
+        JSON.parse(localStorage.getItem("mesAAUser")).toYear,
+        JSON.parse(localStorage.getItem("mesAAUser")).streamPuc,
+        JSON.parse(localStorage.getItem("mesAAUser")).streamDegree,
+        JSON.parse(localStorage.getItem("mesAAUser")).streamPg,
+        JSON.parse(localStorage.getItem("mesAAUser")).streamOthers,
+        JSON.parse(localStorage.getItem("mesAAUser")).vision,
+        JSON.parse(localStorage.getItem("mesAAUser")).profession,
+        JSON.parse(localStorage.getItem("mesAAUser")).interest,
+        JSON.parse(localStorage.getItem("mesAAUser")).membership,
+        "O",
+        false, // payment status
+        paymentOrder.id,
+        null, // razorpay payment id
+        files
+      );
+    }
+
+    if (authError) {
+      showPaymentMessage(false);
     }
   }, [paymentOrder, authError]);
+
+  useEffect(() => {
+    if (isRegistered && mode === "O") displayRazorPay();
+  }, [isRegistered]);
 
   // Redirect once payment verification is complete
   useEffect(() => {
     if (paymentVerified !== null) {
       // Razorpay passes a null status for verified/successful payments
       if (paymentVerified.status === null) {
-        registerUser(
-          JSON.parse(localStorage.getItem("mesAAUser")).prefix,
-          JSON.parse(localStorage.getItem("mesAAUser")).firstName,
-          JSON.parse(localStorage.getItem("mesAAUser")).lastName,
-          JSON.parse(localStorage.getItem("mesAAUser")).email,
-          JSON.parse(localStorage.getItem("mesAAUser")).mobile,
-          JSON.parse(localStorage.getItem("mesAAUser")).birthday,
-          JSON.parse(localStorage.getItem("mesAAUser")).address1,
-          JSON.parse(localStorage.getItem("mesAAUser")).address2,
-          JSON.parse(localStorage.getItem("mesAAUser")).city,
-          JSON.parse(localStorage.getItem("mesAAUser")).state,
-          JSON.parse(localStorage.getItem("mesAAUser")).pincode,
-          JSON.parse(localStorage.getItem("mesAAUser")).country,
-          JSON.parse(localStorage.getItem("mesAAUser")).fromYear,
-          JSON.parse(localStorage.getItem("mesAAUser")).toYear,
-          JSON.parse(localStorage.getItem("mesAAUser")).streamPuc,
-          JSON.parse(localStorage.getItem("mesAAUser")).streamDegree,
-          JSON.parse(localStorage.getItem("mesAAUser")).streamPg,
-          JSON.parse(localStorage.getItem("mesAAUser")).streamOthers,
-          JSON.parse(localStorage.getItem("mesAAUser")).vision,
-          JSON.parse(localStorage.getItem("mesAAUser")).profession,
-          JSON.parse(localStorage.getItem("mesAAUser")).interest,
-          JSON.parse(localStorage.getItem("mesAAUser")).membership,
-          "O",
-          true, // payment status
-          paymentOrder.id,
-          files
-        );
+        if (user && mode === "O") {
+          let invoiceNumber = generateInvoiceNumber(user.id);
+          let fullName =
+            user.prefix + ". " + user.first_name + " " + user.last_name;
+
+          sendWelcomeEmail(user.email, user.first_name);
+          sendPaymentReceiptEmail(
+            fullName,
+            user.address1,
+            user.address2,
+            user.city,
+            user.state,
+            user.pincode,
+            user.country,
+            user.email,
+            invoiceNumber,
+            user.membership_type,
+            null
+          );
+          router.push(`/paymentverified/${user && user.alt_user_id}`);
+        }
       }
     }
   }, [paymentVerified]);
 
-  useEffect(() => {
-    if (user && mode === "O") {
-      let invoiceNumber = generateInvoiceNumber(user.id);
-      let fullName =
-        user.prefix + ". " + user.first_name + " " + user.last_name;
+  // useEffect(() => {
+  //   if (user && mode === "O") {
+  //     let invoiceNumber = generateInvoiceNumber(user.id);
+  //     let fullName =
+  //       user.prefix + ". " + user.first_name + " " + user.last_name;
 
-      sendWelcomeEmail(user.email, user.first_name);
-      sendPaymentReceiptEmail(
-        fullName,
-        user.address1,
-        user.address2,
-        user.city,
-        user.state,
-        user.pincode,
-        user.country,
-        user.email,
-        invoiceNumber,
-        user.membership_type,
-        null
-      );
-      router.push(`/paymentverified/${user && user.alt_user_id}`);
-    }
-  }, [isRegistered]);
+  //     sendWelcomeEmail(user.email, user.first_name);
+  //     sendPaymentReceiptEmail(
+  //       fullName,
+  //       user.address1,
+  //       user.address2,
+  //       user.city,
+  //       user.state,
+  //       user.pincode,
+  //       user.country,
+  //       user.email,
+  //       invoiceNumber,
+  //       user.membership_type,
+  //       null
+  //     );
+  //     router.push(`/paymentverified/${user && user.alt_user_id}`);
+  //   }
+  // }, [isRegistered]);
 
   const renderStep = (step, props) => {
     switch (step) {
@@ -377,11 +406,11 @@ const RegistrationPage = (props) => {
           JSON.parse(localStorage.getItem("mesAAUser")).email
         );
       },
-      // modal: {
-      //   ondismiss: function () {
-      //     deleteTempUser(localStorage.getItem("mesAATempUserToken"));
-      //   },
-      // },
+      modal: {
+        ondismiss: function () {
+          deleteTempUser(localStorage.getItem("mesAATempUserToken"));
+        },
+      },
       prefill: {
         name:
           JSON.parse(localStorage.getItem("mesAAUser")).firstName +
@@ -398,6 +427,7 @@ const RegistrationPage = (props) => {
       },
     };
     const paymentObj = new window.Razorpay(options);
+
     paymentObj.open();
   };
 

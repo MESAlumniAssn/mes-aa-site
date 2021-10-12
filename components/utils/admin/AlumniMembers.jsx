@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import SiteContext from "../../../context/siteContext";
+import { toast } from "react-toastify";
 
 // Material UI imports
 import {
@@ -14,6 +15,11 @@ import {
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Link from "@material-ui/core/Link";
+import IconButton from "@material-ui/core/IconButton";
+
+// Fontawesome imports
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClone } from "@fortawesome/free-solid-svg-icons";
 
 // Component imports
 import CustomPagination from "./CustomPagination";
@@ -85,6 +91,9 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: 0.1,
     },
   },
+  copyToastStyle: {
+    width: 75,
+  },
 }));
 
 const variants = {
@@ -118,6 +127,17 @@ const AlumniMembers = (props) => {
   } = siteContext;
   const classes = useStyles();
 
+  const copyToast = () =>
+    toast.dark("Copied", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      className: classes.copyToastStyle,
+    });
+
   const headerStyle =
     props.memberType === "Lifetime"
       ? props.paymentStatus === "active"
@@ -133,6 +153,21 @@ const AlumniMembers = (props) => {
       headerName: "Membership ID",
       width: 200,
       headerClassName: headerStyle,
+      renderCell: (params) => (
+        <div>
+          <span style={{ marginRight: 10 }}>{params.value}</span>
+          <IconButton
+            target="_blank"
+            style={{ padding: 0 }}
+            onClick={() => {
+              navigator.clipboard.writeText(params.value);
+              copyToast();
+            }}
+          >
+            <FontAwesomeIcon icon={faClone} style={{ fontSize: "1rem" }} />
+          </IconButton>
+        </div>
+      ),
     },
     {
       field: "full_name",
@@ -386,7 +421,7 @@ const AlumniMembers = (props) => {
                     rows={lifeMembers && lifeMembers}
                     columns={allMemberFields}
                     pagination
-                    pageSize={5}
+                    pageSize={20}
                     components={{
                       Toolbar: exportToolbar,
                       Pagination: CustomPagination,
