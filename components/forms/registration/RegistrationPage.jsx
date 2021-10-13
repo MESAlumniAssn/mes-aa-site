@@ -308,7 +308,7 @@ const RegistrationPage = (props) => {
       prefix: values.prefix,
       firstName: values.firstName,
       lastName: values.lastName,
-      email: values.email,
+      email: values.email.toLowerCase().trim(),
       mobile: values.mobile,
       birthday: values.birthday,
       address1: values.address1,

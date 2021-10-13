@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     [theme.breakpoints.down("md")]: {
-      margin: "100px 20px 50px 20px",
+      margin: "100px 30px 50px 30px",
     },
   },
   textStyles: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   contentBlock: {
     margin: "0 40px",
     [theme.breakpoints.down("sm")]: {
-      margin: "0 10px",
+      margin: "0 5px",
     },
   },
 }));
