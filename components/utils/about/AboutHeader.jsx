@@ -14,7 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // Fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTimes, faGlobe } from "@fortawesome/free-solid-svg-icons";
 
 // Component imports
 import RegistrationCertificateModal from "./RegistrationCertificateModal";
@@ -253,6 +253,24 @@ const AboutHeader = () => {
                 counselling sessions, participated in social-service activities
                 and imparted their expertise in various fields such as music,
                 dance and drama.
+              </p>
+              <p style={{ color: "var(--secondary-color)" }}>
+                <FontAwesomeIcon icon={faGlobe} />{" "}
+                <Link
+                  href="https://www.mesacs.in/web/mes-degree-college/Home"
+                  passHref={true}
+                >
+                  <a
+                    target="_blank"
+                    rel="noopener"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    className="styledLink"
+                  >
+                    <span>Official website</span>
+                  </a>
+                </Link>
               </p>
             </div>
           </Fade>

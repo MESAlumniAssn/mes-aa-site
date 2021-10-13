@@ -69,7 +69,7 @@ const Pricing = () => {
               className="pricingCard"
               style={{
                 color: "var(--primary-color)",
-                minHeight: 500, // Make 575 before launch
+                minHeight: 575,
               }}
               raised
             >
@@ -161,8 +161,7 @@ const Pricing = () => {
           <Grid item xs={12} sm={6}>
             <Card
               style={{
-                minHeight: 400,
-                minHeight: 500, // Make 575 before launch
+                minHeight: 575,
               }}
               raised
             >

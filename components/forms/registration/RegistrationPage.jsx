@@ -174,7 +174,7 @@ const RegistrationPage = (props) => {
     if (authError) {
       showPaymentMessage(false);
     }
-  }, [paymentOrder, authError]);
+  }, [paymentOrder]);
 
   useEffect(() => {
     if (isRegistered && mode === "O") displayRazorPay();
