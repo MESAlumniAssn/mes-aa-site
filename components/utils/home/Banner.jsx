@@ -87,7 +87,7 @@ const Banner = () => {
 
   const festivalIcon = (
     <img
-      src="https://ik.imagekit.io/pwxm960evbp/MES-AA/Site_Images/Misc/25d9946e30284598.png?updatedAt=1634227283640"
+      src="https://ik.imagekit.io/pwxm960evbp/MES-AA/Site_Images/Misc/25d9946e30284598_dZHAlvaxm.jpg?updatedAt=1634233389716"
       alt="Dussehra"
       height="40px"
       width="40px"
