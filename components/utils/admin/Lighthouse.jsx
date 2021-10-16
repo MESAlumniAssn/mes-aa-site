@@ -21,9 +21,9 @@ const useStyles = makeStyles((theme) => ({
     width: 170,
     cursor: "default",
     [theme.breakpoints.down("sm")]: {
-      padding: 5,
-      height: 120,
-      width: 120,
+      padding: 7,
+      height: 125,
+      width: 125,
     },
   },
   countGridItemHeading: {
@@ -353,6 +353,58 @@ const Lighthouse = () => {
                 >
                   <CountUp
                     end={(metrics && metrics.expired_memberships) || 0}
+                    duration={3}
+                  />
+                </Typography>
+              </motion.div>
+            </Grid>
+
+            <Grid item xs={6} sm={4} md={3} lg={2}>
+              <motion.div
+                variants={variants}
+                whileHover="hover"
+                className={classes.countGridItemCount}
+                style={{
+                  border: "3px solid #BBBBBB",
+                  color: "#BBBBBB",
+                  backgroundColor: "#082032",
+                }}
+              >
+                <Typography className={classes.countGridItemHeading}>
+                  Online Payments:
+                </Typography>
+                <Typography
+                  align="center"
+                  className={classes.gridItemCountValue}
+                >
+                  <CountUp
+                    end={(metrics && metrics.online_payments) || 0}
+                    duration={3}
+                  />
+                </Typography>
+              </motion.div>
+            </Grid>
+
+            <Grid item xs={6} sm={4} md={3} lg={2}>
+              <motion.div
+                variants={variants}
+                whileHover="hover"
+                className={classes.countGridItemCount}
+                style={{
+                  border: "3px solid #082032",
+                  color: "#082032",
+                  backgroundColor: "#BBBBBB",
+                }}
+              >
+                <Typography className={classes.countGridItemHeading}>
+                  Manual Payments:
+                </Typography>
+                <Typography
+                  align="center"
+                  className={classes.gridItemCountValue}
+                >
+                  <CountUp
+                    end={(metrics && metrics.manual_payments) || 0}
                     duration={3}
                   />
                 </Typography>

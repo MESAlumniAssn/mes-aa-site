@@ -268,13 +268,19 @@ const AlumniMembers = (props) => {
     {
       field: "other_interests",
       headerName: "Interests",
-      width: 300,
+      width: 1000,
       headerClassName: headerStyle,
     },
     {
       field: "vision",
       headerName: "Vision",
-      width: 500,
+      width: 1000,
+      headerClassName: headerStyle,
+    },
+    {
+      field: "payment_mode",
+      headerName: "Payment Mode",
+      width: 250,
       headerClassName: headerStyle,
     },
     {
