@@ -76,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
     width: 800,
     [theme.breakpoints.down("sm")]: {
       width: 350,
+      padding: 10,
     },
   },
   secondaryContent: {

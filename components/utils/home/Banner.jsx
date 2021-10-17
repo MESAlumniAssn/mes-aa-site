@@ -133,13 +133,13 @@ const Banner = () => {
               onClick={() => setShowBanner(false)}
             />
           </div>
-          <div className={classes.festivalBanner}>
+          {/* <div className={classes.festivalBanner}>
             {festivalIcon}
             <Typography component="p" className={classes.festivalBannerText}>
               Wishing our alumni a very happy Dussehra!
             </Typography>
             {festivalIcon}
-          </div>
+          </div> */}
         </motion.div>
       )}
     </Fragment>

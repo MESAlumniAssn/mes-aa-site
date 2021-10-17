@@ -72,7 +72,7 @@ const UpcomingEvents = () => {
           })
         ) : (
           <div style={{ paddingTop: 20, color: "#87A7B3" }}>
-            No events found
+            New events will be visible here!
           </div>
         )}
       </div>

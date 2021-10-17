@@ -92,7 +92,7 @@ const PersonalDetails = (props) => {
 
   const classes = useStyles();
 
-  //const { checkForExistingEmail } = siteContext;
+  const { checkForExistingEmail } = siteContext;
 
   const handleOpen = () => {
     setOpen(true);
@@ -211,7 +211,7 @@ const PersonalDetails = (props) => {
             label={email.label}
             length={50}
             fullWidth
-            // onKeyDown={(e) => checkForExistingEmail(e.target.value)}
+            onKeyDown={(e) => checkForExistingEmail(e.target.value)}
           />
         </Grid>
 

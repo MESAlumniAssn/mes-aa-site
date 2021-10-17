@@ -82,7 +82,7 @@ export default function ScrollableTabsButtonForce({ eventsData }) {
       <AppBar
         position="static"
         elevation={0}
-        style={{ backgroundColor: "#FEF7DC", padding: "10px 0 0 0" }}
+        style={{ backgroundColor: "#E9E2D0", padding: "10px 0 0 0" }}
       >
         <Tabs
           value={value}
