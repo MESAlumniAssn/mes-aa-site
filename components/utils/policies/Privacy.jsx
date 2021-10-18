@@ -20,9 +20,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "10px",
     boxShadow: "0 5px 12px rgba(0, 0, 0, 0.2)",
     margin: "0 30px",
-    padding: "15px 25px",
+    padding: "25px",
     [theme.breakpoints.down("sm")]: {
       margin: "0 15px",
+      padding: "20px",
     },
   },
   paragraph: {
@@ -149,15 +150,57 @@ const Privacy = () => {
             Emails
           </Typography>
           <p className={classes.paragraphText}>
-            Although we use{" "}
             <span
               className={classes.bulletLinkStyle}
               style={{ fontWeight: "bold" }}
             >
               SendGrid
             </span>{" "}
-            as our cloud email provider, your email address is not currently
-            shared with them.
+            is our cloud email provider. We use them for all outbound email.
+            Along with your email address, the type of information we share with{" "}
+            <span
+              className={classes.bulletLinkStyle}
+              style={{ fontWeight: "bold" }}
+            >
+              SendGrid
+            </span>{" "}
+            depends on the email being sent. For instance, when sending a
+            payment receipt we send your email address, name and correspondence
+            address to{" "}
+            <span
+              className={classes.bulletLinkStyle}
+              style={{ fontWeight: "bold" }}
+            >
+              SendGrid
+            </span>{" "}
+            so that it can be included in the outbound email. All emails contain
+            an unsubscribe link which our alumni can use to unsubscribe from
+            bulk emails sent by the Association.
+          </p>
+        </div>
+
+        <div className={classes.paragraph}>
+          <Typography component="h2" className={classes.subHeading}>
+            Data Retention
+          </Typography>
+          <p className={classes.paragraphText}>
+            We retain all the data provided by our alumni during registration.
+            At present, if you would like us to erase your data for some reason,
+            please contact us at{" "}
+            <Link
+              href="mailto:contact@mesalumniassociation.com"
+              passHref={true}
+            >
+              <a
+                target="_blank"
+                rel="noopener"
+                className={classes.bulletLinkStyle}
+                style={{ fontWeight: "bold", textDecoration: "underline" }}
+              >
+                contact@mesalumniassociation.com
+              </a>
+            </Link>{" "}
+            or use the contact form in the footer.
           </p>
         </div>
 
