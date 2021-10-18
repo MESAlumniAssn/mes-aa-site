@@ -105,92 +105,114 @@ const ProfileUploader = ({
   return (
     <div>
       <Dropzone
-        accept="image/jpg, image/jpeg, image/bmp, image/tiff, image/png, image/webp"
+        accept="image/jpg, image/jpeg, image/png, image/webp"
         onDrop={onDrop}
         maxFiles={1}
         aria-label="Dropzone for images"
+        maxSize={5242880} // 5 MB - 1048576 x 5
       >
-        {({ getRootProps, getInputProps, isDragReject, fileRejections }) => (
-          <section>
-            {newFiles.length === 0 && (
-              <div>
-                <Typography
-                  variant="subtitle1"
-                  component="subtitle1"
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignITems: "center",
-                    paddingTop: 20,
-                  }}
-                >
+        {({ getRootProps, getInputProps, isDragReject, fileRejections }) => {
+          {
+            return (
+              <section>
+                {newFiles.length === 0 && (
                   <div>
-                    Accepted image formats:{" "}
-                    <span style={{ color: "#c87941" }}>jpg</span>,&nbsp;
-                    <span style={{ color: "#c87941" }}>jpeg</span>,&nbsp;
-                    <span style={{ color: "#c87941" }}>bmp</span>,&nbsp;
-                    <span style={{ color: "#c87941" }}>tiff</span>,&nbsp;
-                    <span style={{ color: "#c87941" }}>webp</span>
-                    &nbsp;and&nbsp;
-                    <span style={{ color: "#c87941" }}>png</span>.
+                    <Typography
+                      variant="subtitle1"
+                      component="subtitle1"
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignITems: "center",
+                        paddingTop: 20,
+                      }}
+                    >
+                      <div>
+                        Accepted image formats:{" "}
+                        <span style={{ color: "#c87941" }}>jpg</span>,&nbsp;
+                        <span style={{ color: "#c87941" }}>jpeg</span>,&nbsp;
+                        <span style={{ color: "#c87941" }}>webp</span>
+                        &nbsp;and&nbsp;
+                        <span style={{ color: "#c87941" }}>png</span>.
+                      </div>
+                    </Typography>
+                    <div {...getRootProps()} className={classes.dropzone}>
+                      <input
+                        {...getInputProps()}
+                        aria-label="Drop zone for images"
+                      />
+                      <FontAwesomeIcon
+                        icon={faCamera}
+                        style={{ fontSize: "2rem" }}
+                      />
+                    </div>
                   </div>
-                </Typography>
-                <div {...getRootProps()} className={classes.dropzone}>
-                  <input
-                    {...getInputProps()}
-                    aria-label="Drop zone for images"
-                  />
-                  <FontAwesomeIcon
-                    icon={faCamera}
-                    style={{ fontSize: "2rem" }}
-                  />
-                </div>
-              </div>
-            )}
+                )}
 
-            {newFiles.length === 1 && (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  margin: "1rem 4rem 0 4rem",
-                  borderRadius: "10%",
-                  cursor: "not-allowed",
-                }}
-              >
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  style={{ fontSize: "2rem", color: "green" }}
-                />
-                <p style={{ fontSize: "1rem", color: "green", paddingTop: 1 }}>
-                  Photo added.
-                </p>
-              </div>
-            )}
-
-            <div>{images.slice(0, 1)}</div>
-
-            {isDragReject && (
-              <div className={classes.fileUploadError}>
-                <FontAwesomeIcon icon={faExclamationTriangle} /> Accepted image
-                formats - jpg, jpeg, bmp, tiff, png and gif
-              </div>
-            )}
-
-            {fileRejections &&
-              fileRejections.map(({ file, errors }) => (
-                <div>
-                  {errors.map((e) => (
-                    <p key={e.code} className={classes.fileUploadError}>
-                      <FontAwesomeIcon icon={faExclamationTriangle} /> Accepted
-                      image formats - jpg, jpeg, bmp, tiff, png and gif
+                {newFiles.length === 1 && (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      margin: "1rem 4rem 0 4rem",
+                      borderRadius: "10%",
+                      cursor: "not-allowed",
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      style={{ fontSize: "2rem", color: "green" }}
+                    />
+                    <p
+                      style={{
+                        fontSize: "1rem",
+                        color: "green",
+                        paddingTop: 1,
+                      }}
+                    >
+                      Photo added.
                     </p>
+                  </div>
+                )}
+
+                <div>{images.slice(0, 1)}</div>
+
+                {isDragReject && (
+                  <div className={classes.fileUploadError}>
+                    <FontAwesomeIcon icon={faExclamationTriangle} /> Accepted
+                    image formats - jpg, jpeg, png and webp
+                  </div>
+                )}
+
+                {fileRejections &&
+                  fileRejections.map(({ file, errors }) => (
+                    <div>
+                      {errors.map((e) => {
+                        if (e.code === "file-invalid-type") {
+                          return (
+                            <p key={e.code} className={classes.fileUploadError}>
+                              <FontAwesomeIcon icon={faExclamationTriangle} />{" "}
+                              Accepted image formats - jpg, jpeg, png and webp
+                            </p>
+                          );
+                        }
+
+                        if (e.code === "file-too-large") {
+                          return (
+                            <p key={e.code} className={classes.fileUploadError}>
+                              <FontAwesomeIcon icon={faExclamationTriangle} />{" "}
+                              Image cannot be larger than 5 MB
+                            </p>
+                          );
+                        }
+                      })}
+                    </div>
                   ))}
-                </div>
-              ))}
-          </section>
-        )}
+              </section>
+            );
+          }
+        }}
       </Dropzone>
     </div>
   );

@@ -555,9 +555,6 @@ const RegistrationPage = (props) => {
                                   style={{ fontSize: "2rem" }}
                                 />
                               }
-                              onClick={() => {
-                                isLastStep && showPaymentMessage(true);
-                              }}
                             >
                               {props.isSubmitting && !authError ? (
                                 <Image
@@ -566,33 +563,6 @@ const RegistrationPage = (props) => {
                                   height={25}
                                   width={25}
                                 />
-                              ) : isLastStep ? (
-                                paymentMessage ? (
-                                  <div
-                                    style={{
-                                      display: "flex",
-                                      alignItems: "center",
-                                      justifyContent: "space-around",
-                                    }}
-                                  >
-                                    <span
-                                      style={{
-                                        marginRight: 5,
-                                        fontSize: "0.8rem",
-                                      }}
-                                    >
-                                      Please wait
-                                    </span>
-                                    <Image
-                                      src={"/loader.svg"}
-                                      alt="Loading..."
-                                      height={25}
-                                      width={25}
-                                    />
-                                  </div>
-                                ) : (
-                                  "Pay Online"
-                                )
                               ) : (
                                 "Next"
                               )}
@@ -650,14 +620,7 @@ const RegistrationPage = (props) => {
                                 );
                               }}
                             >
-                              {props.isSubmitting && !authError ? (
-                                <Image
-                                  src={"/loader.svg"}
-                                  alt="Loading..."
-                                  height={25}
-                                  width={25}
-                                />
-                              ) : paymentMessage ? (
+                              {paymentMessage ? (
                                 <div
                                   style={{
                                     display: "flex",
