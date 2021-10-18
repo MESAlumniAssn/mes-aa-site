@@ -42,7 +42,7 @@ const ContactHeadLayout = (props) => {
                         "postalCode": "560003",
 		                    "addressCountry": "IN",
                         "email": "mesalumniassn@gmail.com",
-                        "telephone": "08023562536"
+                        "telephone": "+91 9480797323"
                 }
               },
               {
@@ -51,7 +51,7 @@ const ContactHeadLayout = (props) => {
                 "datePublished": "10-06-2021",
                 "dateModified": "10-06-2021",
                 "url": "https://mesalumniassociation.com/contact",
-                "description": "Contact the Alumni Association or follow us on social media.,
+                "description": "Contact the Alumni Association or follow us on social media",
                 "inLanguage": "en",
                 "isPartOf": "https://mesalumniassociation.com",
                 "potentialAction": {

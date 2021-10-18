@@ -44,7 +44,7 @@ const GalleryHeadLayout = (props) => {
                         "postalCode": "560003",
 		                    "addressCountry": "IN",
                         "email": "mesalumniassn@gmail.com",
-                        "telephone": "08023562536"
+                        "telephone": "+91 9480797323"
                 }
               },
               {
@@ -53,7 +53,7 @@ const GalleryHeadLayout = (props) => {
                 "datePublished": "10-06-2021",
                 "dateModified": "10-06-2021",
                 "url": "https://mesalumniassociation.com/gallery",
-                "description": "Take a trip down memory lane and feel the nostalgia flood in as you scroll through hand-picked images of MES College taken over the years.",
+                "description": "Take a trip down memory lane and feel the nostalgia flood in as you scroll through hand-picked images of MES College taken over the years",
                 "inLanguage": "en",
                 "isPartOf": "https://mesalumniassociation.com",
                 "potentialAction": {

@@ -42,7 +42,7 @@ const EventsHeadLayout = (props) => {
                         "postalCode": "560003",
 		                    "addressCountry": "IN",
                         "email": "mesalumniassn@gmail.com",
-                        "telephone": "08023562536"
+                        "telephone": "+91 9480797323"
                 }
               },
               {
@@ -51,7 +51,7 @@ const EventsHeadLayout = (props) => {
                 "datePublished": "10-06-2021",
                 "dateModified": "10-06-2021",
                 "url": "https://mesalumniassociation.com/events",
-                "description": "There is always something happening in our association. Browse through the catalogue of events. Attend in person or online.",
+                "description": "There is always something happening in our association. Browse through the catalogue of events. Attend in person or online",
                 "inLanguage": "en",
                 "isPartOf": "https://mesalumniassociation.com",
                 "potentialAction": {

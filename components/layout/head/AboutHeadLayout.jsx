@@ -39,7 +39,7 @@ const AboutHeadLayout = (props) => {
                         "postalCode": "560003",
 		                    "addressCountry": "IN",
                         "email": "mesalumniassn@gmail.com",
-                        "telephone": "08023562536"
+                        "telephone": "+91 9480797323"
                 }
               },
               {

@@ -42,7 +42,7 @@ const PricingHeadLayout = (props) => {
                         "postalCode": "560003",
 		                    "addressCountry": "IN",
                         "email": "mesalumniassn@gmail.com",
-                        "telephone": "08023562536"
+                        "telephone": "+91 9480797323"
                 }
               },
               {
@@ -51,7 +51,7 @@ const PricingHeadLayout = (props) => {
                 "datePublished": "10-06-2021",
                 "dateModified": "10-06-2021",
                 "url": "https://mesalumniassociation.com/pricing",
-                "description": "Choose between a lifetime or an annual membership and register yourself.,
+                "description": "Choose between a lifetime or an annual membership and register yourself",
                 "inLanguage": "en",
                 "isPartOf": "https://mesalumniassociation.com",
                 "potentialAction": {

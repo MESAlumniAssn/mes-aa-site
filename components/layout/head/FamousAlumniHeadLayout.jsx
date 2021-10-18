@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import { Fragment } from 'react'
-import CommonHeadLayout from './CommonHeadLayout'
+import Head from "next/head";
+import { Fragment } from "react";
+import CommonHeadLayout from "./CommonHeadLayout";
 
 const FamousAlumniHeadLayout = (props) => {
   return (
@@ -44,7 +44,7 @@ const FamousAlumniHeadLayout = (props) => {
                             "postalCode": "560003",
                             "addressCountry": "IN",
                             "email": "mesalumniassn@gmail.com",
-                            "telephone": "08023562536"
+                            "telephone": "+91 9480797323"
                     }
                   },
                   {
@@ -53,7 +53,7 @@ const FamousAlumniHeadLayout = (props) => {
                     "datePublished": "10-06-2021",
                     "dateModified": "10-06-2021",
                     "url": "https://mesalumniassociation.com/famousalumni",
-                    "description": "MES College has a rich history of alumni who have emerged as stalwarts in their chosen vocations. This page is a compilation of an ever-growing list.,
+                    "description": "MES College has a rich history of alumni who have emerged as stalwarts in their chosen vocations. This page is a compilation of an ever-growing list",
                     "inLanguage": "en",
                     "isPartOf": "https://mesalumniassociation.com",
                     "potentialAction": {
@@ -70,7 +70,7 @@ const FamousAlumniHeadLayout = (props) => {
       </Head>
       {props.children}
     </Fragment>
-  )
-}
+  );
+};
 
-export default FamousAlumniHeadLayout
+export default FamousAlumniHeadLayout;
