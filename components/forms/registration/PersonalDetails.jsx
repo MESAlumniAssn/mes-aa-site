@@ -211,7 +211,7 @@ const PersonalDetails = (props) => {
             label={email.label}
             length={50}
             fullWidth
-            onKeyDown={(e) => checkForExistingEmail(e.target.value)}
+            onInput={(e) => checkForExistingEmail(e.target.value)}
           />
         </Grid>
 

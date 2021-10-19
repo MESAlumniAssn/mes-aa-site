@@ -10,16 +10,19 @@ import Footer from "../components/layout/Footer";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   parentContainer: {
     height: "100%",
     marginBottom: 50,
   },
   testimonialsHero: {
-    padding: "100px 0 50px 0",
+    padding: "100px 0 30px 0",
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: 75,
+    },
   },
-});
+}));
 
 const testimonials = (props) => {
   const classes = useStyles();

@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   padmaAwardeesHeader: {
-    margin: "70px 0 70px 0",
+    margin: "50px 0 50px 0",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -41,6 +41,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+  },
+  subtitleText: {
+    fontWeight: 600,
+    paddingTop: 20,
+    textAlign: "center",
+    [theme.breakpoints.down("xs")]: {
+      textAlign: "left",
+    },
   },
 }));
 
@@ -69,7 +77,7 @@ const FamousAlumni = (props) => {
         </Typography>
       </div>
       <div>
-        <Typography style={{ fontWeight: 600, paddingTop: 20 }} align="center">
+        <Typography className={classes.subtitleText}>
           <span className="subtitle">
             An ever-growing compendium of our alumni who emerged as
             front-runners in their respective vocations

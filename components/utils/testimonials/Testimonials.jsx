@@ -15,7 +15,6 @@ const Testimonials = (props) => {
   useEffect(() => {
     if (inView) {
       animation.start((i) => ({
-        opacity: 1,
         y: 0,
         transition: { delay: i * 0.1 },
       }));
@@ -23,7 +22,6 @@ const Testimonials = (props) => {
 
     if (!inView) {
       animation.start((i) => ({
-        opacity: 0.5,
         y: 30,
       }));
     }
@@ -31,7 +29,7 @@ const Testimonials = (props) => {
 
   return (
     <Container maxWidth="lg" ref={ref}>
-      <div style={{ marginBottom: 50, textAlign: "center" }}>
+      <div style={{ marginBottom: 30, textAlign: "center" }}>
         <TestimonialButton />
       </div>
       <ResponsiveMasonry columnsCountBreakPoints={{ 300: 1, 600: 2, 960: 3 }}>
