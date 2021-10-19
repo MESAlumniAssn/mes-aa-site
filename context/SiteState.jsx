@@ -193,7 +193,7 @@ const SiteState = (props) => {
     );
 
     dispatch({ type: AUTH_ERROR, payload: res.data });
-    setTimeout(() => dispatch({ type: CLEAR_ERROR }), 7000);
+    // setTimeout(() => dispatch({ type: CLEAR_ERROR }), 7000);
   };
 
   // Delete temporary user - this is run if the user closes the payment modal

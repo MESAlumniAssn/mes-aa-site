@@ -33,10 +33,7 @@ import Terms from "../../../components/utils/generic/Terms";
 
 // Fontawesome icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faDotCircle,
-  faHandPointRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 // Helpers
 import registrationFormModel from "./FormModels/registrationFromModel";
@@ -76,7 +73,7 @@ const useStyles = makeStyles({
     },
   },
   button: {
-    marginTop: 30,
+    marginTop: 20,
     fontWeight: "bold",
   },
   registrationHero: {
@@ -112,6 +109,7 @@ const RegistrationPage = (props) => {
     deleteTempUser,
     sendWelcomeEmail,
     sendPaymentReceiptEmail,
+    checkForExistingEmail,
   } = siteContext;
 
   const currentValidationSchema = registrationValidationSchema[activeStep];
@@ -297,6 +295,7 @@ const RegistrationPage = (props) => {
   // };
 
   const handleSubmit = (values, actions) => {
+    checkForExistingEmail(values.email);
     actions.setSubmitting(true);
     var amount =
       localStorage.getItem("mesAAMembershipPlan") === "Lifetime"
@@ -367,9 +366,8 @@ const RegistrationPage = (props) => {
         }
       }
 
-      if (!authError) {
-        setActiveStep(activeStep + 1);
-      }
+      setActiveStep(activeStep + 1);
+
       actions.setTouched({});
       actions.setSubmitting(false);
     }
@@ -490,9 +488,22 @@ const RegistrationPage = (props) => {
                       </div>
                     )}
                     {renderStep(activeStep, props)}
-                    <div style={{ paddingTop: 20 }}>
+                    <div style={{ paddingTop: 20, paddingBottom: 20 }}>
                       <Terms />
                     </div>
+
+                    {activeStep === 0 && authError && (
+                      <Typography
+                        color="error"
+                        align="center"
+                        style={{ fontSize: "0.8rem", fontWeight: 700 }}
+                      >
+                        <FontAwesomeIcon icon={faExclamationTriangle} /> We have
+                        found discrepancies with some of the information. Please
+                        address them first.
+                      </Typography>
+                    )}
+
                     <Grid
                       container
                       justify="center"
@@ -537,6 +548,7 @@ const RegistrationPage = (props) => {
                               type="submit"
                               variant="contained"
                               disabled={
+                                (authError && authError) ||
                                 props.isSubmitting ||
                                 paymentMessage ||
                                 paymentVerified
@@ -577,6 +589,7 @@ const RegistrationPage = (props) => {
                             <Button
                               variant="contained"
                               disabled={
+                                (authError && authError) ||
                                 props.isSubmitting ||
                                 paymentMessage ||
                                 paymentVerified
