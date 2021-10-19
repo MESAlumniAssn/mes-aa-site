@@ -129,10 +129,9 @@ const ProfileUploader = ({
                     >
                       <div>
                         Accepted image formats:{" "}
-                        <span style={{ color: "#c87941" }}>jpg</span>,&nbsp;
-                        <span style={{ color: "#c87941" }}>jpeg</span>,&nbsp;
-                        <span style={{ color: "#c87941" }}>webp</span>
-                        &nbsp;and&nbsp;
+                        <span style={{ color: "#c87941" }}>jpg</span>,{" "}
+                        <span style={{ color: "#c87941" }}>jpeg</span>,{" "}
+                        <span style={{ color: "#c87941" }}>webp</span> and{" "}
                         <span style={{ color: "#c87941" }}>png</span>.
                       </div>
                     </Typography>
