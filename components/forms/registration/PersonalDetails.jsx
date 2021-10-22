@@ -24,7 +24,7 @@ import Typography from "@material-ui/core/Typography";
 
 // Fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCamera, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faCamera, faTimes, faStar } from "@fortawesome/free-solid-svg-icons";
 
 const prefixes = [
   {
@@ -62,10 +62,11 @@ const useStyles = makeStyles((theme) => ({
     padding: 20,
     paddingTop: "3.5rem",
     position: "relative",
-    height: 500,
-    width: 350,
-    [theme.breakpoints.up("sm")]: {
-      width: 600,
+    height: 650,
+    width: 500,
+    [theme.breakpoints.down("sm")]: {
+      height: 575,
+      width: 400,
     },
   },
   profilePicValidationBorder: {
@@ -321,8 +322,8 @@ const PersonalDetails = (props) => {
               <span className="secondaryHeading">Upload your recent photo</span>
             </Typography>
 
-            <div style={{ width: "100%", textAlign: "center" }}>
-              <ProfilePicTooltip
+            <div style={{ width: "100%", margin: "15px 10px 0 10px" }}>
+              {/* <ProfilePicTooltip
                 title="This photo will be used while generating your membership identification card."
                 interactive
                 leaveDelay={200}
@@ -340,7 +341,17 @@ const PersonalDetails = (props) => {
                 >
                   Why do we require your photo?
                 </Typography>
-              </ProfilePicTooltip>
+              </ProfilePicTooltip> */}
+              <p style={{ margin: 0, fontSize: "0.9rem", paddingBottom: 5 }}>
+                <FontAwesomeIcon icon={faStar} style={{ color: "#c87941" }} />{" "}
+                This photo will be used while generating your membership
+                identification card.
+              </p>
+
+              <p style={{ margin: 0, fontSize: "0.9rem", paddingBottom: 5 }}>
+                <FontAwesomeIcon icon={faStar} style={{ color: "#c87941" }} />{" "}
+                Please make sure the photo contains a close up of your face.
+              </p>
             </div>
             <ProfileUploader
               files={props.files}

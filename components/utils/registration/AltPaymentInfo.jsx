@@ -9,6 +9,10 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
+// Fontawesome imports
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRocket } from "@fortawesome/free-solid-svg-icons";
+
 const useStyles = makeStyles((theme) => ({
   parentContainer: {
     margin: "100px 0 50px 0",
@@ -35,6 +39,22 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 40px",
     [theme.breakpoints.down("sm")]: {
       margin: "0 5px",
+    },
+  },
+  proTip: {
+    margin: "30px 0",
+    textAlign: "center",
+    fontSize: "1.1rem",
+    [theme.breakpoints.down("sm")]: {
+      margin: "20px 0",
+      textAlign: "left",
+    },
+  },
+  proTipSpan: {
+    borderBottom: "double",
+    fontWeight: 700,
+    [theme.breakpoints.down("sm")]: {
+      borderBottom: "2px solid",
     },
   },
 }));
@@ -119,11 +139,18 @@ const AltPaymentInfo = (props) => {
                 padding: "20px 0",
               }}
             >
-              Please write down the membership id on the back of the cheque/DD
-              or mention it (as a comment) if paying via NEFT, IMPS or RTGS. If
-              you are paying via UPI, please mention the membership id in your
-              email containing a screenshot of the transaction.
+              Please write down the membership id on the back of the cheque/DD.
+              If paying via NEFT, IMPS, RTGS or UPI, please{" "}
+              <span style={{ borderBottom: "3px solid" }}>
+                email the screenshot of your transaction
+              </span>{" "}
+              to{" "}
+              <span style={{ color: "#FF8E01", fontWeight: 700 }}>
+                contact@mesalumniassociation.com
+              </span>{" "}
+              and mention the membership id in the email.
             </Typography>
+
             <Typography
               style={{
                 fontSize: "1.1rem",
@@ -146,7 +173,6 @@ const AltPaymentInfo = (props) => {
               )}{" "}
               will be communicated to you.
             </Typography>
-
             <Typography
               style={{
                 fontSize: "1.1rem",
@@ -165,6 +191,14 @@ const AltPaymentInfo = (props) => {
               </Link>{" "}
               if you have any questions.
             </Typography>
+          </div>
+
+          <div className={classes.proTip}>
+            <FontAwesomeIcon icon={faRocket} style={{ color: "#FF8E01" }} />{" "}
+            <span className={classes.proTipSpan}>PRO TIP</span>: Emailing a
+            screenshot of your transaction ensures a smooth and speedy
+            confirmation of your registration 😎. We can't wait to have you
+            onboard!
           </div>
 
           <div style={{ marginTop: 20 }} className={classes.textStyles}>
