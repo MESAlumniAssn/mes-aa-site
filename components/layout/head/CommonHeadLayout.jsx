@@ -9,7 +9,7 @@ const CommonHeadLayout = () => {
         content="width=device-width, initial-scale=1,maximum-scale=1, minimum-scale=1, viewport-fit=cover"
       />
       <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-      <meta name="theme-color" content="#b9ac92" />
+
       <link
         rel="apple-touch-icon"
         sizes="57x57"
@@ -102,7 +102,7 @@ const CommonHeadLayout = () => {
       <link rel="manifest" href="/site.webmanifest" />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6b3a01" />
       <meta name="msapplication-TileColor" content="#fff7de" />
-      <meta name="theme-color" content="#ffffff" />
+      <meta name="theme-color" content="#b9ac92" />
 
       <meta property="og:image" content={process.env.NEXT_PUBLIC_SITE_ICON} />
       <meta property="og:image:width" content="256" />
