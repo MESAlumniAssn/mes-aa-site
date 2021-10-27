@@ -264,8 +264,12 @@ const AltPaymentModal = ({
               </span>
             </p>
             <p className="counterSection">
-              Make the payment in the bank or on your bank's website and mention
-              the membership id during of the payment
+              Make the payment in the bank or on your bank's website. Email a
+              screenshot of the confirmation to{" "}
+              <span style={{ fontWeight: "bold", color: "#FF8E01" }}>
+                {officialEmail}
+              </span>{" "}
+              and mention your membership id in the email.
             </p>
           </div>
 
@@ -295,11 +299,7 @@ const AltPaymentModal = ({
               button below to generate your personal membership id
             </p>
             <p className="counterSection" style={{ display: "inline" }}>
-              Use our account number (
-              {/* <span style={{ fontWeight: "bold", color: "#FF8E01" }}>
-                {officialPhone}
-              </span> */}
-              will be sent via email) and pay via UPI using either
+              Pay via UPI using either
               <span style={{ fontWeight: 700, marginLeft: 3 }}>
                 Google Pay{" "}
               </span>
@@ -313,7 +313,7 @@ const AltPaymentModal = ({
                   marginRight: 3,
                   verticalAlign: "middle",
                 }}
-              />{" "}
+              />
               or{" "}
               <span style={{ fontWeight: 700, marginLeft: 3 }}>Phone Pe</span>{" "}
               <img
@@ -322,7 +322,10 @@ const AltPaymentModal = ({
                 height={25}
                 width={25}
                 style={{ marginLeft: 3, verticalAlign: "middle" }}
-              />
+              />{" "}
+              to our UPI id's (will be sent via email). Alternatively, you can
+              also use our account number (will also be sent via email) to make
+              the UPI payment.
             </p>
             <p className="counterSection">
               Send an email to{" "}
@@ -330,7 +333,7 @@ const AltPaymentModal = ({
                 {officialEmail}
               </span>{" "}
               with a screenshot of the transaction and mention your membership
-              id in the email
+              id in the email.
             </p>
           </div>
 
