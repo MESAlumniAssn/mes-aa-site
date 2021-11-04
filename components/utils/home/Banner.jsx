@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    // marginTop: 20,
   },
   festivalBannerText: {
     fontSize: "1.6rem",
@@ -87,10 +87,10 @@ const Banner = () => {
 
   const festivalIcon = (
     <img
-      src="https://ik.imagekit.io/pwxm960evbp/MES-AA/Site_Images/Misc/25d9946e30284598_dZHAlvaxm.jpg?updatedAt=1634233389716"
-      alt="Dussehra"
-      height="40px"
-      width="40px"
+      src="https://ik.imagekit.io/pwxm960evbp/MES-AA/Site_Images/Misc/fccc354445188d81.jpg?updatedAt=1636023373861"
+      alt="Diwali"
+      height="50px"
+      width="50px"
     />
   );
 
@@ -98,17 +98,10 @@ const Banner = () => {
     <Fragment>
       {showBanner && (
         <motion.div className={`animateNavLogoBanner ${classes.banner}`}>
-          <div>
+          {/* <div>
             <Typography component="p" style={{ textAlign: "center" }}>
               <div className={`subtitle ${classes.bannerText}`}>
-                {/* <FontAwesomeIcon
-                icon={faBullhorn}
-                style={{
-                  marginRight: 15,
-                  color: "#AAAAAA",
-                  fontSize: "1.8rem",
-                }}
-              /> */}
+
                 {daysToRegistration > 0 ? (
                   <span>
                     Dear Alumnus, registrations will be open in{" "}
@@ -132,14 +125,14 @@ const Banner = () => {
               className={`timesButtonAnimation ${classes.icon}`}
               onClick={() => setShowBanner(false)}
             />
-          </div>
-          {/* <div className={classes.festivalBanner}>
+          </div> */}
+          <div className={classes.festivalBanner}>
             {festivalIcon}
             <Typography component="p" className={classes.festivalBannerText}>
-              Wishing our alumni a very happy Dussehra!
+              Wishing our alumni a very happy Diwali!
             </Typography>
             {festivalIcon}
-          </div> */}
+          </div>
         </motion.div>
       )}
     </Fragment>
