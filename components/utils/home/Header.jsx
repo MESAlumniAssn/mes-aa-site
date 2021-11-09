@@ -43,7 +43,7 @@ const Header = ({ styles }) => {
 
   return (
     <Fragment>
-      <Banner />
+      {/* <Banner /> */}
       <div className={styles.headerContainer}>
         <motion.div
           variants={variants}
