@@ -28,10 +28,10 @@ const useStyles = makeStyles({
     backgroundImage: "url(/images/card/id-background-am.svg)",
   },
   profileBorderAM: {
-    border: "4px solid #f0a500",
+    border: "3px solid #f0a500",
   },
   profileBorderLM: {
-    border: "4px solid #F2F2F2",
+    border: "3px solid #F2F2F2",
   },
   textColorLM: {
     color: "#F2F2F2",
@@ -59,8 +59,8 @@ const Card = (props) => {
     <div className={classes.root}>
       <div
         style={{
-          height: 672,
-          width: 384,
+          height: 425,
+          width: 302,
           borderRadius: "10px",
           textAlign: "center",
         }}
@@ -76,23 +76,24 @@ const Card = (props) => {
             flexDirection: "column",
             alignItems: "center",
             //justifyContent: "space-around",
-            padding: "10px 5px 0 5px",
           }}
         >
-          <Image
-            src={"/images/card/id-card-logo.svg"}
-            alt="Logo"
-            height={80}
-            width={80}
-          />
+          <div style={{ marginTop: 25, marginBottom: -2 }}>
+            <Image
+              src={"/images/card/id-card-logo.svg"}
+              alt="Logo"
+              height={60}
+              width={60}
+            />
+          </div>
 
           <Typography
             style={{
-              fontSize: "1.2rem",
+              fontSize: "0.9rem",
               fontWeight: 700,
               color: "#000",
               padding: 0,
-              marginTop: 10,
+              marginTop: -2,
             }}
           >
             The MES College Alumni Association{" "}
@@ -101,7 +102,7 @@ const Card = (props) => {
         </div>
         <div
           style={{
-            margin: "20px 0",
+            margin: "5px 0",
             width: "100%",
             display: "flex",
             justifyContent: "center",
@@ -109,10 +110,10 @@ const Card = (props) => {
         >
           <div
             style={{
-              height: 200,
-              width: 190,
+              height: 140,
+              width: 130,
               borderRadius: "10px",
-              padding: 3,
+              padding: 2,
             }}
             className={
               props.userData.membership_type === "Lifetime"
@@ -121,30 +122,29 @@ const Card = (props) => {
             }
           >
             <Image
-              src={props.userData.profile_url + "/tr:w-200"}
+              src={props.userData.profile_url + "/tr:w-150"}
               alt="User profile picture"
-              width={190}
-              height={200}
+              width={130}
+              height={140}
               className={classes.profileImage}
             />
           </div>
         </div>
         <Typography
           style={{
-            fontSize: "1.5rem",
+            fontSize: props.userData.name.length < 25 ? "1rem" : "0.9rem",
             fontWeight: 900,
             textTransform: "uppercase",
-            padding: "0 2px",
+            padding: "1px 2px",
           }}
-          gutterBottom
         >
           {props.userData.name}
         </Typography>
         <Typography
           style={{
-            fontSize: "1.25rem",
+            fontSize: "0.95rem",
             fontWeight: "bold",
-            marginTop: 20,
+            marginTop: 7,
           }}
           gutterBottom
         >
@@ -152,16 +152,15 @@ const Card = (props) => {
         </Typography>
         <Typography
           style={{
-            fontSize: "1.25rem",
+            fontSize: "0.85rem",
             fontWeight: "bold",
           }}
-          gutterBottom
         >
           Batch: {props.userData.batch}
         </Typography>
         <Typography
           style={{
-            fontSize: "1.25rem",
+            fontSize: "0.85rem",
             fontWeight: "bold",
           }}
         >
@@ -171,9 +170,9 @@ const Card = (props) => {
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Typography
             style={{
-              fontSize: "1.75rem",
+              fontSize: "1rem",
               fontWeight: "bold",
-              paddingTop: 20,
+              paddingTop: 5,
             }}
             align="center"
             gutterBottom
