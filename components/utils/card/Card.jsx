@@ -78,22 +78,23 @@ const Card = (props) => {
             //justifyContent: "space-around",
           }}
         >
-          <div style={{ marginTop: 25, marginBottom: -2 }}>
+          <div style={{ marginTop: 35, marginBottom: -10 }}>
             <Image
               src={"/images/card/id-card-logo.svg"}
               alt="Logo"
-              height={60}
-              width={60}
+              height={50}
+              width={50}
             />
           </div>
 
           <Typography
             style={{
-              fontSize: "0.9rem",
+              fontSize: "0.8rem",
               fontWeight: 700,
               color: "#000",
               padding: 0,
-              marginTop: -2,
+              marginTop: 1,
+              textTransform: "uppercase",
             }}
           >
             The MES College Alumni Association{" "}
