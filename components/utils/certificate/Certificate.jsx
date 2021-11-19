@@ -27,7 +27,7 @@ const Certificate = (props) => {
           height: 950,
           alignItems: "center",
           padding: "6.5rem",
-          backgroundImage: "url(/images/certificate/certificate-bg.svg)",
+          backgroundImage: "url(/images/certificate/certificate-bg.jpg)",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
@@ -117,10 +117,9 @@ const Certificate = (props) => {
             fontFamily: "'Averia Serif Libre', cursive",
             fontSize: "3.5rem",
             fontWeight: 900,
-            paddingTop: 10,
             textTransform: "uppercase",
             color: "#99154e",
-            margin: 0,
+            marginTop: props.userData.name.length <= 25 ? 10 : -10,
             padding: 0,
           }}
         >
@@ -164,7 +163,7 @@ const Certificate = (props) => {
               style={{
                 fontSize: "1.25rem",
                 fontFamily: "'Averia Serif Libre', cursive",
-                marginTop: -15,
+                marginTop: -20,
                 textTransform: "uppercase",
                 fontWeight: 700,
               }}
@@ -202,7 +201,7 @@ const Certificate = (props) => {
               style={{
                 fontSize: "1.25rem",
                 fontFamily: "'Averia Serif Libre', cursive",
-                marginTop: -15,
+                marginTop: -20,
                 textTransform: "uppercase",
                 fontWeight: 700,
               }}
