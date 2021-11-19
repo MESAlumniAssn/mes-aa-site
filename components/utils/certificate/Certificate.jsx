@@ -145,19 +145,21 @@ const Certificate = (props) => {
         <div
           id="signatures"
           style={{
-            display: "flex",
-            justifyContent: "space-between",
+            display: "grid",
+            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
             marginTop: props.userData.name.length <= 25 ? 30 : 0,
             padding: "0 10px",
           }}
         >
           <div id="signature1">
-            <Image
-              src={"/images/certificate/signature1.png"}
-              alt="Signature of the President"
-              width={300}
-              height={100}
-            />
+            <div style={{ textAlign: "center" }}>
+              <Image
+                src={"/images/certificate/signature1.png"}
+                alt="Signature of the President"
+                width={300}
+                height={100}
+              />
+            </div>
             <Typography
               style={{
                 fontSize: "1.25rem",
@@ -188,12 +190,14 @@ const Certificate = (props) => {
           </Typography>
 
           <div id="signature2">
-            <Image
-              src={"/images/certificate/signature2.png"}
-              alt="Signature of the Secretary"
-              width={250}
-              height={100}
-            />
+            <div style={{ textAlign: "center" }}>
+              <Image
+                src={"/images/certificate/signature2.png"}
+                alt="Signature of the Secretary"
+                width={250}
+                height={100}
+              />
+            </div>
             <Typography
               style={{
                 fontSize: "1.25rem",
