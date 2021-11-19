@@ -23,11 +23,13 @@ const Certificate = (props) => {
     <div className={classes.root}>
       <div
         style={{
-          width: 1056,
-          height: 763,
+          width: 1350,
+          height: 950,
           alignItems: "center",
           padding: "6.5rem",
           backgroundImage: "url(/images/certificate/certificate-bg.svg)",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <div
@@ -35,13 +37,14 @@ const Certificate = (props) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-around",
+            paddingTop: 45,
           }}
         >
-          <Image src={LOGO} alt="Logo" height={150} width={150} />
+          <Image src="/logo.png" alt="Logo" height={180} width={180} />
           <div style={{ paddingLeft: 10 }}>
             <Typography
               style={{
-                fontSize: "1.9rem",
+                fontSize: "2rem",
                 fontWeight: 900,
                 textTransform: "uppercase",
                 fontFamily: "'Averia Serif Libre', cursive",
@@ -54,7 +57,7 @@ const Certificate = (props) => {
             </Typography>
             <Typography
               style={{
-                fontSize: "0.8rem",
+                fontSize: "1rem",
                 fontWeight: 900,
                 textTransform: "uppercase",
                 fontFamily: "'Averia Serif Libre', cursive",
@@ -71,9 +74,9 @@ const Certificate = (props) => {
           align="center"
           style={{
             fontFamily: "'Averia Serif Libre', cursive",
-            fontSize: "2.7rem",
+            fontSize: "3rem",
             fontWeight: 900,
-            paddingTop: 5,
+            paddingTop: 10,
             textTransform: "uppercase",
           }}
         >
@@ -101,6 +104,7 @@ const Certificate = (props) => {
             fontSize: "1.7rem",
             fontWeight: 900,
             paddingTop: 10,
+            paddingBottom: 20,
             textTransform: "uppercase",
           }}
           gutterBottom
@@ -127,11 +131,11 @@ const Certificate = (props) => {
           align="center"
           style={{
             fontFamily: "'Averia Serif Libre', cursive",
-            fontSize: "1.4rem",
+            fontSize: "1.5rem",
             fontWeight: 900,
             paddingTop: 10,
             textTransform: "uppercase",
-            margin: 0,
+            marginTop: props.userData.name.length <= 25 ? 20 : 0,
             padding: 0,
           }}
         >
@@ -143,7 +147,8 @@ const Certificate = (props) => {
           style={{
             display: "flex",
             justifyContent: "space-between",
-            marginTop: 10,
+            marginTop: props.userData.name.length <= 25 ? 30 : 0,
+            padding: "0 10px",
           }}
         >
           <div id="signature1">
@@ -157,7 +162,7 @@ const Certificate = (props) => {
               style={{
                 fontSize: "1.25rem",
                 fontFamily: "'Averia Serif Libre', cursive",
-                marginTop: -10,
+                marginTop: -15,
                 textTransform: "uppercase",
                 fontWeight: 700,
               }}
@@ -186,14 +191,14 @@ const Certificate = (props) => {
             <Image
               src={"/images/certificate/signature2.png"}
               alt="Signature of the Secretary"
-              width={300}
+              width={250}
               height={100}
             />
             <Typography
               style={{
                 fontSize: "1.25rem",
                 fontFamily: "'Averia Serif Libre', cursive",
-                marginTop: -10,
+                marginTop: -15,
                 textTransform: "uppercase",
                 fontWeight: 700,
               }}
