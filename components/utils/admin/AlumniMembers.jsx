@@ -284,6 +284,12 @@ const AlumniMembers = (props) => {
       headerClassName: headerStyle,
     },
     {
+      field: "joining_date",
+      headerName: "Date of Joining",
+      width: 250,
+      headerClassName: headerStyle,
+    },
+    {
       field: "profile_url",
       headerName: "Profile Photo",
       width: 1000,
