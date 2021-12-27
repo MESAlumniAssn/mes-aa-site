@@ -14,6 +14,7 @@ import {
   faCalendarAlt,
   faMapMarkerAlt,
   faClock,
+  faCrown,
 } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
   eventDescription: {
     fontSize: "1.1rem",
+    whiteSpace: "pre-wrap",
   },
 
   navigationLinkContainer: {
@@ -123,6 +125,21 @@ const SelectedEventDetails = ({ event }) => {
             <Typography component="p" className={classes.eventTitle}>
               {event.date} <span style={{ color: "#4B5563" }}>at</span>{" "}
               {event.time}
+            </Typography>
+          </div>
+          <div style={{ marginBottom: 25 }}>
+            <p
+              style={{
+                fontWeight: "bold",
+                margin: 0,
+                color: "#4B5563",
+                paddingBottom: 10,
+              }}
+            >
+              <FontAwesomeIcon icon={faCrown} /> CHIEF GUEST
+            </p>
+            <Typography component="p" className={classes.eventTitle}>
+              {event.chief_guest}
             </Typography>
           </div>
           <Divider style={{ marginBottom: 25, background: "#4B5563" }} />

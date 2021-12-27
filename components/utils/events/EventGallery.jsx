@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "50px 0",
     paddingTop: 25,
     paddingBottom: 10,
-    backgroundColor: "var(--secondary-background)",
+    // backgroundColor: "var(--secondary-background)",
     borderRadius: 5,
   },
   heading: {
