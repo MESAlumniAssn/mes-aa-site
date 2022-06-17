@@ -84,6 +84,7 @@ const Card = (props) => {
               alt="Logo"
               height={50}
               width={50}
+              objectFit="cover"
             />
           </div>
 

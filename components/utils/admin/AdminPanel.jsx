@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import UpdatePaymentStatus from "./modals/UpdatePaymentStatus";
 import JobStatus from "./modals/JobStatus";
 import CreateEvent from "./modals/CreateEvent";
+import BulkEmail from "./modals/BulkEmail";
 
 const panelVariants = {
   hoverPaymentStatus: {
@@ -22,6 +23,10 @@ const panelVariants = {
   },
   hoverEventStatus: {
     backgroundColor: "#F0A500",
+    color: "#FFFFFF",
+  },
+  hoverBulkEmail: {
+    backgroundColor: "#316B83",
     color: "#FFFFFF",
   },
   tap: {
@@ -61,12 +66,13 @@ const AdminPanel = () => {
   const [paymentStatusOpen, setPaymentStatusOpen] = useState(false);
   const [jobStatusOpen, setJobStatusOpen] = useState(false);
   const [createEventOpen, setCreateEventOpen] = useState(false);
+  const [sendBulkEmails, setSendBulkEmails] = useState(false);
 
   return (
     <div className={classes.parentContainer}>
       <div className={classes.panelHero}>
         <Grid container align="center" spacing={6}>
-          <Grid item xs={12} md={4} lg={3}>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
             <motion.div
               variants={panelVariants}
               whileTap="tap"
@@ -83,7 +89,7 @@ const AdminPanel = () => {
             </motion.div>
           </Grid>
 
-          <Grid item xs={12} md={4} lg={3}>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
             <motion.div
               variants={panelVariants}
               whileTap="tap"
@@ -103,7 +109,7 @@ const AdminPanel = () => {
             </motion.div>
           </Grid>
 
-          <Grid item xs={12} md={4} lg={3}>
+          <Grid item xs={12} sm={6} md={4} lg={3}>
             <motion.div
               variants={panelVariants}
               whileTap="tap"
@@ -121,7 +127,25 @@ const AdminPanel = () => {
               CREATE EVENT
             </motion.div>
           </Grid>
+
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <motion.div
+              variants={panelVariants}
+              whileTap="tap"
+              whileHover="hoverBulkEmail"
+              className={classes.commonTileStyle}
+              style={{
+                backgroundColor: "#CEE5D0",
+                border: "2px solid #316B83",
+                color: "#316B83",
+              }}
+              onClick={() => setSendBulkEmails(true)}
+            >
+              SEND BULK EMAILS
+            </motion.div>
+          </Grid>
         </Grid>
+
         <UpdatePaymentStatus
           paymentStatusOpen={paymentStatusOpen}
           setPaymentStatusOpen={setPaymentStatusOpen}
@@ -133,6 +157,10 @@ const AdminPanel = () => {
         <CreateEvent
           createEventOpen={createEventOpen}
           setCreateEventOpen={setCreateEventOpen}
+        />
+        <BulkEmail
+          sendBulkEmails={sendBulkEmails}
+          setSendBulkEmails={setSendBulkEmails}
         />
       </div>
     </div>

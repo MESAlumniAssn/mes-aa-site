@@ -1,5 +1,5 @@
-import React from "react";
 import { DEFAULT_MC } from "../../../utils/images";
+import Image from "next/image";
 
 // Material UI imports
 import Grid from "@material-ui/core/Grid";
@@ -25,20 +25,25 @@ const Members = (props) => {
                           : "mcImageBorderColor"
                       }`}
                     >
-                      <img
-                        src={member.image_url + "/tr:w-250"}
+                      <Image
+                        src={member.image_url}
                         alt={member.name}
-                        height="250px"
-                        width="250px"
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="top"
+                        placeholder="blur"
+                        blurDataURL={member.image_url + "/tr:bl-10"}
                         className="mcImages"
                       />
                     </div>
                   ) : (
-                    <img
+                    <Image
                       src={DEFAULT_MC + "/tr:w-250"}
                       alt="Default image"
-                      height="250px"
-                      width="250px"
+                      height={250}
+                      width={250}
+                      objectFit="cover"
+                      objectPosition="center"
                       className="mcImages"
                     />
                   )}

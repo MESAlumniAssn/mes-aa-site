@@ -752,6 +752,24 @@ const SiteState = (props) => {
     }
   };
 
+  const sendBulkEmail = async (mailbox, subject, message) => {
+    const jsonPayload = {
+      mailbox,
+      subject,
+      message,
+    };
+
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/email/alumni`,
+        jsonPayload
+      );
+      dispatch({ type: EMAIL_SEND_SUCCESS });
+    } catch (err) {
+      dispatch({ type: EMAIL_SEND_FAILURE });
+    }
+  };
+
   const sendAutoResponseEmail = async (recipientEmail) => {
     const jsonPayload = {
       to_email: recipientEmail,
@@ -766,6 +784,10 @@ const SiteState = (props) => {
     } catch (err) {
       dispatch({ type: EMAIL_SEND_FAILURE });
     }
+  };
+
+  const clearEmailSentNotification = async () => {
+    dispatch({ type: EMAIL_SEND_FAILURE });
   };
 
   //---------------------Emails End---------------------
@@ -863,7 +885,9 @@ const SiteState = (props) => {
         sendPaymentReceiptEmail,
         sendRenewalNotificationEmail,
         sendEventsNotificationEmail,
+        sendBulkEmail,
         sendAutoResponseEmail,
+        clearEmailSentNotification,
         unsubscribeFromMailingList,
         loginUser,
         adminLogout,

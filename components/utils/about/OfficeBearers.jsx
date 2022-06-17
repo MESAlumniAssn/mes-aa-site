@@ -31,9 +31,7 @@ const OfficeBearers = (props) => {
       <Container maxWidth="xl" style={{ padding: "50px 0" }}>
         <Typography component="h2" align="center" gutterBottom>
           <span className="secondaryHeading">
-            Say hello to the <span className={classes.mcHeadingStyle}>M</span>
-            anagement <span className={classes.mcHeadingStyle}>C</span>
-            ommittee
+            Say hello to the Management Committee
           </span>{" "}
           {/* <img
             src="/images/about/wave.svg"

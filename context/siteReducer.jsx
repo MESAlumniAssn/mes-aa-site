@@ -188,11 +188,13 @@ const siteReducer = (state, action) => {
     case EMAIL_SEND_SUCCESS:
       return {
         ...state,
+        loading: false,
         emailSent: true,
       };
     case EMAIL_SEND_FAILURE:
       return {
         ...state,
+        loading: false,
         emailSent: false,
       };
     case JOBS_FETCHED_SUCCESS:

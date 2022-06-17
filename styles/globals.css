@@ -87,6 +87,7 @@ html::-webkit-scrollbar-track {
 }
 
 .mcImageBorder {
+  position: relative;
   border-radius: 50%;
   height: 250px;
   width: 250px;
