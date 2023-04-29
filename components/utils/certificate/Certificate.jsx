@@ -153,7 +153,7 @@ const Certificate = (props) => {
           <div id="signature1">
             <div style={{ textAlign: "center" }}>
               <Image
-                src={"/images/certificate/signature1.png"}
+                src={"/images/certificate/signature2.png"}
                 alt="Signature of the President"
                 width={300}
                 height={100}
@@ -191,7 +191,7 @@ const Certificate = (props) => {
           <div id="signature2">
             <div style={{ textAlign: "center" }}>
               <Image
-                src={"/images/certificate/signature2.png"}
+                src={"/images/certificate/signature1.png"}
                 alt="Signature of the Secretary"
                 width={250}
                 height={100}
