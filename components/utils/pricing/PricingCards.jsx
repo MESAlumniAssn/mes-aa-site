@@ -158,7 +158,7 @@ const Pricing = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <Card
               style={{
                 minHeight: 575,
@@ -246,7 +246,7 @@ const Pricing = () => {
                 ))}
               </CardContent>
             </Card>
-          </Grid>
+          </Grid> */}
         </Grid>
       </div>
     </div>
