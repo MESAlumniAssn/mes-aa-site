@@ -78,7 +78,7 @@ const Card = (props) => {
             //justifyContent: "space-around",
           }}
         >
-          // Changed Image to img - SYN-DEV-11-02-2026
+          // Changed Image tag to img tag - SYN-DEV-11-02-2026
           <div style={{ marginTop: 35, marginBottom: -10 }}>
             <img
               src={"/images/card/id-card-logo.svg"}
