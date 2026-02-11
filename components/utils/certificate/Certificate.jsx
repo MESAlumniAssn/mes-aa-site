@@ -89,7 +89,8 @@ const Certificate = (props) => {
             padding: "10px 0",
           }}
         >
-          <Image
+          // Changed Image to img - SYN-DEV-11-02-2026
+          <img
             src={"/images/certificate/divider.svg"}
             alt="Section divider"
             height={20}
